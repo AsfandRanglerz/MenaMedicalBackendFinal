@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --theme-alpha: #006B99;
+    --theme-beta: #F37C21;
+    --theme-beta-dark: #e3721b;
+    --theme-omega: #00AC47;
+    --theme-omega-dark: #218838;
+    --theme-text-alpha: #3D3D3D;
+    --theme-text-beta: #006B99;
+    --theme-text-omega: #C0BDBD;
+    --theme-bg-alpha: #F2F2F2;
+    --theme-danger: #D33939;
+}
