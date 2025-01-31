@@ -127,21 +127,8 @@ class AccidentalPlagiarismController extends Controller
     }
     public function submitQuotationRequest(Request $request){
 
-
-        
             // return $request;
             // Validate the request data
-            $request->validate([
-                'email' => 'required|email',
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'location' => 'required',
-                'document_type' => 'required',
-                'target_journal' => 'required',
-                'question' => 'required',
-                'file' => 'required',
-                'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
-            ]);
 
             // Use a try-catch block for better error handling
             try {
