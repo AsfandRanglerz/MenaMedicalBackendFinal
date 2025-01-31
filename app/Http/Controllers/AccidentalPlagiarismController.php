@@ -127,6 +127,8 @@ class AccidentalPlagiarismController extends Controller
     }
     public function submitQuotationRequest(Request $request){
 
+
+        
             // return $request;
             // Validate the request data
             $request->validate([
