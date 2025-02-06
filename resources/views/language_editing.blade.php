@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="container-fluid">
                 @foreach ($LanguageEditings as $LanguageEditing)
-                    <div class="row section-devision">
+                    <div class="row mb-0 section-devision">
                         <div class="col-sm-7 px-sm-2 px-0">
                             <h4 class="primary-heading">{{ $LanguageEditing->title }}</h4>
                             <p class="mb-0 mt-4">
@@ -30,8 +30,6 @@
                     </div>
                 @endforeach
                 <div class="overflow-auto lang-table-section">
-
-
                     <div class="row border editing-portion">
                         @foreach ($LanguageEditingTwos as $LanguageEditingTwo)
                             <div class="col-4 p-0" style="border-right: 1px solid #dee2e6">

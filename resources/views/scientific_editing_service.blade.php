@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="container-fluid">
-                <div class="row section-devision">
+                <div class="row mb-0 section-devision">
                     @foreach ($ScientificEditingOnes as $ScientificEditingOne)
                         <div class="col-sm-7 px-sm-2 px-0">
                             <h4 class="primary-heading">{{ $ScientificEditingOne->title }}</h4>
@@ -19,7 +19,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="section-devision">
+                <div class="mt-3 section-devision">
                     @foreach ($ScientificEditingTwos as $ScientificEditingTwo)
                         <h4 class="primary-heading">{{ $ScientificEditingTwo->feature_title }}</h4>
                         <ul class="mt-4 listing-margin">
