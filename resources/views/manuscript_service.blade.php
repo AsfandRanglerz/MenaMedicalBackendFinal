@@ -18,7 +18,7 @@
                 @foreach ($ManuscriptFormattingOnes as $ManuscriptFormattingOne)
                 <div class="col-sm-7 px-sm-2 px-0">
                     <h4 class="primary-heading">{{ $ManuscriptFormattingOne->title }}</h4>
-                    <p class="mb-0 mt-4">
+                    <p class="mb-0 mt-4 me-lg-3">
                         {!! nl2br(e($ManuscriptFormattingOne->description)) !!}
                     </p>
                 </div>

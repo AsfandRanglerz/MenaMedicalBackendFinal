@@ -16,7 +16,7 @@
                     <div class="row gy-4 gy-lg-0">
                         <div class="col-md-6 p-2 border-section">
                             <div class="py-2 head-one">
-                                <p class="m-0 text-center heading">Journal of Bioscience Research</p>
+                                <p class="m-0 text-center heading">MENA Journal of Bioscience Research</p>
                             </div>
                             <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start">
                                 <div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-6 p-2 border-section">
                             <div class="py-2 head-two">
-                                <p class="m-0 text-center heading">Journal of Case Reports</p>
+                                <p class="m-0 text-center heading">MENA Journal of Case Reports</p>
                             </div>
                             <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start">
                                 <div>
