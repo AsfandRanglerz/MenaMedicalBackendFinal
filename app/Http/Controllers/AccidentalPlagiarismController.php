@@ -41,7 +41,7 @@ class AccidentalPlagiarismController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name','Accidental Plagiarism')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Accidental Plagiarism')->get();
         $regularPrice = ServicsPricing::where('service_name','Accidental Plagirisam')
         ->where('price_category','Regular')
         ->first();
@@ -156,6 +156,7 @@ class AccidentalPlagiarismController extends Controller
                     'latest_news' => $request->latest_news,
                     'privacy_terms' => $request->agree_check,
                     'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                     'status' => '0',
                     'text' => $request->target_journal,
                     'document_type' => $request->document_type,
@@ -198,7 +199,7 @@ class AccidentalPlagiarismController extends Controller
                     ]);
                 }
                 // Send the email
-                Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
                 DB::commit();
                 return response()->json([
                     'status' => 'success',

@@ -53,6 +53,7 @@ use App\Http\Controllers\Admin\PostandPresentationThreeController;
 use App\Http\Controllers\Admin\ManuscriptFormattingThreeController;
 use App\Http\Controllers\Admin\ThesisEditingServiceThreeController;
 use App\Http\Controllers\Admin\AssignmentEditingServiceOneController;
+use App\Http\Controllers\Admin\SeoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('Quotation-Requests/filesDownload/{id}', [QuotationRequestController::class, 'filesDownload'])->name('files.download');
     Route::get('Approved-Requests/index', [QuotationRequestController::class, 'approvedRequests'])->name('quotationRequests.approved');
     Route::get('Rejected-Requests/index', [QuotationRequestController::class, 'RejectedRequests'])->name('quotationRequests.rejected');
+    Route::delete('Rejected-Requests/delete/{id}', [QuotationRequestController::class, 'delete'])->name('quotationRequests.delete');
+    Route::delete('Rejected-Requests/deleteAll/', [QuotationRequestController::class, 'deleteAll'])->name('quotationAll.delete');
     Route::post('Quotation-Requests/status/{id}', [QuotationRequestController::class, 'status'])->name('quotationRequests.status');
 
 
@@ -501,6 +504,15 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::post('terms-conditions/update/', 'update')->name('termCondition.update');
         Route::get('terms-conditions/read', 'read')->name('termCondition.read');
     });
+
+
+        // Privacy Policy Controller
+        Route::controller(SeoController::class)->group(function () {
+            Route::get('seo/index', 'index')->name('seo.index');
+            Route::get('seo/edit/{id}', 'edit')->name('seo.edit');
+            Route::post('seo/update/', 'update')->name('seo.update');
+            Route::get('seo/read', 'read')->name('seo.read');
+        });
 });
 
 require __DIR__ . '/frontend.php';

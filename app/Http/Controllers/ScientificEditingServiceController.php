@@ -42,7 +42,7 @@ class ScientificEditingServiceController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name', 'Scientific Editing')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name', 'Scientific Editing')->get();
         return view('scientific_editing_service', compact('HomeSectionThrees', 'ScientificEditingOnes', 'ScientificEditingTwos', 'ScientificEditingThrees', 'HomeSectionSixs', 'SocialLinks', 'FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'Faqs'));
     }
 
@@ -118,7 +118,7 @@ class ScientificEditingServiceController extends Controller
                 'results' => $results, // Include the results for all records
             ]);
 
-    }
+    }   
 
     public function submitQuotationRequest(Request $request)
     {
@@ -137,6 +137,7 @@ class ScientificEditingServiceController extends Controller
                 'words' => $request->words,
                 'price_category' => $request->price_category,
                 'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                 'language_type' => $request->language,
                 'additional_instructions' => $request->additional_instruction,
                 'latest_news' => $request->latest_news,
@@ -165,7 +166,7 @@ class ScientificEditingServiceController extends Controller
                     'file' => $quotationFile,
                 ]);
             }
-            Mail::to($request->email)->send(new SubmitQuotaionEmail);
+            // Mail::to($request->email)->send(new SubmitQuotaionEmail);
             DB::commit();
             return response()->json([
                 'status' => 'success',

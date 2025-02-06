@@ -17,14 +17,16 @@ class FAQController extends Controller
     //     return json_encode($json_data);
     // }
 
-    public function faqData()
+    public function faqData(Request $request)
     {
-        $faqs = Faq::with('navbar')->orderBy('position')->get();
+        // $return 
+        $navName = $request->input('navName','Language Editing');
+        $faqs = Faq::with('navbar')->where('navbar_name',$navName)->orderBy('position')->get();
 
         $json_data["data"] = $faqs->map(function ($faq) {
             return [
                 'id' => $faq->id,
-                'navBar_name' => $faq->navbar ? $faq->navBar->text : '', // Safely get the name
+                'navBar_name' => $faq->navbar_name, // Safely get the name
                 'questions' => $faq->questions,
                 'answers' => $faq->answers,
                 'position' => $faq->position,
@@ -38,8 +40,8 @@ class FAQController extends Controller
     {
         $faqs = Faq::all();
         $navBars = NavBar::select('id', 'text')->get();
-
-        return view('admin.faq.index', compact('faqs', 'navBars'));
+        $service = 'Language Editing';
+        return view('admin.faq.index', compact('faqs', 'navBars','service'));
     }
     public function faqCreate(Request $request)
     {
@@ -104,8 +106,7 @@ class FAQController extends Controller
 
     public function faqReorder(Request $request)
     {
-
-
+        // return $request->navName;
         foreach ($request->order as $item) {
             Faq::where('id', $item['id'])->update(['position' => $item['position']]);
         }

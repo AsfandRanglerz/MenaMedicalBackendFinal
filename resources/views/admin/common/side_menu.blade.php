@@ -594,6 +594,13 @@
 
 
 
+            <li class="{{ request()->is('admin/seo*') ? 'active' : '' }}">
+                <a href="{{ route('seo.index') }}"
+                    class="nav-link {{ request()->is('admin/seo*') ? 'text-white' : '' }}">
+                    <i data-feather="help-circle"></i>
+                    <span>SEO</span>
+                </a>
+            </li>
             <li class="{{ request()->is('admin/faq*') ? 'active' : '' }}">
                 <a href="{{ route('faq.index') }}"
                     class="nav-link {{ request()->is('admin/faq*') ? 'text-white' : '' }}">

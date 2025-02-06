@@ -45,7 +45,7 @@ class ThesisEditingController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name','Thesis Editing Service')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Thesis Editing Service')->get();
         $additionalsServices = AdditionalPrices::where('services','Thesis Editing Service')->get();
         $regularPrice = ServicsPricing::where('service_name','Thesis Editing Service')
         ->where('package_name','Advance')
@@ -153,6 +153,7 @@ class ThesisEditingController extends Controller
                     'service_name' => $request->service_name,
                     'service_package' => $request->package_name,
                     'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                     'words' => $request->words,
                     'price_category' => $request->price_category,
                     'language_type' => $request->language,
@@ -210,7 +211,7 @@ class ThesisEditingController extends Controller
                         }
                     }
                 }
-                Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                // Mail::to($re quest->email)->send(new SubmitQuotaionEmail);
                 DB::commit();
                 return response()->json([
                     'status' => 'success',

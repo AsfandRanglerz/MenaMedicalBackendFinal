@@ -44,9 +44,6 @@
                                         <div class="card-header">
                                             <h4>Edit Profile</h4>
                                         </div>
-{{--                                        @if(\Illuminate\Support\Facades\Session::has('errors'))--}}
-{{--                                            {{dd($errors)}}--}}
-{{--                                            @endif--}}
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="form-group col-md-6 col-12">

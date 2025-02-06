@@ -616,7 +616,8 @@
             formData.append('agree_check', ($('#createQuotationForm input[name="agree_check"]').val()).trim());
             var priceText = $('#estimate-price').text();
             var priceValue = parseFloat(priceText.replace('$', '').trim());
-            formData.append('total_price', priceValue);
+               formData.append('total_price', priceValue);
+            formData.append('service_price', $('#service_price').text());
             formData.append('advance_editing', ($('#advance-editing').val() || '').trim());
             formData.append('plagirism_value', ($('#plagirism-value').val() || '').trim());
             formData.append('target_journal', ($('#createQuotationForm input[name="text"]').val() || '').trim());

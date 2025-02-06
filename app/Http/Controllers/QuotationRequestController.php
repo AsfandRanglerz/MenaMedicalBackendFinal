@@ -14,7 +14,7 @@ use App\Models\QuotationAdditionalService;
 class QuotationRequestController extends Controller
 {
     public function index(){
-        $quotationRequests = QuotationRequest::with('personalInfos','files','additionalServices')
+        $quotationRequests = QuotationRequest::with('personalInfos','files','additionalServices','additionalInfo')
         ->where('status','0')
         ->latest()->get();
         // QuotationRequest::where('status','0')->update(['status','1']);
@@ -92,4 +92,16 @@ class QuotationRequestController extends Controller
         // return $data;
         return view('admin.quotationRequest.additionalInformation',compact('data'));
     }
+
+    public function delete($id){
+        QuotationRequest::destroy($id);
+        return redirect()->route('quotationRequests.rejected')->with(['message'=>'Quotation Deleted Successfully']);
+    }
+
+    public function deleteAll()
+    {
+        QuotationRequest::where('status', '2')->delete();
+        return redirect()->route('quotationRequests.rejected')->with(['message' => 'Quotations Deleted Successfully']);
+    }
+
 }

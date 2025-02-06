@@ -321,7 +321,7 @@
                 days = parseInt($('#discounted_price_days').text()) || 0;
                 }
                 if (price === 0 || days === 0) {
-                    toastr.error('Please calculate price and days first.');
+                    toastr.error('Please Enter Approximate Word Count to Calculate Price');
                     $("input[name='price_cat']").prop('checked', false);
                     return;
                 } else {
@@ -454,8 +454,6 @@
                 setTimeout(function() {
                         location.reload();
                     }, 2000);
-
-                },
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {

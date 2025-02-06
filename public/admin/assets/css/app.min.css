@@ -2744,7 +2744,7 @@ textarea.form-control.is-invalid {
 .custom-control-input.is-invalid:focus:not(:checked)~.custom-control-label::before,
 .was-validated .custom-control-input:invalid:focus:not(:checked)~.custom-control-label::before {
     border-color: #dc3545
-}
+}  
 
 .custom-file-input.is-invalid~.custom-file-label,
 .was-validated .custom-file-input:invalid~.custom-file-label {

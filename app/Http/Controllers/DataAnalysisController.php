@@ -44,7 +44,7 @@ class DataAnalysisController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name', 'Data Analysis')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name', 'Data Analysis')->get();
         $regularPriceAdvanceData = ServicsPricing::where('service_name', 'Data Analysis')
             ->where('package_name', 'Advance')
             ->where('price_category', 'Regular')
@@ -205,6 +205,7 @@ class DataAnalysisController extends Controller
                 'price_category' => $request->price_category,
                 'service_package' => $request->package_name,
                 'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                 'language_type' => $request->language,
                 'additional_instructions' => $request->additional_instruction,
                 'latest_news' => $request->latest_news,
@@ -237,7 +238,7 @@ class DataAnalysisController extends Controller
                     ]);
                 }
             }
-            Mail::to($request->email)->send(new SubmitQuotaionEmail);
+            // Mail::to($request->email)->send(new SubmitQuotaionEmail);
             DB::commit();
             return response()->json([
                 'status' => 'success',

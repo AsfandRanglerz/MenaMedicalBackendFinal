@@ -46,7 +46,7 @@ class PosterCreationController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name','Posters & Presentations')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Posters & Presentations')->get();
         $regularPowerPointPrice = ServicsPricing::where('service_name','Power Point Presentations')
         ->where('price_category','Regular')
         ->first();
@@ -179,6 +179,7 @@ class PosterCreationController extends Controller
                     'latest_news' => $request->latest_news,
                     'privacy_terms' => $request->agree_check,
                     'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                     'status' => '0',
                 ]);
 
@@ -225,7 +226,7 @@ class PosterCreationController extends Controller
 
 
                 // Send the email
-                Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
 
                 // Commit the transaction
                 DB::commit();

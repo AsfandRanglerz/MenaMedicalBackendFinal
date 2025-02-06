@@ -45,7 +45,7 @@ class ManuscriptFormattingController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name','Manuscript Formatting')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Manuscript Formatting')->get();
         $regularPrice = ServicsPricing::where('service_name','Manuscript Formatting Service')
         ->where('price_category','Regular')
         ->first();
@@ -155,6 +155,7 @@ class ManuscriptFormattingController extends Controller
                     'words' => $request->words,
                     'price_category' => $request->price_category,
                     'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                     'language_type' => $request->language,
                     'additional_instructions' => $request->additional_instruction,
                     'latest_news' => $request->latest_news,
@@ -204,7 +205,7 @@ class ManuscriptFormattingController extends Controller
                 }
 
                 // Send the email
-                Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
 
                 // Commit the transaction
                 DB::commit();

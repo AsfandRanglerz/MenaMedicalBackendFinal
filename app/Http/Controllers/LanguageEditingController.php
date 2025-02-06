@@ -44,7 +44,7 @@ class LanguageEditingController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
-        $Faqs = Faq::orderBy('id', 'ASC')->where('navBar_name','Language Editing')->get();
+        $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Language Editing')->get();
 
         $additionalsServices = AdditionalPrices::where('services','Language Editing')->get();
         return view('language_editing',compact('additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
@@ -149,6 +149,7 @@ class LanguageEditingController extends Controller
                     'service_name' => $request->service_name,
                     'service_package' => $request->package_name,
                     'total_price' => $request->total_price,
+                    'base_price' => $request->service_price,
                     'words' => $request->words,
                     'price_category' => $request->price_category,
                     'language_type' => $request->language,
@@ -197,7 +198,7 @@ class LanguageEditingController extends Controller
                         }
                     }
                 }
-                Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
                 DB::commit();
                 return response()->json([
                     'status' => 'success',
