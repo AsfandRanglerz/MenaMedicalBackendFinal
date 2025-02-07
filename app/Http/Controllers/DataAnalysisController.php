@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -61,7 +62,10 @@ class DataAnalysisController extends Controller
             ->where('package_name', 'Premium')
             ->where('price_category', 'Discounted')
             ->first();
+            $seo_data = SEO::where('section','Data Analysis')->first();
+
         return view('data_analysis', compact(
+            'seo_data',
             'regularPriceAdvanceData',
             'discountedPriceAdvanceData',
             'regularPricePremiumData',
@@ -196,6 +200,8 @@ class DataAnalysisController extends Controller
             'question' => 'required',
             'file' => 'required',
             'agree_check' => 'required|in:yes',
+            'institute_name' => 'required',
+            'program_category' => 'required',
         ]);
         try {
             DB::beginTransaction();

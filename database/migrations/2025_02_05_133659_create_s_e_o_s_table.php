@@ -15,6 +15,12 @@ class CreateSEOSTable extends Migration
     {
         Schema::create('s_e_o_s', function (Blueprint $table) {
             $table->id();
+            $table->string('section')->nullable();
+            $table->string('title')->nullable();
+            $table->string('og_title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('og_description')->nullable();
+            $table->string('keywords')->nullable();
             $table->timestamps();
         });
     }

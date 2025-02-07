@@ -27,16 +27,16 @@
                                             <th>Institute</th>
                                             <th>Location</th>
                                             <th>Quotation</th>
-                                            <th>Service Name</th>
+                                            {{-- <th>Service Name</th>
                                             <th>Service Package</th>
                                             <th>Words</th>
                                             <th>Price Category</th>
                                             <th>Total Price</th>
-                                            <th>Additional Services</th>
-                                            <th scope="col">Actions</th>
+                                            <th>Additional Services</th> --}}
                                             <th>Language Type</th>
+                                            <th scope="col">Actions</th>
                                             <th>Additional Instructions</th>
-                                            <th>Additional Information</th>
+                                            {{-- <th>Additional Information</th> --}}
                                             <th>Files</th>
                                             <th>Target Journal</th>
                                             <th>Document Type</th>
@@ -91,7 +91,7 @@
                                                             <span class="badge badge-danger">No record found</span>
                                                         @endif
                                                     </td>
-                                                   
+
                                                 @endforeach
                                                 <td>
                                                     {{-- @dd($data->additionalServices) --}}
@@ -109,7 +109,7 @@
                                                     </button>
                                                 </td>
 
-                                                <td>
+                                                {{-- <td>
                                                     {{ $data->service_name ?? '' }}
                                                     @if (empty($data->service_name))
                                                         <span class="badge badge-danger">No record found</span>
@@ -145,6 +145,12 @@
                                                         class="btn btn-primary">
                                                         <span class="fas fa-eye"></span> <!-- Font Awesome eye icon -->
                                                     </a>
+                                                </td> --}}
+                                                <td>
+                                                    {{ $data->language_type ?? '' }}
+                                                    @if (empty($data->language_type))
+                                                        <span class="badge badge-danger">No record found</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <div class="d-flex gap-4">
@@ -167,24 +173,18 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    {{ $data->language_type ?? '' }}
-                                                    @if (empty($data->language_type))
-                                                        <span class="badge badge-danger">No record found</span>
-                                                    @endif
-                                                </td>
-                                                <td>
                                                     {{ $data->additional_instructions ?? '' }}
                                                     @if (empty($data->additional_instructions))
                                                         <span class="badge badge-danger">No record found</span>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <a target="_blank"
                                                         href="{{ route('quotationRequests.additionalInformation', $data->id) }}"
                                                         class="btn btn-primary">
                                                         <span class="fas fa-eye"></span> <!-- Font Awesome eye icon -->
                                                     </a>
-                                                </td>
+                                                </td> --}}
                                                 @if (
                                                     $data->service_name == 'Posters' ||
                                                         $data->service_name == 'Power Point Presentations' ||

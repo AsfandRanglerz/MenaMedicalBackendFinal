@@ -15,7 +15,7 @@ use App\Models\HomeSectionFive;
 use App\Models\HomeSectionFour;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
-
+use App\Models\SEO;
 
 class ScientificEditingController extends Controller
 {
@@ -26,16 +26,17 @@ class ScientificEditingController extends Controller
         $HomeSectionFours = HomeSectionFour::orderBy('id', 'ASC')->get();
         $HomeSectionFives = HomeSectionFive::orderBy('id', 'ASC')->get();
         $HomeSectionSixs = HomeSectionSix::orderBy('id', 'ASC')->get();
-        
+
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
-        return view('scientific_editing', compact('HomeSectionOnes', 'HomeSections', 'HomeSectionThrees', 'HomeSectionFours', 'HomeSectionFives', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
+        $seo_data = SEO::where('section','Home')->first();
+        return view('scientific_editing', compact('seo_data','HomeSectionOnes', 'HomeSections', 'HomeSectionThrees', 'HomeSectionFours', 'HomeSectionFives', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
     }
 
 
-  
+
 }

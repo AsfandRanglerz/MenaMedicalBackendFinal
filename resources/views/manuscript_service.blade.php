@@ -1,6 +1,12 @@
 @extends('layout.master')
 
-@section('title', 'Manuscript Formatting Service')
+@section('title', $seo_data['title'])
+@section('og_title', $seo_data['og_title'])
+@section('description', $seo_data['description'])
+@section('og_description', $seo_data['og_description'])
+@section('keywords', $seo_data)
+
+
 <style>
     .trusted-by .heading, .trusted-by small {
         display: none;

@@ -13,6 +13,13 @@
         -webkit-appearance: none;
         margin: 0;
     }
+
+    .error-message {
+        font-size: 0.9em;
+        color: #dc3545;
+        /* Bootstrap danger color */
+        margin-top: 5px;
+    }
 </style>
 @section('content')
     <div class="container-fluid">
@@ -44,9 +51,10 @@
                                                                 Count</label>
                                                             <div class="d-flex align-items-center gap-3">
 
-                                                                <input type="number" id="wordCount" class="py-1" name="words">
+                                                                <input type="number" id="wordCount" class="py-1"
+                                                                    name="words">
                                                                 <button class="px-3 py-1 theme-btn-green"
-                                                                    id="calculatePrice" type="button" >Calculate
+                                                                    id="calculatePrice" type="button">Calculate
                                                                     Price</button>
                                                             </div>
                                                         </div>
@@ -154,7 +162,7 @@
                                                     type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <p class="mb-0 text-center small-text-btn">Salutation</p>
                                                     <span class="salutation">Dr.</span>
-                                                    <input type="hidden" value="" name="salutation"/>
+                                                    <input type="hidden" value="" name="salutation" />
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item sal-role">Dr.</a></li>
@@ -185,9 +193,11 @@
                                         <select name="program_category" id="contactCategory"
                                             class="shadow-none rounded w-100 select-control border-make input-field-info">
                                             <option value="" selected disabled>Select</option>
-                                            <option value="Undergraduate Student (in Bachelor Program)">Undergraduate Student (in Bachelor Program)
+                                            <option value="Undergraduate Student (in Bachelor Program)">Undergraduate
+                                                Student (in Bachelor Program)
                                             </option>
-                                            <option value="Postgraduate Student (in Master Program)">Postgraduate Student (in Master Program)</option>
+                                            <option value="Postgraduate Student (in Master Program)">Postgraduate Student
+                                                (in Master Program)</option>
                                             <option value="PhD student">PhD student</option>
                                             <option value="Researcher by profession">Researcher by profession</option>
                                             <option value="other">Other</option>
@@ -202,48 +212,41 @@
                                             placeholder="Your University / Company Name" name="institute_name">
                                     </div>
                                     <div class="my-4">
-                                        <select
-                                        name="location"
-                                        id="countries"
-                                        class="shadow-none rounded w-100 select-control border-make input-field-info"
-                                        onchange="handleOtherOption(this)"
-                                      >
-                                        <option value="" selected disabled>I am located in *</option>
-                                        <option value="Algeria">Algeria</option>
-                                        <option value="Bahrain">Bahrain</option>
-                                        <option value="Cyprus">Cyprus</option>
-                                        <option value="Egypt">Egypt</option>
-                                        <option value="Iran">Iran</option>
-                                        <option value="Iraq">Iraq</option>
-                                        <option value="Israel">Israel</option>
-                                        <option value="Jordan">Jordan</option>
-                                        <option value="Kuwait">Kuwait</option>
-                                        <option value="Lebanon">Lebanon</option>
-                                        <option value="Libya">Libya</option>
-                                        <option value="Morocco">Morocco</option>
-                                        <option value="Oman">Oman</option>
-                                        <option value="Palestinian Territories">Palestinian Territories</option>
-                                        <option value="Qatar">Qatar</option>
-                                        <option value="Saudi Arabia">Saudi Arabia</option>
-                                        <option value="Sudan">Sudan</option>
-                                        <option value="Syria">Syria</option>
-                                        <option value="Tunisia">Tunisia</option>
-                                        <option value="Turkey">Turkey</option>
-                                        <option value="United Arab Emirates">United Arab Emirates</option>
-                                        <option value="Yemen">Yemen</option>
-                                        <option value="Other">Other</option>
-                                      </select>
+                                        <select name="location" id="countries"
+                                            class="shadow-none rounded w-100 select-control border-make input-field-info"
+                                            onchange="handleOtherOption(this)">
+                                            <option value="" selected disabled>I am located in *</option>
+                                            <option value="Algeria">Algeria</option>
+                                            <option value="Bahrain">Bahrain</option>
+                                            <option value="Cyprus">Cyprus</option>
+                                            <option value="Egypt">Egypt</option>
+                                            <option value="Iran">Iran</option>
+                                            <option value="Iraq">Iraq</option>
+                                            <option value="Israel">Israel</option>
+                                            <option value="Jordan">Jordan</option>
+                                            <option value="Kuwait">Kuwait</option>
+                                            <option value="Lebanon">Lebanon</option>
+                                            <option value="Libya">Libya</option>
+                                            <option value="Morocco">Morocco</option>
+                                            <option value="Oman">Oman</option>
+                                            <option value="Palestinian Territories">Palestinian Territories</option>
+                                            <option value="Qatar">Qatar</option>
+                                            <option value="Saudi Arabia">Saudi Arabia</option>
+                                            <option value="Sudan">Sudan</option>
+                                            <option value="Syria">Syria</option>
+                                            <option value="Tunisia">Tunisia</option>
+                                            <option value="Turkey">Turkey</option>
+                                            <option value="United Arab Emirates">United Arab Emirates</option>
+                                            <option value="Yemen">Yemen</option>
+                                            <option value="Other">Other</option>
+                                        </select>
 
-                                      <!-- Hidden Input Field -->
-                                      <div id="otherLocationContainer" style="display: none; margin-top: 10px;">
-                                        <input
-                                          type="text"
-                                          id="otherLocationInput"
-                                          name="other_location"
-                                          class="shadow-none rounded w-100 select-control border-make input-field-info"
-                                          placeholder="Please specify your location"
-                                        />
-                                      </div>
+                                        <!-- Hidden Input Field -->
+                                        <div id="otherLocationContainer" style="display: none; margin-top: 10px;">
+                                            <input type="text" id="otherLocationInput" name="other_location"
+                                                class="shadow-none rounded w-100 select-control border-make input-field-info"
+                                                placeholder="Please specify your location" />
+                                        </div>
 
                                     </div>
                                     <div class="my-4">
@@ -260,9 +263,11 @@
                                     </label>
                                     <label class="mt-3 d-flex gap-2 align-items-center">
                                         <input type="radio" name="agree_check" required value="yes">
- <p class="mb-0">I have read and agree to MENA Medical Research’s <a
-                                                href="{{route('privacy-policy')}}" class="text-decoration-none text-blue">Privacy Policy</a>
-                                            and <a href="{{route('term-condition')}}" class="text-decoration-none text-blue">Terms of Use</a>
+                                        <p class="mb-0">I have read and agree to MENA Medical Research’s <a
+                                                href="{{ route('privacy-policy') }}"
+                                                class="text-decoration-none text-blue">Privacy Policy</a>
+                                            and <a href="{{ route('term-condition') }}"
+                                                class="text-decoration-none text-blue">Terms of Use</a>
                                         </p>
                                     </label>
                                 </div>
@@ -281,8 +286,8 @@
 
 
                             <input type="button" id="submit-quotation"
-                            class="d-flex align-items-center gap-2 mt-4 text-white m-0 btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
-                            value="SUBMIT QUOTATION REQUEST" />
+                                class="d-flex align-items-center gap-2 mt-4 text-white m-0 btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
+                                value="SUBMIT QUOTATION REQUEST" />
                         </form>
                     </div>
                     <div class="col-md-4 mt-md-0 mt-4">
@@ -299,26 +304,26 @@
         function handleOtherOption(selectElement) {
             const otherLocationContainer = document.getElementById('otherLocationContainer');
             if (selectElement.value === 'Other') {
-            // Show input field when "Other" is selected
-            otherLocationContainer.style.display = 'block';
+                // Show input field when "Other" is selected
+                otherLocationContainer.style.display = 'block';
             } else {
-            // Hide input field for other selections
-            otherLocationContainer.style.display = 'none';
+                // Hide input field for other selections
+                otherLocationContainer.style.display = 'none';
             }
         }
         $(document).ready(function() {
             $("input[name='price_cat']").change(function() {
                 var selectedPriceCategory = $("input[name='price_cat']:checked")
-                .val(); // Get the value of the selected radio button
+                    .val(); // Get the value of the selected radio button
                 console.log("Selected Price Category:", selectedPriceCategory); // Optional: For debugging
                 let price = 0;
                 let days = 0;
                 if (selectedPriceCategory === "Regular Price") {
-                price = parseFloat($('#regular_price').text()) || 0;
-                days = parseInt($('#regular_price_days').text()) || 0;
+                    price = parseFloat($('#regular_price').text()) || 0;
+                    days = parseInt($('#regular_price_days').text()) || 0;
                 } else if (selectedPriceCategory === "Discounted Price") {
-                price = parseFloat($('#discounted_price').text()) || 0;
-                days = parseInt($('#discounted_price_days').text()) || 0;
+                    price = parseFloat($('#discounted_price').text()) || 0;
+                    days = parseInt($('#discounted_price_days').text()) || 0;
                 }
                 if (price === 0 || days === 0) {
                     toastr.error('Please Enter Approximate Word Count to Calculate Price');
@@ -327,7 +332,8 @@
                 } else {
                     console.log(`Price: ${price}, Days: ${days}`);
                 }
-                $('#service_name').text('Scientific Editing - ' + selectedPriceCategory); // Concatenate package name and text
+                $('#service_name').text('Scientific Editing - ' +
+                selectedPriceCategory); // Concatenate package name and text
                 $('#service_price').text(price); // Set the price
                 $('#estimate-price').text(parseFloat($('#additional_service_price').text() || 0) + price);
                 return;
@@ -356,23 +362,25 @@
                 processData: false,
                 contentType: false,
                 success: function(response) {
-                console.log(response);
-                if (response.status === "success" && response.results) {
-                    response.results.forEach(function(item) {
-                        if (item.price_category === "Regular Price") {
-                            document.getElementById('regular_price').textContent = parseFloat(item.price);
-                            document.getElementById('regular_price_days').textContent = item.days;
-                        }
-
-                        else if (item.price_category === "Discounted Price") {
-                            document.getElementById('discounted_price').textContent = parseFloat(item.price);
-                            document.getElementById('discounted_price_days').textContent = item.days;
-                        }
-                    });
-                } else {
-                    console.error("Unexpected response structure:", response);
-                }
-            },
+                    console.log(response);
+                    if (response.status === "success" && response.results) {
+                        response.results.forEach(function(item) {
+                            if (item.price_category === "Regular Price") {
+                                document.getElementById('regular_price').textContent =
+                                    parseFloat(item.price);
+                                document.getElementById('regular_price_days').textContent = item
+                                    .days;
+                            } else if (item.price_category === "Discounted Price") {
+                                document.getElementById('discounted_price').textContent =
+                                    parseFloat(item.price);
+                                document.getElementById('discounted_price_days').textContent =
+                                    item.days;
+                            }
+                        });
+                    } else {
+                        console.error("Unexpected response structure:", response);
+                    }
+                },
                 error: function(error) {
 
                     console.error('Error:', error);
@@ -382,13 +390,18 @@
         });
         //store quotation request
         $('#submit-quotation').on('click', function() {
+            let priceCat = $('input[name="price_cat"]:checked').val();
+            if (!priceCat) {
+                toastr.error("Please Select Price Category");
+                return;
+            }
             var button = $(this);
             var originalText = button.val();
             button.val('Submitting...').prop('disabled', true);
             var formData = new FormData();
             formData.append('words', ($('#createQuotationForm input[name="words"]').val()).trim());
             formData.append('price_category', ($('input[name="price_cat"]:checked').val()).trim());
-            formData.append('service_name','Scientific Editing');
+            formData.append('service_name', 'Scientific Editing');
             formData.append('language', ($('#createQuotationForm input[name="language"]:checked').val() || '')
                 .trim());
             formData.append('additional_instruction', ($(
@@ -397,7 +410,8 @@
             formData.append('first_name', ($('#createQuotationForm input[name="first_name"]').val() || '').trim());
             formData.append('last_name', ($('#createQuotationForm input[name="last_name"]').val() || '').trim());
             formData.append('email', ($('#createQuotationForm input[name="email"]').val() || '').trim());
-            formData.append('institute_name', ($('#createQuotationForm input[name="institute_name"]').val() || '').trim());
+            formData.append('institute_name', ($('#createQuotationForm input[name="institute_name"]').val() || '')
+                .trim());
             formData.append('program_category', ($('#createQuotationForm select[name="program_category"]').val() ||
                 '').trim());
             formData.append('other_category', ($('#createQuotationForm input[name="other_category"]').val() || '')
@@ -415,7 +429,8 @@
             const agreeCheck = document.querySelector('input[name="agree_check"]:checked');
             if (!agreeCheck) {
                 event.preventDefault();
-                toastr.error('You must agree to the terms and privacy policy.');
+                toastr.error('You must agree to the terms and privacy policy');
+                button.val(originalText).prop('disabled', false);
                 return;
             }
             let fileInput = $('input[name="file"]');
@@ -440,26 +455,35 @@
                 success: function(response) {
                     $('#successMessage').fadeIn();
                     toastr.success('Your Order has been Submitted Successfully');
-                $('#createQuotationForm')[0].reset();
-                $('#createQuotationForm input[type="text"], #createQuotationForm textarea').val('');
-                $('#createQuotationForm select').prop('selectedIndex', 0);
-                $('#createQuotationForm input[type="radio"]').prop('checked', false);
-                $('#createQuotationForm input[type="checkbox"]').prop('checked', false);
-                $('#service_name').text('');
-                $('#service_price').text('');
-                $('#plagirism-value').text('');
-                $('#estimate-price').text('0');
-                $('.additional_service').text('');
-                $('.additional_service_price').text('');
-                setTimeout(function() {
+                    $('#createQuotationForm')[0].reset();
+                    $('#createQuotationForm input[type="text"], #createQuotationForm textarea').val('');
+                    $('#createQuotationForm select').prop('selectedIndex', 0);
+                    $('#createQuotationForm input[type="radio"]').prop('checked', false);
+                    $('#createQuotationForm input[type="checkbox"]').prop('checked', false);
+                    $('#service_name').text('');
+                    $('#service_price').text('');
+                    $('#plagirism-value').text('');
+                    $('#estimate-price').text('0');
+                    $('.additional_service').text('');
+                    $('.additional_service_price').text('');
+                    setTimeout(function() {
                         location.reload();
                     }, 2000);
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {
                         var errors = xhr.responseJSON.errors;
+                        // Clear any existing error messages
+                        $('.error-message').remove();
+
+                        // Loop through the errors and display them under the respective input fields
                         $.each(errors, function(field, messages) {
-                            toastr.error(messages[0]);
+                            var inputField = $('[name="' + field + '"]');
+                            if (inputField.length) {
+                                inputField.after(
+                                    '<span class="error-message text-danger small">' +
+                                    messages[0] + '</span>');
+                            }
                         });
                     } else {
                         console.error('Error Adding Driver:', xhr);
@@ -470,6 +494,10 @@
                     button.val(originalText).prop('disabled', false);
                 }
             });
+        });
+
+        $('input, select').on('input change', function() {
+            $(this).next('.error-message').remove();
         });
     </script>
 @endsection

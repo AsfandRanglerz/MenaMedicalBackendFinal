@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -20,7 +21,8 @@ class AdvanceEditingController extends Controller
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
+        $seo_data = SEO::where('section','Index')->first();
 
-        return view('advanced_editing_service',compact('SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
+        return view('advanced_editing_service',compact('seo_data','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
     }
 }

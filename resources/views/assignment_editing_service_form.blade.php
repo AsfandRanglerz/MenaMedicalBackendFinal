@@ -402,6 +402,11 @@
         });
         //store quotation request
         $('#submit-quotation').on('click', function() {
+            let priceCat = $('input[name="price_cat"]:checked').val();
+            if (!priceCat) {
+                toastr.error("Please Select Price Category");
+                return;
+            }
             var button = $(this); // Reference to the button
             var originalText = button.val(); // Store the original button text
 
@@ -438,9 +443,10 @@
             formData.append('advance_editing', ($('#advance-editing').val() || '').trim());
             formData.append('plagirism_value', ($('#plagirism-value').val() || '').trim());
             const agreeCheck = document.querySelector('input[name="agree_check"]:checked');
-            if (!agreeCheck) {
+             if (!agreeCheck) {
                 event.preventDefault();
-                toastr.error('You must agree to the terms and privacy policy.');
+                toastr.error('You must agree to the terms and privacy policy');
+                button.val(originalText).prop('disabled', false);
                 return;
             }
             let fileInput = $('input[name="file"]');
@@ -482,10 +488,19 @@
                     }, 2000);
                 },
                 error: function(xhr) {
-                    if (xhr.status === 422) { // Laravel validation error
+                    if (xhr.status === 422) {
                         var errors = xhr.responseJSON.errors;
+                        // Clear any existing error messages
+                        $('.error-message').remove();
+
+                        // Loop through the errors and display them under the respective input fields
                         $.each(errors, function(field, messages) {
-                            toastr.error(messages[0]);
+                            var inputField = $('[name="' + field + '"]');
+                            if (inputField.length) {
+                                inputField.after(
+                                    '<span class="error-message text-danger small">' +
+                                    messages[0] + '</span>');
+                            }
                         });
                     } else {
                         console.error('Error Adding Driver:', xhr);

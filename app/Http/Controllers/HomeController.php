@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\HomeSectionSix;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
+use App\Models\SEO;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,7 @@ class HomeController extends Controller
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
-        return view('index',compact('HomeSectionThrees','HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
+        $seo_data = SEO::where('section','Index')->first();
+        return view('index',compact('seo_data','HomeSectionThrees','HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -52,7 +53,8 @@ class ManuscriptFormattingController extends Controller
         $discountedPrice = ServicsPricing::where('service_name','Manuscript Formatting Service')
         ->where('price_category','Discounted')
         ->first();
-        return view('manuscript_service',compact('discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'ManuscriptFormattingOnes', 'ManuscriptFormattingTwos', 'ManuscriptFormattingThrees', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        $seo_data = SEO::where('section','Manuscript Formatting')->first();
+        return view('manuscript_service',compact('seo_data','discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'ManuscriptFormattingOnes', 'ManuscriptFormattingTwos', 'ManuscriptFormattingThrees', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function manuscriptFormattingForm(){
@@ -142,8 +144,9 @@ class ManuscriptFormattingController extends Controller
                 'file' => 'required',
                 'target_journal' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
+                'institute_name' => 'required',
+                'program_category' => 'required',
             ]);
-
             // Use a try-catch block for better error handling
             try {
                 // Begin a transaction

@@ -1,6 +1,11 @@
 @extends('layout.master')
 
-@section('title', 'Home')
+@section('title', $seo_data['title'])
+@section('og_title', $seo_data['og_title'])
+@section('description', $seo_data['description'])
+@section('og_description', $seo_data['og_description'])
+@section('keywords', $seo_data['keywords'])
+
 <style>
     header .navbar {
         display: none;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -41,9 +42,10 @@ class ScientificEditingServiceController extends Controller
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
+        $seo_data = SEO::where('section','Scientific Editing')->first();
 
         $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name', 'Scientific Editing')->get();
-        return view('scientific_editing_service', compact('HomeSectionThrees', 'ScientificEditingOnes', 'ScientificEditingTwos', 'ScientificEditingThrees', 'HomeSectionSixs', 'SocialLinks', 'FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'Faqs'));
+        return view('scientific_editing_service', compact('seo_data','HomeSectionThrees', 'ScientificEditingOnes', 'ScientificEditingTwos', 'ScientificEditingThrees', 'HomeSectionSixs', 'SocialLinks', 'FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'Faqs'));
     }
 
     public function scientificEditingForm()
@@ -118,7 +120,7 @@ class ScientificEditingServiceController extends Controller
                 'results' => $results, // Include the results for all records
             ]);
 
-    }   
+    }
 
     public function submitQuotationRequest(Request $request)
     {
@@ -128,6 +130,9 @@ class ScientificEditingServiceController extends Controller
             'last_name' => 'required',
             'location' => 'required',
             'question' => 'required',
+            'institute_name' => 'required',
+            'file' => 'required',
+            'program_category' => 'required',
             'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
         ]);
         try {
@@ -137,7 +142,7 @@ class ScientificEditingServiceController extends Controller
                 'words' => $request->words,
                 'price_category' => $request->price_category,
                 'total_price' => $request->total_price,
-                    'base_price' => $request->service_price,
+                'base_price' => $request->service_price,
                 'language_type' => $request->language,
                 'additional_instructions' => $request->additional_instruction,
                 'latest_news' => $request->latest_news,

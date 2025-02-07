@@ -187,7 +187,7 @@
                             const editUrl = editRoute.replace(':id', row.id);
                             const deleteUrl = deleteRoute.replace(':id', row.id);
                             const id = row.id;
-                            
+
                             return `
                             <div class="d-flex justify-content-start">
                                 <a href="${editUrl}" class="btn btn-primary mr-2 editSubadminBtn" style="margin-left: 10px" data-id="${id}">
@@ -268,7 +268,7 @@
                         }
                     });
                 }
-                
+
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>

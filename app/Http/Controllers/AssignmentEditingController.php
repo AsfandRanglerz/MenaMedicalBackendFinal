@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -38,9 +39,10 @@ class AssignmentEditingController extends Controller
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
+        $seo_data = SEO::where('section','Assignemnt Editing Service')->first();
 
         $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Assignment Editing Service')->get();
-        return view('assignment_editing_service',compact('HomeSectionThrees', 'LanguageEditingFours', 'AssignmentEditingServiceOnes', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('assignment_editing_service',compact('seo_data','HomeSectionThrees', 'LanguageEditingFours', 'AssignmentEditingServiceOnes', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
 
@@ -127,9 +129,10 @@ class AssignmentEditingController extends Controller
             'location' => 'required',
             'question' => 'required',
             'file' => 'required',
+            'institute_name' => 'required',
+            'program_category' => 'required',
             'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
         ]);
-
         // Use a try-catch block for better error handling
         try {
             // Begin a transaction

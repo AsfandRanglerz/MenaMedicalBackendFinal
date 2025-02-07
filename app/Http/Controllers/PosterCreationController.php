@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -59,8 +60,10 @@ class PosterCreationController extends Controller
         $discountedposterPrice = ServicsPricing::where('service_name','Posters')
         ->where('price_category','Discounted')
         ->first();
+        $seo_data = SEO::where('section','Posters & Presentations')->first();
+
         // return [$regularPosterPrice,$regularPosterPrice];
-        return view('poster_creation_service',compact('discountedposterPrice','regularPosterPrice','discountedPowerPointPrice','regularPowerPointPrice','HomeSectionThrees', 'LanguageEditingFours', 'PostandPresentationOnes','PostandPresentationTwos','PostandPresentationThrees','PostandPresentationFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('poster_creation_service',compact('seo_data','discountedposterPrice','regularPosterPrice','discountedPowerPointPrice','regularPowerPointPrice','HomeSectionThrees', 'LanguageEditingFours', 'PostandPresentationOnes','PostandPresentationTwos','PostandPresentationThrees','PostandPresentationFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function postersAndPresentationForm($service_name){
@@ -151,18 +154,38 @@ class PosterCreationController extends Controller
     public function submitQuotationRequest(Request $request){
 
             // return $request;
-            // Validate the request data
             $request->validate([
+                'institute_name' => 'required',
+                'program_category' => 'required',
                 'email' => 'required|email',
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'location' => 'required',
                 'question' => 'required',
-                'file' => 'required|array',
-                'file.*' => 'required|file',
                 'answer' => 'required|array|min:2',  // Ensure it's an array with at least 2 answers
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
+                'file' => [
+                    'required',
+                    'array',
+                    function ($attribute, $value, $fail) use ($request) {
+                        $files = $request->file('file');
+                        $totalSize = 0;
+            
+                        foreach ($files as $index => $file) {
+                            if ($index > 0) { // Exclude the first file
+                                $totalSize += $file->getSize();
+                            }
+                        }
+            
+                        if ($totalSize > 10 * 1024 * 1024) { // Check if the total size exceeds 10MB
+                            $fail('The combined size of all files except the first must not exceed 10MB.');
+                        }
+                    },
+                ],
+                'file.*' => 'file|mimes:pdf,doc,docx,ppt,pptx', // Individual file validations
             ]);
+            
+            // return $request;
 
             // Use a try-catch block for better error handling
             try {

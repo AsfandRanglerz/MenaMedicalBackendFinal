@@ -509,6 +509,16 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         // Privacy Policy Controller
         Route::controller(SeoController::class)->group(function () {
             Route::get('seo/index', 'index')->name('seo.index');
+            Route::get('seo/section/home', 'getHomeSeo')->name('home.seo');
+            Route::get('seo/section/languageEditing', 'getlanguageEditingSeo')->name('languageEditing.seo');
+            Route::get('seo/section/scientificEditing', 'getscientificEditingSeo')->name('scientificEditing.seo');
+            Route::get('seo/section/publicationSupport', 'getpublicationSupportSeo')->name('publicationSupport.seo');
+            Route::get('seo/section/posterPresentation', 'getposterPresentationSeo')->name('posterPresentation.seo');
+            Route::get('seo/section/thesisSupport', 'getthesisSupportSeo')->name('thesisSupport.seo');
+            Route::get('seo/section/dataAnalysis', 'getdataAnalysisSeo')->name('dataAnalysis.seo');
+
+            Route::post('seo/section/update', 'update')->name('home.seo.update');
+            
             Route::get('seo/edit/{id}', 'edit')->name('seo.edit');
             Route::post('seo/update/', 'update')->name('seo.update');
             Route::get('seo/read', 'read')->name('seo.read');

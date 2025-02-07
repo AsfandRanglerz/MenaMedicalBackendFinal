@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -48,8 +49,9 @@ class AccidentalPlagiarismController extends Controller
         $discountedPrice = ServicsPricing::where('service_name','Accidental Plagirisam')
         ->where('price_category','Discounted')
         ->first();
+        $seo_data = SEO::where('section','Accidental Plagiarism')->first();
         // return $packagePrices;
-        return view('accidental_plagiarism',compact('discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'AccidentalPlagiarisms', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('accidental_plagiarism',compact('seo_data','discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'AccidentalPlagiarisms', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function accidentalPlagiarismForm(){
@@ -138,9 +140,10 @@ class AccidentalPlagiarismController extends Controller
                 'target_journal' => 'required',
                 'question' => 'required',
                 'file' => 'required',
+                'institute_name' => 'required',
+                'program_category' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
             ]);
-
             // Use a try-catch block for better error handling
             try {
                 // Begin a transaction

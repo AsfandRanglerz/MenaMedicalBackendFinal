@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -55,7 +56,9 @@ class ThesisEditingController extends Controller
         ->where('package_name','Advance')
         ->where('price_category','Discounted')
         ->first();
-        return view('thesis_editing_service',compact('discountedPrice','regularPrice','additionalsServices','HomeSectionThrees', 'LanguageEditingFours', 'ThesisEditingServiceOnes','ThesisEditingServiceTwos','ThesisEditingServiceThrees', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        $seo_data = SEO::where('section','Thesis Editing Service')->first();
+
+        return view('thesis_editing_service',compact('seo_data','discountedPrice','regularPrice','additionalsServices','HomeSectionThrees', 'LanguageEditingFours', 'ThesisEditingServiceOnes','ThesisEditingServiceTwos','ThesisEditingServiceThrees', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function thesisEditingServiceForm($package){
@@ -139,6 +142,8 @@ class ThesisEditingController extends Controller
                 'last_name' => 'required',
                 'location' => 'required',
                 'question' => 'required',
+                'institute_name' => 'required',
+                'program_category' => 'required',
                 'file' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
             ]);

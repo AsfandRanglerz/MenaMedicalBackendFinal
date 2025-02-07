@@ -534,6 +534,11 @@
     });
     //store quotation request
     $('#submit-quotation').on('click', function() {
+            let priceCat = $('input[name="price_cat"]:checked').val();
+            if (!priceCat) {
+                toastr.error("Please Select Price Category");
+                return;
+            }
         var button = $(this); // Reference to the button
         var originalText = button.val(); // Store the original button text
         // Show loading text and disable the button
@@ -589,9 +594,10 @@
             }
             // formData.append('document_type', ($('#createQuotationForm select[name="document_type"]').val() || '').trim());
             const agreeCheck = document.querySelector('input[name="agree_check"]:checked');
-            if (!agreeCheck) {
+             if (!agreeCheck) {
                 event.preventDefault();
-                toastr.error('You must agree to the terms and privacy policy.');
+                toastr.error('You must agree to the terms and privacy policy');
+                button.val(originalText).prop('disabled', false);
                 return;
             }
             let fileInput = $('input[name="file"]');
@@ -614,23 +620,12 @@
             processData: false,
             contentType: false,
             success: function(response) {
-                // Display the success message
                 $('#successMessage').fadeIn();
-                // Optionally, show a toast notification
                 toastr.success('Your Order has been Submitted Successfully');
-                 // ✅ Reset the entire form using the native reset method
                  $('#createQuotationForm')[0].reset();
-
-                // ✅ Clear all text inputs, textareas, and select elements manually if needed
                 $('#createQuotationForm input[type="text"], #createQuotationForm textarea').val('');
-
-                // ✅ Reset dropdowns to the first option
                 $('#createQuotationForm select').prop('selectedIndex', 0);
-
-                // ✅ Uncheck all radio buttons
                 $('#createQuotationForm input[type="radio"]').prop('checked', false);
-
-                // ✅ Uncheck all checkboxes
                 $('#createQuotationForm input[type="checkbox"]').prop('checked', false);
 
                 $('#service_name').text('');
@@ -647,17 +642,25 @@
                 // $('#discounted_price').text('xxx');
                 // $('#discounted_price_days').text('XX');
             },
-
             error: function(xhr) {
-                if (xhr.status === 422) { // Laravel validation error
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function(field, messages) {
-                        toastr.error(messages[0]);
-                    });
-                } else {
-                    console.error('Error Adding Driver:', xhr);
-                    toastr.error('Something went wrong. Please try again.');
-                }
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        // Clear any existing error messages
+                        $('.error-message').remove();
+
+                        // Loop through the errors and display them under the respective input fields
+                        $.each(errors, function(field, messages) {
+                            var inputField = $('[name="' + field + '"]');
+                            if (inputField.length) {
+                                inputField.after(
+                                    '<span class="error-message text-danger small">' +
+                                    messages[0] + '</span>');
+                            }
+                        });
+                    } else {
+                        console.error('Error Adding Driver:', xhr);
+                        toastr.error('Something went wrong. Please try again.');
+                    }
             },
             complete: function() {
             // Restore the button text and re-enable it

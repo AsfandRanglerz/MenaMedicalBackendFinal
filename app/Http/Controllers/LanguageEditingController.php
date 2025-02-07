@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\SEO;
 use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
@@ -45,9 +46,10 @@ class LanguageEditingController extends Controller
         $Profiles = Profile::orderBy('id', 'ASC')->get();
 
         $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Language Editing')->get();
+        $seo_data = SEO::where('section','Language Editing')->first();
 
         $additionalsServices = AdditionalPrices::where('services','Language Editing')->get();
-        return view('language_editing',compact('additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('language_editing',compact('seo_data','additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function advanceEditingService(){
@@ -139,10 +141,11 @@ class LanguageEditingController extends Controller
                 'location' => 'required',
                 'question' => 'required',
                 'file' => 'required',
-                // 'document_type' => 'required',
-                // 'target_journal' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
+                'institute_name' => 'required',
+                'study_category' => 'required',
             ]);
+
             try {
                 DB::beginTransaction();
                 $quotationRequest = QuotationRequest::create([

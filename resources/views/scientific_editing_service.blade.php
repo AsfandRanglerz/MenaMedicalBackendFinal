@@ -1,6 +1,10 @@
 @extends('layout.master')
 
-@section('title', 'Scientific Editing Service')
+@section('title', $seo_data['title'])
+@section('og_title', $seo_data['og_title'])
+@section('description', $seo_data['description'])
+@section('og_description', $seo_data['og_description'])
+@section('keywords', $seo_data)
 
 @section('content')
     <div class="container-fluid">

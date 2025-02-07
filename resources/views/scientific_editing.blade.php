@@ -1,6 +1,10 @@
 @extends('layout.master')
 
-@section('title', 'Language and Scientific Editing Services')
+@section('title', $seo_data['title'])
+@section('og_title', $seo_data['og_title'])
+@section('description', $seo_data['description'])
+@section('og_description', $seo_data['og_description'])
+@section('keywords', $seo_data)
 
 @section('content')
 <div class="container-fluid">
@@ -109,7 +113,7 @@
             @foreach ($HomeSectionFives as $HomeSectionFive)
             @if(empty($HomeSectionFive->colour && $HomeSectionFive->title && $HomeSectionFive->image && $HomeSectionFive->description ))
             <img src="{{ $HomeSectionFive->main_image }}" class="comit-image">
-           
+
             <h4 class="text-center mt-lg-4 mt-3 mb-0 primary-heading">{{ $HomeSectionFive->main_title }}</h4>
             @endif
             @endforeach

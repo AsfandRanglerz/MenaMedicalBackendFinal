@@ -10,6 +10,8 @@
                 <h4 class="primary-heading">{{ $package }} Editing Service</h4>
                 <div class="row mt-4">
                     <div class="col-md-8">
+                        <input type="text" value="{{ $package }}" name="package_name"
+                        id="package_name" disabled>
                         <form action="" class="mena-form" id="createQuotationForm">
                             <div>
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
@@ -25,8 +27,7 @@
                                     <div class="advance-table-container">
                                         <table>
                                             <thead>
-                                                <input type="text" value="{{ $package }}" name="package_name"
-                                                    id="package_name" disabled hidden>
+                                               
                                                 <tr>
                                                     <th colspan="3" class="header">
                                                         <div
@@ -526,6 +527,11 @@
         });
         //store quotation request
         $('#submit-quotation').on('click', function() {
+            let priceCat = $('input[name="price_cat"]:checked').val();
+            if (!priceCat) {
+                toastr.error("Please Select Price Category");
+                return;
+            }
             var button = $(this); // Reference to the button
             var originalText = button.val();
             button.val('Submitting...').prop('disabled', true);
@@ -581,9 +587,10 @@
                 formData.append('additional_service_price', JSON.stringify(selectedPrices));
             }
             const agreeCheck = document.querySelector('input[name="agree_check"]:checked');
-            if (!agreeCheck) {
+             if (!agreeCheck) {
                 event.preventDefault();
-                toastr.error('You must agree to the terms and privacy policy.');
+                toastr.error('You must agree to the terms and privacy policy');
+                button.val(originalText).prop('disabled', false);
                 return;
             }
             let fileInput = $('input[name="file"]');
@@ -619,16 +626,24 @@
                     $('#estimate-price').text('0'); // Reset to default value
                     $('#additional_service_name').text('');
                     $('#additional_service_price').text('');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 2000);
-
+                    // setTimeout(function() {
+                    //     location.reload();
+                    // }, 2000);
                 },
                 error: function(xhr) {
-                    if (xhr.status === 422) { // Laravel validation error
+                    if (xhr.status === 422) {
                         var errors = xhr.responseJSON.errors;
+                        // Clear any existing error messages
+                        $('.error-message').remove();
+
+                        // Loop through the errors and display them under the respective input fields
                         $.each(errors, function(field, messages) {
-                            toastr.error(messages[0]);
+                            var inputField = $('[name="' + field + '"]');
+                            if (inputField.length) {
+                                inputField.after(
+                                    '<span class="error-message text-danger small">' +
+                                    messages[0] + '</span>');
+                            }
                         });
                     } else {
                         console.error('Error Adding Driver:', xhr);
