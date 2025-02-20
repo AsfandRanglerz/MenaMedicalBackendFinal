@@ -18,7 +18,6 @@
 </style>
 
 @section('content')
-<!-- About -->
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="container-fluid">
