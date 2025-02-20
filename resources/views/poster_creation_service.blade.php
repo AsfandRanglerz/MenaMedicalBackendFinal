@@ -60,7 +60,8 @@
                 <h4 class="mb-lg-4 mb-3 text-center primary-heading">Pricing and Delivery Time for PowerPoint Presentations</h4>
                 <div class="mt-4 lang-table-section overflow-auto">
                     <div class="table-container">
-                        <table class="table-size">
+                        <!-- Table for big screen -->
+                        <table class="d-none d-sm-block table-size">
                             <thead>
                                 <tr class="category-header header-set">
                                     <th class="px-3 py-2 head-one font-600">Price Category</th>
@@ -101,6 +102,55 @@
 
                             </tbody>
                         </table>
+
+                        <!-- Table for mobile screen -->
+                        <table class="d-block d-sm-none table-size">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="px-3 py-2 head-one font-600">Price Category</th>
+                                </tr>
+                                <tr class="category-header header-set">
+                                    <th class="py-2 text-white font-600 text-center ts-small basic-column">Price</th>
+                                    <th class="px-3 py-2 text-white font-600 text-center text-nowrap ts-small advanced-column">Delivery Time</th>
+                                    <th class="text-white font-600 text-center ts-small premium-column">Select Service</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        Regular Price
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap">
+                                        USD {{ $regularPowerPointPrice->less_equal_price ?? 'XXX' }}
+                                    </td>
+                                    <td>
+                                        {{ $regularPowerPointPrice->delivery_days ?? 'X' }} days
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/poster-creation-service-form/Power-Point-Presentations')}}" style="text-decoration: none;" class="px-2 py-1 text-nowrap theme-btn-green">Get a Quote</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="t-line">
+                                        Discounted Price for Researchers & Students in MENA Region
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        USD {{ $discountedPowerPointPrice->less_equal_price ?? 'XXX' }}
+                                    </td>
+                                    <td>
+                                        {{ $discountedPowerPointPrice->delivery_days ?? 'X' }} days
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/poster-creation-service-form/Power-Point-Presentations')}}" style="text-decoration: none;" class="px-2 py-1 text-nowrap theme-btn-green">Get a Quote</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
                         <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p>
                     </div>
                 </div>
@@ -115,7 +165,8 @@
                 <h4 class="mb-lg-4 mb-3 text-center primary-heading">Pricing and Delivery Time for Posters</h4>
                 <div class="mt-4 lang-table-section overflow-auto">
                     <div class="table-container">
-                        <table class="table-size">
+                        <!-- Table for big screen -->
+                        <table class="d-none d-sm-block table-size">
                             <thead>
                                 <tr class="category-header header-set">
                                     <th class="px-3 py-2 head-one font-600">Price Category</th>
@@ -151,6 +202,54 @@
                                     </td>
                                     <td>
                                         <a href="{{url('/poster-creation-service-form/Posters')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Table for small screen -->
+                        <table class="d-block d-sm-none table-size">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="px-3 py-2 head-one font-600">Price Category</th>
+                                </tr>
+                                <tr class="category-header header-set">
+                                    <th class="py-2 text-white font-600 text-center ts-small basic-column">Price</th>
+                                    <th class="px-3 py-2 text-white font-600 text-center ts-small text-nowrap advanced-column">Delivery Time</th>
+                                    <th class="text-white font-600 text-center ts-small premium-column">Select Service</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        Regular Price
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap">
+                                        USD {{ $regularPosterPrice->less_equal_price ?? 'XXX' }}
+                                    </td>
+                                    <td>
+                                        {{ $regularPosterPrice->delivery_days ?? 'X' }} days
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/poster-creation-service-form/Posters')}}" style="text-decoration: none;" class="text-nowrap px-2 py-1 theme-btn-green">Get a Quote</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                    Discounted Price for Researchers & Students in MENA Region
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        USD {{ $discountedposterPrice->less_equal_price ?? 'XXX' }}
+                                    </td>
+                                    <td>
+                                        {{ $discountedposterPrice->delivery_days ?? 'X' }} days
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/poster-creation-service-form/Posters')}}" style="text-decoration: none;" class="text-nowrap px-2 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
                                 </tr>
                             </tbody>
