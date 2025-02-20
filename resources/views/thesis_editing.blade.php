@@ -28,7 +28,8 @@
                                     document. The
                                     word count will help us in displaying a price estimate</p>
                                 <div class="overflow-auto">
-                                    <div class="advance-table-container">
+                                    <!-- Table for big screen -->
+                                    <div class="d-none d-sm-block advance-table-container">
                                         <table>
                                             <thead>
                                                 {{-- <tr>
@@ -59,6 +60,81 @@
                                                             <div class="d-flex align-items-center gap-3">
 
                                                                 <input type="text" id="wordCount" class="py-1"
+                                                                    name="words">
+                                                                <button class="px-3 py-1 theme-btn-green"
+                                                                    id="calculatePrice" type="button">Calculate
+                                                                    Price</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </th>
+                                                </tr>
+                                                <tr class="category-header">
+                                                    <th class="px-3 py-2 head-one font-600">Select Price Category
+                                                    </th>
+                                                    <th class="text-white font-600 text-center price-column">Price</th>
+                                                    <th class="text-white font-600 text-center delivery-column">Delivery
+                                                        Time
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input type="radio" name="price_cat" value="Regular Price">
+                                                            Regular Price
+                                                        </label>
+                                                    </td>
+                                                    <td>USD <span id="regular_price">xxx</span></td>
+                                                    <td><span id="regular_price_days">XX</span> days</td>
+                                                </tr>
+                                                <tr class="head-one">
+                                                    <td>
+                                                        <label>
+                                                            <input type="radio" name="price_cat" value="Discounted Price">
+                                                            Discounted Price for students and researchers in MENA Region
+                                                        </label>
+                                                    </td>
+                                                    <td>USD <span id="discounted_price">xxx</span></td>
+                                                    <td><span id="discounted_price_days">XX</span> days</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Table for mobile screen -->
+                                    <div class="d-sm-none advance-table-container">
+                                        <table>
+                                            <thead>
+                                                {{-- <tr>
+                                                    <th colspan="3" class="header">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-between px-3 py-2">
+                                                            <label for="wordCount" class="font-600">Select Package</label>
+                                                            <div class="d-flex align-items-center gap-3">
+
+                                                                <select name="package_name" id="package_name">
+                                                                    <option value="" disabled selected>Select Package</option>
+                                                                    <option value="Advance">Advance</option>
+                                                                    <option value="Premium">Premium</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </th>
+                                                </tr> --}}
+                                                <input type="text" value="{{ $package }}" name="package"
+                                                    id="package" hidden>
+                                                <tr>
+                                                    <th colspan="3" class="header">
+                                                        <div
+                                                            class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
+                                                            <label for="wordCount" class="font-600">Enter Word
+                                                                Count</label>
+                                                            <div class="d-flex align-items-center gap-3">
+
+                                                                <input type="text" id="wordCount" class="py-0 w-50"
                                                                     name="words">
                                                                 <button class="px-3 py-1 theme-btn-green"
                                                                     id="calculatePrice" type="button">Calculate

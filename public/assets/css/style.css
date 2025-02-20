@@ -1361,10 +1361,6 @@ footer .linkedin:hover span {
         text-align: center;
     }
 
-    .mena-form .advance-table-container {
-        width: 55rem;
-    }
-
     .mena-form .advance-table-container tr {
         font-size: 0.9rem;
     }
@@ -1411,5 +1407,9 @@ footer .linkedin:hover span {
 
     .table-container tbody td:first-child {
         width: 20.3%;
+    }
+
+    .mena-form .advance-table-container .set-width {
+        width: 100%;
     }
 }

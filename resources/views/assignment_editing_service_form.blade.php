@@ -39,7 +39,8 @@
                                     document. The
                                     word count will help us in displaying a price estimate</p>
                                 <div class="overflow-auto">
-                                    <div class="advance-table-container">
+                                    <!-- Table for big screen -->
+                                    <div class="d-none d-sm-block advance-table-container">
                                         <table>
                                             <thead>
                                                 <tr>
@@ -88,6 +89,66 @@
                                                         </label>
                                                     </td>
                                                     <td>USD <span id="discounted_price">XXX</span></td>
+                                                    <td><span id="discounted_price_days">XX</span> days</td>
+                                                </tr>
+                                            </table>
+                                    </div>
+
+                                    <!-- Table for small screen -->
+                                    <div class="d-sm-none advance-table-container">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3" class="header">
+                                                        <div
+                                                            class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
+                                                            <label for="wordCount" class="font-600">Enter Word
+                                                                Count</label>
+                                                            <div class="d-flex align-items-center gap-3">
+                                                                <input type="number" id="wordCount" class="py-0 w-50"
+                                                                    name="words">
+                                                                <button class="px-3 py-1 theme-btn-green"
+                                                                    id="calculatePrice" type="button">Calculate
+                                                                    Price</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2" class="px-3 py-2 head-one font-600">Select Price Category
+                                                    </th>
+                                                </tr>
+                                                <tr class="category-header">
+                                                    <th class="text-white font-600 text-center py-2 price-column">Price</th>
+                                                    <th class="text-white font-600 text-center delivery-column">Delivery
+                                                        Time
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <table>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <label>
+                                                            <input type="radio" name="price_cat" value="Regular Price">
+                                                            Regular Price
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">USD <span id="regular_price">XXX</span></td>
+                                                    <td><span id="regular_price_days">XX</span> days</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <label>
+                                                            <input type="radio" name="price_cat" value="Discounted Price">
+                                                            Discounted Price for students and researchers in MENA Region
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr class="head-one">
+                                                    <td class="text-center">USD <span id="discounted_price">XXX</span></td>
                                                     <td><span id="discounted_price_days">XX</span> days</td>
                                                 </tr>
                                             </table>
