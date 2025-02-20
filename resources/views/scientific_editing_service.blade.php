@@ -72,7 +72,8 @@
                     <h4 class="mb-lg-4 mb-3 text-center primary-heading">Pricing and Delivery Time</h4>
                     <div class="mt-4 lang-table-section overflow-auto">
                         <div class="table-container">
-                            <table class="table-size">
+                            <!-- Table for big screen -->
+                            <table class="d-none d-sm-block">
                                 <thead>
                                     <tr>
                                         <th colspan="4" class="header header-set">
@@ -115,6 +116,61 @@
                                         <td>XX days</td>
                                         <td><a href="{{ url('/scientific-editing-service-form') }}"
                                                 class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
+                                                Quote</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Table for mobile screen -->
+                            <table class="d-block d-sm-none">
+                                <thead>
+                                    <tr>
+                                        <th colspan="4" class="header header-set">
+                                            <div class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
+                                                <label for="wordCount" class="font-600">Enter Word
+                                                    Count</label>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <input type="text" id="wordCount" class="py-0 w-50">
+                                                    <button style="font-size: 0.9rem;" class="px-2 py-1 theme-btn-green" id="showPrice">Calculate
+                                                        Price</button>
+                                                </div>
+                                            </div>
+
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3" class="px-3 py-2 head-one font-600">Price Category</th>
+                                    </tr>
+                                    <tr class="category-header header-set">
+                                        <th style="font-size: 0.9rem;" class="py-2 text-white font-600 text-center basic-column">Price</th>
+                                        <th style="font-size: 0.9rem;" class="py-2 text-white font-600 text-center advanced-column">Delivery Time
+                                        </th>
+                                        <th style="font-size: 0.9rem;" class="text-white font-600 text-center premium-column">Select Service</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                        Regular Price
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%;">USD XXX</td>
+                                        <td>XX days</td>
+                                        <td class="px-1"><a href="{{ url('/scientific-editing-service-form') }}"
+                                                class="text-nowrap px-3 py-1 theme-btn-green" style="text-decoration: none; font-size: 0.7rem;">Get a
+                                                Quote</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                            Discounted Price for Researchers & Students in MENA Region
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%;">USD XXX</td>
+                                        <td>XX days</td>
+                                        <td class="px-1"><a href="{{ url('/scientific-editing-service-form') }}"
+                                                class="text-nowrap px-3 py-1 theme-btn-green" style="text-decoration: none; font-size: 0.7rem;">Get a
                                                 Quote</a></td>
                                     </tr>
                                 </tbody>
