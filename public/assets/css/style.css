@@ -52,6 +52,10 @@ h6 {
     display: none;
 }
 
+.ts-small {
+    font-size: 0.9rem;
+}
+
 .text-small {
     font-size: 0.8rem;
     color: white;
@@ -1403,5 +1407,9 @@ footer .linkedin:hover span {
 
     .journal-section .anchor {
         text-align: center;
+    }
+
+    .table-container tbody td:first-child {
+        width: 20.3%;
     }
 }

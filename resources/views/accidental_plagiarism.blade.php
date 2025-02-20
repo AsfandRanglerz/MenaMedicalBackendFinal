@@ -36,7 +36,8 @@
                     <h4 class="mb-lg-4 mb-3 text-center primary-heading">Pricing and Delivery Time</h4>
                     <div class="mt-2 lang-table-section overflow-auto">
                         <div class="table-container">
-                            <table class="table-size">
+                            <!-- Table for big screen -->
+                            <table class="d-none d-sm-block table-size">
                                 <thead>
                                     <tr class="category-header">
                                         <th class="px-3 py-2 head-one font-600">Price Category</th>
@@ -74,6 +75,57 @@
                                         </td>
                                         <td>
                                             <a href="{{url('/accidental-plagiarism-form')}}" class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a Quote</a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <!-- Table for mobile screen -->
+                            <table class="d-block d-sm-none table-size">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3" class="px-3 py-2 head-one font-600">Price Category</th>
+                                    </tr>
+                                    <tr class="category-header">
+                                        <th class="py-2 text-white font-600 text-center ts-small basic-column">Price</th>
+                                        <th class="text-white font-600 text-center ts-small advanced-column">Delivery Time
+                                        </th>
+                                        <th class="text-white font-600 text-center ts-small premium-column">Select Service
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                            Regular Price
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            USD {{ $regularPrice->less_equal_price ?? 'XXX' }}
+                                        </td>
+                                        <td style="width: 35%;">
+                                            {{ $regularPrice->delivery_days ?? 'X' }} days
+                                        </td>
+                                        <td>
+                                            <a href="{{url('/accidental-plagiarism-form')}}" class="text-nowrap px-1 py-1 theme-btn-green" style="text-decoration: none;">Get a Quote</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                            Discounted Price for Researchers & Students in MENA Region
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            USD {{ $discountedPrice->less_equal_price ?? 'XXX' }}
+                                        </td>
+                                        <td style="width: 35%;">
+                                            {{ $discountedPrice->delivery_days ?? 'X' }} days
+                                        </td>
+                                        <td>
+                                            <a href="{{url('/accidental-plagiarism-form')}}" class="text-nowrap px-1 py-1 theme-btn-green" style="text-decoration: none;">Get a Quote</a>
                                         </td>
                                     </tr>
 
