@@ -58,7 +58,8 @@
             </div>
             <div class="section-devision">
                 <div class="overflow-auto lang-table-section">
-                    <table class="edit-table">
+                    <!-- Table for big screen -->
+                    <table class="d-none d-sm-block edit-table">
                         <thead>
                             <tr class="table-heading">
                                 <th class="py-2 px-3 large-column">Editing Components</th>
@@ -125,6 +126,91 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- Table for big screen -->
+                    <table class="d-sm-none edit-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="px-3 py-2 head-one font-600">Editing Components</th>
+                            </tr>
+                            <tr class="table-heading">
+                                <th class="py-2 ts-small heading-two">Advanced Editing</th>
+                                <th class="ts-small heading-three">Premium Editing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="text-center py-2">Spelling, Punctuation, and Grammar check</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 21.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center py-2"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center py-2">Sentence Structure, Flow, and Clarity of text</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 21.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center py-2"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center py-2">Plagiarism check by iThenticate</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 21.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center py-2"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center py-2">Formatting - Page layout, Table of Content, heading, numbering, etc*</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center py-2"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center py-2">References Formatting *</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center py-2"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center py-2">Expert comments on thesis/assignment improvement</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center py-2"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Revision and Re-edits ( one round only)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center py-2">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <p class="m-0 mt-1 font-500 small">*You can also request Plagarism Check and/or Manuscript Formating in the Advanced Editing package at an additional charge.</p>
                 </div>
             </div>
@@ -179,7 +265,8 @@
                 <h4 class="mb-lg-4 mb-3 text-center primary-heading">Pricing and Delivery Time</h4>
                 <div class="mt-2 lang-table-section overflow-auto">
                     <div class="table-container">
-                        <table class="table-size">
+                        <!-- Table for big screen -->
+                        <table class="d-none d-sm-block table-size">
                             <thead>
                                 <tr>
                                     <th colspan="4" class="header">
@@ -237,6 +324,70 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <!-- Table for small screen -->
+                        <table class="d-block d-sm-none table-size">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" class="header">
+                                        <div class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
+                                            <label for="wordCount" class="font-600">Enter Word
+                                                Count</label>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <input type="text" id="wordCount" class="py-0 w-50" name="words">
+                                                <button style="font-size: 0.9rem;" class="px-2 py-1 theme-btn-green"
+                                                        id="showPrice">Calculate
+                                                        Price</button>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="px-3 py-2 head-one font-600">Price</th>
+                                </tr>
+                                <tr class="category-header">
+                                    {{-- <th class="text-white font-600 text-center ts-small basic-column">Basic Editing</th> --}}
+                                    <th class="py-2 text-white font-600 text-center ts-small advanced-column">Advanced Editing
+                                    </th>
+                                    <th class="text-white font-600 text-center ts-small premium-column">Premium Editing
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        Reference Check
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {{-- <td id="regular-basic">USD xxx in XX days</td> --}}
+                                    <td id="regular-advance">USD xxx in XX days</td>
+                                    <td id="regular-premium">USD xxx in XX days</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                    Discounted Price for Researchers & Students in MENA Region
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {{-- <td id="discounted-basic">USD xxx in XX days</td> --}}
+                                    <td id="discounted-advance">USD xxx in XX days</td>
+                                    <td id="discounted-premium">USD xxx in XX days</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    {{-- <td><a href="{{ url('/language-editing-service-form/Basic') }}"
+                                            class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
+                                            Quote</a></td> --}}
+                                    <td><a href="{{ url('/thesis-editing-service-form/Advance') }}"
+                                            class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
+                                            Quote</a></td>
+                                    <td><a href="{{ url('/thesis-editing-service-form/Premium') }}"
+                                            class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
+                                            Quote</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p>
                     </div>
                 </div>
@@ -245,7 +396,8 @@
                 <h4 class="mb-lg-4 mb-3 text-center primary-heading">Additional Services for Advanced Editing (if required)</h4>
                 <div class="mt-4 lang-table-section overflow-auto">
                     <div class="table-container">
-                        <table class="table-size">
+                        <!-- Table for big screen -->
+                        <table class="d-none d-sm-block table-size">
                             <thead>
                                 <tr class="category-header header-set">
                                     <th class="px-3 py-2 head-one font-600">Price</th>
@@ -259,6 +411,39 @@
                                     <td class="t-line">
                                         {{$additionalService->additional_services}}
                                     </td>
+                                    <td>USD {{$additionalService->basic_package_price}}</td>
+                                    <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td>
+                                </tr>
+                                @endforeach
+                                {{-- <tr>
+                                    <td class="t-line">
+                                        Manuscript Formatting of thesis- Discounted price for MENA students
+                                    </td>
+                                    <td>USD 120</td>
+                                    <td><button class="px-3 py-1 theme-btn-green">Get a Quote</button></td>
+                                </tr> --}}
+                            </tbody>
+                        </table>
+
+                        <!-- Table for big screen -->
+                        <table class="d-block d-sm-none table-size">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="px-3 py-2 head-one font-600">Price</th>
+                                </tr>
+                                <tr class="category-header header-set">
+                                    <th class="px-3 py-2 text-white font-600 text-center ts-small basic-column">Advanced Editing</th>
+                                    <th class="px-3 py-2 text-white font-600 text-center ts-small advanced-column">Delivery Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($additionalsServices as $additionalService)
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        {{$additionalService->additional_services}}
+                                    </td>
+                                </tr>
+                                <tr> 
                                     <td>USD {{$additionalService->basic_package_price}}</td>
                                     <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td>
                                 </tr>

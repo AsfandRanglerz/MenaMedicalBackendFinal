@@ -62,7 +62,8 @@
             </div>
             <div class="section-devision">
                 <div class="overflow-auto lang-table-section">
-                    <table class="edit-table">
+                    <!-- Table for big screen -->
+                    <table class="d-none d-sm-table edit-table">
                         <thead>
                             <tr class="table-heading">
                                 <th class="py-2 px-3 large-column">Data Analysis Components</th>
@@ -137,12 +138,108 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- Table for mobile screen -->
+                    <table class="d-sm-none edit-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="px-3 py-2 head-one ts-small text-center font-600">Data Analysis Components</th>
+                            </tr>
+                            <tr class="table-heading">
+                                <th class="heading-two ts-small px-2">Advanced Data Analysis</th>
+                                <th class="heading-three  ts-small px-2">Premium Data Analysis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Research study design</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 21.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Defining appropriate statistical tests</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ asset('public/assets/images/Path 21.png') }}" class="tick-cross">
+                                </td>
+                                <td class="py-2 text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Data cleanup</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Data analysis</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Result interpretation</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Statistical methodology write-up</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Result write-up</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="py-2 text-center">Well designed tables and figures</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-center">
+                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                </td>
+                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
+                                        class="tick-cross"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="section-devision">
                 <div class="overflow-auto lang-table-section">
                     <div class="table-container">
-                        <table class="table-size">
+                        <!-- Table for big screen -->
+                        <table class="d-none d-sm-table table-size">
                             <thead>
                                 <tr class="category-header">
                                     <th class="px-3 py-2 head-one font-600">Price</th>
@@ -185,6 +282,65 @@
                                 <tr>
                                     <td>
                                     </td>
+                                    <td>
+                                        <a href="{{url('/data-analysis-service-form/Advance')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/data-analysis-service-form/Premium')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <!-- Table for mobile screen -->
+                        <table class="d-sm-none table-size">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="px-3 py-2 head-one font-600">Price</th>
+                                </tr>
+                                <tr class="category-header">
+                                    <th class="px-3 py-2 text-white font-600 text-center ts-small basic-column">Advanced Data Analysis</th>
+                                    <th class="px-3 py-2 text-white font-600 text-center ts-small advanced-column">Premium Data Analysis
+                                    </th>
+                                    {{-- <th class="text-white font-600 text-center premium-column">Select Service
+                                    </th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        Regular Price
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        USD {{ $regularPriceAdvanceData->less_equal_price ?? 'XXX' }} in {{ $regularPriceAdvanceData->delivery_days ?? 'X' }} days
+                                    </td>
+                                    <td>
+                                        USD {{ $regularPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $regularPricePremiumData->delivery_days ?? 'X' }} days
+                                    </td>
+                                    {{-- <td>
+                                        <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
+                                    </td> --}}
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                    Discounted Price for Researchers & Students in MENA Region
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        USD {{ $discountedPriceAdvanceData->less_equal_price ?? 'XXX' }} in {{ $discountedPriceAdvanceData->delivery_days ?? 'X' }} days
+                                    </td>
+                                    <td>
+                                        USD {{ $discountedPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $discountedPricePremiumData->delivery_days ?? 'X' }} days
+                                    </td>
+                                    {{-- <td>
+                                        <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
+                                    </td> --}}
+                                </tr>
+                                <tr>
                                     <td>
                                         <a href="{{url('/data-analysis-service-form/Advance')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
