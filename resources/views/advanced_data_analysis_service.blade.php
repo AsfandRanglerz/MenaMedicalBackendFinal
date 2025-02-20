@@ -83,6 +83,20 @@
                                                 alt=""></button>
                                     </div>
                                 </div>
+                                <p class="mt-2 mb-1 font-600 primary-heading">Upload documents for reference (if any)</p>
+                                {{-- <p>Share figures, tables, posters, slide decks, or other reference files that can be used by our experts. (Maximum size = 10MB)</p> --}}
+                                <input type="file" name="file[]" id="additionalFile" class="d-none" multiple>
+                                <div class="d-flex mb-2">
+                                    <label for="additionalFile" class="d-flex align-items-center gap-2 px-3 py-2 border-0 btn rounded-0 upload-btn theme-btn-green">
+                                        <img src="{{ asset('public/assets/images/plus.png') }}" class="p-1 arrow">
+                                        <p class="text-white m-0 btn-small-text font-500">UPLOAD ADDITIONAL DOCUMENTS</p>
+                                    </label>
+                                    <div class="delete-icon-2">
+                                        <button class="btn border-0 p-0 delete-image-btn-2"><img class="delete-img"
+                                                src="{{ asset('public/assets/images/delete.png') }}"
+                                                alt=""></button>
+                                    </div>
+                                </div>
                                 <div>
                                     <p class="font-600">Please explain the document files that you have uploaded. This will
                                         help our statistical experts identify the submitted files.</p>
@@ -306,7 +320,7 @@
                     days = parseInt($('#discounted_price_days').text()) || 0;
                 }
                 if (price === 0 || days === 0) {
-                    toastr.error('Please calculate price and days first.');
+                    toastr.error('Please Enter Approximate Word Count to Calculate Price first.');
                     $("input[name='price_cat']").prop('checked', false);
                     return;
                 } else {
@@ -325,7 +339,7 @@
             let priceCat = $('input[name="price_cat"]:checked').val();
             let words = $('#wordCount').val();
             if (!words) {
-                toastr.error("Please Enter Words Count");
+                toastr.error("Please Enter Approximate Word Count to Calculate Price");
                 return;
             }
             if (!priceCat) {
@@ -368,7 +382,7 @@
             });
         });
         //store quotation request
-        $('#submit-quotation').on('click', function() {
+        $('#submit-quotation, .submit-quotation').on('click', function() {
             let priceCat = $('input[name="price_cat"]:checked').val();
             if (!priceCat) {
                 toastr.error("Please Select Price Category");
@@ -418,13 +432,12 @@
             }
             let fileInput = $('input[name="file[]"]')[0];
             // Check if files are selected
-            if (fileInput.files.length > 0) {
-                for (let i = 0; i < fileInput.files.length; i++) {
-                    formData.append('file[]', fileInput.files[i]); // Append each file
+            $('input[name="file[]"]').each(function () {
+                let files = this.files;
+                for (let i = 0; i < files.length; i++) {
+                    formData.append('file[]', files[i]);
                 }
-            } else {
-                formData.append('file[]', '');
-            }
+            });
             console.log(JSON.stringify(Object.fromEntries(formData.entries())));
             // return;
             // Send AJAX request
@@ -445,32 +458,42 @@
                     $('#createQuotationForm select').prop('selectedIndex', 0);
                     $('#createQuotationForm input[type="radio"]').prop('checked', false);
                     $('#createQuotationForm input[type="checkbox"]').prop('checked', false);
+                    $('#createQuotationForm input[type="file"]').val('');
                     $('#service_name').text('');
                     $('#service_price').text('');
                     $('#plagirism-value').text('');
                     $('#estimate-price').text('0'); // Reset to default value
                     $('#additional_service_name').text('');
                     $('#additional_service_price').text('');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 2000);
+                    // setTimeout(function() {
+                    //     location.reload();
+                    // }, 2000);
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {
-                        var errors = xhr.responseJSON.errors;
-                        // Clear any existing error messages
-                        $('.error-message').remove();
+                    var errors = xhr.responseJSON.errors;
+                    // Clear any existing error messages
+                    $('.error-message').remove();
 
-                        // Loop through the errors and display them under the respective input fields
-                        $.each(errors, function(field, messages) {
+                    // Check for file-specific errors
+                    if (errors.file) {
+                        // Show file errors in a toaster notification
+                        toastr.error(errors.file[0]);
+                    }
+
+                    // Loop through the errors and display them under the respective input fields
+                    $.each(errors, function(field, messages) {
+                        if (field !== 'file') { // Exclude file errors from being shown under input fields
                             var inputField = $('[name="' + field + '"]');
                             if (inputField.length) {
                                 inputField.after(
                                     '<span class="error-message text-danger small">' +
-                                    messages[0] + '</span>');
+                                    messages[0] + '</span>'
+                                );
                             }
-                        });
-                    } else {
+                        }
+                    });
+                } else {
                         console.error('Error Adding Driver:', xhr);
                         toastr.error('Something went wrong. Please try again.');
                     }
@@ -479,6 +502,27 @@
                     button.val(originalText).prop('disabled', false);
                 }
             });
+        });
+        $('input, select').on('input change', function() {
+            $(this).next('.error-message').remove();
+        });
+        function jumpToError() {
+            // Find the first error message
+            var firstError = $('.error-message').filter(':visible').first()
+
+            if (firstError.length) {
+                // Scroll to the first error message
+                $('html, body').animate({
+                    scrollTop: firstError.offset().top - 150 // Adjust offset as needed
+                }, 1000); // Animation duration in milliseconds
+            }
+        }
+
+        // Call the function with a delay of 1000ms (1 second) on button click
+        $('#submit-quotation, .submit-quotation').on('click', function() {
+            jumpToError();
+            setTimeout(function() {
+            }, 100); // Delay of 1000 milliseconds
         });
     </script>
 @endsection

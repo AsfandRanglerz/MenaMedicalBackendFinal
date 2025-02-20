@@ -51,7 +51,14 @@
     <!-- Then include toastr.js -->
 {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script>
+
+{{-- Google analytics --}}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BHM6SPE3Q6"></script>
+<script>
+ window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date()); gtag('config', 'G-BHM6SPE3Q6');
+ </script>
+   <script>
         toastr.options = {
             "closeButton": false,
             "progressBar": true,

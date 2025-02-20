@@ -30,7 +30,7 @@
         <p class="mt-3 mb-4 small text"><b>NOTE:</b> This is a preliminary quotation based on information provided by you. The document will be reviewed by MENA Medical Research and a final quotation will be emailed to you within 24 hours.</p>
 
         <div class="text-center">
-            <a href="#" class="px-5 btn theme-btn-green">GET FINAL QUOTATION</a>
+            <button class="px-5 btn theme-btn-green submit-quotation">GET FINAL QUOTATION</button>
         </div>
     </div>
 </div>

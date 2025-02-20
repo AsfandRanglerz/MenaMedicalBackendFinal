@@ -201,7 +201,7 @@ class DataAnalysisController extends Controller
             'file' => 'required',
             'agree_check' => 'required|in:yes',
             'institute_name' => 'required',
-            'program_category' => 'required',
+            'study_category' => 'required',
         ]);
         try {
             DB::beginTransaction();
@@ -233,18 +233,38 @@ class DataAnalysisController extends Controller
                 'other_location' => $request->other_location,
                 'question' => $request->question,
             ]);
-            if ($request->hasFile('file')) {
-                foreach ($request->file('file') as $file) {
-                    $filename = time() . '_' . $file->getClientOriginalName();
-                    $file->move(public_path('/assets/files'), $filename);
-                    $quotationFilePath = 'public/assets/files/' . $filename;
-                    QuotationFile::create([
-                        'quotation_request_id' => $quotationRequest->id,
-                        'file' => $quotationFilePath,
-                    ]);
+            // if ($request->hasFile('file')) {
+            //     foreach ($request->file('file') as $file) {
+            //         $filename = time() . '_' . $file->getClientOriginalName();
+            //         $file->move(public_path('/assets/files'), $filename);
+            //         $quotationFilePath = 'public/assets/files/' . $filename;
+            //         QuotationFile::create([
+            //             'quotation_request_id' => $quotationRequest->id,
+            //             'file' => $quotationFilePath,
+            //         ]);
+            //     }
+            // }
+                // Handle multiple file inputs with the same name
+                if ($request->hasFile('file')) {
+                    foreach ($request->file('file') as $file) {
+                        if ($file->isValid()) {
+                            // Generate unique filename
+                            $filename = time() . '_' . $file->getClientOriginalName();
+
+                            // Move file to the specified path
+                            $file->move(public_path('assets/files'), $filename);
+
+                            // Save file path to the database
+                            QuotationFile::create([
+                                'quotation_request_id' => $quotationRequest->id,
+                                'text' => $request->target_journal,
+                                'document_type' => $request->document_type,
+                                'file' => 'public/assets/files/' . $filename,
+                            ]);
+                        }
+                    }
                 }
-            }
-            // Mail::to($request->email)->send(new SubmitQuotaionEmail);
+            Mail::to($request->email)->send(new SubmitQuotaionEmail);
             DB::commit();
             return response()->json([
                 'status' => 'success',

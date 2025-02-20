@@ -233,6 +233,7 @@
                         },
                         success: function() {
                             dataTable.ajax.reload();
+                            toastr.success('Order Updated Successfully');
                             // reloadDataTable();
                         },
                         error: function(xhr) {

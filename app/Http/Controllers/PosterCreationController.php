@@ -170,21 +170,21 @@ class PosterCreationController extends Controller
                     function ($attribute, $value, $fail) use ($request) {
                         $files = $request->file('file');
                         $totalSize = 0;
-            
+
                         foreach ($files as $index => $file) {
                             if ($index > 0) { // Exclude the first file
                                 $totalSize += $file->getSize();
                             }
                         }
-            
+
                         if ($totalSize > 10 * 1024 * 1024) { // Check if the total size exceeds 10MB
                             $fail('The combined size of all files except the first must not exceed 10MB.');
                         }
                     },
                 ],
-                'file.*' => 'file|mimes:pdf,doc,docx,ppt,pptx', // Individual file validations
+                // 'file.*' => 'file|mimes:pdf,doc,docx,ppt,pptx', // Individual file validations
             ]);
-            
+
             // return $request;
 
             // Use a try-catch block for better error handling
@@ -249,7 +249,7 @@ class PosterCreationController extends Controller
 
 
                 // Send the email
-                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
+               Mail::to($request->email)->send(new SubmitQuotaionEmail);
 
                 // Commit the transaction
                 DB::commit();

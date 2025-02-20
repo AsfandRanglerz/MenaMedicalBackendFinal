@@ -141,7 +141,7 @@ class AccidentalPlagiarismController extends Controller
                 'question' => 'required',
                 'file' => 'required',
                 'institute_name' => 'required',
-                'program_category' => 'required',
+                'study_category' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
             ]);
             // Use a try-catch block for better error handling
@@ -202,7 +202,7 @@ class AccidentalPlagiarismController extends Controller
                     ]);
                 }
                 // Send the email
-                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                Mail::to($request->email)->send(new SubmitQuotaionEmail);
                 DB::commit();
                 return response()->json([
                     'status' => 'success',

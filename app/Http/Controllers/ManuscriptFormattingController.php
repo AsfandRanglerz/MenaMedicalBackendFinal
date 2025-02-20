@@ -145,7 +145,7 @@ class ManuscriptFormattingController extends Controller
                 'target_journal' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
                 'institute_name' => 'required',
-                'program_category' => 'required',
+                'study_category' => 'required',
             ]);
             // Use a try-catch block for better error handling
             try {
@@ -208,7 +208,7 @@ class ManuscriptFormattingController extends Controller
                 }
 
                 // Send the email
-                // Mail::to($request->email)->send(new SubmitQuotaionEmail);
+               Mail::to($request->email)->send(new SubmitQuotaionEmail);
 
                 // Commit the transaction
                 DB::commit();

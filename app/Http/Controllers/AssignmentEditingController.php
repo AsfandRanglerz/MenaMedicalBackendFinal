@@ -183,7 +183,7 @@ class AssignmentEditingController extends Controller
             }
 
             // Send the email
-            // Mail::to($request->email)->send(new SubmitQuotaionEmail);
+           Mail::to($request->email)->send(new SubmitQuotaionEmail);
 
             // Commit the transaction
             DB::commit();

@@ -344,7 +344,7 @@
             let priceCat = $('input[name="price_cat"]:checked').val();
             let words = $('#wordCount').val();
             if (!words) {
-                toastr.error("Please Enter Words Count");
+                toastr.error("Please Enter Approximate Word Count to Calculate Price");
                 return;
             }
             var formData = new FormData();
@@ -389,7 +389,7 @@
             });
         });
         //store quotation request
-        $('#submit-quotation').on('click', function() {
+        $('#submit-quotation, .submit-quotation').on('click', function() {
             let priceCat = $('input[name="price_cat"]:checked').val();
             if (!priceCat) {
                 toastr.error("Please Select Price Category");
@@ -460,15 +460,20 @@
                     $('#createQuotationForm select').prop('selectedIndex', 0);
                     $('#createQuotationForm input[type="radio"]').prop('checked', false);
                     $('#createQuotationForm input[type="checkbox"]').prop('checked', false);
+                    $('#createQuotationForm input[type="file"]').val('');
                     $('#service_name').text('');
                     $('#service_price').text('');
                     $('#plagirism-value').text('');
                     $('#estimate-price').text('0');
                     $('.additional_service').text('');
                     $('.additional_service_price').text('');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 2000);
+                    $('#regular_price').text('xxx');
+                    $('#regular_price_days').text('XX');
+                    $('#discounted_price').text('xxx');
+                    $('#discounted_price_days').text('XX');
+                    // setTimeout(function() {
+                    //     location.reload();
+                    // }, 2000);
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {
@@ -498,6 +503,25 @@
 
         $('input, select').on('input change', function() {
             $(this).next('.error-message').remove();
+        });
+
+        function jumpToError() {
+            // Find the first error message
+            var firstError = $('.error-message').filter(':visible').first()
+
+            if (firstError.length) {
+                // Scroll to the first error message
+                $('html, body').animate({
+                    scrollTop: firstError.offset().top - 150 // Adjust offset as needed
+                }, 1000); // Animation duration in milliseconds
+            }
+        }
+
+        // Call the function with a delay of 1000ms (1 second) on button click
+        $('#submit-quotation, .submit-quotation').on('click', function() {
+            jumpToError();
+            setTimeout(function() {
+            }, 100); // Delay of 1000 milliseconds
         });
     </script>
 @endsection

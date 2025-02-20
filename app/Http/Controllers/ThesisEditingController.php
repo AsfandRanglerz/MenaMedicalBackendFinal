@@ -143,7 +143,7 @@ class ThesisEditingController extends Controller
                 'location' => 'required',
                 'question' => 'required',
                 'institute_name' => 'required',
-                'program_category' => 'required',
+                'study_category' => 'required',
                 'file' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
             ]);

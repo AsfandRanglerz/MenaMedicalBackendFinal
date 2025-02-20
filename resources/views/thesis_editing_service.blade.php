@@ -290,7 +290,7 @@
     $(document).on('click', '#showPrice', function() {
         let words = $("#wordCount").val();
         if (!words) {
-            toastr.error("Please Enter Words Count");
+            toastr.error("Please Enter Approximate Word Count to Calculate Price");
             return;
         }
         var formData = new FormData();

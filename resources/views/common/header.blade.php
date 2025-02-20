@@ -96,7 +96,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('data-analysis') ? 'active' : '' }}" href="{{ url('data-analysis') }}">Data Analysis</a>
+                            <a class="nav-link {{ Request::is('data-analysis*') ? 'active' : '' }}" href="{{ url('data-analysis') }}">Data Analysis</a>
                         </li>
                         <li class="nav-item text-sm-start text-center">
                             <a href="{{ url('place-order') }}" class="btn theme-btn">Place Order</a>

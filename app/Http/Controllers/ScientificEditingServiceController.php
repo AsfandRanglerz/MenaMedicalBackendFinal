@@ -171,7 +171,7 @@ class ScientificEditingServiceController extends Controller
                     'file' => $quotationFile,
                 ]);
             }
-            // Mail::to($request->email)->send(new SubmitQuotaionEmail);
+           Mail::to($request->email)->send(new SubmitQuotaionEmail);
             DB::commit();
             return response()->json([
                 'status' => 'success',
