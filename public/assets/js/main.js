@@ -67,7 +67,7 @@ $(function () {
     if (fileInput.files && fileInput.files[0]) {
       var fileName = fileInput.files[0].name; // Get the name of the selected file
       $('label[for="uploadFile"] p').text(fileName); // Update the text in the <p> inside the label
-      $('.delete-icon').css('display', 'block'); // Show the delete button
+      $('.delete-icon').css('display', 'flex'); // Show the delete button
     }
   });
 
@@ -84,7 +84,7 @@ $(function () {
         if (fileInput.files && fileInput.files[0]) {
           var fileName = fileInput.files[0].name; // Get the name of the selected file
           $('label[for="additionalFile"] p').text(fileName); // Update the text in the <p> inside the label
-          $('.delete-icon-2').css('display', 'block'); // Show the delete button
+          $('.delete-icon-2').css('display', 'flex'); // Show the delete button
         }
       });
 

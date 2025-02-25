@@ -33,9 +33,10 @@
                                             <th>Price Category</th>
                                             <th>Total Price</th>
                                             <th>Additional Services</th> --}}
-                                            <th>Language Type</th>
+                                            <th>Contact Client</th>
                                             <th scope="col">Actions</th>
                                             <th>Additional Instructions</th>
+                                            <th>Language Type</th>
                                             {{-- <th>Additional Information</th> --}}
                                             <th>Files</th>
                                             <th>Target Journal</th>
@@ -147,11 +148,13 @@
                                                     </a>
                                                 </td> --}}
                                                 <td>
-                                                    {{ $data->language_type ?? '' }}
-                                                    @if (empty($data->language_type))
-                                                        <span class="badge badge-danger">No record found</span>
+                                                    @if ($data->latest_news == 1)
+                                                        <span class="badge badge-success">Yes</span>
+                                                    @elseif ($data->latest_news == 0)
+                                                        No
                                                     @endif
                                                 </td>
+                                                
                                                 <td>
                                                     <div class="d-flex gap-4">
                                                         <form action="{{ route('quotationRequests.status', $data->id) }}"
@@ -175,6 +178,12 @@
                                                 <td>
                                                     {{ $data->additional_instructions ?? '' }}
                                                     @if (empty($data->additional_instructions))
+                                                        <span class="badge badge-danger">No record found</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    {{ $data->language_type ?? '' }}
+                                                    @if (empty($data->language_type))
                                                         <span class="badge badge-danger">No record found</span>
                                                     @endif
                                                 </td>
@@ -361,7 +370,9 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="quotationModalLabel">Quotation Details</h5>
+                    <h5 class="modal-title" id="quotationModalLabel">
+                        Quotation Details
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -389,12 +400,12 @@
 
                     </table>
 
-                    <h4 style="margin-bottom: 10px;">Additional Services</h4>
+                    <p style="font-size: 17px"><b> Additional Services</b></p>
                     <table style="width: 100%; border-collapse: collapse;" id="modalAdditionalServices">
                         <!-- Additional services will be dynamically populated here -->
                     </table>
 
-                    <h4 style="margin-bottom: 10px;">Additional Information</h4>
+                    <p style="font-size: 17px"><b> Additional Information</b></p>
                     <table style="width: 100%; border-collapse: collapse;" id="modalAdditionalInformation">
                         <!-- Additional services will be dynamically populated here -->
                     </table>

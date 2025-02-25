@@ -17,7 +17,7 @@ use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use Illuminate\Support\Facades\DB;
+use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 use App\Models\ScientificEditingOne;
 use App\Models\ScientificEditingTwo;
 use Illuminate\Support\Facades\Mail;
@@ -145,7 +145,7 @@ class ScientificEditingServiceController extends Controller
                 'base_price' => $request->service_price,
                 'language_type' => $request->language,
                 'additional_instructions' => $request->additional_instruction,
-                'latest_news' => $request->latest_news,
+                'latest_news' => $request->news_check,
                 'privacy_terms' => $request->agree_check,
                 'status' => '0',
             ]);

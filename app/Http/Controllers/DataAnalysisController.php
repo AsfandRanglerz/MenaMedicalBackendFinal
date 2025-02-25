@@ -17,6 +17,7 @@ use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
+use App\Mail\QuotationInfoAdmin;
 use Illuminate\Support\Facades\DB;
 use App\Models\LanguageEditingFour;
 use Illuminate\Support\Facades\Mail;
@@ -211,10 +212,10 @@ class DataAnalysisController extends Controller
                 'price_category' => $request->price_category,
                 'service_package' => $request->package_name,
                 'total_price' => $request->total_price,
-                    'base_price' => $request->service_price,
+                'base_price' => $request->service_price,
                 'language_type' => $request->language,
                 'additional_instructions' => $request->additional_instruction,
-                'latest_news' => $request->latest_news,
+                'latest_news' => $request->news_check,
                 'privacy_terms' => $request->agree_check,
                 'status' => '0',
                 'file_explanation_one' => $request->file_explanation_one,
@@ -265,6 +266,11 @@ class DataAnalysisController extends Controller
                     }
                 }
             Mail::to($request->email)->send(new SubmitQuotaionEmail);
+            $admin = 'info@menamedicalresearch.com';
+            $data['name'] = $request->first_name;
+            $data['last_name'] = $request->last_name;
+            $data['email'] = $request->email;
+            Mail::to($admin)->send(new QuotationInfoAdmin($data));
             DB::commit();
             return response()->json([
                 'status' => 'success',

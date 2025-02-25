@@ -118,8 +118,9 @@
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                <th colspan="2" class="px-3 py-2 head-one font-600">Select Price Category
-                                                </th>
+                                                    <th colspan="2" class="px-3 py-2 head-one font-600">Select Price
+                                                        Category
+                                                    </th>
                                                 </tr>
                                                 <tr class="category-header">
                                                     <th class="text-white font-600 text-center price-column py-2">Price</th>
@@ -334,8 +335,14 @@
                                     </label>
                                 </div>
                             </div>
-                            <div id="successMessage" class="alert alert-success alert-dismissible fade show"
-                                role="alert" style="display: none;">
+                            <div id="agreeCheck" class="alert alert-danger alert-dismissible fade show" role="alert"
+                                style="display: none;">
+                                <div id="successMessage" class="alert alert-success alert-dismissible fade show"
+                                    role="alert" style="display: none;">
+                                    <strong>Warning!</strong> You must agree to the terms and privacy policy.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
                                 <strong>Success!</strong> Your order has been successfully submitted, and a confirmation
                                 email has been sent to your email address.
                                 The order will be reviewed by MENA Medical Research, and a final quotation will be emailed
@@ -395,7 +402,7 @@
                     console.log(`Price: ${price}, Days: ${days}`);
                 }
                 $('#service_name').text('Scientific Editing - ' +
-                selectedPriceCategory); // Concatenate package name and text
+                    selectedPriceCategory); // Concatenate package name and text
                 $('#service_price').text(price); // Set the price
                 $('#estimate-price').text(parseFloat($('#additional_service_price').text() || 0) + price);
                 return;
@@ -481,7 +488,8 @@
             formData.append('location', ($('#createQuotationForm select[name="location"]').val() || '').trim());
             formData.append('other_location', ($('#otherLocationInput').val() || '').trim());
             formData.append('question', ($('#createQuotationForm input[name="question"]').val() || '').trim());
-            formData.append('news_check', ($('#createQuotationForm input[name="news_check"]').val() || '').trim());
+            formData.append('news_check', $('#createQuotationForm input[name="news_check"]').is(':checked') ? '1' :
+                '0');
             formData.append('agree_check', ($('#createQuotationForm input[name="agree_check"]').val()).trim());
             var priceText = $('#estimate-price').text();
             var priceValue = parseFloat(priceText.replace('$', '').trim());
@@ -491,7 +499,7 @@
             const agreeCheck = document.querySelector('input[name="agree_check"]:checked');
             if (!agreeCheck) {
                 event.preventDefault();
-                toastr.error('You must agree to the terms and privacy policy');
+                $('#agreeCheck').fadeIn();
                 button.val(originalText).prop('disabled', false);
                 return;
             }
@@ -582,8 +590,7 @@
         // Call the function with a delay of 1000ms (1 second) on button click
         $('#submit-quotation, .submit-quotation').on('click', function() {
             jumpToError();
-            setTimeout(function() {
-            }, 100); // Delay of 1000 milliseconds
+            setTimeout(function() {}, 100); // Delay of 1000 milliseconds
         });
     </script>
 @endsection
