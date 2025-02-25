@@ -39,20 +39,22 @@
                 @endforeach
                 <div>
                     <div class="overflow-auto">
-                        <div class="row mx-0 gy-4 services-section">
+                        <div class="row mx-0 gy-4">
                             @foreach ($HomeSections as $HomeSection )
                             @if(!empty($HomeSection->title ))
-                            <div class="col-md-6 col">
+                            <div class="col-md-6">
                                 <div class="d-flex flex-md-row flex-column gap-3 align-items-md-start align-items-center service-item">
                                     <div>
                                         <div class="rounded-circle d-flex justify-content-center align-items-center bg-blue image-blue-background">
                                             <img src="{{ asset($HomeSection->image) }}" alt="Icon" class="image">
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="content-center-portion">
                                         <h6 class="heading">{{ $HomeSection->title }}</h6>
                                         <p class="mb-1">{{ $HomeSection->description }}</p>
-                                        <a href="{{ $HomeSection->link }}" class="">{{ $HomeSection->link_text }}</a>
+                                        <div class="d-flex justify-content-center justify-content-md-start">
+                                            <a href="{{ $HomeSection->link }}">{{ $HomeSection->link_text }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +78,7 @@
                     <h4 class="text-center mb-lg-5 mb-3 primary-heading">{{ $HomeSectionFour->main_title }}</h4>
                 @endforeach
                 <div class="container-fluid">
-                    <div class="d-flex justify-content-lg-between justify-content-start overflow-auto work-section">
+                    <div class="d-flex justify-content-lg-center justify-content-center gap-3 gap-md-0 flex-wrap work-section">
                         @php
                             // Filter only valid items (with title, image, and description)
                             $filteredItems = $HomeSectionFours->filter(function ($item) {
@@ -95,7 +97,7 @@
                             </div>
                             <!-- Only show the arrow if it's not the last item -->
                             @if ($index < $filteredItems->count() - 1)
-                                <div>
+                                <div class="d-sm-block d-none">
                                     <img src="{{ asset('public/assets/images/arrow.png') }}" alt="" class="arrow">
                                 </div>
                             @endif

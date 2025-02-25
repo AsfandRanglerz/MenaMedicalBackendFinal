@@ -17,7 +17,7 @@
                 <h4 class="text-center mb-lg-5 mb-3 primary-heading">{{ $PlaceOrderTwo->main_title }}</h4>
                 @endforeach
                 <div class="container-fluid">
-                    <div class="d-flex justify-content-lg-between justify-content-start overflow-auto work-section">
+                    <div class="d-flex justify-content-lg-between justify-content-center gap-3 gap-md-0 flex-wrap work-section">
                         @php
                             // Filter only valid items (with title, image, and description)
                             $filteredItems = $PlaceOrderTwos->filter(function ($item) {
@@ -36,7 +36,7 @@
                        </div>
                        <!-- Only show the arrow if it's not the last item -->
                        @if ($index < $filteredItems->count() - 1)
-                           <div>
+                           <div class="d-sm-block d-none">
                                <img src="{{ asset('public/assets/images/arrow.png') }}" alt="" class="arrow">
                            </div>
                        @endif
