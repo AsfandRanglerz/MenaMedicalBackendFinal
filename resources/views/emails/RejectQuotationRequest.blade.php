@@ -1,10 +1,19 @@
 @component('mail::message')
-# Quotation Request Rejected
-
-You quotation request has been rejected due to:
-{{$reason}}.
-
-Best regards,  
-The Mena-Medical Team
+    <div style="text-align:center;">
+       <img src="{{ asset('public/admin/assets/images/users/1735822821.png') }}" alt="App Icon"
+            style="vertical-align: middle;margin-bottom: -3px;height: 50px;margin-bottom: 35px">
+        <h3>Welcome to Mena Medical Research</h3>
+    </div>
+    <div>
+        <p>
+            You quotation request has been rejected due to:
+        </p>
+        <p>{{$reason}}.</p>
+    </div>
+    <div>
+        <div style="padding-top: 10px">
+            Thanks,<br>
+            Mena Medical Research
+        </div>
+    </div>
 @endcomponent
-

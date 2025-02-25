@@ -4,17 +4,11 @@
             style="vertical-align: middle;margin-bottom: -3px;height: 50px;margin-bottom: 35px">
         <h3>Welcome to Mena Medical Research</h3>
     </div>
-    <div style="text-align: center;">
+    <div>
+        <p>Dear Admin,</p>
         <p>
-            We are pleased to inform you that your quotation request has been successfully submitted.  
-            Our team will review your details and provide a response shortly.
-        </p>
-        <p>
-            If you have any questions or require further assistance, feel free to reach out to us.
-        </p>
-        <p>
-            Thank you for choosing Mena Medical Research.
-        </p>
+        You have new quotation request from {{$data['first_name'] $data['last_name']}}.
+    </p>
     </div>
     <div>
         <div style="padding-top: 10px">
