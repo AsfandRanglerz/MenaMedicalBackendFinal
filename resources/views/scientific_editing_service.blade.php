@@ -127,11 +127,11 @@
                                     <tr>
                                         <th colspan="4" class="header header-set">
                                             <div class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
-                                                <label for="wordCount" class="font-600">Enter Word
+                                                <label for="wordCount2" class="font-600">Enter Word
                                                     Count</label>
                                                 <div class="d-flex align-items-center gap-3">
-                                                    <input type="text" id="wordCount" class="py-0 w-50">
-                                                    <button style="font-size: 0.9rem;" class="px-2 py-1 theme-btn-green" id="showPrice">Calculate
+                                                    <input type="text" id="wordCount2" class="py-0 w-50">
+                                                    <button style="font-size: 0.9rem;" class="px-2 py-1 theme-btn-green" id="showPrice2">Calculate
                                                         Price</button>
                                                 </div>
                                             </div>
@@ -155,8 +155,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 20%;">USD XXX</td>
-                                        <td>XX days</td>
+                                        <td style="width: 20%;" id="regular-price2">USD XXX</td>
+                                        <td id="regular-delivery2">XX days</td>
                                         <td class="px-1"><a href="{{ url('/scientific-editing-service-form') }}"
                                                 class="text-nowrap px-3 py-1 theme-btn-green" style="text-decoration: none; font-size: 0.7rem;">Get a
                                                 Quote</a></td>
@@ -167,8 +167,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 20%;">USD XXX</td>
-                                        <td>XX days</td>
+                                        <td style="width: 20%;" id="discounted-price2">USD XXX</td>
+                                        <td id="discounted-delivery2">XX days</td>
                                         <td class="px-1"><a href="{{ url('/scientific-editing-service-form') }}"
                                                 class="text-nowrap px-3 py-1 theme-btn-green" style="text-decoration: none; font-size: 0.7rem;">Get a
                                                 Quote</a></td>
@@ -242,7 +242,57 @@
                         });
 
                         // Update the table body dynamically
-                        $('table tbody').html(tableBody);
+                        $('table.d-none.d-sm-block tbody').html(tableBody);
+                    } else {
+                        // Handle invalid response
+                        console.error('Invalid response:', response);
+                        toastr.error('Failed to retrieve price details. Please try again.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
+                }
+            });
+
+        });
+
+        $(document).on('click', '#showPrice2', function() {
+            let words =  $("#wordCount2").val();
+            if(!words){
+                toastr.error('Please Add Words Count');
+                return;
+            }
+            var formData = new FormData();
+            formData.append('service_name', 'Scientific Editing');
+            formData.append('words',words);
+            console.log(JSON.stringify(Object.fromEntries(formData.entries())));
+            $.ajax({
+                url: '{{ route('showPackagePrices') }}', // Replace with your server endpoint
+                method: 'POST',
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}',
+                },
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Ensure the response is parsed as JSON and is an array
+                    if (response && Array.isArray(response)) {
+                        // Update regular prices
+                        $('#regular-price2').text('USD ' + response.find(function (p) {
+                            return p.price_category === 'Regular';
+                        }).calculated_price);
+                        $('#regular-delivery2').text(response.find(function (p) {
+                            return p.price_category === 'Regular';
+                        }).delivery_days + ' days');
+
+                        // Update discounted prices
+                        $('#discounted-price2').text('USD ' + response.find(function (p) {
+                            return p.price_category === 'Discounted';
+                        }).calculated_price);
+                        $('#discounted-delivery2').text(response.find(function (p) {
+                            return p.price_category === 'Discounted';
+                        }).delivery_days + ' days');
                     } else {
                         // Handle invalid response
                         console.error('Invalid response:', response);

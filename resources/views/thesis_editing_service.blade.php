@@ -331,12 +331,12 @@
                                 <tr>
                                     <th colspan="4" class="header">
                                         <div class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
-                                            <label for="wordCount" class="font-600">Enter Word
+                                            <label for="wordCount2" class="font-600">Enter Word
                                                 Count</label>
                                             <div class="d-flex align-items-center gap-3">
-                                                <input type="text" id="wordCount" class="py-0 w-50" name="words">
+                                                <input type="text" id="wordCount2" class="py-0 w-50" name="words">
                                                 <button style="font-size: 0.9rem;" class="px-2 py-1 theme-btn-green"
-                                                        id="showPrice">Calculate
+                                                        id="showPrice2">Calculate
                                                         Price</button>
                                             </div>
                                         </div>
@@ -362,8 +362,8 @@
                                 </tr>
                                 <tr>
                                     {{-- <td id="regular-basic">USD xxx in XX days</td> --}}
-                                    <td id="regular-advance">USD xxx in XX days</td>
-                                    <td id="regular-premium">USD xxx in XX days</td>
+                                    <td id="regular-advance2">USD xxx in XX days</td>
+                                    <td id="regular-premium2">USD xxx in XX days</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="text-center">
@@ -372,8 +372,8 @@
                                 </tr>
                                 <tr>
                                     {{-- <td id="discounted-basic">USD xxx in XX days</td> --}}
-                                    <td id="discounted-advance">USD xxx in XX days</td>
-                                    <td id="discounted-premium">USD xxx in XX days</td>
+                                    <td id="discounted-advance2">USD xxx in XX days</td>
+                                    <td id="discounted-premium2">USD xxx in XX days</td>
                                 </tr>
                                 <tr class="bg-white">
                                     {{-- <td><a href="{{ url('/language-editing-service-form/Basic') }}"
@@ -530,6 +530,70 @@
                             return p.package_name === 'Premium';
                         }).delivery_days + ' days');
                 },
+
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', status, error);
+            }
+        });
+    });
+
+    $(document).on('click', '#showPrice2', function() {
+        let words = $("#wordCount2").val();
+        if (!words) {
+            toastr.error("Please Enter Approximate Word Count to Calculate Price");
+            return;
+        }
+        var formData = new FormData();
+        formData.append('service_name', 'Thesis Editing Service');
+        formData.append('words', words);
+        console.log(JSON.stringify(Object.fromEntries(formData.entries())));
+
+        $.ajax({
+            url: '{{ route('showPackagePrices') }}', // Replace with your server endpoint
+            method: 'POST',
+            headers: {
+                'X-CSRF-Token': '{{ csrf_token() }}',
+            },
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                // Separate data by price category
+                var regularPackages = response.filter(function(item) {
+                    return item.price_category === "Regular";
+                });
+                var discountedPackages = response.filter(function(item) {
+                    return item.price_category === "Discounted";
+                });
+
+                // Update regular prices
+                $('#regular-advance2').text('USD ' + regularPackages.find(function(p) {
+                        return p.package_name === 'Advance';
+                    }).calculated_price +
+                    ' in ' + regularPackages.find(function(p) {
+                        return p.package_name === 'Advance';
+                    }).delivery_days + ' days');
+                $('#regular-premium2').text('USD ' + regularPackages.find(function(p) {
+                        return p.package_name === 'Premium';
+                    }).calculated_price +
+                    ' in ' + regularPackages.find(function(p) {
+                        return p.package_name === 'Premium';
+                    }).delivery_days + ' days');
+
+                // Update discounted prices
+                $('#discounted-advance2').text('USD ' + discountedPackages.find(function(p) {
+                        return p.package_name === 'Advance';
+                    }).calculated_price +
+                    ' in ' + discountedPackages.find(function(p) {
+                        return p.package_name === 'Advance';
+                    }).delivery_days + ' days');
+                $('#discounted-premium2').text('USD ' + discountedPackages.find(function(p) {
+                        return p.package_name === 'Premium';
+                    }).calculated_price +
+                    ' in ' + discountedPackages.find(function(p) {
+                        return p.package_name === 'Premium';
+                    }).delivery_days + ' days');
+            },
 
             error: function(xhr, status, error) {
                 console.error('AJAX Error:', status, error);
