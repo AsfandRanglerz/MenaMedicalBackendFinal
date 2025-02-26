@@ -254,7 +254,7 @@
                                 </div>
                                 <div class="ms-md-4 my-4">
                                     <label class="d-flex gap-2 align-items-center">
-                                        <input type="radio" name="news_check" checked>
+                                        <input type="checkbox" name="news_check" checked>
                                         <p class="mb-0">I would like to receive latest news and announcements from MENA
                                             Medical Research</p>
                                     </label>
@@ -268,13 +268,13 @@
                                 </div>
                             </div>
                             <div id="agreeCheck" class="alert alert-danger alert-dismissible fade show"
-                                role="alert" style="display: none;">
-<div id="successMessage" class="alert alert-success alert-dismissible fade show"
-                                role="alert" style="display: none;">
-                                <strong>Warning!</strong> You must agree to the terms and privacy policy.
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
+                                    role="alert" style="display: none;">
+                                    <strong>Warning!</strong> You must agree to the terms and privacy policy.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert"
+                                style="display: none;">
                                 <strong>Success!</strong> Your order has been successfully submitted, and a confirmation
                                 email has been sent to your email address.
                                 The order will be reviewed by MENA Medical Research, and a final quotation will be emailed

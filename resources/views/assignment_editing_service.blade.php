@@ -154,6 +154,7 @@
         let words = $('#wordCount').val();
         if(!words){
             toastr.error('Enter Words Count');
+            return;
         }
         var formData = new FormData();
         formData.append('service_name', 'Assignment Editing Service');
