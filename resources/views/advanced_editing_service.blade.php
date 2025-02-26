@@ -96,14 +96,14 @@
                                                     <th colspan="3" class="header">
                                                         <div
                                                             class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
-                                                            <label for="wordCount" class="font-600">Enter Word
+                                                            <label for="wordCount2" class="font-600">Enter Word
                                                                 Count</label>
                                                             <div class="d-flex align-items-center gap-3">
 
-                                                                <input type="text" id="wordCount" class="py-0 w-50"
+                                                                <input type="text" id="wordCount2" class="py-0 w-50"
                                                                     name="words">
                                                                 <button class="px-3 py-1 theme-btn-green"
-                                                                    id="calculatePrice" type="button">Calculate
+                                                                    id="calculatePrice2" type="button">Calculate
                                                                     Price</button>
                                                             </div>
                                                         </div>
@@ -130,8 +130,8 @@
                                                     </td>
                                                 </tr>
                                                 <tr style="text">
-                                                    <td class="text-center">USD <span id="regular_price">xxx</span></td>
-                                                    <td><span id="regular_price_days">XX</span> days</td>
+                                                    <td class="text-center">USD <span id="regular_price2">xxx</span></td>
+                                                    <td><span id="regular_price_days2">XX</span> days</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
@@ -143,8 +143,8 @@
                                                 </tr>
                                                 <tr class="head-one">
 
-                                                    <td class="text-center">USD <span id="discounted_price">xxx</span></td>
-                                                    <td><span id="discounted_price_days">XX</span> days</td>
+                                                    <td class="text-center">USD <span id="discounted_price2">xxx</span></td>
+                                                    <td><span id="discounted_price_days2">XX</span> days</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -469,6 +469,10 @@
             $('#regular_price_days').text('XX');
             $('#discounted_price').text('xxx');
             $('#discounted_price_days').text('XX');
+            $('#regular_price2').text('xxx');
+            $('#regular_price_days2').text('XX');
+            $('#discounted_price2').text('xxx');
+            $('#discounted_price_days2').text('XX');
             return;
         }
 
@@ -551,7 +555,7 @@
             $("#estimate-price").text((basePrice + totalPrice));
              }
         });
-        $(document).on('click', '#calculatePrice', function() {
+        $(document).on('click', '#calculatePrice, #calculatePrice2', function() {
             clearFields();
             // let priceCat = $('input[name="price_cat"]:checked').val();
             let additionalPriceCat = $('input[name="additional_price_cat"]:checked');
@@ -561,7 +565,7 @@
             .text();
                 var selectedService = additionalPriceCat.val();
             }
-            let words = $('#wordCount').val();
+            let words = $('#wordCount').val() || $('#wordCount2').val();
             if (!words) {
                 toastr.error("Please Enter Approximate Word Count to Calculate Price");
                 return;
@@ -589,10 +593,18 @@
                                 item.total);
                             document.getElementById('regular_price_days').textContent = item
                                 .days;
+                            document.getElementById('regular_price2').textContent = parseFloat(
+                                item.total);
+                            document.getElementById('regular_price_days2').textContent = item
+                                .days;
                         } else if (item.price_category === "Discounted Price") {
                             document.getElementById('discounted_price').textContent =
                                 parseFloat(item.total);
                             document.getElementById('discounted_price_days').textContent = item
+                                .days;
+                            document.getElementById('discounted_price2').textContent =
+                                parseFloat(item.total);
+                            document.getElementById('discounted_price_days2').textContent = item
                                 .days;
                         }
                     });
@@ -707,6 +719,10 @@ formData.append('news_check', $('#createQuotationForm input[name="news_check"]')
                     $('#regular_price_days').text('XX');
                     $('#discounted_price').text('xxx');
                     $('#discounted_price_days').text('XX');
+                    $('#regular_price2').text('xxx');
+                    $('#regular_price_days2').text('XX');
+                    $('#discounted_price2').text('xxx');
+                    $('#discounted_price_days2').text('XX');
                     // setTimeout(function() {
                     //     location.reload();
                     // }, 2000);
