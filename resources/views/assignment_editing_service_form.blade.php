@@ -31,20 +31,18 @@
                             <div>
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
                                     <img src="{{ asset('public/assets/images/Path 328.png') }}" class="arrow">
-                                    <p class="text-white m-0 font-500">STEP 1: Enter the Word Count for Price Estimate and
+                                    <p class="text-white m-0 font-500">STEP 1: Select the Word Count for Price Estimate and
                                         Delivery
                                         Time</p>
                                 </div>
-                                <p class="m-0 mt-2 mb-3 info-heading">Please enter the word count of your manuscript /
-                                    document. The
-                                    word count will help us in displaying a price estimate</p>
+                                <p class="m-0 mt-2 mb-3 info-heading"></p>
                                 <div class="overflow-auto">
                                     <!-- Table for big screen -->
                                     <div class="d-none d-sm-block advance-table-container">
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th colspan="3" class="header">
+                                                    {{-- <th colspan="3" class="header">
                                                         <div
                                                             class="d-flex align-items-center justify-content-between px-3 py-2">
                                                             <label for="wordCount" class="font-600">Enter Word
@@ -59,10 +57,10 @@
                                                             </div>
                                                         </div>
 
-                                                    </th>
+                                                    </th> --}}
                                                 </tr>
                                                 <tr class="category-header">
-                                                    <th class="px-3 py-2 head-one font-600">Select Price Category
+                                                    <th class="px-3 py-2 head-one font-600">Please select the appropriate word count category
                                                     </th>
                                                     <th class="text-white font-600 text-center price-column">Price</th>
                                                     <th class="text-white font-600 text-center delivery-column">Delivery
@@ -71,7 +69,26 @@
                                                 </tr>
                                             </thead>
                                             <table>
-                                                <tr>
+                                                @foreach ($newPrices as $data)
+                                                    <tr>
+                                                        <td>
+                                                            <label>
+                                                                <input type="radio" name="price_cat"
+                                                                    value="{{ $data->range }}"
+                                                                    data-price="{{ $data->price }}"
+                                                                    data-days="{{ $data->delivery_time }}"
+                                                                    data-limit="{{ $data->limit }}">
+
+                                                                {{ $data->range }}
+                                                            </label>
+                                                                <input type="hidden" name="limit" class="limit" value="{{ $data->limit }}">
+                                                        </td>
+                                                        <td>USD <span class="price_display">{{ $data->price }}</span></td>
+                                                        <td><span class="days_display">{{ $data->delivery_time }}</span>
+                                                            days</td>
+                                                    </tr>
+                                                @endforeach
+                                                {{-- <tr>
                                                     <td>
                                                         <label>
                                                             <input type="radio" name="price_cat" value="Regular Price">
@@ -90,7 +107,7 @@
                                                     </td>
                                                     <td>USD <span id="discounted_price">XXX</span></td>
                                                     <td><span id="discounted_price_days">XX</span> days</td>
-                                                </tr>
+                                                </tr> --}}
                                             </table>
                                     </div>
 
@@ -99,24 +116,24 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th colspan="3" class="header">
+                                                    {{-- <th colspan="3" class="header">
                                                         <div
                                                             class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
                                                             <label for="wordCount" class="font-600">Enter Word
                                                                 Count</label>
                                                             <div class="d-flex align-items-center gap-3">
-                                                                <input type="number" id="wordCount" class="py-0 w-50"
+                                                                <input type="number" id="wordCount2" class="py-0 w-50"
                                                                     name="words">
                                                                 <button class="px-3 py-1 theme-btn-green"
-                                                                    id="calculatePrice" type="button">Calculate
+                                                                    id="calculatePrice2" type="button">Calculate
                                                                     Price</button>
                                                             </div>
                                                         </div>
 
-                                                    </th>
+                                                    </th> --}}
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="2" class="px-3 py-2 head-one font-600">Select Price Category
+                                                    <th colspan="2" class="px-3 py-2 head-one font-600">Please select the appropriate word count category
                                                     </th>
                                                 </tr>
                                                 <tr class="category-header">
@@ -127,7 +144,7 @@
                                                 </tr>
                                             </thead>
                                             <table>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td colspan="2">
                                                         <label>
                                                             <input type="radio" name="price_cat" value="Regular Price">
@@ -136,8 +153,8 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">USD <span id="regular_price">XXX</span></td>
-                                                    <td><span id="regular_price_days">XX</span> days</td>
+                                                    <td class="text-center">USD <span id="regular_price2">XXX</span></td>
+                                                    <td><span id="regular_price_days2">XX</span> days</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
@@ -148,13 +165,33 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="head-one">
-                                                    <td class="text-center">USD <span id="discounted_price">XXX</span></td>
-                                                    <td><span id="discounted_price_days">XX</span> days</td>
-                                                </tr>
+                                                    <td class="text-center">USD <span id="discounted_price2">XXX</span></td>
+                                                    <td><span id="discounted_price_days2">XX</span> days</td>
+                                                </tr> --}}
+                                                @foreach ($newPrices as $data)
+                                                    <tr>
+                                                        <td>
+                                                            <label>
+                                                                <input type="radio" name="price_cat"
+                                                                    value="{{ $data->range }}"
+                                                                    data-price="{{ $data->price }}"
+                                                                    data-days="{{ $data->delivery_time }}"
+                                                                    data-limit="{{ $data->limit }}">
+
+                                                                {{ $data->range }}
+                                                            </label>
+                                                                <input type="hidden" name="limit" class="limit" value="{{ $data->limit }}">
+                                                        </td>
+                                                        <td>USD <span class="price_display">{{ $data->price }}</span></td>
+                                                        <td><span class="days_display">{{ $data->delivery_time }}</span>
+                                                            days</td>
+                                                    </tr>
+                                                @endforeach
                                             </table>
                                     </div>
                                 </div>
                                 <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p>
+                                <p class="m-0 mt-1 font-500">Additional words above 6,000 words will be charged at a fix rate of USD 40 per thousand words</p>
                             </div>
                             <div class="section-devision">
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
@@ -330,7 +367,7 @@
                                     </label>
                                     <label class="mt-3 d-flex gap-2 align-items-center">
                                         <input type="radio" name="agree_check" required value="yes">
- <p class="mb-0">I have read and agree to MENA Medical Research’s <a
+                                        <p class="mb-0">I have read and agree to MENA Medical Research’s <a
                                                 href="{{route('privacy-policy')}}" class="text-decoration-none text-blue">Privacy Policy</a>
                                             and <a href="{{route('term-condition')}}" class="text-decoration-none text-blue">Terms of Use</a>
                                         </p>
@@ -355,10 +392,15 @@
                                     aria-label="Close"></button>
                             </div>
 
-
+                             <div style="position: absolute; left: -10000px; top: -10000px; height: 1px; width: 1px; overflow: hidden;">
+                                <label for="contact_time">Best time to contact you</label>
+                                <input type="text" name="contact_time" id="contact_time" autocomplete="off">
+                            </div>
+                            <!-- reCAPTCHA widget -->
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
                             <input type="button" id="submit-quotation"
                             class="d-flex align-items-center gap-2 mt-4 text-white m-0 btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
-                            value="SUBMIT QUOTATION REQUEST" />
+                            value="SUBMIT REQUEST" />
 
                         </form>
                     </div>
@@ -390,25 +432,27 @@
                     .val(); // Get the value of the selected radio button
                 console.log("Selected Price Category:", selectedPriceCategory); // Optional: For debugging
                 // alert(selectedPriceCategory);
-                let price = 0;
-                let days = 0;
+                // let price = 0;
+                // let days = 0;
 
-                // Check which price category is selected
-                if (selectedPriceCategory === "Regular Price") {
-                    price = parseFloat($('#regular_price').text()) || 0;
-                    days = parseInt($('#regular_price_days').text()) || 0;
-                } else if (selectedPriceCategory === "Discounted Price") {
-                    price = parseFloat($('#discounted_price').text()) || 0;
-                    days = parseInt($('#discounted_price_days').text()) || 0;
-                }
-                if (price === 0 || days === 0) {
-                    toastr.error('Please Enter Approximate Word Count to Calculate Price first.');
-                    $("input[name='price_cat']").prop('checked', false);
-                    return;
-                    // Uncheck all radio buttons
-                } else {
-                    console.log(`Price: ${price}, Days: ${days}`);
-                }
+                // // Check which price category is selected
+                // if (selectedPriceCategory === "Regular Price") {
+                //     price = parseFloat($('#regular_price').text()) || 0;
+                //     days = parseInt($('#regular_price_days').text()) || 0;
+                // } else if (selectedPriceCategory === "Discounted Price") {
+                //     price = parseFloat($('#discounted_price').text()) || 0;
+                //     days = parseInt($('#discounted_price_days').text()) || 0;
+                // }
+                // if (price === 0 || days === 0) {
+                //     toastr.error('Please Enter Approximate Word Count to Calculate Price first.');
+                //     $("input[name='price_cat']").prop('checked', false);
+                //     return;
+                //     // Uncheck all radio buttons
+                // } else {
+                //     console.log(`Price: ${price}, Days: ${days}`);
+                // }
+                const price = parseFloat($(this).data('price')) || 0;
+                const days = parseInt($(this).data('days')) || 0;
                 $('#service_name').text('Assignment Editing Service - ' +
                 selectedPriceCategory); // Concatenate package name and text
                 $('#service_price').text(price); // Set the price
@@ -419,9 +463,10 @@
             });
         });
         //calculate price base of words
-        $(document).on('click', '#calculatePrice', function() {
+        $(document).on('click', '#calculatePrice ,#calculatePrice2', function() {
             let priceCat = $('input[name="price_cat"]:checked').val();
-            let words = $('#wordCount').val();
+            let words = $('#wordCount').val() || $('#wordCount2').val();
+
             if (!words) {
                 toastr.error("Please Enter Approximate Word Count to Calculate Price");
                 return;
@@ -453,12 +498,20 @@
                                     parseFloat(item.price);
                                 document.getElementById('regular_price_days').textContent = item
                                     .days;
+                                    document.getElementById('regular_price2').textContent =
+                                    parseFloat(item.price);
+                                document.getElementById('regular_price_days2').textContent = item
+                                    .days;
                             }
                             // Update Discounted Price fields
                             else if (item.price_category === "Discounted Price") {
                                 document.getElementById('discounted_price').textContent =
                                     parseFloat(item.price);
                                 document.getElementById('discounted_price_days').textContent =
+                                    item.days;
+                                    document.getElementById('discounted_price2').textContent =
+                                    parseFloat(item.price);
+                                document.getElementById('discounted_price_days2').textContent =
                                     item.days;
                             }
                         });
@@ -475,6 +528,11 @@
         });
         //store quotation request
         $('#submit-quotation, .submit-quotation').on('click', function() {
+               let recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    toastr.error("Please complete the reCAPTCHA");
+                    return;
+                }
             let priceCat = $('input[name="price_cat"]:checked').val();
             if (!priceCat) {
                 toastr.error("Please Select Price Category");
@@ -486,8 +544,10 @@
             // Show loading text and disable the button
             button.val('Submitting...').prop('disabled', true);
             var formData = new FormData();
+            formData.append('g-recaptcha-response', recaptchaResponse);
             // formData.append('words', ($('#wordCount').val()));
-            formData.append('words', ($('#createQuotationForm input[name="words"]').val()).trim());
+            // formData.append('words', ($('#createQuotationForm input[name="words"]').val()).trim());
+            formData.append('limit', $('input[name="price_cat"]:checked').data('limit'));
             formData.append('price_category', ($('input[name="price_cat"]:checked').val()).trim());
             formData.append('service_name', 'Assignment Editing Service');
             formData.append('language', ($('#createQuotationForm input[name="language"]:checked').val() || '')
@@ -507,7 +567,7 @@
             formData.append('location', ($('#createQuotationForm select[name="location"]').val() || '').trim());
             formData.append('other_location', ($('#createQuotationForm select[name="other_location"]').val() || '').trim());
             formData.append('question', ($('#createQuotationForm input[name="question"]').val() || '').trim());
-formData.append('news_check', $('#createQuotationForm input[name="news_check"]').is(':checked') ? '1' : '0');            formData.append('agree_check', ($('#createQuotationForm input[name="agree_check"]').val()).trim());
+            formData.append('news_check', $('#createQuotationForm input[name="news_check"]').is(':checked') ? '1' : '0');            formData.append('agree_check', ($('#createQuotationForm input[name="agree_check"]').val()).trim());
             var priceText = $('#estimate-price').text();
             var priceValue = parseFloat(priceText.replace('$', '').trim());
                formData.append('total_price', priceValue);
@@ -584,6 +644,7 @@ formData.append('news_check', $('#createQuotationForm input[name="news_check"]')
                 complete: function() {
                     // Restore the button text and re-enable it
                     button.val(originalText).prop('disabled', false);
+                    grecaptcha.reset();
                 }
             });
         });

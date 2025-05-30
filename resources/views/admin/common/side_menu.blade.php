@@ -23,7 +23,7 @@
 
                     {{-- Pricing --}}
                     <li class="{{ request()->is('admin/pricing-services*') ? 'active' : '' }}">
-                        <a href="{{ route('servicePrice.index') }}"
+                        <a href="{{ route('newServicePrice.index') }}"
                             class="nav-link {{ request()->is('admin/pricing-services*') ? 'text-white' : '' }}">
                             <span data-feather="dollar-sign"></span>
                             <span>Pricing</span>

@@ -32,19 +32,17 @@
                             <div>
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
                                     <img src="{{ asset('public/assets/images/Path 328.png') }}" class="arrow">
-                                    <p class="text-white m-0 font-500">STEP 1: Enter the Word Count for Price Estimate and
+                                    <p class="text-white m-0 font-500">STEP 1: Select the Word Count for Price Estimate and
                                         Delivery
                                         Time</p>
                                 </div>
-                                <p class="m-0 mt-2 mb-3 info-heading">Please enter the word count of your manuscript /
-                                    document. The
-                                    word count will help us in displaying a price estimate</p>
+                                <p class="m-0 mt-2 mb-3 info-heading">Please select the appropriate word count category.</p>
                                 <div class="overflow-auto">
                                     <!-- Table for big screen -->
                                     <div class="d-none d-sm-block advance-table-container">
                                         <table>
                                             <thead>
-                                                <tr>
+                                                {{-- <tr>
                                                     <th colspan="3" class="header">
                                                         <div
                                                             class="d-flex align-items-center justify-content-between px-3 py-2">
@@ -61,7 +59,7 @@
                                                         </div>
 
                                                     </th>
-                                                </tr>
+                                                </tr> --}}
                                                 <tr class="category-header">
                                                     <th class="px-3 py-2 head-one font-600">Select Price Category
                                                     </th>
@@ -72,7 +70,26 @@
                                                 </tr>
                                             </thead>
                                             <table>
-                                                <tr>
+                                                @foreach ($newPrices as $data)
+                                                    <tr>
+                                                        <td>
+                                                            <label>
+                                                                <input type="radio" name="price_cat"
+                                                                    value="{{ $data->range }}"
+                                                                    data-price="{{ $data->price }}"
+                                                                    data-days="{{ $data->delivery_time }}"
+                                                                    data-limit="{{ $data->limit }}">
+
+                                                                {{ $data->range }}
+                                                            </label>
+                                                                <input type="hidden" name="limit" class="limit" value="{{ $data->limit }}">
+                                                        </td>
+                                                        <td>USD <span class="price_display">{{ $data->price }}</span></td>
+                                                        <td><span class="days_display">{{ $data->delivery_time }}</span>
+                                                            days</td>
+                                                    </tr>
+                                                @endforeach
+                                                {{-- <tr>
                                                     <td>
                                                         <label>
                                                             <input type="radio" name="price_cat" value="Regular Price">
@@ -91,7 +108,7 @@
                                                     </td>
                                                     <td>USD <span id="discounted_price">XXX</span></td>
                                                     <td><span id="discounted_price_days">XX</span> days</td>
-                                                </tr>
+                                                </tr> --}}
                                             </table>
                                     </div>
 
@@ -99,7 +116,7 @@
                                     <div class="d-sm-none advance-table-container">
                                         <table>
                                             <thead>
-                                                <tr>
+                                                {{-- <tr>
                                                     <th colspan="3" class="header">
                                                         <div
                                                             class="d-flex flex-column align-items-center justify-content-between px-3 py-2">
@@ -116,7 +133,7 @@
                                                         </div>
 
                                                     </th>
-                                                </tr>
+                                                </tr> --}}
                                                 <tr>
                                                     <th colspan="2" class="px-3 py-2 head-one font-600">Select Price
                                                         Category
@@ -130,30 +147,25 @@
                                                 </tr>
                                             </thead>
                                             <table>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <label>
-                                                            <input type="radio" name="price_cat" value="Regular Price">
-                                                            Regular Price
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">USD <span id="regular_price2">XXX</span></td>
-                                                    <td><span id="regular_price_days2">XX</span> days</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <label>
-                                                            <input type="radio" name="price_cat" value="Discounted Price">
-                                                            Discounted Price for students and researchers in MENA Region
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr class="head-one">
-                                                    <td class="text-center">USD <span id="discounted_price2">XXX</span></td>
-                                                    <td><span id="discounted_price_days2">XX</span> days</td>
-                                                </tr>
+                                                @foreach ($newPrices as $data)
+                                                    <tr>
+                                                        <td>
+                                                            <label>
+                                                                <input type="radio" name="price_cat"
+                                                                    value="{{ $data->range }}"
+                                                                    data-price="{{ $data->price }}"
+                                                                    data-days="{{ $data->delivery_time }}"
+                                                                    data-limit="{{ $data->limit }}">
+
+                                                                {{ $data->range }}
+                                                            </label>
+                                                                <input type="hidden" name="limit" class="limit" value="{{ $data->limit }}">
+                                                        </td>
+                                                        <td>USD <span class="price_display">{{ $data->price }}</span></td>
+                                                        <td><span class="days_display">{{ $data->delivery_time }}</span>
+                                                            days</td>
+                                                    </tr>
+                                                @endforeach
                                             </table>
                                     </div>
                                 </div>
@@ -341,21 +353,29 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert"
                                 aria-label="Close"></button>
                         </div>
-                    <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert"
-                        style="display: none;">
-                        <strong>Success!</strong> Your order has been successfully submitted, and a confirmation
-                        email has been sent to your email address.
-                        The order will be reviewed by MENA Medical Research, and a final quotation will be emailed
-                        to you within 24 hours.
-                        In case you do not hear from us within 24 hours, please send an email to
-                        <span class="text-info">info@menamedicalresearch.com</span>.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                            aria-label="Close"></button>
-                    </div>
+                        <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert"
+                            style="display: none;">
+                            <strong>Success!</strong> Your order has been successfully submitted, and a confirmation
+                            email has been sent to your email address.
+                            The order will be reviewed by MENA Medical Research, and a final quotation will be emailed
+                            to you within 24 hours.
+                            In case you do not hear from us within 24 hours, please send an email to
+                            <span class="text-info">info@menamedicalresearch.com</span>.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
 
+                        
+                            <div style="position: absolute; left: -10000px; top: -10000px; height: 1px; width: 1px; overflow: hidden;">
+                                <label for="contact_time">Best time to contact you</label>
+                                <input type="text" name="contact_time" id="contact_time" autocomplete="off">
+                            </div>
+
+                            <!-- reCAPTCHA widget -->
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
                             <input type="button" id="submit-quotation"
                                 class="d-flex align-items-center gap-2 mt-4 text-white m-0 btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
-                                value="SUBMIT QUOTATION REQUEST" />
+                                value="SUBMIT REQUEST" />
                         </form>
                     </div>
                     <div class="col-md-4 mt-md-0 mt-4">
@@ -384,22 +404,24 @@
                 var selectedPriceCategory = $("input[name='price_cat']:checked")
                     .val(); // Get the value of the selected radio button
                 console.log("Selected Price Category:", selectedPriceCategory); // Optional: For debugging
-                let price = 0;
-                let days = 0;
-                if (selectedPriceCategory === "Regular Price") {
-                    price = parseFloat($('#regular_price').text()) || 0;
-                    days = parseInt($('#regular_price_days').text()) || 0;
-                } else if (selectedPriceCategory === "Discounted Price") {
-                    price = parseFloat($('#discounted_price').text()) || 0;
-                    days = parseInt($('#discounted_price_days').text()) || 0;
-                }
-                if (price === 0 || days === 0) {
-                    toastr.error('Please Enter Approximate Word Count to Calculate Price');
-                    $("input[name='price_cat']").prop('checked', false);
-                    return;
-                } else {
-                    console.log(`Price: ${price}, Days: ${days}`);
-                }
+                // let price = 0;
+                // let days = 0;
+                // if (selectedPriceCategory === "Regular Price") {
+                //     price = parseFloat($('#regular_price').text()) || 0;
+                //     days = parseInt($('#regular_price_days').text()) || 0;
+                // } else if (selectedPriceCategory === "Discounted Price") {
+                //     price = parseFloat($('#discounted_price').text()) || 0;
+                //     days = parseInt($('#discounted_price_days').text()) || 0;
+                // }
+                // if (price === 0 || days === 0) {
+                //     toastr.error('Please Enter Approximate Word Count to Calculate Price');
+                //     $("input[name='price_cat']").prop('checked', false);
+                //     return;
+                // } else {
+                //     console.log(`Price: ${price}, Days: ${days}`);
+                // }
+                const price = parseFloat($(this).data('price')) || 0;
+                const days = parseInt($(this).data('days')) || 0;
                 $('#service_name').text('Scientific Editing - ' +
                     selectedPriceCategory); // Concatenate package name and text
                 $('#service_price').text(price); // Set the price
@@ -466,17 +488,26 @@
         });
         //store quotation request
         $('#submit-quotation, .submit-quotation').on('click', function() {
-            let priceCat = $('input[name="price_cat"]:checked').val();
-            if (!priceCat) {
-                toastr.error("Please Select Price Category");
-                return;
-            }
-            var button = $(this);
-            var originalText = button.val();
-            button.val('Submitting...').prop('disabled', true);
-            var formData = new FormData();
-            formData.append('words', ($('#createQuotationForm input[name="words"]').val()).trim());
+             let recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    toastr.error("Please complete the reCAPTCHA");
+                    return;
+                }
+
+                let priceCat = $('input[name="price_cat"]:checked').val();
+                if (!priceCat) {
+                    toastr.error("Please Select Price Category");
+                    return;
+                }
+                var button = $(this);
+                var originalText = button.val();
+                button.val('Submitting...').prop('disabled', true);
+                var formData = new FormData();
+                // formData.append('words', ($('#createQuotationForm input[name="words"]').val()).trim());
+            formData.append('g-recaptcha-response', recaptchaResponse);
             formData.append('price_category', ($('input[name="price_cat"]:checked').val()).trim());
+            formData.append('contact_time', ($('#createQuotationForm input[name="contact_time"]').val() || '').trim());
+            formData.append('limit', $('input[name="price_cat"]:checked').data('limit'));
             formData.append('service_name', 'Scientific Editing');
             formData.append('language', ($('#createQuotationForm input[name="language"]:checked').val() || '')
                 .trim());
@@ -578,6 +609,7 @@
                 },
                 complete: function() {
                     button.val(originalText).prop('disabled', false);
+                    grecaptcha.reset();
                 }
             });
         });

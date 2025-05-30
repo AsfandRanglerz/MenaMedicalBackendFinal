@@ -107,6 +107,8 @@ Route::post('/data-analysis-service-form-prices', [DataAnalysisController::class
 Route::post('/data-analysis-service-form-calculate-price', [DataAnalysisController::class, 'calculatePrice'])->name('dataAnalysisService.calculatePrice');
 Route::post('/data-analysis-service-submit-quotation-request', [DataAnalysisController::class, 'submitQuotationRequest'])->name('dataAnalysisService.submit.request');
 
+// place orders route
+Route::post('/place-order-from', [PlaceOrderController::class, 'getPlceOrderForm'])->name('get.order');
 
 
 Route::get('/journals', [JournalsController::class, 'journalModule']);

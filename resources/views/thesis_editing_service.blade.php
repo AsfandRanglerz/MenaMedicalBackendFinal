@@ -124,6 +124,23 @@
                                 <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
                                         class="tick-cross"></td>
                             </tr>
+                             <tr>
+                                <td class="py-2 px-3 large-column"></td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/thesis-editing-service-form/Advance') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/thesis-editing-service-form/Premium') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -209,6 +226,23 @@
                                 <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
                                         class="tick-cross"></td>
                             </tr>
+                            <tr>
+                                {{-- <td class="text-center small py-2"></td> --}}
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/thesis-editing-service-form/Advance') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/thesis-editing-service-form/Premium') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <p class="m-0 mt-1 font-500 small">*You can also request Plagarism Check and/or Manuscript Formating in the Advanced Editing package at an additional charge.</p>
@@ -265,8 +299,17 @@
                 <h4 class="mb-lg-4 mb-3 text-center primary-heading">Pricing and Delivery Time</h4>
                 <div class="mt-2 lang-table-section overflow-auto">
                     <div class="table-container">
+                                <div class="p-3">
+                                    <p class="mb-2">
+                                        MENA Medical Research has a transparent pricing policy. We ensure that you are aware of our service charges and make a fully informed decision before placing an order.
+                                    </p>
+                                    <p class="mb-0">
+                                        Price and Delivery Time for thesis editing service depend on the level of service required (Advanced or Premium) and the word count of your document. You can select the required service to find the estimated price, before submitting your request for work.
+                                    </p>
+                                </div>
+
                         <!-- Table for big screen -->
-                        <table class="d-none d-sm-block table-size">
+                        {{-- <table class="d-none d-sm-block table-size">
                             <thead>
                                 <tr>
                                     <th colspan="4" class="header">
@@ -284,7 +327,6 @@
                                 </tr>
                                 <tr class="category-header">
                                     <th class="px-3 py-2 head-one font-600">Price</th>
-                                    {{-- <th class="text-white font-600 text-center basic-column">Basic Editing</th> --}}
                                     <th class="text-white font-600 text-center advanced-column">Advanced Editing
                                     </th>
                                     <th class="text-white font-600 text-center premium-column">Premium Editing
@@ -296,7 +338,6 @@
                                     <td class="t-line">
                                         Reference Check
                                     </td>
-                                    {{-- <td id="regular-basic">USD xxx in XX days</td> --}}
                                     <td id="regular-advance">USD xxx in XX days</td>
                                     <td id="regular-premium">USD xxx in XX days</td>
                                 </tr>
@@ -304,7 +345,6 @@
                                     <td class="t-line">
                                         Discounted Price for Researchers & Students in MENA Region
                                     </td>
-                                    {{-- <td id="discounted-basic">USD xxx in XX days</td> --}}
                                     <td id="discounted-advance">USD xxx in XX days</td>
                                     <td id="discounted-premium">USD xxx in XX days</td>
                                 </tr>
@@ -312,9 +352,7 @@
                                     <td>
 
                                     </td>
-                                    {{-- <td><a href="{{ url('/language-editing-service-form/Basic') }}"
-                                            class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
-                                            Quote</a></td> --}}
+
                                     <td><a href="{{ url('/thesis-editing-service-form/Advance') }}"
                                             class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
                                             Quote</a></td>
@@ -347,7 +385,6 @@
                                     <th colspan="3" class="px-3 py-2 head-one font-600">Price</th>
                                 </tr>
                                 <tr class="category-header">
-                                    {{-- <th class="text-white font-600 text-center ts-small basic-column">Basic Editing</th> --}}
                                     <th class="py-2 text-white font-600 text-center ts-small advanced-column">Advanced Editing
                                     </th>
                                     <th class="text-white font-600 text-center ts-small premium-column">Premium Editing
@@ -361,7 +398,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    {{-- <td id="regular-basic">USD xxx in XX days</td> --}}
                                     <td id="regular-advance2">USD xxx in XX days</td>
                                     <td id="regular-premium2">USD xxx in XX days</td>
                                 </tr>
@@ -371,14 +407,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    {{-- <td id="discounted-basic">USD xxx in XX days</td> --}}
                                     <td id="discounted-advance2">USD xxx in XX days</td>
                                     <td id="discounted-premium2">USD xxx in XX days</td>
                                 </tr>
                                 <tr class="bg-white">
-                                    {{-- <td><a href="{{ url('/language-editing-service-form/Basic') }}"
-                                            class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
-                                            Quote</a></td> --}}
+
                                     <td><a href="{{ url('/thesis-editing-service-form/Advance') }}"
                                             class="px-3 py-1 theme-btn-green" style="text-decoration: none;">Get a
                                             Quote</a></td>
@@ -388,7 +421,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p>
+                        <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p> --}}
                     </div>
                 </div>
             </div>
@@ -443,7 +476,7 @@
                                         {{$additionalService->additional_services}}
                                     </td>
                                 </tr>
-                                <tr> 
+                                <tr>
                                     <td>USD {{$additionalService->basic_package_price}}</td>
                                     <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td>
                                 </tr>
@@ -458,6 +491,44 @@
                             </tbody>
                         </table>
                         <p class="m-0 mt-1 font-500 small">*Price for Manuscript Formatting displayed above is for up to 10,000 words. There will be a customized charge for longer documents. Price for Manuscript Formatting is already included in Premium Editing service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="section-devision">
+                @foreach ($HomeSectionFours as $HomeSectionFour)
+                    <h4 class="text-center mb-lg-5 mb-3 primary-heading">{{ $HomeSectionFour->main_title }}</h4>
+                @endforeach
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-lg-center justify-content-center gap-3 gap-md-0 flex-wrap work-section">
+                        @php
+                            // Filter only valid items (with title, image, and description)
+                            $filteredItems = $HomeSectionFours->filter(function ($item) {
+                                return !empty($item->title) && !empty($item->image) && !empty($item->description);
+                            });
+                            $filteredItems = $filteredItems->values(); // Reindex array for accurate loop indexing
+                        @endphp
+
+                        @foreach ($filteredItems as $index => $item)
+                            <div class="d-flex flex-column align-items-center gap-3 work-section-item">
+                                <img src="{{ $item->image }}" alt="">
+                                <div class="text-center content">
+                                    <h6>{{ $item->title }}</h6>
+                                    <p class="m-0 mt-3">{{ $item->description }}</p>
+                                </div>
+                            </div>
+                            <!-- Only show the arrow if it's not the last item -->
+                            @if ($index < $filteredItems->count() - 1)
+                                <div class="d-sm-block d-none">
+                                    <img src="{{ asset('public/assets/images/arrow.png') }}" alt="" class="arrow">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

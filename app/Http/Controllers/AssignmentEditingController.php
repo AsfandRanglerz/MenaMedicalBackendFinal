@@ -8,26 +8,30 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\NewPricing;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
 use App\Models\QuotationFile;
 use App\Models\HomeSectionSix;
 use App\Models\ServicsPricing;
+use App\Models\HomeSectionFour;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 use App\Models\LanguageEditingFour;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Models\QuotationPersonalInfo;
 use App\Models\AssignmentEditingServiceOne;
+use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 
 class AssignmentEditingController extends Controller
 {
     public function assignmentEditingService() {
         $HomeSectionThrees = HomeSectionThree::orderBy('id', 'ASC')->get();
         $HomeSectionSixs = HomeSectionSix::orderBy('id', 'ASC')->get();
+        $HomeSectionFours = HomeSectionFour::orderBy('id', 'ASC')->get();
 
         $LanguageEditingFours = LanguageEditingFour::orderBy('id', 'ASC')->get();
 
@@ -42,20 +46,21 @@ class AssignmentEditingController extends Controller
         $seo_data = SEO::where('section','Assignemnt Editing Service')->first();
 
         $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Assignment Editing Service')->get();
-        return view('assignment_editing_service',compact('seo_data','HomeSectionThrees', 'LanguageEditingFours', 'AssignmentEditingServiceOnes', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('assignment_editing_service',compact('HomeSectionFours','seo_data','HomeSectionThrees', 'LanguageEditingFours', 'AssignmentEditingServiceOnes', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
 
 
     public function assignmentEditingServiceForm()
     {
+        $newPrices = NewPricing::where('service_name','Assignment Editing Service')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
-        return view('assignment_editing_service_form', compact('FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
+        return view('assignment_editing_service_form', compact('newPrices','FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
     }
 
     public function assignmentEditingServiceFormPrices(Request $request)
@@ -122,6 +127,16 @@ class AssignmentEditingController extends Controller
 
     public function submitQuotationRequest(Request $request)
     {
+        // Validate reCAPTCHA
+        $recaptcha = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        'secret' => config('services.recaptcha.secret_key'),
+        'response' => $request->input('g-recaptcha-response'),
+        'remoteip' => $request->ip(),
+        ]);
+
+        if (! $recaptcha->json('success')) {
+        return response()->json(['status' => 'error', 'message' => 'reCAPTCHA verification failed.'], 422);
+        }
         $request->validate([
             'email' => 'required|email',
             'first_name' => 'required',
@@ -133,6 +148,9 @@ class AssignmentEditingController extends Controller
             'program_category' => 'required',
             'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
         ]);
+           if ($request->filled('contact_time')) {
+                        abort(403, 'Bot detected.');
+                    }
         // Use a try-catch block for better error handling
         try {
             // Begin a transaction
@@ -141,10 +159,10 @@ class AssignmentEditingController extends Controller
             // Create the QuotationRequest record
             $quotationRequest = QuotationRequest::create([
                 'service_name' => $request->service_name,
-                'words' => $request->words,
+                // 'words' => $request->words,
                 'price_category' => $request->price_category,
                 'total_price' => $request->total_price,
-                    'base_price' => $request->service_price,
+                'base_price' => $request->service_price,
                 'language_type' => $request->language,
                 'additional_instructions' => $request->additional_instruction,
                 'latest_news' => $request->news_check,
@@ -183,7 +201,7 @@ class AssignmentEditingController extends Controller
             }
 
             // Send the email
-           Mail::to($request->email)->send(new SubmitQuotaionEmail);
+            Mail::to($request->email)->send(new SubmitQuotaionEmail);
 
             // Commit the transaction
             DB::commit();

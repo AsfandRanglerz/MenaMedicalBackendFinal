@@ -8,21 +8,25 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\NewPricing;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
 use App\Models\QuotationFile;
 use App\Models\HomeSectionSix;
 use App\Models\ServicsPricing;
+use App\Models\HomeSectionFour;
+use App\Mail\QuotationInfoAdmin;
 use App\Models\AdditionalPrices;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use App\Mail\QuotationInfoAdmin;use App\Models\LanguageEditingOne;
+use App\Models\LanguageEditingOne;
 use App\Models\LanguageEditingTwo;
 use Illuminate\Support\Facades\DB;
 use App\Models\LanguageEditingFour;
 use App\Models\LanguageEditingThree;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Models\QuotationPersonalInfo;
 use App\Models\QuotationAdditionalService;
@@ -32,7 +36,7 @@ class LanguageEditingController extends Controller
     public function languageEditing() {
         $HomeSectionThrees = HomeSectionThree::orderBy('id', 'ASC')->get();
         $HomeSectionSixs = HomeSectionSix::orderBy('id', 'ASC')->get();
-
+        $HomeSectionFours = HomeSectionFour::orderBy('id', 'ASC')->get();
         $LanguageEditings = LanguageEditingOne::orderBy('id', 'ASC')->get();
         $LanguageEditingTwos = LanguageEditingTwo::orderBy('id', 'ASC')->get();
         $LanguageEditingThrees = LanguageEditingThree::orderBy('id', 'ASC')->get();
@@ -49,7 +53,7 @@ class LanguageEditingController extends Controller
         $seo_data = SEO::where('section','Language Editing')->first();
 
         $additionalsServices = AdditionalPrices::where('services','Language Editing')->get();
-        return view('language_editing',compact('seo_data','additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('language_editing',compact('HomeSectionFours','seo_data','additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function advanceEditingService(){
@@ -57,6 +61,8 @@ class LanguageEditingController extends Controller
     }
 
     public function languageEditingServiceForm($package){
+        $newPrices = NewPricing::where('service_name','Language Editing')
+        ->where('package_name',$package)->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
@@ -64,7 +70,8 @@ class LanguageEditingController extends Controller
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
         $additionalsServices = AdditionalPrices::where('services','Language Editing')->get();
-        return view('advanced_editing_service',compact('package','additionalsServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
+        // return $package;
+        return view('advanced_editing_service',compact('newPrices','package','additionalsServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
     }
     public function languageEditingServiceFormPrices(Request $request){
         $data = ServicsPricing::where('service_name',$request->service_name)
@@ -132,8 +139,16 @@ class LanguageEditingController extends Controller
 
     public function submitQuotationRequest(Request $request){
 
-            // return $request;
-            // Validate the request data
+           // Validate reCAPTCHA
+            $recaptcha = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret_key'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+            ]);
+
+            if (! $recaptcha->json('success')) {
+            return response()->json(['status' => 'error', 'message' => 'reCAPTCHA verification failed.'], 422);
+            }
             $request->validate([
                 'email' => 'required|email',
                 'first_name' => 'required',
@@ -145,7 +160,9 @@ class LanguageEditingController extends Controller
                 'institute_name' => 'required',
                 'study_category' => 'required',
             ]);
-
+            if ($request->filled('contact_time')) {
+                        abort(403, 'Bot detected.');
+                    }
             try {
                 DB::beginTransaction();
                 $quotationRequest = QuotationRequest::create([
@@ -153,7 +170,7 @@ class LanguageEditingController extends Controller
                     'service_package' => $request->package_name,
                     'total_price' => $request->total_price,
                     'base_price' => $request->service_price,
-                    'words' => $request->words,
+                    // 'limit' => $request->limit,
                     'price_category' => $request->price_category,
                     'language_type' => $request->language,
                     'additional_instructions' => $request->additional_instruction,
@@ -201,7 +218,7 @@ class LanguageEditingController extends Controller
                         }
                     }
                 }
-               Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                Mail::to($request->email)->send(new SubmitQuotaionEmail);
                 DB::commit();
                 return response()->json([
                     'status' => 'success',

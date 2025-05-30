@@ -8,18 +8,21 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\NewPricing;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
 use App\Models\QuotationFile;
 use App\Models\HomeSectionSix;
 use App\Models\ServicsPricing;
+use App\Models\HomeSectionFour;
+use App\Mail\QuotationInfoAdmin;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use App\Mail\QuotationInfoAdmin;
 use Illuminate\Support\Facades\DB;
 use App\Models\LanguageEditingFour;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Models\QuotationPersonalInfo;
 use App\Models\DataAnalysisServiceOne;
@@ -32,6 +35,7 @@ class DataAnalysisController extends Controller
     {
         $HomeSectionThrees = HomeSectionThree::orderBy('id', 'ASC')->get();
         $HomeSectionSixs = HomeSectionSix::orderBy('id', 'ASC')->get();
+        $HomeSectionFours = HomeSectionFour::orderBy('id', 'ASC')->get();
 
         $LanguageEditingFours = LanguageEditingFour::orderBy('id', 'ASC')->get();
 
@@ -83,7 +87,8 @@ class DataAnalysisController extends Controller
             'Journals',
             'News',
             'Profiles',
-            'Faqs'
+            'Faqs',
+            'HomeSectionFours'
         ));
     }
 
@@ -98,6 +103,8 @@ class DataAnalysisController extends Controller
         $regularPrice = null;
         $discountedPrice = null;
         if ($package == 'Advance') {
+            $newPrices = NewPricing::where('service_name','Data Analysis')
+            ->where('package_name',$package)->get();
             $regularPrice = ServicsPricing::where('service_name', 'Data Analysis')
                 ->where('package_name', 'Advance')
                 ->where('price_category', 'Regular')
@@ -107,6 +114,8 @@ class DataAnalysisController extends Controller
                 ->where('price_category', 'Discounted')
                 ->first();
         } elseif ($package == 'Premium') {
+             $newPrices = NewPricing::where('service_name','Data Analysis')
+            ->where('package_name',$package)->get();
             $regularPrice = ServicsPricing::where('service_name', 'Data Analysis')
                 ->where('package_name', 'Premium')
                 ->where('price_category', 'Regular')
@@ -119,6 +128,7 @@ class DataAnalysisController extends Controller
         return view(
             'advanced_data_analysis_service',
             compact(
+                'newPrices',
                 'discountedPrice',
                 'regularPrice',
                 'package',
@@ -193,6 +203,16 @@ class DataAnalysisController extends Controller
 
     public function submitQuotationRequest(Request $request)
     {
+        // Validate reCAPTCHA
+        $recaptcha = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        'secret' => config('services.recaptcha.secret_key'),
+        'response' => $request->input('g-recaptcha-response'),
+        'remoteip' => $request->ip(),
+        ]);
+
+        if (! $recaptcha->json('success')) {
+        return response()->json(['status' => 'error', 'message' => 'reCAPTCHA verification failed.'], 422);
+        }
         $request->validate([
             'email' => 'required|email',
             'first_name' => 'required',
@@ -204,11 +224,14 @@ class DataAnalysisController extends Controller
             'institute_name' => 'required',
             'study_category' => 'required',
         ]);
+           if ($request->filled('contact_time')) {
+                        abort(403, 'Bot detected.');
+                    }
         try {
             DB::beginTransaction();
             $quotationRequest = QuotationRequest::create([
                 'service_name' => $request->service_name,
-                'words' => $request->words,
+                // 'words' => $request->words,
                 'price_category' => $request->price_category,
                 'service_package' => $request->package_name,
                 'total_price' => $request->total_price,
@@ -270,7 +293,7 @@ class DataAnalysisController extends Controller
             $data['name'] = $request->first_name;
             $data['last_name'] = $request->last_name;
             $data['email'] = $request->email;
-            Mail::to($admin)->send(new QuotationInfoAdmin($data));
+            Mail::to($admin)->send(new QuotationInfoAdmin($data));   
             DB::commit();
             return response()->json([
                 'status' => 'success',

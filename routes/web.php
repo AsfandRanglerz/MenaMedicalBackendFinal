@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\HomeSectionFiveController;
 use App\Http\Controllers\Admin\HomeSectionFourController;
 use App\Http\Controllers\Admin\PlaceOrderThreeController;
 use App\Http\Controllers\Admin\SetServicePriceController;
+use App\Http\Controllers\Pricing\PricingController;
 use App\Http\Controllers\Admin\HeaderContentOneController;
 use App\Http\Controllers\Admin\HeaderContentTwoController;
 use App\Http\Controllers\Admin\HomeSectionThreeController;
@@ -463,6 +464,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/pricing-servicesEdit/{id}', [SetServicePriceController ::class, 'edit'])->name('servicePrice.edit');
     Route::post('/pricing-servicesUpdate/{id}', [SetServicePriceController ::class, 'update'])->name('servicePrice.update');
     Route::delete('/pricing-servicesDestroy/{id}', [SetServicePriceController ::class, 'delete'])->name('servicePrice.delete');
+
+    // ########################## New Prices ###############################
+    Route::get('/pricing-services-index', [PricingController ::class, 'index'])->name('newServicePrice.index');
+    Route::get('/pricing-services-create', [PricingController ::class, 'create'])->name('newServicePrice.create');
+    Route::post('/pricing-services-store', [PricingController ::class, 'store'])->name('newServicePrice.store');
+    Route::get('/pricing-services-edit/{id}', [PricingController ::class, 'edit'])->name('newServicePrice.edit');
+    Route::post('/pricing-services-update/{id}', [PricingController ::class, 'update'])->name('newServicePrice.update');
+    Route::delete('/pricing-services-destroy/{id}', [PricingController ::class, 'delete'])->name('newServicePrice.delete');
 
     // ########################## Additional Prices ###############################
 

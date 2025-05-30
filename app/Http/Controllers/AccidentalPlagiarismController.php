@@ -8,28 +8,32 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\NewPricing;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
 use App\Models\QuotationFile;
 use App\Models\HomeSectionSix;
 use App\Models\ServicsPricing;
+use App\Models\HomeSectionFour;
 use App\Models\AdditionalPrices;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 use App\Models\LanguageEditingFour;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Models\QuotationPersonalInfo;
 use App\Models\AccidentalPlagiarismOne;
 use App\Models\QuotationAdditionalService;
+use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 
 class AccidentalPlagiarismController extends Controller
 {
     public function accidentalPlagiarism() {
         $HomeSectionThrees = HomeSectionThree::orderBy('id', 'ASC')->get();
         $HomeSectionSixs = HomeSectionSix::orderBy('id', 'ASC')->get();
+        $HomeSectionFours = HomeSectionFour::orderBy('id', 'ASC')->get();
 
         $LanguageEditingFours = LanguageEditingFour::orderBy('id', 'ASC')->get();
 
@@ -51,10 +55,11 @@ class AccidentalPlagiarismController extends Controller
         ->first();
         $seo_data = SEO::where('section','Accidental Plagiarism')->first();
         // return $packagePrices;
-        return view('accidental_plagiarism',compact('seo_data','discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'AccidentalPlagiarisms', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('accidental_plagiarism',compact('HomeSectionFours','seo_data','discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'AccidentalPlagiarisms', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function accidentalPlagiarismForm(){
+        $newPrices = NewPricing::where('service_name','Accidental Plagirisam')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
@@ -68,7 +73,7 @@ class AccidentalPlagiarismController extends Controller
         $discountedPrice = ServicsPricing::where('service_name','Accidental Plagirisam')
         ->where('price_category','Discounted')
         ->first();
-        return view('similarty_review_report',compact('discountedPrice','regularPrice','additionalServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
+        return view('similarty_review_report',compact('newPrices','discountedPrice','regularPrice','additionalServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
     }
     public function accidentalPlagiarismFormPrices(Request $request){
         $data = ServicsPricing::where('service_name',$request->service_name)
@@ -129,8 +134,16 @@ class AccidentalPlagiarismController extends Controller
     }
     public function submitQuotationRequest(Request $request){
 
-            // return $request;
-            // Validate the request data
+            // Validate reCAPTCHA
+        $recaptcha = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        'secret' => config('services.recaptcha.secret_key'),
+        'response' => $request->input('g-recaptcha-response'),
+        'remoteip' => $request->ip(),
+        ]);
+
+        if (! $recaptcha->json('success')) {
+        return response()->json(['status' => 'error', 'message' => 'reCAPTCHA verification failed.'], 422);
+        }
             $request->validate([
                 'email' => 'required|email',
                 'first_name' => 'required',
@@ -144,6 +157,9 @@ class AccidentalPlagiarismController extends Controller
                 'study_category' => 'required',
                 'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
             ]);
+               if ($request->filled('contact_time')) {
+                        abort(403, 'Bot detected.');
+                    }
             // Use a try-catch block for better error handling
             try {
                 // Begin a transaction
@@ -152,7 +168,7 @@ class AccidentalPlagiarismController extends Controller
                 // Create the QuotationRequest record
                 $quotationRequest = QuotationRequest::create([
                     'service_name' => $request->service_name,
-                    'words' => $request->words,
+                    // 'words' => $request->words,
                     'price_category' => $request->price_category,
                     'language_type' => $request->language,
                     'additional_instructions' => $request->additional_instruction,
@@ -202,7 +218,7 @@ class AccidentalPlagiarismController extends Controller
                     ]);
                 }
                 // Send the email
-                Mail::to($request->email)->send(new SubmitQuotaionEmail);
+                 Mail::to($request->email)->send(new SubmitQuotaionEmail);
                 DB::commit();
                 return response()->json([
                     'status' => 'success',

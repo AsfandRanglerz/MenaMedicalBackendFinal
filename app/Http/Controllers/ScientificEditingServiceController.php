@@ -8,21 +8,24 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\NewPricing;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
 use App\Models\QuotationFile;
 use App\Models\HomeSectionSix;
 use App\Models\ServicsPricing;
+use App\Models\HomeSectionFour;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 use App\Models\ScientificEditingOne;
 use App\Models\ScientificEditingTwo;
 use Illuminate\Support\Facades\Mail;
 use App\Models\QuotationPersonalInfo;
 use App\Models\ScientificEditingThree;
+use Illuminate\Support\Facades\Http;
+use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 
 
 class ScientificEditingServiceController extends Controller
@@ -30,6 +33,7 @@ class ScientificEditingServiceController extends Controller
     public function scientificEditingService()
     {
         $HomeSectionThrees = HomeSectionThree::orderBy('id', 'ASC')->get();
+        $HomeSectionFours = HomeSectionFour::orderBy('id', 'ASC')->get();
 
         $ScientificEditingOnes = ScientificEditingOne::orderBy('id', 'ASC')->get();
         $ScientificEditingTwos = ScientificEditingTwo::orderBy('id', 'ASC')->get();
@@ -45,18 +49,19 @@ class ScientificEditingServiceController extends Controller
         $seo_data = SEO::where('section','Scientific Editing')->first();
 
         $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name', 'Scientific Editing')->get();
-        return view('scientific_editing_service', compact('seo_data','HomeSectionThrees', 'ScientificEditingOnes', 'ScientificEditingTwos', 'ScientificEditingThrees', 'HomeSectionSixs', 'SocialLinks', 'FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'Faqs'));
+        return view('scientific_editing_service', compact('HomeSectionFours','seo_data','HomeSectionThrees', 'ScientificEditingOnes', 'ScientificEditingTwos', 'ScientificEditingThrees', 'HomeSectionSixs', 'SocialLinks', 'FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'Faqs'));
     }
 
     public function scientificEditingForm()
     {
+        $newPrices = NewPricing::where('service_name','Scientific Editing')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
-        return view('scientific_editing_service_forms', compact('FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
+        return view('scientific_editing_service_forms', compact('newPrices','FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
     }
 
     public function scientificEditingFormPrices(Request $request)
@@ -124,6 +129,17 @@ class ScientificEditingServiceController extends Controller
 
     public function submitQuotationRequest(Request $request)
     {
+        // Validate reCAPTCHA
+        $recaptcha = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        'secret' => config('services.recaptcha.secret_key'),
+        'response' => $request->input('g-recaptcha-response'),
+        'remoteip' => $request->ip(),
+        ]);
+
+        if (! $recaptcha->json('success')) {
+        return response()->json(['status' => 'error', 'message' => 'reCAPTCHA verification failed.'], 422);
+        }
+
         $request->validate([
             'email' => 'required|email',
             'first_name' => 'required',
@@ -135,11 +151,15 @@ class ScientificEditingServiceController extends Controller
             'program_category' => 'required',
             'agree_check' => 'required|in:yes', // Ensure the checkbox is checked
         ]);
+        if ($request->filled('contact_time')) {
+            abort(403, 'Bot detected.');
+        }
+
         try {
             DB::beginTransaction();
             $quotationRequest = QuotationRequest::create([
                 'service_name' => $request->service_name,
-                'words' => $request->words,
+                // 'words' => $request->words,
                 'price_category' => $request->price_category,
                 'total_price' => $request->total_price,
                 'base_price' => $request->service_price,
@@ -171,7 +191,7 @@ class ScientificEditingServiceController extends Controller
                     'file' => $quotationFile,
                 ]);
             }
-           Mail::to($request->email)->send(new SubmitQuotaionEmail);
+            Mail::to($request->email)->send(new SubmitQuotaionEmail);
             DB::commit();
             return response()->json([
                 'status' => 'success',

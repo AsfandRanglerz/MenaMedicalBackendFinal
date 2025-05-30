@@ -136,6 +136,23 @@
                                 <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
                                         class="tick-cross"></td>
                             </tr>
+                            <tr>
+                                <td class="text-center small py-2"></td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/data-analysis-service-form/Advance') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/data-analysis-service-form/Premium') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -225,11 +242,21 @@
                                 <td colspan="2" class="py-2 text-center">Well designed tables and figures</td>
                             </tr>
                             <tr>
-                                <td class="py-2 text-center">
-                                    <img src="{{ asset('public/assets/images/Path 23.png') }}" class="tick-cross">
+                                {{-- <td class="text-center small py-2"></td> --}}
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/data-analysis-service-form/Advance') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
                                 </td>
-                                <td class="text-center"><img src="{{ asset('public/assets/images/Path 21.png') }}"
-                                        class="tick-cross"></td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/data-analysis-service-form/Premium') }}"
+                                            class="btn theme-btn-green w-100 m-1"
+                                            style="text-decoration: none; max-width: 180px;">Select</a>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -261,11 +288,8 @@
                                     <td>
                                         USD {{ $regularPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $regularPricePremiumData->delivery_days ?? 'X' }} days
                                     </td>
-                                    {{-- <td>
-                                        <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
-                                    </td> --}}
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td class="t-line">
                                         Discounted Price for Researchers & Students in MENA Region
                                     </td>
@@ -275,11 +299,8 @@
                                     <td>
                                         USD {{ $discountedPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $discountedPricePremiumData->delivery_days ?? 'X' }} days
                                     </td>
-                                    {{-- <td>
-                                        <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
-                                    </td> --}}
-                                </tr>
-                                <tr>
+                                </tr> --}}
+                                {{-- <tr>
                                     <td>
                                     </td>
                                     <td>
@@ -288,7 +309,7 @@
                                     <td>
                                         <a href="{{url('/data-analysis-service-form/Premium')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
-                                </tr>
+                                </tr> --}}
 
                             </tbody>
                         </table>
@@ -324,34 +345,70 @@
                                         <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td> --}}
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td colspan="2" class="text-center">
                                     Discounted Price for Researchers & Students in MENA Region
                                     </td>
-                                </tr>
-                                <tr>
+                                </tr> --}}
+                                {{-- <tr>
                                     <td>
                                         USD {{ $discountedPriceAdvanceData->less_equal_price ?? 'XXX' }} in {{ $discountedPriceAdvanceData->delivery_days ?? 'X' }} days
                                     </td>
                                     <td>
                                         USD {{ $discountedPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $discountedPricePremiumData->delivery_days ?? 'X' }} days
                                     </td>
-                                    {{-- <td>
-                                        <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
-                                    </td> --}}
-                                </tr>
-                                <tr>
+                               
+                                </tr> --}}
+                                {{-- <tr>
                                     <td>
                                         <a href="{{url('/data-analysis-service-form/Advance')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
                                     <td>
                                         <a href="{{url('/data-analysis-service-form/Premium')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
-                                </tr>
+                                </tr> --}}
 
                             </tbody>
                         </table>
-                        <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p>
+                        {{-- <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="section-devision">
+                @foreach ($HomeSectionFours as $HomeSectionFour)
+                    <h4 class="text-center mb-lg-5 mb-3 primary-heading">{{ $HomeSectionFour->main_title }}</h4>
+                @endforeach
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-lg-center justify-content-center gap-3 gap-md-0 flex-wrap work-section">
+                        @php
+                            // Filter only valid items (with title, image, and description)
+                            $filteredItems = $HomeSectionFours->filter(function ($item) {
+                                return !empty($item->title) && !empty($item->image) && !empty($item->description);
+                            });
+                            $filteredItems = $filteredItems->values(); // Reindex array for accurate loop indexing
+                        @endphp
+
+                        @foreach ($filteredItems as $index => $item)
+                            <div class="d-flex flex-column align-items-center gap-3 work-section-item">
+                                <img src="{{ $item->image }}" alt="">
+                                <div class="text-center content">
+                                    <h6>{{ $item->title }}</h6>
+                                    <p class="m-0 mt-3">{{ $item->description }}</p>
+                                </div>
+                            </div>
+                            <!-- Only show the arrow if it's not the last item -->
+                            @if ($index < $filteredItems->count() - 1)
+                                <div class="d-sm-block d-none">
+                                    <img src="{{ asset('public/assets/images/arrow.png') }}" alt="" class="arrow">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

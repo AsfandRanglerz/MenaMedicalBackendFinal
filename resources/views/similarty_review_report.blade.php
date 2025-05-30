@@ -13,7 +13,7 @@
                             <div>
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
                                     <img src="{{ asset('public/assets/images/Path 328.png') }}" class="arrow">
-                                    <p class="text-white m-0 font-500">STEP 1: Select Price Category</p>
+                                    <p class="text-white m-0 font-500">STEP 1: Select Service</p>
                                 </div>
                                 <div class="mt-4 overflow-auto">
                                     <div class="advance-table-container">
@@ -36,14 +36,14 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="">
-                                                    <td class="px-3 py-2 head-one font-600">Select Price Category
+                                                    <td class="px-3 py-2 head-one font-600">Select Required Service
                                                     </td>
                                                     <td class="text-white font-600 text-center price-column">Price</td>
                                                     <td class="text-white font-600 text-center delivery-column">Delivery
                                                         Time
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>
                                                         <label>
                                                             <input type="radio" name="price_cat" value="Regular Price">
@@ -70,12 +70,32 @@
                                                     <td><span
                                                             id="discounted_price_days">{{ $discountedPrice->delivery_days ?? 'X' }}</span>
                                                         days</td>
-                                                </tr>
+                                                </tr> --}}
+                                                @foreach ($newPrices as $data)
+                                                    <tr>
+                                                        <td>
+                                                            <label>
+                                                                <input type="radio" name="price_cat"
+                                                                    value="{{ $data->range }}"
+                                                                    data-price="{{ $data->price }}"
+                                                                    data-days="{{ $data->delivery_time }}"
+                                                                    data-limit="{{ $data->limit }}">
+
+                                                                {{ $data->range }}
+                                                            </label>
+                                                            <input type="hidden" name="limit" class="limit"
+                                                                value="{{ $data->limit }}">
+                                                        </td>
+                                                        <td>USD <span class="price_display">{{ $data->price }}</span></td>
+                                                        <td><span class="days_display">{{ $data->delivery_time }}</span>
+                                                            days</td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p>
+                                <p class="m-0 mt-1 font-500 small">   Additional charges will apply above 6,000 words</p>
                             </div>
                             <div class="section-devision">
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
@@ -88,8 +108,8 @@
                                         <table>
                                             <thead>
                                                 <tr class="category-header">
-                                                    <th class="px-3 py-2 head-one font-600">Select Service and Price
-                                                        Category
+                                                    <th class="px-3 py-2 head-one font-600">
+                                                        Select Additional Services
                                                     </th>
                                                     <th class="text-white font-600 text-center price-column">Price</th>
                                                 </tr>
@@ -316,21 +336,23 @@
                                     </label>
                                     <label class="mt-3 d-flex gap-2 align-items-center">
                                         <input type="radio" name="agree_check" required value="yes">
- <p class="mb-0">I have read and agree to MENA Medical Research’s <a
-                                                href="{{route('privacy-policy')}}" class="text-decoration-none text-blue">Privacy Policy</a>
-                                            and <a href="{{route('term-condition')}}" class="text-decoration-none text-blue">Terms of Use</a>
+                                        <p class="mb-0">I have read and agree to MENA Medical Research’s <a
+                                                href="{{ route('privacy-policy') }}"
+                                                class="text-decoration-none text-blue">Privacy Policy</a>
+                                            and <a href="{{ route('term-condition') }}"
+                                                class="text-decoration-none text-blue">Terms of Use</a>
                                         </p>
                                     </label>
                                 </div>
                             </div>
-                            <div id="agreeCheck" class="alert alert-danger alert-dismissible fade show"
-                                    role="alert" style="display: none;">
-                                    <strong>Warning!</strong> You must agree to the terms and privacy policy.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert"
+                            <div id="agreeCheck" class="alert alert-danger alert-dismissible fade show" role="alert"
                                 style="display: none;">
+                                <strong>Warning!</strong> You must agree to the terms and privacy policy.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div id="successMessage" class="alert alert-success alert-dismissible fade show"
+                                role="alert" style="display: none;">
                                 <strong>Success!</strong> Your order has been successfully submitted, and a confirmation
                                 email has been sent to your email address.
                                 The order will be reviewed by MENA Medical Research, and a final quotation will be emailed
@@ -340,9 +362,15 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
+                             <div style="position: absolute; left: -10000px; top: -10000px; height: 1px; width: 1px; overflow: hidden;">
+                                <label for="contact_time">Best time to contact you</label>
+                                <input type="text" name="contact_time" id="contact_time" autocomplete="off">
+                            </div>
+                            <!-- reCAPTCHA widget -->
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
                             <input type="button" id="submit-quotation"
                                 class="d-flex align-items-center gap-2 mt-4 text-white m-0 btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
-                                value="SUBMIT QUOTATION REQUEST" />
+                                value="SUBMIT REQUEST" />
                         </form>
                     </div>
                     <div class="col-md-4 mt-md-0 mt-4">
@@ -373,25 +401,27 @@
                     .val(); // Get the value of the selected radio button
                 console.log("Selected Price Category:", selectedPriceCategory); // Optional: For debugging
                 // alert(selectedPriceCategory);
-                let price = 0;
-                let days = 0;
+                // let price = 0;
+                // let days = 0;
 
-                // Check which price category is selected
-                if (selectedPriceCategory === "Regular Price") {
-                    price = parseFloat($('#regular_price').text()) || 0;
-                    days = parseInt($('#regular_price_days').text()) || 0;
-                } else if (selectedPriceCategory === "Discounted Price") {
-                    price = parseFloat($('#discounted_price').text()) || 0;
-                    days = parseInt($('#discounted_price_days').text()) || 0;
-                }
-                if (price === 0 || days === 0) {
-                    toastr.error('Please Enter Approximate Word Count to Calculate Price first.');
-                    $("input[name='price_cat']").prop('checked', false);
-                    return;
-                    // Uncheck all radio buttons
-                } else {
-                    console.log(`Price: ${price}, Days: ${days}`);
-                }
+                // // Check which price category is selected
+                // if (selectedPriceCategory === "Regular Price") {
+                //     price = parseFloat($('#regular_price').text()) || 0;
+                //     days = parseInt($('#regular_price_days').text()) || 0;
+                // } else if (selectedPriceCategory === "Discounted Price") {
+                //     price = parseFloat($('#discounted_price').text()) || 0;
+                //     days = parseInt($('#discounted_price_days').text()) || 0;
+                // }
+                // if (price === 0 || days === 0) {
+                //     toastr.error('Please Enter Approximate Word Count to Calculate Price first.');
+                //     $("input[name='price_cat']").prop('checked', false);
+                //     return;
+                //     // Uncheck all radio buttons
+                // } else {
+                //     console.log(`Price: ${price}, Days: ${days}`);
+                // }
+                const price = parseFloat($(this).data('price')) || 0;
+                const days = parseInt($(this).data('days')) || 0;
                 $('#service_name').text('Accidental Plagirisam - ' +
                     selectedPriceCategory); // Concatenate package name and text
                 $('#service_price').text(price); // Set the price
@@ -513,6 +543,11 @@
         });
         //store quotation request
         $('#submit-quotation, .submit-quotation').on('click', function() {
+            let recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                    toastr.error("Please complete the reCAPTCHA");
+                    return;
+                }
             let priceCat = $('input[name="price_cat"]:checked').val();
             if (!priceCat) {
                 toastr.error("Please Select Price Category");
@@ -522,7 +557,9 @@
             var originalText = button.val(); // Store the original button text
             button.val('Submitting...').prop('disabled', true);
             var formData = new FormData();
+            formData.append('g-recaptcha-response', recaptchaResponse);
             formData.append('price_category', ($('input[name="price_cat"]:checked').val()).trim());
+            formData.append('limit', $('input[name="price_cat"]:checked').data('limit'));
             formData.append('service_name', 'Accidental Plagirisam');
             formData.append('language', ($('#createQuotationForm input[name="language"]:checked').val() || '')
                 .trim());
@@ -542,7 +579,9 @@
             formData.append('location', ($('#createQuotationForm select[name="location"]').val() || '').trim());
             formData.append('other_location', ($('#otherLocationInput').val() || '').trim());
             formData.append('question', ($('#createQuotationForm input[name="question"]').val() || '').trim());
-formData.append('news_check', $('#createQuotationForm input[name="news_check"]').is(':checked') ? '1' : '0');            formData.append('agree_check', ($('#createQuotationForm input[name="agree_check"]').val()).trim());
+            formData.append('news_check', $('#createQuotationForm input[name="news_check"]').is(':checked') ? '1' :
+                '0');
+            formData.append('agree_check', ($('#createQuotationForm input[name="agree_check"]').val()).trim());
             var priceText = $('#estimate-price').text();
             var priceValue = parseFloat(priceText.replace('$', '').trim());
             formData.append('total_price', priceValue);
@@ -563,7 +602,7 @@ formData.append('news_check', $('#createQuotationForm input[name="news_check"]')
             formData.append('additional_service', additionalPriceCat);
             formData.append('additional_service_price', additionalPrice);
             const agreeCheck = document.querySelector('input[name="agree_check"]:checked');
-             if (!agreeCheck) {
+            if (!agreeCheck) {
                 event.preventDefault();
                 $('#agreeCheck').fadeIn();
                 button.val(originalText).prop('disabled', false);
@@ -629,12 +668,14 @@ formData.append('news_check', $('#createQuotationForm input[name="news_check"]')
                 },
                 complete: function() {
                     button.val(originalText).prop('disabled', false);
+                    grecaptcha.reset();    
                 }
             });
         });
         $('input, select').on('input change', function() {
             $(this).next('.error-message').remove();
         });
+
         function jumpToError() {
             // Find the first error message
             var firstError = $('.error-message').filter(':visible').first()
@@ -650,8 +691,7 @@ formData.append('news_check', $('#createQuotationForm input[name="news_check"]')
         // Call the function with a delay of 1000ms (1 second) on button click
         $('#submit-quotation, .submit-quotation').on('click', function() {
             jumpToError();
-            setTimeout(function() {
-            }, 100); // Delay of 1000 milliseconds
+            setTimeout(function() {}, 100); // Delay of 1000 milliseconds
         });
     </script>
 @endsection

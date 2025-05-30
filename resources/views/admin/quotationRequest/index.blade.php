@@ -154,7 +154,7 @@
                                                         No
                                                     @endif
                                                 </td>
-                                                
+
                                                 <td>
                                                     <div class="d-flex gap-4">
                                                         <form action="{{ route('quotationRequests.status', $data->id) }}"
@@ -384,8 +384,8 @@
                         <tr style="border-bottom: 1px solid #000;">
                             <th style="text-align: left; padding: 8px;">Service Name</th>
                             <th style="text-align: left; padding: 8px;">Service Package</th>
-                            <th style="text-align: left; padding: 8px;">Price Category</th>
-                            <th style="text-align: left; padding: 8px;">Words</th>
+                            <th style="text-align: left; padding: 8px;">Price / Words Category</th>
+                            {{-- <th style="text-align: left; padding: 8px;">Words</th> --}}
                             <th style="text-align: left; padding: 8px;">Base Price</th>
                             <th style="text-align: left; padding: 8px;">Total Price</th>
                         </tr>
@@ -393,7 +393,7 @@
                             <td style="padding: 8px;"><span id="modalServiceName"></span></td>
                             <td style="padding: 8px;"><span id="modalServicePackage"></span></td>
                             <td style="padding: 8px;"><span id="modalPriceCategory"></span></td>
-                            <td style="padding: 8px;"><span id="modalWords"></span></td>
+                            {{-- <td style="padding: 8px;"><span id="modalWords"></span></td> --}}
                             <td style="padding: 8px;"><span id="modalPrice"></span></td>
                             <td style="padding: 8px;"><span id="modalTotalPrice"></span></td>
                         </tr>
@@ -427,7 +427,7 @@
             var serviceName = button.data('service-name');
             var servicePackage = button.data('service-package');
             var priceCategory = button.data('price-category');
-            var words = button.data('words');
+            // var words = button.data('words');
             var totalPrice = button.data('total-price');
             var basePrice = button.data('base-price');
             var additionalServices = button.data('additional-services');
@@ -437,7 +437,7 @@
             $('#modalServiceName').text(serviceName);
             $('#modalServicePackage').text(servicePackage);
             $('#modalPriceCategory').text(priceCategory);
-            $('#modalWords').text(words);
+            // $('#modalWords').text(words);
             $('#modalTotalPrice').text(totalPrice);
             $('#modalPrice').text(basePrice);
 
@@ -488,8 +488,6 @@
             }
 
         });
-
-
         function handleStatusChange(selectElement, id) {
             if (selectElement.value == 2) {
                 $('#deactivationForm').attr('action', '{{ url('admin/Quotation-Requests/status/') }}/' + id);

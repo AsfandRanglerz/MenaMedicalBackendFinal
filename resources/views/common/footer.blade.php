@@ -9,6 +9,15 @@
                         <h6 class="heading">{{ $FooterContentOne->heading }}</h6>
                         <p class="mb-lg-0">{{ $FooterContentOne->content }}</p>
                         @endforeach
+                        <ul class="mb-0 list">
+                            <li>
+                                <a href="{{url('/privacy-policy')}}">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="{{url('/privacy-policy')}}">Term & Conditions</a>
+                            </li>
+                        </ul>
+                        {{-- <br> --}}
                     </div>
                     <div class="col-lg-8">
                         <div class="row">

@@ -29,7 +29,7 @@
                     to help them overcome these challenges.</p>
             </div>
         </div>
-    </div> 
+    </div>
     <div class="container-fluid grey-bg modules-section">
         <div class="container-fluid">
             <div class="py-4 container-fluid">
