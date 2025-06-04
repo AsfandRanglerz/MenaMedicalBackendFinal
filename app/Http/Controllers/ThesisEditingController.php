@@ -68,7 +68,7 @@ class ThesisEditingController extends Controller
     public function thesisEditingServiceForm($package){
         $newPrices = NewPricing::where('service_name','Thesis Editing Service')
         ->where('package_name',$package)
-        ->get();
+        ->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();

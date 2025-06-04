@@ -53,7 +53,7 @@ class AssignmentEditingController extends Controller
 
     public function assignmentEditingServiceForm()
     {
-        $newPrices = NewPricing::where('service_name','Assignment Editing Service')->get();
+        $newPrices = NewPricing::where('service_name','Assignment Editing Service')->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();

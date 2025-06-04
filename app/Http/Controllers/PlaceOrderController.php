@@ -43,8 +43,7 @@ class PlaceOrderController extends Controller
         ->when(!empty($request->package), function ($query) use ($request) {
             return $query->where('package_name', $request->package);
         })
-        ->latest() 
-        ->get();
+        ->orderBy('position', 'asc')->get();
         $additionalsServices = AdditionalPrices::where('services',$request->service)->get();
         // return $additionalsServices;
         $service =  $request->service;

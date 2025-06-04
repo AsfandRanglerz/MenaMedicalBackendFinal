@@ -10,11 +10,14 @@
                         <p class="mb-lg-0">{{ $FooterContentOne->content }}</p>
                         @endforeach
                         <ul class="mb-0 list">
-                            <li>
-                                <a href="{{url('/privacy-policy')}}">Privacy Policy</a>
+                            <li class="d-inline-block me-1">
+                                <a href="{{url('/privacy-policy')}}" class="info-link">Privacy Policy</a>
                             </li>
-                            <li>
-                                <a href="{{url('/privacy-policy')}}">Term & Conditions</a>
+                            <li class="d-inline-block me-1">
+                                <a href="{{url('/term-condition')}}" class="info-link">Term & Conditions</a>
+                            </li>
+                            <li class="d-inline-block">
+                                <a href="{{url('/contact-us')}}" class="info-link">Contact Us</a>
                             </li>
                         </ul>
                         {{-- <br> --}}
@@ -22,17 +25,16 @@
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-md-3">
-                                
+
                                 <div class="list-holder">
                                     <h6 class="heading">Services <span class="fa fa-angle-down pull-right d-md-none down-arrow"></span></h6>
                                     @foreach($Services as $Service)
                                     <ul class="mb-0 list">
                                         <li><a href="{{ $Service->url }}">{{ $Service->text }}</a></li>
-                                        
                                     </ul>
                                     @endforeach
                                 </div>
-                                
+
                             </div>
                             <div class="col-md-3">
                                 <div class="list-holder">

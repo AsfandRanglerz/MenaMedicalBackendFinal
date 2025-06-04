@@ -62,7 +62,7 @@ class LanguageEditingController extends Controller
 
     public function languageEditingServiceForm($package){
         $newPrices = NewPricing::where('service_name','Language Editing')
-        ->where('package_name',$package)->get();
+        ->where('package_name',$package)->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();

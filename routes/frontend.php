@@ -115,6 +115,8 @@ Route::get('/journals', [JournalsController::class, 'journalModule']);
 
 Route::get('/privacy-policy',[PrivacyPolicyTermConditionController::class,'privacyPage'])->name('privacy-policy');
 Route::get('/term-condition',[PrivacyPolicyTermConditionController::class,'termsPage'])->name('term-condition');
+Route::get('/contact-us',[PrivacyPolicyTermConditionController::class,'contctPage'])->name('contct-us');
+Route::post('/contact-us/post',[PrivacyPolicyTermConditionController::class,'contactPost'])->name('contact.submit');
 
 // Route::get('/scientific-editing', [ScientificEditingController::class, 'scientificEditing']);
 // Route::get('/scientific-editing-form', [ScientificEditingController::class, 'scientificEditingForm'])->name('scientificEditingService');

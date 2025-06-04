@@ -472,6 +472,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/pricing-services-edit/{id}', [PricingController ::class, 'edit'])->name('newServicePrice.edit');
     Route::post('/pricing-services-update/{id}', [PricingController ::class, 'update'])->name('newServicePrice.update');
     Route::delete('/pricing-services-destroy/{id}', [PricingController ::class, 'delete'])->name('newServicePrice.delete');
+    Route::post('/new-service-price/sort', [PricingController::class, 'sort'])->name('newServicePrice.sort');
 
     // ########################## Additional Prices ###############################
 
@@ -527,7 +528,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
             Route::get('seo/section/dataAnalysis', 'getdataAnalysisSeo')->name('dataAnalysis.seo');
 
             Route::post('seo/section/update', 'update')->name('home.seo.update');
-            
+
             Route::get('seo/edit/{id}', 'edit')->name('seo.edit');
             Route::post('seo/update/', 'update')->name('seo.update');
             Route::get('seo/read', 'read')->name('seo.read');

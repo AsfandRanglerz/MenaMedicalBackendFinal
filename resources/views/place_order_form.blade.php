@@ -34,15 +34,21 @@
                         {{ $title }}
                     @endif
                 </h4>
+
+                @if ($title == 'Poster / PowerPoint Presentation Service')
+                    <input type="text" id="package_name" value="{{ $form_head }}" hidden>
+                @elseif ($title == 'Thesis Editing Service')
+                    <input type="text" id="package_name" value="{{ $package . $title }}" hidden>
+                @else
+                    <input type="text" id="package_name" value="{{ $title }}" hidden>
+                @endif
                 <div class="row mt-4">
                     <div class="col-md-8">
                         <form action="" id="createQuotationForm" enctype="multipart/form-data" class="mena-form">
                             <div>
                                 <div class="d-flex align-items-center gap-2 px-3 py-3 heading-band">
                                     <img src="{{ asset('public/assets/images/Path 328.png') }}" class="arrow">
-                                    <p class="text-white m-0 font-500">STEP 1: Select the Word Count for Price Estimate and
-                                        Delivery
-                                        Time</p>
+                                    <p class="text-white m-0 font-500">STEP 1: Select the Word Count of your Document</p>
                                 </div>
                                 <p class="m-0 mt-2 mb-3 info-heading">Please select the appropriate word count category.</p>
                                 <div class="overflow-auto">
@@ -180,10 +186,19 @@
                                     </div>
                                     <div class="overflow-auto mt-4">
                                         <div class="d-flex align-items-center gap-3">
-                                            <small class="mb-0 fw-bolder">Enter the invoice number of invoice received by
-                                                you</small>
-                                            <input type="text" name="invoice_number" class="form-control ms-auto"
-                                                style="width: 200px" placeholder="Enter Invoice Number" />
+                                            <small class="mb-0 fw-bolder">
+                                                Enter the invoice number of invoice received by you
+                                            </small>
+                                            <input type="text" name="invoice_number" class="form-control"
+                                                style="width: 200px;" placeholder="Enter Invoice Number" id="invoice_number"/>
+                                            <!-- The link -->
+                                            <small class="mb-0">
+                                                <a href="javascript:void(0);" id="showInvoiceHelp"
+                                                    class="text-decoration-none text-blue">
+                                                    Don’t have an invoice number?
+                                                </a>
+                                            </small>
+
                                         </div>
                                         <label class="mt-3 d-flex gap-2 align-items-center">
                                             <input type="radio" name="agree_check" required value="yes">
@@ -196,15 +211,34 @@
 
                                 </div>
                             </div>
-                             <div style="position: absolute; left: -10000px; top: -10000px; height: 1px; width: 1px; overflow: hidden;">
+                            <!-- Custom success message box with close button -->
+                            <div id="toggleInvoiceHelp" class="alert alert-success alert-dismissible fade show mt-2"
+                                role="alert" style="display: none;">
+                                <strong>Note:</strong> The invoice number is mentioned on the payment invoice sent to you by
+                                <strong>MENA Medical Research</strong> after reviewing your submitted documents.
+                                If you have not received a payment invoice, please go back to the required Services page to
+                                submit your document for preliminary review.
+
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div
+                                style="position: absolute; left: -10000px; top: -10000px; height: 1px; width: 1px; overflow: hidden;">
                                 <label for="contact_time">Best time to contact you</label>
                                 <input type="text" name="contact_time" id="contact_time" autocomplete="off">
                             </div>
-                            <!-- reCAPTCHA widget -->
-                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
-                            <input type="button" id="submit-quotationn"
-                                class="d-flex align-items-center gap-2 mt-4 text-white m-0 btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
-                                value="MAKE PAYMENT" />
+                            <div class="d-flex flex-column align-items-center">
+                                <!-- reCAPTCHA widget -->
+                                <div class="g-recaptcha mb-3" data-sitekey="{{ config('services.recaptcha.site_key') }}">
+                                </div>
+
+                                <!-- Button -->
+                                <input type="button" id="submit-quotationn"
+                                    class="d-flex align-items-center gap-2 text-white btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
+                                    value="MAKE PAYMENT" />
+                            </div>
+
                         </form>
                     </div>
                     <div class="col-md-4 mt-md-0 mt-4">
@@ -217,7 +251,26 @@
 @endsection
 
 @section('script')
+
+<script>
+    document.getElementById('submit-quotationn').addEventListener('click', function () {
+        const invoice = document.getElementById('invoice_number').value.trim();
+        if (invoice === '') {
+            toastr.error('Invoice Number field is blank');
+        } else {
+            toastr.success('Invoice Number has been Submitted Successfully');
+            document.getElementById('invoice_number').value = ''; // Clear the input field
+        }
+    });
+</script>
+
     <script>
+        $(document).ready(function() {
+            $('#showInvoiceHelp').on('click', function() {
+                $('#toggleInvoiceHelp').fadeIn();
+            });
+        });
+
         function handleOtherOption(selectElement) {
             const otherLocationContainer = document.getElementById('otherLocationContainer');
             if (selectElement.value === 'Other') {
@@ -258,7 +311,7 @@
                 const price = parseFloat($(this).data('price')) || 0;
                 const days = parseInt($(this).data('days')) || 0;
 
-                $('#service_name').text($("#package_name").val() + ' Language Editing - ' + selectedPriceCategory);
+                $('#service_name').text($("#package_name").val() + ' - ' + selectedPriceCategory);
                 $('#service_price').text(price);
 
                 // 🔽 Correctly calculate total additional service price
@@ -274,36 +327,36 @@
             });
         });
 
- $(document).ready(function () {
-    $("input[name='additional_price_cat']").change(function () {
-        let selected = $("input[name='additional_price_cat']:checked");
+        $(document).ready(function() {
+            $("input[name='additional_price_cat']").change(function() {
+                let selected = $("input[name='additional_price_cat']:checked");
 
-        // Get base price
-        let basePrice = parseFloat($('#service_price').text()) || 0;
+                // Get base price
+                let basePrice = parseFloat($('#service_price').text()) || 0;
 
-        // Initialize totals
-        let totalAdditionalPrice = 0;
-        let serviceNamesHtml = "";
-        let servicePricesHtml = "";
+                // Initialize totals
+                let totalAdditionalPrice = 0;
+                let serviceNamesHtml = "";
+                let servicePricesHtml = "";
 
-        // Loop through all checked checkboxes
-        selected.each(function () {
-            let row = $(this).closest('tr');
-            let serviceName = $(this).val();
-            let price = parseFloat(row.find('.additional_price_cat_value').text()) || 0;
+                // Loop through all checked checkboxes
+                selected.each(function() {
+                    let row = $(this).closest('tr');
+                    let serviceName = $(this).val();
+                    let price = parseFloat(row.find('.additional_price_cat_value').text()) || 0;
 
-            serviceNamesHtml += `<div>${serviceName}</div>`;
-            servicePricesHtml += `<div>${price}</div>`;
+                    serviceNamesHtml += `<div>${serviceName}</div>`;
+                    servicePricesHtml += `<div>${price}</div>`;
 
-            totalAdditionalPrice += price;
+                    totalAdditionalPrice += price;
+                });
+
+                // Update summary boxes
+                $('#additional_service_name').html(serviceNamesHtml);
+                $('#additional_service_price').html(servicePricesHtml);
+                $('#estimate-price').text(`${basePrice + totalAdditionalPrice}`);
+            });
         });
-
-        // Update summary boxes
-        $('#additional_service_name').html(serviceNamesHtml);
-        $('#additional_service_price').html(servicePricesHtml);
-        $('#estimate-price').text(`${basePrice + totalAdditionalPrice}`);
-    });
-});
 
 
         //calculate price base of words
@@ -366,11 +419,11 @@
         });
         //store quotation request
         $('#submit-quotation, .submit-quotation').on('click', function() {
-               let recaptchaResponse = grecaptcha.getResponse();
-                if (!recaptchaResponse) {
-                    toastr.error("Please complete the reCAPTCHA");
-                    return;
-                }
+            let recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                toastr.error("Please complete the reCAPTCHA");
+                return;
+            }
             let priceCat = $('input[name="price_cat"]:checked').val();
             if (!priceCat) {
                 toastr.error("Please Select Price Category");

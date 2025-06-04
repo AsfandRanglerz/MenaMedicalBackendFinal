@@ -150,7 +150,7 @@
                         d._token = "{{ csrf_token() }}";
                         d.navName = $('#statusFilter').val(); // Pass the selected status value
                     }
-                },
+                }, 
                 "columns": [{
                         "data": null,
                         "render": function(data, type, row, meta) {

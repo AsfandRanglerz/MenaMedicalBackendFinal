@@ -171,7 +171,7 @@
                 <div class="mt-4 lang-table-section overflow-auto">
                     <div class="table-container">
                         <!-- Table for big screen -->
-                        <table class="d-none d-sm-table table-size w-100">
+                        <table class="table-size table-d-l">
     <thead>
         <tr class="category-header header-set">
             <th class="px-3 py-2 head-one font-600">Price Category</th>

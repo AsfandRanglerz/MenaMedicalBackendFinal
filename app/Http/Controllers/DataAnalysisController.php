@@ -104,7 +104,7 @@ class DataAnalysisController extends Controller
         $discountedPrice = null;
         if ($package == 'Advance') {
             $newPrices = NewPricing::where('service_name','Data Analysis')
-            ->where('package_name',$package)->get();
+            ->where('package_name',$package)->orderBy('position', 'asc')->get();
             $regularPrice = ServicsPricing::where('service_name', 'Data Analysis')
                 ->where('package_name', 'Advance')
                 ->where('price_category', 'Regular')
@@ -115,7 +115,7 @@ class DataAnalysisController extends Controller
                 ->first();
         } elseif ($package == 'Premium') {
              $newPrices = NewPricing::where('service_name','Data Analysis')
-            ->where('package_name',$package)->get();
+            ->where('package_name',$package)->orderBy('position', 'asc')->get();
             $regularPrice = ServicsPricing::where('service_name', 'Data Analysis')
                 ->where('package_name', 'Premium')
                 ->where('price_category', 'Regular')
@@ -293,7 +293,7 @@ class DataAnalysisController extends Controller
             $data['name'] = $request->first_name;
             $data['last_name'] = $request->last_name;
             $data['email'] = $request->email;
-            Mail::to($admin)->send(new QuotationInfoAdmin($data));   
+            Mail::to($admin)->send(new QuotationInfoAdmin($data));
             DB::commit();
             return response()->json([
                 'status' => 'success',

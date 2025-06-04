@@ -54,7 +54,7 @@ class ScientificEditingServiceController extends Controller
 
     public function scientificEditingForm()
     {
-        $newPrices = NewPricing::where('service_name','Scientific Editing')->get();
+        $newPrices = NewPricing::where('service_name','Scientific Editing')->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();

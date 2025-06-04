@@ -91,7 +91,7 @@ class PosterCreationController extends Controller
             $discountedPrice = ServicsPricing::where('service_name', 'Power Point Presentations')
                 ->where('price_category', 'Discounted')
                 ->first();
-            $newPrices = NewPricing::where('service_name', 'Power Point Presentations')->get();
+            $newPrices = NewPricing::where('service_name', 'Power Point Presentations')->orderBy('position', 'asc')->get();
         } elseif ($service_name == 'Posters') {
             $service = 'Posters';
             $regularPrice = ServicsPricing::where('service_name', 'Posters')
@@ -100,7 +100,7 @@ class PosterCreationController extends Controller
             $discountedPrice = ServicsPricing::where('service_name', 'Posters')
                 ->where('price_category', 'Discounted')
                 ->first();
-            $newPrices = NewPricing::where('service_name', 'Power Point Poster')->get();
+            $newPrices = NewPricing::where('service_name', 'Power Point Poster')->orderBy('position', 'asc')->get();
         }
         return view('poster_presentation_service', compact('newPrices', 'regularPrice', 'discountedPrice', 'service', 'FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
     }

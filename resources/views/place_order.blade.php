@@ -2,10 +2,7 @@
 
 @section('title', 'Place Order')
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
+   
 
     .table-container {
         overflow-x: auto;
@@ -114,9 +111,9 @@
                                                 <input type="hidden" name='title' value="Basic Editing Service">
                                                 <input type="hidden" name='service' value="Language Editing">
                                                 <input type="hidden" name='package' value="Basic">
-                                                <button type="submit"
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -128,10 +125,9 @@
                                                 <input type="hidden" name='title' value="Advance Editing Service">
                                                 <input type="hidden" name='service' value="Language Editing">
                                                 <input type="hidden" name='package' value="Advance">
-                                                <button type="submit"
-                                                    
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -144,9 +140,8 @@
                                                 <input type="hidden" name='service' value="Language Editing">
                                                 <input type="hidden" name='package' value="Premium">
                                                 <button type="submit"
-                                                  
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -158,9 +153,9 @@
                                                 <input type="hidden" name='title' value="Scientific Editing Service">
                                                 <input type="hidden" name='service' value="Scientific Editing">
                                                 {{-- <input type="hidden" name='package' value="Premium"> --}}
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -171,9 +166,9 @@
                                                     @csrf
                                                 <input type="hidden" name='title' value="Similarity Review Report">
                                                 <input type="hidden" name='service' value="Accidental Plagirisam">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -184,9 +179,9 @@
                                                     @csrf
                                                 <input type="hidden" name='title' value="Manuscript Formatting Service">
                                                 <input type="hidden" name='service' value="Manuscript Formatting Service">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -197,9 +192,9 @@
                                                     @csrf
                                                 <input type="hidden" name='title' value="Assignment Editing Service">
                                                 <input type="hidden" name='service' value="Assignment Editing Service">
-                                                <button type="submit"
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -211,9 +206,9 @@
                                                 <input type="hidden" name='title' value="Thesis Editing Service">
                                                 <input type="hidden" name='service' value="Thesis Editing Service">
                                                 <input type="hidden" name='package' value="Advance">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -225,9 +220,9 @@
                                                 <input type="hidden" name='title' value="Thesis Editing Service">
                                                 <input type="hidden" name='service' value="Thesis Editing Service">
                                                 <input type="hidden" name='package' value="Premium">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -239,10 +234,9 @@
                                                 <input type="hidden" name='title' value="Poster / PowerPoint Presentation Service">
                                                 <input type="hidden" name='form_head' value="PowerPoint Presentation Service">
                                                 <input type="hidden" name='service' value="Power Point Presentations">
-                                                <button type="submit"
-                                                    
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -254,9 +248,9 @@
                                                 <input type="hidden" name='title' value="Poster / PowerPoint Presentation Service">
                                                 <input type="hidden" name='form_head' value="Posters Service">
                                                 <input type="hidden" name='service' value="Power Point Poster">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -265,12 +259,12 @@
                                             <td>
                                                 <form action="{{route('get.order')}}" method="POST">
                                                     @csrf
-                                                <input type="hidden" name='title' value="Advance Data Analysis Service">                                                
+                                                <input type="hidden" name='title' value="Advance Data Analysis Service">
                                                 <input type="hidden" name='service' value="Data Analysis">
                                                 <input type="hidden" name='package' value="Advance">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                 <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">Select</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -279,12 +273,15 @@
                                             <td>
                                                 <form action="{{route('get.order')}}" method="POST">
                                                     @csrf
-                                                <input type="hidden" name='title' value="Premium Data Analysis Service">                                                
+                                                <input type="hidden" name='title' value="Premium Data Analysis Service">
                                                 <input type="hidden" name='service' value="Data Analysis">
                                                 <input type="hidden" name='package' value="Premium">
-                                                <button type="submit" 
-                                                    class="select-link w-100 d-inline-block text-center border-0 bg-transparent p-0"
-                                                    style="color: #006b99; text-decoration: underline; font-weight: normal;">Select</button>
+                                                <button type="submit"
+                                                    class="w-100 d-inline-block text-center border-0"
+                                                    style="background-color: #28a745; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 0; font-weight: normal;">
+                                                    Select
+                                                </button>
+
                                                 </form>
                                             </td>
                                         </tr>
@@ -327,7 +324,7 @@
                         </div>
                     </div>
                 </div>
-                @foreach ($PlaceOrderThrees as $PlaceOrderThree)
+                {{-- @foreach ($PlaceOrderThrees as $PlaceOrderThree)
                     <p>{!! nl2br(e($PlaceOrderThree->description)) !!}</p>
                 @endforeach
                 <div class="section-devision">
@@ -361,7 +358,7 @@
                             @endif
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

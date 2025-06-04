@@ -63,7 +63,7 @@ class ManuscriptFormattingController extends Controller
     }
 
     public function manuscriptFormattingForm(){
-        $newPrices = NewPricing::where('service_name','Manuscript Formatting Service')->get();
+        $newPrices = NewPricing::where('service_name','Manuscript Formatting Service')->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();

@@ -13,12 +13,28 @@
                                 </div>
                             </div>
                             <div class="card-body table-striped table-bordered table-responsive">
-                                <a class="btn btn-success mb-3" href="{{ route('newServicePrice.create') }}">Add
+                                <div class="d-flex">
+                                    <a class="btn btn-success mb-3 mr-3" href="{{ route('newServicePrice.create') }}">Add
                                     Price</a>
+                                        <div class="filter-container">
+                                                    <form id="serviceFilterForm" method="GET" action="{{ route('newServicePrice.index') }}">
+                                                        <select id="statusFilter" name="service" class="form-control select1">
+                                                            @foreach ($navBars as $data)
+                                                                <option value="{{ $data }}" {{ $data === $service ? 'selected' : '' }}>
+                                                                    {{ $data }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                    </div>
 
                                 <table class="responsive table" id="table-1">
                                     <thead>
                                         <tr>
+                                             <th class="text-center">
+                                                <i class="fas fa-th"></i>
+                                            </th>
                                             <th>Sr.</th>
                                             <th>Service name</th>
                                             {{-- <th>Price Category</th> --}}
@@ -33,6 +49,10 @@
                                     <tbody>
                                         @foreach ($pricing as $data)
                                             <tr>
+                                                <td>
+                                                    <div class="sort-handler"><i class="fas fa-th"></i></div>
+                                                    <a href="javascript:void(0)" class="editSubadminBtn" data-id="{{ $data->id }}"></a> {{-- Hidden anchor for sorting logic --}}
+                                                </td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $data->service_name }}</td>
                                                 {{-- <td>{{ $data->price_category }}</td> --}}
@@ -103,6 +123,55 @@
 @endsection
 
 @section('js')
+<script>
+    $(function() {
+        $('#table-1 tbody').sortable({
+            items: 'tr',
+            handle: '.sort-handler',
+            cursor: 'move',
+            update: function() {
+                var navName = $('#statusFilter').val(); // Using your filter select
+                var order = [];
+
+                $('#table-1 tbody tr').each(function(index) {
+                    var id = $(this).find('a.editSubadminBtn').data('id');
+                    if (id !== undefined) {
+                        order.push({
+                            id: id,
+                            position: index + 1
+                        });
+                    }
+                });
+
+                // AJAX call to update order
+                $.ajax({
+                    url: "{{ route('newServicePrice.sort') }}",
+                    method: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        order: order,
+                        service: navName,
+                    },
+                    success: function() {
+                        toastr.success('Order Updated Successfully');
+                        setTimeout(() => {
+                            window.location.reload(); // Reload the page to reflect changes
+                        }, 2000);
+                    },
+                    error: function(xhr) {
+                        console.error('Sorting update failed', xhr);
+                    }
+                });
+            }
+        }).disableSelection();
+    });
+</script>
+
+<script>
+    document.getElementById('statusFilter').addEventListener('change', function() {
+        document.getElementById('serviceFilterForm').submit();
+    });
+</script>
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">

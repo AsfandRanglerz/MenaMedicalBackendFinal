@@ -429,13 +429,13 @@
                 <h4 class="mb-lg-4 mb-3 text-center primary-heading">Additional Services for Advanced Editing (if required)</h4>
                 <div class="mt-4 lang-table-section overflow-auto">
                     <div class="table-container">
-                        <!-- Table for big screen -->
-                        <table class="d-none d-sm-block table-size">
+                        <!-- Table for desktop, laptop & tablets screens -->
+                        <table class="table-size table-d-l">
                             <thead>
                                 <tr class="category-header header-set">
-                                    <th class="px-3 py-2 head-one font-600">Price</th>
-                                    <th class="px-3 py-2 text-white font-600 text-center basic-column">Advanced Editing</th>
-                                    <th class="px-3 py-2 text-white font-600 text-center advanced-column">Delivery Time</th>
+                                    <th class="px-3 py-2 head-one font-600">Service</th>
+                                    <th class="px-3 py-2 text-white font-600 text-center basic-column">Price</th>
+                                    {{-- <th class="px-3 py-2 text-white font-600 text-center advanced-column">Delivery Time</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -445,7 +445,7 @@
                                         {{$additionalService->additional_services}}
                                     </td>
                                     <td>USD {{$additionalService->basic_package_price}}</td>
-                                    <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td>
+                                    {{-- <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td> --}}
                                 </tr>
                                 @endforeach
                                 {{-- <tr>
@@ -458,15 +458,15 @@
                             </tbody>
                         </table>
 
-                        <!-- Table for big screen -->
+                        <!-- Table for mobile screens -->
                         <table class="d-block d-sm-none table-size">
                             <thead>
                                 <tr>
-                                    <th colspan="3" class="px-3 py-2 head-one font-600">Price</th>
+                                    <th colspan="3" class="px-3 py-2 head-one font-600">Service</th>
                                 </tr>
                                 <tr class="category-header header-set">
-                                    <th class="px-3 py-2 text-white font-600 text-center ts-small basic-column">Advanced Editing</th>
-                                    <th class="px-3 py-2 text-white font-600 text-center ts-small advanced-column">Delivery Time</th>
+                                    <th class="px-3 py-2 text-white font-600 text-center ts-small basic-column">Price</th>
+                                    {{-- <th class="px-3 py-2 text-white font-600 text-center ts-small advanced-column">Delivery Time</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -478,7 +478,7 @@
                                 </tr>
                                 <tr>
                                     <td>USD {{$additionalService->basic_package_price}}</td>
-                                    <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td>
+                                    {{-- <td><a href="{{url('/thesis-editing-service-form/Advance')}}" style="text-decoration: none" class="px-3 py-1 theme-btn-green">Get a Quote</a></td> --}}
                                 </tr>
                                 @endforeach
                                 {{-- <tr>

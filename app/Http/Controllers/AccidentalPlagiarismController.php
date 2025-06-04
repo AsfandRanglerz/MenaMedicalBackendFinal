@@ -59,7 +59,7 @@ class AccidentalPlagiarismController extends Controller
     }
 
     public function accidentalPlagiarismForm(){
-        $newPrices = NewPricing::where('service_name','Accidental Plagirisam')->get();
+        $newPrices = NewPricing::where('service_name','Accidental Plagirisam')->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();

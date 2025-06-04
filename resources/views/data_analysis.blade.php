@@ -266,16 +266,16 @@
                 <div class="overflow-auto lang-table-section">
                     <div class="table-container">
                         <!-- Table for big screen -->
-                        <table class="d-none d-sm-table table-size">
-                            <thead>
+                        {{-- <table class="d-none d-sm-table table-size"> --}}
+                            {{-- <thead>
                                 <tr class="category-header">
                                     <th class="px-3 py-2 head-one font-600">Price</th>
                                     <th class="px-3 py-2 text-white font-600 text-center basic-column">Advanced Data Analysis</th>
                                     <th class="px-3 py-2 text-white font-600 text-center advanced-column">Premium Data Analysis
-                                    </th>
+                                    </th> --}}
                                     {{-- <th class="text-white font-600 text-center premium-column">Select Service
                                     </th> --}}
-                                </tr>
+                                {{-- </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -288,7 +288,7 @@
                                     <td>
                                         USD {{ $regularPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $regularPricePremiumData->delivery_days ?? 'X' }} days
                                     </td>
-                                </tr>
+                                </tr> --}}
                                 {{-- <tr>
                                     <td class="t-line">
                                         Discounted Price for Researchers & Students in MENA Region
@@ -310,12 +310,12 @@
                                         <a href="{{url('/data-analysis-service-form/Premium')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
                                 </tr> --}}
-
+{{--
                             </tbody>
-                        </table>
+                        </table> --}}
 
                         <!-- Table for mobile screen -->
-                        <table class="d-sm-none table-size">
+                        {{-- <table class="d-sm-none table-size">
                             <thead>
                                 <tr>
                                     <th colspan="2" class="px-3 py-2 head-one font-600">Price</th>
@@ -323,10 +323,10 @@
                                 <tr class="category-header">
                                     <th class="px-3 py-2 text-white font-600 text-center ts-small basic-column">Advanced Data Analysis</th>
                                     <th class="px-3 py-2 text-white font-600 text-center ts-small advanced-column">Premium Data Analysis
-                                    </th>
+                                    </th> --}}
                                     {{-- <th class="text-white font-600 text-center premium-column">Select Service
                                     </th> --}}
-                                </tr>
+                                {{-- </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -340,11 +340,11 @@
                                     </td>
                                     <td>
                                         USD {{ $regularPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $regularPricePremiumData->delivery_days ?? 'X' }} days
-                                    </td>
+                                    </td> --}}
                                     {{-- <td>
                                         <a href="{{url('/data-analysis-service-form')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td> --}}
-                                </tr>
+                                {{-- </tr> --}}
                                 {{-- <tr>
                                     <td colspan="2" class="text-center">
                                     Discounted Price for Researchers & Students in MENA Region
@@ -357,7 +357,7 @@
                                     <td>
                                         USD {{ $discountedPricePremiumData->less_equal_price ?? 'XXX' }} in {{ $discountedPricePremiumData->delivery_days ?? 'X' }} days
                                     </td>
-                               
+
                                 </tr> --}}
                                 {{-- <tr>
                                     <td>
@@ -367,9 +367,9 @@
                                         <a href="{{url('/data-analysis-service-form/Premium')}}" style="text-decoration: none;" class="px-3 py-1 theme-btn-green">Get a Quote</a>
                                     </td>
                                 </tr> --}}
-
+{{-- 
                             </tbody>
-                        </table>
+                        </table> --}}
                         {{-- <p class="m-0 mt-1 font-500 small">*Days shown above are working days</p> --}}
                     </div>
                 </div>

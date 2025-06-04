@@ -19,7 +19,7 @@ class FAQController extends Controller
 
     public function faqData(Request $request)
     {
-        // $return 
+        // $return
         $navName = $request->input('navName','Language Editing');
         $faqs = Faq::with('navbar')->where('navbar_name',$navName)->orderBy('position')->get();
 
@@ -37,7 +37,7 @@ class FAQController extends Controller
     }
 
     public function faqIndex()
-    {
+    { 
         $faqs = Faq::all();
         $navBars = NavBar::select('id', 'text')->get();
         $service = 'Language Editing';

@@ -572,6 +572,12 @@ footer .center-content .list a:active {
     color: var(--theme-beta);
 }
 
+footer .center-content .list .info-link {
+    text-decoration: underline;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 footer .bottom-content {
     background-color: var(--theme-text-omega);
 }
@@ -1421,5 +1427,9 @@ footer .linkedin:hover span {
 
     .mena-form .advance-table-container .set-width {
         width: 100%;
+    }
+
+    .table-d-l {
+        display: none;
     }
 }
