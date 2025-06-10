@@ -597,7 +597,7 @@
             <li class="{{ request()->is('admin/seo*') ? 'active' : '' }}">
                 <a href="{{ route('seo.index') }}"
                     class="nav-link {{ request()->is('admin/seo*') ? 'text-white' : '' }}">
-                    <i data-feather="help-circle"></i>
+                    <i data-feather="trending-up"></i>
                     <span>SEO</span>
                 </a>
             </li>

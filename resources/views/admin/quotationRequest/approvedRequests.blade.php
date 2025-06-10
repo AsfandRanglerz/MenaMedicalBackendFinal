@@ -34,7 +34,7 @@
                                             <th>Total Price</th>
                                             <th>Additional Services</th> --}}
                                             <th>Contact Client</th>
-                                            
+
                                             <th>Additional Instructions</th>
                                             <th>Language Type</th>
                                             {{-- <th>Additional Information</th> --}}
@@ -147,7 +147,7 @@
                                                         <span class="fas fa-eye"></span> <!-- Font Awesome eye icon -->
                                                     </a>
                                                 </td> --}}
-                                             
+
                                                 <td>
                                                     @if ($data->latest_news == 1)
                                                         <span class="badge badge-success">Yes</span>
@@ -155,7 +155,7 @@
                                                         No
                                                     @endif
                                                 </td>
-                                                
+
                                                 <td>
                                                     {{ $data->additional_instructions ?? '' }}
                                                     @if (empty($data->additional_instructions))
@@ -308,8 +308,8 @@
                         <tr style="border-bottom: 1px solid #000;">
                             <th style="text-align: left; padding: 8px;">Service Name</th>
                             <th style="text-align: left; padding: 8px;">Service Package</th>
-                            <th style="text-align: left; padding: 8px;">Price Category</th>
-                            <th style="text-align: left; padding: 8px;">Words</th>
+                            <th style="text-align: left; padding: 8px;">Price / Words Category</th>
+                            {{-- <th style="text-align: left; padding: 8px;">Words</th> --}}
                             <th style="text-align: left; padding: 8px;">Base Price</th>
                             <th style="text-align: left; padding: 8px;">Total Price</th>
                         </tr>
@@ -317,14 +317,14 @@
                             <td style="padding: 8px;"><span id="modalServiceName"></span></td>
                             <td style="padding: 8px;"><span id="modalServicePackage"></span></td>
                             <td style="padding: 8px;"><span id="modalPriceCategory"></span></td>
-                            <td style="padding: 8px;"><span id="modalWords"></span></td>
+                            {{-- <td style="padding: 8px;"><span id="modalWords"></span></td> --}}
                             <td style="padding: 8px;"><span id="modalPrice"></span></td>
                             <td style="padding: 8px;"><span id="modalTotalPrice"></span></td>
                         </tr>
 
                     </table>
 
-               
+
                     <p style="font-size: 17px"><b> Additional Services</b></p>
                     <table style="width: 100%; border-collapse: collapse;" id="modalAdditionalServices">
                         <!-- Additional services will be dynamically populated here -->
@@ -352,7 +352,7 @@
             var serviceName = button.data('service-name');
             var servicePackage = button.data('service-package');
             var priceCategory = button.data('price-category');
-            var words = button.data('words');
+            // var words = button.data('words');
             var totalPrice = button.data('total-price');
             var basePrice = button.data('base-price');
             var additionalServices = button.data('additional-services');
@@ -362,7 +362,7 @@
             $('#modalServiceName').text(serviceName);
             $('#modalServicePackage').text(servicePackage);
             $('#modalPriceCategory').text(priceCategory);
-            $('#modalWords').text(words);
+            // $('#modalWords').text(words);
             $('#modalTotalPrice').text(totalPrice);
             $('#modalPrice').text(basePrice);
 

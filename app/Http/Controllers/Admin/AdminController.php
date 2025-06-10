@@ -93,7 +93,7 @@ class AdminController extends Controller
         }
 
         $password = bcrypt($request->password);
-        
+
         $tags_data = [
             'password' => bcrypt($request->password)
         ];
@@ -105,6 +105,6 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect('admin')->with(['error' => 'Logout Successfully']);
+        return redirect('admin-login')->with(['error' => 'Logout Successfully']);
     }
 }
