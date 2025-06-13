@@ -23,7 +23,13 @@
                             {{-- <a href="#"><img src="{{ asset('public/assets/images/basket-icon.png') }}" class="me-1" /><span>Order a Service</span></a>
                             <a href="#"><img src="{{ asset('public/assets/images/cloud-upload-icon.png') }}" class="me-1" /><span>Submit an Article</span></a> --}}
                         </div>
-                        <h3 class="mt-sm-1 mt-0 mb-0 heading">{{$editingService->text }}</h3>
+                        @php
+                            use Illuminate\Support\Str;
+                        @endphp
+
+                        <h3 class="mt-sm-1 mt-0 mb-0 heading">
+                            {{ Str::contains(request()->url(), 'journals-module') ? 'JOURNALS' : $editingService->text }}
+                        </h3>
                     </div>
                 <button class="d-lg-none d-block navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +49,7 @@
                         ->get();
                     @endphp
                     @foreach($headerTwo as $content)
-                    <a href="{{ asset($content->url) }}">{{$content->text}}</a>
+                    <a href="{{ asset($content->url) }}" target="_blank">{{$content->text}}</a>
                     @endforeach
                     {{-- <a href="{{ url('journals') }}">Journals</a>
                     <a href="#">News</a>

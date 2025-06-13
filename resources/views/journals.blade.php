@@ -21,7 +21,7 @@
                             <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start">
                                 <div>
                                     <div class="py-2 px-2 h-100 border-inner">
-                                        <img src="{{ asset('public/assets/images/journal1.png') }}" alt="">
+                                        <img src="{{ asset('public/assets/images/MJBR.png') }}" alt="">
                                     </div>
                                 </div>
                                 <div>
@@ -30,7 +30,10 @@
                                             Journal of Bioscience Research publishes scientific output of bioscience graduate and undergraduate students from the MENA region at highly discounted publishing charges to support research output from early researchers.
                                         </p>
                                         <div class="anchor">
-                                            <a href="" class="text-decoration-none text-primary">Find out more</a>
+                                            <a href="https://menamedicalresearch.com/journals/index.php/mjbr" class="text-decoration-none text-primary">View Journal</a>
+                                        </div>
+                                          <div class="anchor">
+                                            <a href="https://menamedicalresearch.com/journals/index.php/mjbr/issue/current" class="text-decoration-none text-primary">Current Issue</a>
                                         </div>
                                     </div>
                                 </div>
@@ -43,7 +46,7 @@
                             <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start">
                                 <div>
                                     <div class="py-2 px-2 h-100 border-inner">
-                                        <img src="{{ asset('public/assets/images/journal2.png') }}" alt="">
+                                        <img src="{{ asset('public/assets/images/MJCR.png') }}" alt="">
                                     </div>
                                 </div>
                                 <div>
@@ -52,7 +55,10 @@
                                             Journal of Case Reports publishes case reports from MENA region at affordable publication charges to expand clinical knowledge output from clinicians and researchers.
                                         </p>
                                         <div class="anchor">
-                                            <a href="" class="text-decoration-none text-primary">Find out more</a>
+                                            <a href="https://menamedicalresearch.com/journals/index.php/mjcr" class="text-decoration-none text-primary">View Journal</a>
+                                        </div>
+                                              <div class="anchor">
+                                            <a href="https://menamedicalresearch.com/journals/index.php/mjcr/issue/current" class="text-decoration-none text-primary">Current Issue</a>
                                         </div>
                                     </div>
                                 </div>
