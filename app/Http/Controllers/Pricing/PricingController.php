@@ -20,6 +20,7 @@ class PricingController extends Controller
             'Accidental Plagirisam',
             'Manuscript Formatting Service',
             'Power Point Presentations',
+            'Poster Creation Service',
             'Assignment Editing Service',
             'Thesis Editing Service - Advance',
             'Thesis Editing Service - Premium',
@@ -33,7 +34,10 @@ class PricingController extends Controller
         $serviceParts = explode(' - ', $service);
         $serviceName = $serviceParts[0];
         $packageName = $serviceParts[1] ?? null;
-
+        if($serviceName === 'Poster Creation Service'){
+            $serviceName = 'Power Point Poster';
+        }
+        // return   $serviceName;
         $query = NewPricing::where('service_name', $serviceName);
         if ($packageName) {
             $query->where('package_name', $packageName);

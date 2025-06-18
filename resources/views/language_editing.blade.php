@@ -560,10 +560,10 @@
                                 <table>
                                     <thead>
                                         <tr class="category-header">
-                                            <th class="px-3 py-2 head-one font-600">Price</th>
-                                            <th class="text-white font-600 text-center basic-column">Basic Editing</th>
-                                            <th class="text-white font-600 text-center advanced-column">Advanced Editing
-                                            </th>
+                                            <th class="px-3 py-2 head-one font-600">Service</th>
+                                            <th class="text-white font-600 text-center basic-column">Price</th>
+                                            {{-- <th class="text-white font-600 text-center advanced-column">Advanced Editing
+                                            </th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -573,7 +573,7 @@
                                                     {{ $additionalService->additional_services }}
                                                 </td>
                                                 <td>USD {{ $additionalService->basic_package_price }} </td>
-                                                <td>USD {{ $additionalService->advance_package_price }} </td>
+                                                {{-- <td>USD {{ $additionalService->advance_package_price }} </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -589,17 +589,17 @@
                                 <table>
                                     <thead>
                                         <tr class="category-header">
-                                            <th colspan="3" class="px-3 py-2 head-one font-600 text-center">Price</th>
+                                            <th colspan="3" class="px-3 py-2 head-one font-600 text-center">Service</th>
                                         </tr>
                                         <tr class="category-header">
                                             <th colspan="1.5" style="font-size: 1rem;"
                                                 class="text-white font-600 py-2 text-center w-50 basic-column">
-                                                Basic Editing</th>
-                                            <th colspan="1.5" style="font-size: 1rem;"
+                                                Price</th>
+                                            {{-- <th colspan="1.5" style="font-size: 1rem;"
                                                 class="text-white font-600 text-center py-2 w-50 advanced-column">Advanced
                                                 Editing
-                                            </th>
-                                        </tr>
+                                            </th> --}}
+                                        </tr>  
                                     </thead>
                                     <tbody>
                                         @foreach ($additionalsServices as $additionalService)
@@ -610,7 +610,7 @@
                                             </tr>
                                             <tr>
                                                 <td>USD {{ $additionalService->basic_package_price }} </td>
-                                                <td>USD {{ $additionalService->advance_package_price }} </td>
+                                                {{-- <td>USD {{ $additionalService->advance_package_price }} </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>

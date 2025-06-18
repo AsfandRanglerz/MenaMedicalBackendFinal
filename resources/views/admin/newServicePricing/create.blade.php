@@ -23,7 +23,7 @@
                                                 <option value="Accidental Plagirisam" {{ old('service_name') == 'Accidental Plagirisam' ? 'selected' : '' }}>Accidental Plagirisam</option>
                                                 <option value="Manuscript Formatting Service" {{ old('service_name') == 'Manuscript Formatting Service' ? 'selected' : '' }}>Manuscript Formatting Service</option>
                                                 <option value="Power Point Presentations" {{ old('service_name') == 'Poster & Presentations' ? 'selected' : '' }}>Power Point Presentations</option>
-                                                <option value="Power Point Poster" {{ old('service_name') == 'Poster & Presentations' ? 'selected' : '' }}>Power Point Poster</option>
+                                                <option value="Power Point Poster" {{ old('service_name') == 'Poster & Presentations' ? 'selected' : '' }}>Poster Creation Service</option>
                                                 <option value="Assignment Editing Service" {{ old('service_name') == 'Assignment Editing Service' ? 'selected' : '' }}>Assignment Editing Service</option>
                                                 <option value="Thesis Editing Service" {{ old('service_name') == 'Thesis Editing Service' ? 'selected' : '' }}>Thesis Editing Service</option>
                                                 <option value="Data Analysis" {{ old('service_name') == 'Data Analysis' ? 'selected' : '' }}>Data Analysis</option>

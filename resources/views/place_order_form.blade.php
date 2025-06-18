@@ -189,17 +189,23 @@
                                             <small class="mb-0 fw-bolder">
                                                 Enter the invoice number of invoice received by you
                                             </small>
+                                             <div style="position: relative;">
                                             <input type="text" name="invoice_number" class="form-control"
                                                 style="width: 200px;" placeholder="Enter Invoice Number" id="invoice_number"/>
-                                            <!-- The link -->
-                                            <small class="mb-0">
-                                                <a href="javascript:void(0);" id="showInvoiceHelp"
+
+                                            <!-- Error message -->
+                                            <div id="invoice-error" style="color: red; font-size: 0.8rem; display: none; margin-top: 3px;"></div>
+                                        </div>
+                                                <!-- The link -->
+                                                <small class="mb-0">
+                                                    <a href="javascript:void(0);" id="showInvoiceHelp"
                                                     class="text-decoration-none text-blue">
                                                     Don’t have an invoice number?
                                                 </a>
                                             </small>
 
                                         </div>
+                                        <div id="invoice-error" style="color: red; font-size: 0.9rem; display: none; margin-top: 5px;"></div>
                                         <label class="mt-3 d-flex gap-2 align-items-center">
                                             <input type="radio" name="agree_check" required value="yes">
                                             <p class="mb-0">I have read the <a href="{{ route('term-condition') }}"
@@ -211,17 +217,17 @@
 
                                 </div>
                             </div>
-                            <!-- Custom success message box with close button -->
-                            <div id="toggleInvoiceHelp" class="alert alert-success alert-dismissible fade show mt-2"
-                                role="alert" style="display: none;">
-                                <strong>Note:</strong> The invoice number is mentioned on the payment invoice sent to you by
-                                <strong>MENA Medical Research</strong> after reviewing your submitted documents.
-                                If you have not received a payment invoice, please go back to the required Services page to
-                                submit your document for preliminary review.
+                                <!-- Custom success message box with close button -->
+                                <div id="toggleInvoiceHelp" class="alert alert-success alert-dismissible fade show mt-2"
+                                    role="alert" style="display: none;">
+                                    <strong>Note:</strong> The invoice number is mentioned on the payment invoice sent to you by
+                                    <strong>MENA Medical Research</strong> after reviewing your submitted documents.
+                                    If you have not received a payment invoice, please go back to the required Services page to
+                                    submit your document for preliminary review.
 
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
+                                    <button type="button" class="btn-close" aria-label="Close" id="closeInvoiceHelp"></button>
+                                </div>
+
 
                             <div
                                 style="position: absolute; left: -10000px; top: -10000px; height: 1px; width: 1px; overflow: hidden;">
@@ -253,21 +259,40 @@
 @section('script')
 
 <script>
-    document.getElementById('submit-quotationn').addEventListener('click', function () {
-        const invoice = document.getElementById('invoice_number').value.trim();
-        if (invoice === '') {
-            toastr.error('Invoice Number field is blank');
-        } else {
-            toastr.success('Invoice Number has been Submitted Successfully');
-            document.getElementById('invoice_number').value = ''; // Clear the input field
-        }
-    });
+document.getElementById('submit-quotationn').addEventListener('click', function () {
+    const invoiceInput = document.getElementById('invoice_number');
+    const invoice = invoiceInput.value.trim();
+    const errorDiv = document.getElementById('invoice-error');
+
+    if (invoice === '') {
+        errorDiv.innerText = 'Invoice Number field is required.';
+        errorDiv.style.display = 'block';
+    } else {
+        errorDiv.style.display = 'none';
+        // Perform success logic here, like sending data
+        alert('Invoice Number has been submitted successfully');
+        invoiceInput.value = '';
+    }
+});
+
+// Hide error as user types
+document.getElementById('invoice_number').addEventListener('input', function () {
+    const errorDiv = document.getElementById('invoice-error');
+    if (this.value.trim() !== '') {
+        errorDiv.style.display = 'none';
+    }
+});
 </script>
+
 
     <script>
         $(document).ready(function() {
             $('#showInvoiceHelp').on('click', function() {
                 $('#toggleInvoiceHelp').fadeIn();
+            });
+
+            $('#closeInvoiceHelp').on('click', function() {
+                $('#toggleInvoiceHelp').fadeOut(); // Hide help message
             });
         });
 
