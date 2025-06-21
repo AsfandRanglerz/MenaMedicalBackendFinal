@@ -10,6 +10,9 @@
         display: flex;
         gap: 10px;
     }
+        header .navbar {
+        display: none;
+    }
 </style>
 @section('content')
     <div class="position-relative banner">
@@ -50,7 +53,7 @@
                                     <div>
                                         <div class="py-2 px-2 h-100 border-inner">
                                             <img src="{{ asset('public/assets/images/MJBR.png') }}" alt="MJBR Logo"
-                                                width="200" height="200">
+                                                width="160" height="200">
 
                                         </div>
                                     </div>
@@ -82,7 +85,7 @@
                                     <div>
                                         <div class="py-2 px-2 h-100 border-inner">
                                             <img src="{{ asset('public/assets/images/MJCR.png') }}" alt="MJCR Logo"
-                                                width="190" height="200">
+                                                width="150" height="200">
                                         </div>
                                     </div>
                                     <div>
