@@ -111,7 +111,7 @@ Route::post('/data-analysis-service-submit-quotation-request', [DataAnalysisCont
 Route::post('/place-order-from', [PlaceOrderController::class, 'getPlceOrderForm'])->name('get.order');
 
 
-Route::get('/journals', [JournalsController::class, 'journalModule']);
+Route::get('/journal', [JournalsController::class, 'journalModule']);
 
 Route::get('/privacy-policy',[PrivacyPolicyTermConditionController::class,'privacyPage'])->name('privacy-policy');
 Route::get('/term-condition',[PrivacyPolicyTermConditionController::class,'termsPage'])->name('term-condition');

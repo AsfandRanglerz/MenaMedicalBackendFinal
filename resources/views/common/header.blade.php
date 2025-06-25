@@ -17,7 +17,7 @@
                                 ->first();
                             @endphp
                             @foreach($data as $content)
-                                <a href="{{$content->url}}"><img src="{{ asset($content->icon) }}" class="me-1" /><span>{{$content->text}}</span></a>
+                                <a href="{{$content->url}}" @if(Str::contains($content->url, 'journal')) target="_blank" @endif><img src="{{ asset($content->icon) }}" class="me-1" /><span>{{$content->text}}</span></a>
                             @endforeach
                                 {{-- <a href="#"><img src="{{ asset('public/assets/images/envelope-icon.png') }}" class="me-1" /><span>Contact Us</span></a> --}}
                             {{-- <a href="#"><img src="{{ asset('public/assets/images/basket-icon.png') }}" class="me-1" /><span>Order a Service</span></a>
@@ -28,7 +28,7 @@
                         @endphp
 
                         <h3 class="mt-sm-1 mt-0 mb-0 heading">
-                            {{ Str::contains(request()->url(), 'journals-module') ? 'JOURNALS' : $editingService->text }}
+                            {{ Str::contains(request()->url(), 'journal') ? 'JOURNALS' : $editingService->text }}
                         </h3>
                     </div>
                 <button class="d-lg-none d-block navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -49,7 +49,11 @@
                         ->get();
                     @endphp
                     @foreach($headerTwo as $content)
-                    <a href="{{ asset($content->url) }}" target="_blank">{{$content->text}}</a>
+                    <a href="{{ asset($content->url) }}"
+                        @if(Str::contains($content->url, 'journal')) target="_blank" @endif>
+                        {{ $content->text }}
+                        </a>
+
                     @endforeach
                     {{-- <a href="{{ url('journals') }}">Journals</a>
                     <a href="#">News</a>

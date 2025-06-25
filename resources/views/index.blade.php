@@ -42,7 +42,7 @@
                                     <img src="{{ asset('public/assets/images/edit-service.png') }}" class="my-lg-4 my-3" />
                                     <p>High-quality language, academic editing, scientific writing, and research promotion services <b>for students and researchers</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/scientific-editing" target="_blank">Find Out More</a>
+                                <a href="https://menamedicalresearch.com/scientific-editing">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                                     <img src="{{ asset('public/assets/images/journal-svgrepo-com.png') }}" class="my-lg-4 my-3" />
                                     <p>Bioscience Journals for undergraduate and postgraduate students with <b>discounted publication charges</b> for MENA region</p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/journals-module/" target="_blank">Find Out More</a>
+                                <a href="https://menamedicalresearch.com/journal/" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                     <img src="{{ asset('public/assets/images/research-profile.png') }}" class="my-lg-4 my-3" />
                                     <p>Profiles for Bioscience researchers and students to <b>network and find researchers</b> with similar interests in MENA region</p>
                                 </div>
-                                <a href="https://professionals1.gulflabexpo.com/" target="_blank">Find Out More</a>
+                                <a href="https://professionals1.gulflabexpo.com/">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                     <img src="{{ asset('public/assets/images/research-news.png') }}" class="my-lg-4 my-3" />
                                     <p>Research news from regional academic institutes and high impact <b>research published globally from MENA region</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/news/" target="_blank">Find Out More</a>
+                                <a href="https://menamedicalresearch.com/news/">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -162,13 +162,13 @@
             <div class="py-md-5 py-4 container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="col-xl-6 heading"><a href="https://menamedicalresearch.com/journals-module/" target="_blank" style="text-decoration: none; color: inherit;">BIOSCIENCE JOURNALS</a></h3>
+                        <h3 class="col-xl-6 heading"><a href="https://menamedicalresearch.com/journal/" target="_blank" style="text-decoration: none; color: inherit;">BIOSCIENCE JOURNALS</a></h3>
                     </div>
                     <div class="col-lg-8">
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">MENA Journal of Bioscience Research</h6>
+                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/journal/" target="_blank" style="text-decoration: none; color: inherit;">MENA Journal of Bioscience Research</a></h6>
                                 <p class="mb-0 small">Publishes scientific output of bioscience graduate and undergraduate students from MENA region
                                     <span class="orange-text">at discounted publishing charges</span>
                                 </p>
@@ -177,7 +177,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">MENA Journal of Case Reports</h6>
+                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/journal/" target="_blank" style="text-decoration: none; color: inherit;">MENA Journal of Case Reports</a></h6>
                                 <p class="mb-0 small">Publishes case reports from MENA region at <span class="orange-text">affordable publication charges</span></p>
                             </div>
                         </div>
@@ -191,20 +191,20 @@
             <div class="py-md-5 py-4 container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="col-xl-6 heading"><a href="https://professionals1.gulflabexpo.com/" target="_blank" style="text-decoration: none; color: inherit;">RESEARCHER PROFILES</a></h3>
+                        <h3 class="col-xl-6 heading"><a href="https://professionals1.gulflabexpo.com/" style="text-decoration: none; color: inherit;">RESEARCHER PROFILES</a></h3>
                     </div>
                     <div class="col-lg-8">
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/green-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">Create Your Research Profile on MENA Medical Research Platform</h6>
+                                <h6 class="mb-1"><a href="https://professionals1.gulflabexpo.com/" style="text-decoration: none; color: inherit;">Create Your Research Profile on MENA Medical Research Platform</a></h6>
                                 <p class="mb-0 small">Create Your Research Profile and be discovered by researchers with similar interest(s)</p>
                             </div>
                         </div>
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/green-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">Find Researchers with Similar Interests and Create Your Network</h6>
+                                <h6 class="mb-1"><a href="https://professionals1.gulflabexpo.com/" style="text-decoration: none; color: inherit;">Find Researchers with Similar Interests and Create Your Network</a></h6>
                                 <p class="mb-0 small">Find researchers in MENA and learn about their research interests and accomplishments</p>
                             </div>
                         </div>
@@ -218,27 +218,39 @@
             <div class="py-md-5 py-4 container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="col-xl-6 heading"><a href="https://menamedicalresearch.com/news/" target="_blank" style="text-decoration: none; color: inherit;">RESEARCH NEWS</a></h3>
+                        <h3 class="col-xl-6 heading"><a href="https://menamedicalresearch.com/news/" style="text-decoration: none; color: inherit;">RESEARCH NEWS</a></h3>
                     </div>
                     <div class="col-lg-8">
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/red-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">News from Research Institutes and Academic Hospitals in MENA Region</h6>
+                                <h6 class="mb-1">
+                                    <a href="https://menamedicalresearch.com/news/" style="text-decoration: none; color: inherit;">
+                                        News from Research Institutes and Academic Hospitals in MENA Region
+                                    </a>
+                                </h6>
                                 <p class="mb-0 small">Find out what is happening in Biosciences research in the MENA region</p>
                             </div>
                         </div>
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/red-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">Find High Impact Research Published Globally from the MENA Region</h6>
+                                <h6 class="mb-1">
+                                    <a href="https://menamedicalresearch.com/news/" style="text-decoration: none; color: inherit;">
+                                       Find High Impact Research Published Globally from the MENA Region
+                                    </a>
+                                </h6>
                                 <p class="mb-0 small">Get access to important research published from the MENA region</p>
                             </div>
                         </div>
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/red-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1">Submit News / Press Release to Spread News from your Institute</h6>
+                                <h6 class="mb-1">
+                                    <a href="https://menamedicalresearch.com/news/" style="text-decoration: none; color: inherit;">
+                                       Submit News / Press Release to Spread News from your Institute
+                                    </a>
+                                </h6>
                                 <p class="mb-0 small">Share News from your institute by submitting news articles or press releases</p>
                             </div>
                         </div>
