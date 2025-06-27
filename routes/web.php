@@ -86,7 +86,7 @@ Route::post('/admin-reset-password', [AdminController::class, 'ResetPassword']);
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'getdashboard']);
-    Route::get('profile', [AdminController::class, 'getProfile']);
+    Route::get('my-profile', [AdminController::class, 'getProfile']);
     Route::post('update-profile', [AdminController::class, 'update_profile']);
     Route::get('Privacy-policy', [SecurityController::class, 'PrivacyPolicy']);
     Route::get('privacy-policy-edit', [SecurityController::class, 'PrivacyPolicyEdit']);
