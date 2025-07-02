@@ -19,13 +19,19 @@
                                     <span class="text-danger">Email required</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="password" class="control-label">Password</label>
-                                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required name="password" placeholder="password">
-                                    @error('password')
-                                    <span class="text-danger">{{$errors->first('password')}}</span>
-                                    @enderror
-                                </div>
+                              <div class="form-group position-relative">
+                                        <label for="password" class="control-label">Password</label>
+
+                                        <input id="password" type="password" class="form-control pr-5" name="password" required placeholder="Password">
+
+                                        <i class="fa fa-eye position-absolute" id="togglePassword"
+                                        style="top: 38px; right: 15px; cursor: pointer; z-index: 2;"></i>
+
+                                        @error('password')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" tabindex="3" id="remember-me" name="remember">
@@ -69,5 +75,17 @@
             </div>
         </div>
     </section>
+    <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+
 @endsection
 

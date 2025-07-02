@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <h4 class="text-center my-4">Add Service Pricing</h4>
+                                <h4 class="text-center my-4">Add Pricing</h4>
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
@@ -63,7 +63,7 @@
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Words Limit</label>
-                                            <input type="number" name="words_limit" class="form-control" placeholder="words limit"> 
+                                            <input type="number" name="words_limit" class="form-control" placeholder="words limit">
                                             @error('words_limit')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -74,7 +74,7 @@
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Price up to</label>
-                                            <input type="number" name="less_equal_price" class="form-control" placeholder="enter price" step="0.001"> 
+                                            <input type="number" name="less_equal_price" class="form-control" placeholder="enter price" step="0.001">
                                             @error('words_limit')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -92,7 +92,7 @@
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Delivery Time</label>
-                                            <input type="number" name="delivery_days" class="form-control" placeholder="enter number of days"> 
+                                            <input type="number" name="delivery_days" class="form-control" placeholder="enter number of days">
                                             @error('words_limit')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror

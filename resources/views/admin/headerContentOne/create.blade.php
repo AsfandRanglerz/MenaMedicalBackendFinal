@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <h4 class="text-center my-4">Add Header Content 1</h4>
+                                <h4 class="text-center my-4">Add Header Content One</h4>
                                 <div class="row mx-0 px-4">
                                     <!-- File Input for Icon -->
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
@@ -23,7 +23,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                
+
                                     <!-- Text Content Input -->
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
@@ -34,7 +34,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                
+
                                     <!-- URL Input -->
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                
+
                                 <!-- Submit Button -->
                                 <div class="card-footer text-center">
                                     <div class="col">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </form>
-                
+
             </div>
         </section>
     </div>

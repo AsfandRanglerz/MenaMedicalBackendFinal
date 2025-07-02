@@ -9,7 +9,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="col-12">
-                                    <h4>Additional Services</h4>
+                                    <h4>Additional Service Prices</h4>
                                 </div>
                             </div>
                             <div class="card-body table-striped table-bordered table-responsive">
@@ -23,7 +23,7 @@
                                             <th>Additional Service</th>
                                             <th>Basic Price</th>
                                             <th>Advance Price</th>
-                                            <th>Status</th>
+                                            {{-- <th>Status</th> --}}
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
@@ -59,12 +59,12 @@
                                                         <div class="badge badge-danger">No record found</div>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <div
                                                         class="badge {{ $additionalprice->status == 0 ? 'badge-success' : 'badge-danger' }} badge-shadow">
                                                         {{ $additionalprice->status == 0 ? 'Activated' : 'Deactivated' }}
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex gap-4">
                                                         <a href="{{ route('AdditionalPrice.Edit', $additionalprice->id) }}"

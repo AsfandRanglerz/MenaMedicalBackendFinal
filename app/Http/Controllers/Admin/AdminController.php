@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ResetPasswordMail;
-use App\Models\admin;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +29,6 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required'
         ]);
         $data = $request->only(['name', 'email', 'phone']);
         if ($request->hasfile('image')) {
@@ -54,7 +53,7 @@ class AdminController extends Controller
         $exists = DB::table('password_resets')->where('email', $request->email)->first();
         // return $exists;
         if ($exists) {
-            return back()->with('message', 'Reset Password link has been already sent');
+            return back()->with('message', 'Reset Password link has been Already Sent');
         } else {
             $token = Str::random(30);
             DB::table('password_resets')->insert([
@@ -99,7 +98,7 @@ class AdminController extends Controller
         ];
         if (Admin::where('email', $request->email)->update($tags_data)) {
             DB::table('password_resets')->where('email', $request->email)->delete();
-            return redirect('admin')->with('message', 'Password reset successfully');;
+            return redirect('admin-login')->with('message', 'Password Reset Successfully');;
         }
     }
     public function logout()

@@ -297,7 +297,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="reason">Please provide the reason for rejecting this product:</label>
+                            <label for="reason">Please provide the reason for rejecting this request:</label>
                             <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
                         </div>
                         <input type="hidden" name="status" value="2">

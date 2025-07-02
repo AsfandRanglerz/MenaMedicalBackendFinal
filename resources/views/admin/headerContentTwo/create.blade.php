@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('title', 'Dashboard')
 @section('content')
- 
+
     <div class="main-content">
         <section class="section">
             <div class="section-body">
@@ -11,7 +11,7 @@
                      <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <h4 class="text-center my-4">Add Header Content 2</h4>
+                                <h4 class="text-center my-4">Add Header Content Two</h4>
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">

@@ -22,7 +22,7 @@ class SecurityController extends Controller
 
         $data=PrivacyPolicy::first();
         PrivacyPolicy::find($data->id)->update($request->all());
-        return redirect('/admin/Privacy-policy')->with(['status'=>true, 'message' => 'Privacy Policy Updated Successfully']);
+        return view('/admin/Privacy-policy')->with(['message' => 'Privacy Policy Updated Successfully']);
     }
     public function TermCondition(){
         $data=TermCondition::first();
@@ -39,6 +39,6 @@ class SecurityController extends Controller
 
         $data=TermCondition::first();
         TermCondition::find($data->id)->update($request->all());
-        return redirect('/admin/term-condition')->with(['status'=>true, 'message' => 'Term&Condition Updated Successfully']);
+        return redirect('/admin/term-condition')->with(['message' => 'Term & Conditions Updated Successfully']);
     }
 }

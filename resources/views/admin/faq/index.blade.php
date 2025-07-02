@@ -9,7 +9,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="col-12">
-                                    <h4>FAQ </h4>
+                                    <h4>FAQ's </h4>
                                 </div>
                             </div>
                             {{-- @dd($service) --}}
@@ -150,7 +150,7 @@
                         d._token = "{{ csrf_token() }}";
                         d.navName = $('#statusFilter').val(); // Pass the selected status value
                     }
-                }, 
+                },
                 "columns": [{
                         "data": null,
                         "render": function(data, type, row, meta) {

@@ -1,12 +1,10 @@
 @component('mail::message')
     <div style="text-align:center;">
-       <img src="{{ asset('public/admin/assets/images/users/1735822821.png') }}" alt="App Icon"
-            style="vertical-align: middle;margin-bottom: -3px;height: 50px;margin-bottom: 35px">
         <h3>Welcome to Mena Medical Research</h3>
     </div>
     <div style="text-align: center;">
         <p>
-            We are pleased to inform you that your quotation request has been successfully submitted.  
+            We are pleased to inform you that your quotation request has been successfully submitted.
             Our team will review your details and provide a response shortly.
         </p>
         <p>

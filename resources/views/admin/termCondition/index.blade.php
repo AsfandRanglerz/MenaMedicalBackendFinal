@@ -1,6 +1,16 @@
 @extends('admin.layout.app')
 @section('title', 'Users')
 @section('content')
+<style>
+    .clamp-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Show only 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+</style>
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
@@ -79,7 +89,7 @@
 @endsection
 @section('js')
 
-<script>
+    <script>
         var dataTable;
         $(document).ready(function() {
             dataTable = $(".example").DataTable({
@@ -90,10 +100,10 @@
                         "_token": "{{ csrf_token() }}"
                     },
                     // Handle the response and pass permissions
-                 dataSrc: function (json) {
+                    dataSrc: function(json) {
                         // Pass permissions from backend to DataTable
                         var permissions = json.permissions;
-                        return json.data.map(function (row) {
+                        return json.data.map(function(row) {
                             row.can_edit = permissions.can_edit;
                             return row;
                         });
@@ -111,22 +121,28 @@
                     },
                     // Description column (corrected typo)
                     {
-                        data: "description"
+                        data: "description",
+                        render: function(data, type, row) {
+                            return `<div class="clamp-text" title="${data.replace(/"/g, '&quot;')}">${data}</div>`;
+                        }
                     },
+
                     // Action buttons column
                     {
                         "data": null,
                         "render": function(data, type, row) {
                             var buttons = '<div class="d-flex">';
-                                var buttonsShown = false;
+                            var buttonsShown = false;
                             // Show edit button if can_edit is true
                             if (row.can_edit) {
-                                buttons += '<button class="btn btn-primary button-color mb-3 mr-3 text-white editSubadminBtn" data-id="' +
-                                row.id + '"><i class="fas fa-edit"></i></button>';
-                                    buttonsShown = true;
+                                buttons +=
+                                    '<button class="btn btn-primary button-color mb-3 mr-3 text-white editSubadminBtn" data-id="' +
+                                    row.id + '"><i class="fas fa-edit"></i></button>';
+                                buttonsShown = true;
                             }
                             if (!buttonsShown) {
-                                buttons = '<span class="text-muted">You do not have access to edit</span>';
+                                buttons =
+                                    '<span class="text-muted">You do not have access to edit</span>';
                             }
                             buttons += '</div>';
                             return buttons;

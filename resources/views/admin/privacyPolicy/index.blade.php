@@ -1,6 +1,16 @@
 @extends('admin.layout.app')
 @section('title', 'Users')
 @section('content')
+<style>
+    .clamp-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Show only 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+</style>
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
@@ -110,8 +120,12 @@
                     },
                     // Description column (corrected typo)
                     {
-                        data: "description"
+                        data: "description",
+                        render: function(data, type, row) {
+                            return `<div class="clamp-text" title="${data.replace(/"/g, '&quot;')}">${data}</div>`;
+                        }
                     },
+
                     // Action buttons column
                     {
                         "data": null,

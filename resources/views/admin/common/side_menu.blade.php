@@ -88,7 +88,7 @@
                         <a href="{{ route('headerContentOne') }}"
                             class="nav-link {{ request()->is('admin/headerContentOne*') ? 'text-white' : '' }}">
                             <span data-feather="file-text"></span> <!-- Changed to 'file-text' for Content 1 -->
-                            <span>Header Content 1</span>
+                            <span>Header Content One</span>
                         </a>
                     </li>
 
@@ -97,7 +97,7 @@
                         <a href="{{ route('headerContentTwo') }}"
                             class="nav-link {{ request()->is('admin/headerContentTwo*') ? 'text-white' : '' }}">
                             <span data-feather="file-text"></span> <!-- Changed to 'file' for Content 2 -->
-                            <span>Header Content 2</span>
+                            <span>Header Content Two</span>
                         </a>
                     </li>
 
