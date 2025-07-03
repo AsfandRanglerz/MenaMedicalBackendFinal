@@ -6,6 +6,15 @@
         <section class="section">
             <div class="section-body">
                 <a class="btn btn-primary mb-3" href="{{ route('newServicePrice.index') }}">Back</a>
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 <form id="add_header_content_two" action="{{ route('newServicePrice.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -15,7 +24,7 @@
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Service Name</label>
+                                            <label>Service Name <span class="text-danger">*</span></label>
                                             <select name="service_name" id="is_dropdown" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="Language Editing" {{ old('service_name') == 'Language Editing' ? 'selected' : '' }}>Language Editing</option>
@@ -35,27 +44,27 @@
                                     </div>
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Package</label>
+                                            <label>Package <span class="text-danger">*</span></label>
                                             <select name="package_check" id="package" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="yes">Yes</option>
                                                 <option value="no">No</option>
                                             </select>
-                                            @error('package')
+                                            @error('package_check')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3 d-none" id="package_cat">
                                         <div class="form-group mb-2">
-                                            <label>Package Category</label>
-                                            <select name="package_name" id="package" class="form-control">
+                                            <label>Package Category <span class="text-danger">*</span></label>
+                                            <select name="package_name" id="package_name" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="Basic" {{ old('package_name') == 'Basic' ? 'selected' : '' }}>Basic</option>
                                                 <option value="Advance" {{ old('package_name') == 'Advance' ? 'selected' : '' }}>Advance</option>
                                                 <option value="Premium" {{ old('package_name') == 'Premium' ? 'selected' : '' }}>Premium</option>
                                             </select>
-                                            @error('package')
+                                            @error('package_name')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -63,47 +72,50 @@
                                 </div>
 
                                 <div id="pricing-groups">
+                                    @php $oldRanges = old('range', ['']); $oldPrices = old('price', ['']); $oldLimits = old('limit', ['']); $oldDelivery = old('delivery_days', ['']); @endphp
+                                    @foreach ($oldRanges as $idx => $oldRange)
                                     <div class="row mx-0 px-4 pricing-group col-md-12 col-lg-12">
                                         <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Range</label>
-                                                <input type="text" name="range[]" class="form-control range-input" placeholder="range e.g up to 1000 words">
-                                                @error('range')
-                                                    <div class="text-danger">{{ $message }}</div>
+                                                <label>Range <span class="text-danger">*</span></label>
+                                                <input type="text" name="range[]" class="form-control range-input" placeholder="range e.g up to 1000 words" value="{{ $oldRange }}">
+                                                @error('range.' . $idx)
+                                                    <div class="text-danger">Range field #{{ $idx + 1 }} is required.</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Price</label>
-                                                <input type="number" name="price[]" class="form-control" placeholder="enter price">
-                                                @error('price')
-                                                    <div class="text-danger">{{ $message }}</div>
+                                                <label>Price <span class="text-danger">*</span></label>
+                                                <input type="number" name="price[]" class="form-control" placeholder="enter price" value="{{ $oldPrices[$idx] ?? '' }}">
+                                                @error('price.' . $idx)
+                                                    <div class="text-danger">Price field #{{ $idx + 1 }} is required.</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Limit</label>
-                                                <input readonly type="text" name="limit[]" class="form-control limit-input" placeholder="auto-filled">
-                                                @error('words_limit')
-                                                    <div class="text-danger">{{ $message }}</div>
+                                                <label>Limit <span class="text-danger">*</span></label>
+                                                <input readonly type="text" name="limit[]" class="form-control limit-input" placeholder="auto-filled" value="{{ $oldLimits[$idx] ?? '' }}">
+                                                @error('limit.' . $idx)
+                                                    <div class="text-danger">Limit field #{{ $idx + 1 }} is required.</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Delivery Time</label>
-                                                <input type="number" name="delivery_days[]" class="form-control" placeholder="enter number of days">
-                                                @error('words_limit')
-                                                    <div class="text-danger">{{ $message }}</div>
+                                                <label>Delivery Time <span class="text-danger">*</span></label>
+                                                <input type="number" name="delivery_days[]" class="form-control" placeholder="enter number of days" value="{{ $oldDelivery[$idx] ?? '' }}">
+                                                @error('delivery_days.' . $idx)
+                                                    <div class="text-danger">Delivery time field #{{ $idx + 1 }} is required.</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-2 col-12 mb-2 d-flex align-items-center justify-content-md-center justify-content-start">
-                                            <button type="button" class="btn btn-danger remove-group d-none w-100">Remove</button>
+                                            <button type="button" class="btn btn-danger remove-group {{ $loop->first ? 'd-none' : '' }} w-100">Remove</button>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                                 <div class="row mx-0 px-4 text-end form-group">
                                     <button type="button" class="btn btn-primary" id="add-more-group">Add More</button>

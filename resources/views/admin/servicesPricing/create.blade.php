@@ -8,122 +8,117 @@
                 <a class="btn btn-primary mb-3" href="{{ route('servicePrice.index') }}">Back</a>
                 <form id="add_header_content_two" action="{{ route('servicePrice.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-lg-12">
-                            <div class="card">
-                                <h4 class="text-center my-4">Add Pricing</h4>
-                                <div class="row mx-0 px-4">
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Service Name</label>
-                                            <select name="service_name" id="is_dropdown" class="form-control">
-                                                <option disabled selected>Select value</option>
-                                                <option value="Language Editing" {{ old('service_name') == 'Language Editing' ? 'selected' : '' }}>Language Editing</option>
-                                                <option value="Scientific Editing" {{ old('service_name') == 'Scientific Editing' ? 'selected' : '' }}>Scientific Editing</option>
-                                                <option value="Accidental Plagirisam" {{ old('service_name') == 'Accidental Plagirisam' ? 'selected' : '' }}>Accidental Plagirisam</option>
-                                                <option value="Manuscript Formatting Service" {{ old('service_name') == 'Manuscript Formatting Service' ? 'selected' : '' }}>Manuscript Formatting Service</option>
-                                                <option value="Power Point Presentations" {{ old('service_name') == 'Poster & Presentations' ? 'selected' : '' }}>Power Point Presentations</option>
-                                                <option value="Power Point Poster" {{ old('service_name') == 'Poster & Presentations' ? 'selected' : '' }}>Power Point Poster</option>
-                                                <option value="Assignment Editing Service" {{ old('service_name') == 'Assignment Editing Service' ? 'selected' : '' }}>Assignment Editing Service</option>
-                                                <option value="Thesis Editing Service" {{ old('service_name') == 'Thesis Editing Service' ? 'selected' : '' }}>Thesis Editing Service</option>
-                                                <option value="Data Analysis" {{ old('service_name') == 'Data Analysis' ? 'selected' : '' }}>Data Analysis</option>
-                                            </select>
-                                            @error('service_name')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Package</label>
-                                            <select name="package_check" id="package" class="form-control">
-                                                <option disabled selected>Select value</option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-                                            </select>
-                                            @error('package')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3 d-none" id="package_cat">
-                                        <div class="form-group mb-2">
-                                            <label>Package Category</label>
-                                            <select name="package_name" id="package" class="form-control">
-                                                <option disabled selected>Select value</option>
-                                                <option value="Basic" {{ old('package_name') == 'Basic' ? 'selected' : '' }}>Basic</option>
-                                                <option value="Advance" {{ old('package_name') == 'Advance' ? 'selected' : '' }}>Advance</option>
-                                                <option value="Premium" {{ old('package_name') == 'Premium' ? 'selected' : '' }}>Premium</option>
-                                            </select>
-                                            @error('package')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Words Limit</label>
-                                            <input type="number" name="words_limit" class="form-control" placeholder="words limit">
-                                            @error('words_limit')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mx-0 px-4">
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Price up to</label>
-                                            <input type="number" name="less_equal_price" class="form-control" placeholder="enter price" step="0.001">
-                                            @error('words_limit')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Price for above</label>
-                                            <input type="number" name="above_equal_price" class="form-control" placeholder="enter price" step="0.001">
-                                            @error('words_limit')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Delivery Time</label>
-                                            <input type="number" name="delivery_days" class="form-control" placeholder="enter number of days">
-                                            @error('words_limit')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mx-0 px-4">
-                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
-                                        <div class="form-group mb-2">
-                                            <label>Package Category</label>
-                                            <select name="price_category" id="package" class="form-control">
-                                                <option disabled selected>Select value</option>
-                                                <option value="Regular" {{ old('price_category') == 'Basic' ? 'selected' : '' }}>Regular Price</option>
-                                                <option value="Discounted" {{ old('price_category') == 'Advance' ? 'selected' : '' }}>Discounted Price for students and researchers in MENA Region</option>
-                                            </select>
-                                            @error('price_category')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
+                     <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h4 class="text-center my-4">Add Pricing</h4>
 
-                                <div class="card-footer text-center">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-success mr-1 btn-bg"
-                                            id="submit">Save</button>
-                                    </div>
-                                </div>
-                            </div>
+                {{-- Row 1 --}}
+                <div class="row mx-0 px-4">
+                    {{-- Service Name --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Service Name</label>
+                            <select name="service_name" class="form-control">
+                                <option disabled selected>Select value</option>
+                                @foreach(['Language Editing', 'Scientific Editing', 'Accidental Plagirisam', 'Manuscript Formatting Service', 'Power Point Presentations', 'Power Point Poster', 'Assignment Editing Service', 'Thesis Editing Service', 'Data Analysis'] as $service)
+                                    <option value="{{ $service }}" {{ old('service_name') == $service ? 'selected' : '' }}>{{ $service }}</option>
+                                @endforeach
+                            </select>
+                            @error('service_name') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
                     </div>
+
+                    {{-- Package --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Package</label>
+                            <select name="package_check" id="package_check" class="form-control">
+                                <option disabled selected>Select value</option>
+                                <option value="yes" {{ old('package_check') == 'yes' ? 'selected' : '' }}>Yes</option>
+                                <option value="no" {{ old('package_check') == 'no' ? 'selected' : '' }}>No</option>
+                            </select>
+                            @error('package_check') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+
+                    {{-- Package Category (conditional) --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3 {{ old('package_check') == 'yes' ? '' : 'd-none' }}" id="package_cat">
+                        <div class="form-group mb-2">
+                            <label>Package Category</label>
+                            <select name="package_name" class="form-control">
+                                <option disabled selected>Select value</option>
+                                @foreach(['Basic', 'Advance', 'Premium'] as $pkg)
+                                    <option value="{{ $pkg }}" {{ old('package_name') == $pkg ? 'selected' : '' }}>{{ $pkg }}</option>
+                                @endforeach
+                            </select>
+                            @error('package_name') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Row 2 --}}
+                <div class="row mx-0 px-4">
+                    {{-- Words Limit --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Words Limit</label>
+                            <input type="number" name="words_limit" class="form-control" placeholder="words limit" value="{{ old('words_limit') }}">
+                            @error('words_limit') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+
+                    {{-- Price up to --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Price up to</label>
+                            <input type="number" name="less_equal_price" class="form-control" placeholder="enter price" step="0.001" value="{{ old('less_equal_price') }}">
+                            @error('less_equal_price') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+
+                    {{-- Price for above --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Price for above</label>
+                            <input type="number" name="above_equal_price" class="form-control" placeholder="enter price" step="0.001" value="{{ old('above_equal_price') }}">
+                            @error('above_equal_price') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Row 3 --}}
+                <div class="row mx-0 px-4">
+                    {{-- Delivery Days --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Delivery Time (in days)</label>
+                            <input type="number" name="delivery_days" class="form-control" placeholder="enter number of days" value="{{ old('delivery_days') }}">
+                            @error('delivery_days') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+
+                    {{-- Price Category --}}
+                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                        <div class="form-group mb-2">
+                            <label>Price Category</label>
+                            <select name="price_category" class="form-control">
+                                <option disabled selected>Select value</option>
+                                <option value="Regular" {{ old('price_category') == 'Regular' ? 'selected' : '' }}>Regular Price</option>
+                                <option value="Discounted" {{ old('price_category') == 'Discounted' ? 'selected' : '' }}>Discounted Price for students and researchers in MENA Region</option>
+                            </select>
+                            @error('price_category') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Submit --}}
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-success btn-bg" id="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
                 </form>
             </div>
         </section>
@@ -140,5 +135,18 @@
     }
 });
 
+    $(function () {
+        function togglePackageCategory() {
+            if ($('#package_check').val() === 'yes') {
+                $('#package_cat').removeClass('d-none');
+            } else {
+                $('#package_cat').addClass('d-none');
+            }
+        }
+
+        $('#package_check').on('change', togglePackageCategory);
+        togglePackageCategory(); // Trigger on page load
+    });
 </script>
+
 @endsection

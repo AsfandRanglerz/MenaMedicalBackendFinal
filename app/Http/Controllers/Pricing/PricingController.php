@@ -81,36 +81,49 @@ class PricingController extends Controller
         return view('admin.newServicePricing.create');
     }
 
-   public function store(Request $request)
-{
-    $count = count($request->range);
-    for ($i = 0; $i < $count; $i++) {
-        $serviceName = $request->service_name;
-        $packageName = is_array($request->package_name) ? ($request->package_name[$i] ?? null) : $request->package_name;
+        public function store(Request $request)
+        {
+            $validated = $request->validate([
+                'service_name'           => 'required|string',
+                'package_check'          => 'required|string|in:yes,no',
+                'package_name'           => 'nullable|string|in:Basic,Advance,Premium',
+                'range'                  => 'required|array',
+                'range.*'                => 'required|string|max:255',
+                'limit'                  => 'required|array',
+                'limit.*'                => 'required|string|max:255',
+                'price'                  => 'required|array',
+                'price.*'                => 'required|numeric|min:0',
+                'delivery_days'          => 'required|array',
+                'delivery_days.*'        => 'required|integer|min:1',
+            ]);
 
-        // Get the current max position for this service + package
-        $maxPosition = NewPricing::where('service_name', $serviceName)
-            ->when($packageName, function ($query, $packageName) {
-                return $query->where('package_name', $packageName);
-            })
-            ->max('position');
+            $count = count($request->range);
+            for ($i = 0; $i < $count; $i++) {
+                $serviceName = $request->service_name;
+                $packageName = is_array($request->package_name) ? ($request->package_name[$i] ?? null) : $request->package_name;
 
-        $nextPosition = $maxPosition ? $maxPosition + 1 : 1;
+                $maxPosition = NewPricing::where('service_name', $serviceName)
+                    ->when($packageName, function ($query, $packageName) {
+                        return $query->where('package_name', $packageName);
+                    })
+                    ->max('position');
 
-        NewPricing::create([
-            'range'         => $request->range[$i],
-            'limit'         => $request->limit[$i],
-            'price'         => $request->price[$i],
-            'service_name'  => $serviceName,
-            'package_name'  => $packageName,
-            'package_check' => is_array($request->package_check) ? ($request->package_check[$i] ?? null) : $request->package_check,
-            'delivery_time' => $request->delivery_days[$i],
-            'position'      => $nextPosition,
-        ]);
-    }
+                $nextPosition = $maxPosition ? $maxPosition + 1 : 1;
 
-    return redirect()->route('newServicePrice.index')->with(['message' => 'Service Price Created Successfully']);
-}
+                NewPricing::create([
+                    'range'         => $request->range[$i],
+                    'limit'         => $request->limit[$i],
+                    'price'         => $request->price[$i],
+                    'service_name'  => $serviceName,
+                    'package_name'  => $packageName,
+                    'package_check' => is_array($request->package_check) ? ($request->package_check[$i] ?? null) : $request->package_check,
+                    'delivery_time' => $request->delivery_days[$i],
+                    'position'      => $nextPosition,
+                ]);
+            }
+
+            return redirect()->route('newServicePrice.index')->with(['message' => 'Service Price Created Successfully']);
+        }
 
 
     public function edit($id)
@@ -121,6 +134,16 @@ class PricingController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'service_name'    => 'required|string',
+            'package_check'   => 'required|string|in:yes,no',
+            'package_name'    => 'nullable|string|in:Basic,Advance,Premium',
+            'range'           => 'required|string|max:255',
+            'limit'           => 'required|string|max:255',
+            'price'           => 'required|numeric|min:0',
+            'delivery_days'   => 'required|integer|min:1',
+        ]);
+
         $pricing = NewPricing::find($id);
         $pricing->update([
             'range' => $request->range,

@@ -12,7 +12,7 @@ class SetServicePriceController extends Controller
         $pricing = ServicsPricing::latest()->get();
         return view('admin.servicesPricing.index',compact('pricing'));
     }
- 
+
     public function create(){
         return view('admin.servicesPricing.create');
     }

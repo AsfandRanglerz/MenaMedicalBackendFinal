@@ -16,7 +16,7 @@
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Service Name</label>
+                                            <label>Service Name <span class="text-danger">*</span></label>
                                             <select name="service_name" id="is_dropdown" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="Language Editing"
@@ -45,13 +45,13 @@
                                                     Analysis</option>
                                             </select>
                                             @error('service_name')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Service Name is required.</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Package</label>
+                                            <label>Package <span class="text-danger">*</span></label>
                                             <select name="package_check" id="package" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="yes"
@@ -60,13 +60,13 @@
                                                     {{ $pricing->package_check == 'no' ? 'selected' : '' }}>No</option>
                                             </select>
                                             @error('package_check')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Package selection is required.</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3 d-none" id="package_cat">
                                         <div class="form-group mb-2">
-                                            <label>Package Category</label>
+                                            <label>Package Category <span class="text-danger">*</span></label>
                                             <select name="package_name" id="package_name" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="Basic"
@@ -79,18 +79,18 @@
                                                     {{ $pricing->package_name == 'Premium' ? 'selected' : '' }}>Premium
                                                 </option>
                                             </select>
-                                            @error('package')
-                                                <div class="text-danger">{{ $message }}</div>
+                                            @error('package_name')
+                                                <div class="text-danger">Package Category is required.</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Range</label>
+                                            <label>Range <span class="text-danger">*</span></label>
                                             <input type="text" name="range" class="form-control"
                                                 placeholder="range e.g up to 1000 words" value="{{ $pricing->range }}">
                                             @error('range')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Range is required.</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -98,33 +98,33 @@
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Limit</label>
+                                            <label>Limit <span class="text-danger">*</span></label>
                                             <input type="text" name="limit" id="limit"
                                                 value="{{ $pricing->limit }}" class="form-control"
                                                 readonly placeholder="" step="" min="0">
-                                            @error('words_limit')
-                                                <div class="text-danger">{{ $message }}</div>
+                                            @error('limit')
+                                                <div class="text-danger">Limit is required.</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Price</label>
+                                            <label>Price <span class="text-danger">*</span></label>
                                             <input type="number" name="price"
                                                 value="{{ $pricing->price }}" class="form-control"
                                                 placeholder="enter price">
                                             @error('price')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Price is required.</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Delivery Time</label>
+                                            <label>Delivery Time <span class="text-danger">*</span></label>
                                             <input type="number" name="delivery_days" class="form-control"
                                                 value="{{ $pricing->delivery_time }}" placeholder="enter number of days">
-                                            @error('words_limit')
-                                                <div class="text-danger">{{ $message }}</div>
+                                            @error('delivery_days')
+                                                <div class="text-danger">Delivery Time is required.</div>
                                             @enderror
                                         </div>
                                     </div>

@@ -35,6 +35,19 @@ class AdditionalPriceController extends Controller
     }
 
     public function update(Request $request, $id){
+        $validated = $request->validate([
+            'services' => 'required|string',
+            'additional_services' => 'required|string',
+            'basic_package_price' => 'nullable|numeric|min:0',
+            'advance_package_price' => 'nullable|numeric|min:0',
+            // 'status' => 'required|in:0,1', // Uncomment if status is required
+        ]);
+
+        // At least one price must be present
+        if (is_null($request->basic_package_price) && is_null($request->advance_package_price)) {
+            return back()->withErrors(['basic_package_price' => 'At least one price (Basic or Advance) is required.', 'advance_package_price' => 'At least one price (Basic or Advance) is required.'])->withInput();
+        }
+
         $additionalprice = AdditionalPrices::find($id);
         $additionalprice->update([
             'services'=>$request->services,

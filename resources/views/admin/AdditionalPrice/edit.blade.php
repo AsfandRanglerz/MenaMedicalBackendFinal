@@ -16,7 +16,7 @@
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Service Name</label>
+                                            <label>Service Name <span class="text-danger">*</span></label>
                                             <select name="services" id="is_dropdown" class="form-control">
                                                 <option disabled selected>Select value</option>
                                                 <option value="Language Editing"
@@ -49,7 +49,7 @@
                                                     Analysis</option> --}}
                                             </select>
                                             @error('services')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Service Name is required.</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -70,12 +70,12 @@
                                     </div> --}}
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Basic Price</label>
+                                            <label>Basic Price <span class="text-danger">*</span></label>
                                             <input type="number" name="basic_package_price"
                                                 value="{{ $additionalprice->basic_package_price }}" class="form-control"
                                                 placeholder="enter price" step="0.01">
                                             @error('basic_package_price')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Basic Price is required.</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -93,24 +93,24 @@
                                 {{-- <div class="row mx-0 px-4"> --}}
                                     <div class="col-sm-4 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Advance Price</label>
+                                            <label>Advance Price <span class="text-danger">*</span></label>
                                             <input type="number" name="advance_package_price"
                                                 value="{{ $additionalprice->advance_package_price }}" class="form-control"
                                                 placeholder="enter price" step="0.01">
                                             @error('advance_package_price')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <div class="text-danger">Advance Price is required.</div>
                                             @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-sm-8 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Additional Service</label>
+                                            <label>Additional Service <span class="text-danger">*</span></label>
                                             <input type="text" name="additional_services"
                                                 value="{{ $additionalprice->additional_services }}" class="form-control"
                                                 placeholder="Enter Additional Service" >
-                                            @error('additional_services ')
-                                                <div class="text-danger">{{ $message }}</div>
+                                            @error('additional_services')
+                                                <div class="text-danger">Additional Service is required.</div>
                                             @enderror
                                         </div>
                                     </div>
