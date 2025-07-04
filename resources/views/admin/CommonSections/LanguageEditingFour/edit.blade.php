@@ -19,7 +19,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Main Title</label>
+                                            <label>Main Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Main Title" name="main_title"
                                             id="main_title" value="{{ old('title', $LanguageEditingFour->main_title) }}" class="form-control">
                                         @error('main_title')
@@ -41,7 +41,7 @@
                                         </div>
                                     </div> --}}
 
-                                    
+
                                     {{-- <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Background Colour</label>
@@ -56,7 +56,7 @@
                                             @enderror
                                         </div>
                                     </div> --}}
-                                   
+
                                     <div class="col-sm-5 d-flex align-items-center">
                                         <!-- Input to Upload New Image -->
                                         <div class="flex-grow-1">
@@ -68,29 +68,29 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    
+
                                         <!-- Display Existing Image -->
                                         @if($LanguageEditingFour->main_image)
                                             <div class="ms-3">
-                                                <img src="{{ asset($LanguageEditingFour->main_image) }}" 
-                                                     alt="image" 
+                                                <img src="{{ asset($LanguageEditingFour->main_image) }}"
+                                                     alt="image"
                                                      style="width: 80px; height: 70px; margin-left:20px;border: 1px solid #ddd;">
                                             </div>
                                         @endif
                                     </div>
-                                    
+
 
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                   
-                                            <label>Description</label>
+
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $LanguageEditingFour->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="card-footer text-center">

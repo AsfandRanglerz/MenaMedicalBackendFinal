@@ -18,7 +18,8 @@
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Text Content</label>
+                                            <label>Text Content <span class="text-danger">*</span></label>
+                                            </label>
                                             <input type="text" name="text"
                                                 value="{{ old('text', $socialLink->text) }}" class="form-control">
                                             @error('text')
@@ -28,7 +29,7 @@
                                     </div>
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Icon Class</label>
+                                            <label>Icon Class @if($socialLink->id !== 3) <span class="text-danger">*</span> @endif</label>
                                             <input type="text" name="icon" class="form-control" placeholder="e.g., fa-facebook">
                                             @error('icon')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -37,7 +38,7 @@
                                     </div>
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>URL</label>
+                                            <label>URL @if($socialLink->id !== 3) <span class="text-danger">*</span> @endif</label>
                                             <input type="url" name="url"
                                                 value="{{ old('url', $socialLink->url) }}" class="form-control">
                                             @error('url')
@@ -55,10 +56,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
 
 
-                                    <div class="col-sm-6 pl-sm-0 pr-sm-3">
+
+                                    {{-- <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Status</label>
                                             <select name="status" class="form-control">
@@ -71,7 +72,7 @@
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="card-footer text-center">

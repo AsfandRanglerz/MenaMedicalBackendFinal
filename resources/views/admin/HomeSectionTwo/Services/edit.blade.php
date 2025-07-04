@@ -28,11 +28,11 @@
                                         @enderror
                                         </div>
                                     </div> --}}
-                                    
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Title</label>
+                                            <label>Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Title" name="title"
                                             id="title" value="{{ old('title', $HomeSection->title) }}" class="form-control">
                                         @error('title')
@@ -40,10 +40,10 @@
                                         @enderror
                                         </div>
                                     </div>
-                        
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Link</label>
+                                            <label>Link <span class="text-danger">*</span></label>
                                             <input type="link" placeholder="Enter Link" name="link"
                                             id="link" value="{{ old('link', $HomeSection->link) }}" class="form-control">
                                         @error('link')
@@ -54,7 +54,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Link-Text</label>
+                                            <label>Link-Text <span class="text-danger">*</span></label>
                                             <input type="linktext" placeholder="Enter Link-Text" name="linktext"
                                             id="linktext" value="{{ old('link_text', $HomeSection->link_text) }}" class="form-control">
                                         @error('linktext')
@@ -62,7 +62,7 @@
                                         @enderror
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-sm-5 d-flex align-items-center">
                                         <!-- Input to Upload New Image -->
                                         <div class="flex-grow-1">
@@ -74,22 +74,22 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    
+
                                         <!-- Display Existing Image -->
                                         @if($HomeSection->image)
                                             <div class="ms-3">
-                                                <img src="{{ asset($HomeSection->image) }}" 
-                                                     alt="image" 
+                                                <img src="{{ asset($HomeSection->image) }}"
+                                                     alt="image"
                                                      style="width: 80px; height: 80px; margin-left:20px;border: 1px solid #ddd;">
                                             </div>
                                         @endif
                                     </div>
-                                    
-                                            
-                                    
+
+
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $HomeSection->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
 
-                                
+
 
                                 <div class="card-footer text-center">
                                     <button type="submit" class="btn btn-success">Update</button>

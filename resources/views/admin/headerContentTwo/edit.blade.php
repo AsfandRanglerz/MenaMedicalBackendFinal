@@ -18,7 +18,7 @@
                                 <div class="row mx-0 px-4">
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Text Content</label>
+                                            <label>Text Content <span class="text-danger">*</span></label>
                                             <input type="text" name="text"
                                                 value="{{ old('text', $headerContent->text) }}" class="form-control">
                                             @error('text')
@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>URL</label>
+                                            <label>URL <span class="text-danger">*</span></label>
                                             <input type="url" name="url"
                                                 value="{{ old('url', $headerContent->url) }}" class="form-control">
                                             @error('url')

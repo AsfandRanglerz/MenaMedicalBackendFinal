@@ -63,9 +63,10 @@
                                 </div> --}}
 
                                 <div class="col-md-12 col-sm-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label>Description<span class="text-danger">*</span></label>
+                                    <div class="form-group" id="myForm">
+                                        <label>Description <span class="text-danger">*</span></label>
                                         <textarea name="description" cols="30" rows="10" id="description" class="form-control description edit-description">{{ $LanguageEditingThree->description }}</textarea>
+
                                     </div>
                                 </div>
                             </div>

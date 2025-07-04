@@ -19,7 +19,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Title</label>
+                                            <label>Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Title" name="title"
                                             id="title" value="{{ old('title', $HomeSection->title) }}" class="form-control">
                                         @error('title')
@@ -28,11 +28,11 @@
                                         </div>
                                     </div>
 
-                                    
-                                   
+
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $HomeSection->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>

@@ -19,7 +19,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Title</label>
+                                            <label>Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Title" name="title"
                                             id="title" value="{{ old('title', $LanguageEditing->title) }}" class="form-control">
                                         @error('title')
@@ -39,20 +39,20 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    
+
                                         <!-- Display Existing Image -->
                                         @if($LanguageEditing->image)
                                             <div class="ms-3">
-                                                <img src="{{ asset($LanguageEditing->image) }}" 
-                                                     alt="image" 
+                                                <img src="{{ asset($LanguageEditing->image) }}"
+                                                     alt="image"
                                                      style="width: 95px; height: auto; margin-left:20px; border: 1px solid #ddd;">
                                             </div>
                                         @endif
                                     </div>
-                                    
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $LanguageEditing->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>

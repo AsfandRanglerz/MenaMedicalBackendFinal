@@ -21,19 +21,19 @@ class LanguageEditingThreeController extends Controller
 
     public function store(Request $request)
     {
-    
+
         // if ($request->hasFile('image')) {
         //     $file = $request->file('image');
         //     $filename = time() . '_' . $file->getClientOriginalName();
         //     $file->move(public_path('admin/assets/images'), $filename);
         //     $image = 'public/admin/assets/images/' . $filename;
         // }
-    
-   
+
+
 $LanguageEditingThree = LanguageEditingThree::Create([
 
-            
-            
+
+
             'description' => $request->description,
             'link' => $request->link,
             'link_text' => $request->link_text,
@@ -45,16 +45,19 @@ $LanguageEditingThree = LanguageEditingThree::Create([
 
     public function edit($id)
     {
-        
+
         $LanguageEditingThree= LanguageEditingThree::find($id);
-        
+
 
         return view('admin.LanguageEditingThree.edit', compact('LanguageEditingThree'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'description' => 'required',
+        ]);
+
         $LanguageEditingThree = LanguageEditingThree::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -62,24 +65,24 @@ $LanguageEditingThree = LanguageEditingThree::Create([
     //     // Generate a unique filename
     //     $file = $request->file('image');
     //     $filename = time() . '_' . $file->getClientOriginalName();
-        
+
     //     // Move the file to the target directory
     //     $file->move(public_path('admin/assets/images'), $filename);
 
     //     // Update the image path relative to 'public'
     //     $HomeSection->image = 'public/admin/assets/images/' . $filename;
     // }
-    
+
         // Update other fields
-        
+
         $LanguageEditingThree->description = $request->description;
         $LanguageEditingThree->link = $request->link;
         $LanguageEditingThree->link_text = $request->linktext;
         $LanguageEditingThree->text = $request->text;
         $LanguageEditingThree->save();
-    
+
         return redirect()->route('LanguageEditingThree')->with('message', 'Quality Guarantee Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

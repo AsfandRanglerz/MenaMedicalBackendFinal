@@ -28,7 +28,7 @@ class HeaderContentOneController extends Controller
             'url' => 'nullable|url',
             'icon' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048', // Added validation for the file
         ]);
-    
+
         // Handle file upload
         $image = null;
         if ($request->hasFile('icon')) {
@@ -40,10 +40,10 @@ class HeaderContentOneController extends Controller
         } else {
             $image = null; // Ensure $image is defined even if no file is uploaded
         }
-        
+
         // Default status
         $status = '0';
-        
+
         // Create the record
         $headerContentOne = HeaderContentOne::create([
             'text' => $request->text,
@@ -51,13 +51,13 @@ class HeaderContentOneController extends Controller
             'icon' => $image, // Save the image path in the 'icon' column
             'status' => $status,
         ]);
-        
 
-    
+
+
         // Redirect with a success message
         return redirect()->route('headerContentOne')->with(['message' => 'Header Content Created Successfully']);
     }
-    
+
     public function edit($id)
     {
         // return $id;
@@ -71,8 +71,8 @@ class HeaderContentOneController extends Controller
         // return $request;
         $request->validate([
             'text' => 'required|string|max:255',
-            'url' => 'nullable|url',
-            'status' => 'required|boolean',
+            'url' => 'required|url',
+            // 'status' => 'required|boolean',
         ]);
 
         $headerContentOne = HeaderContentOne::find($id);
@@ -97,7 +97,7 @@ class HeaderContentOneController extends Controller
             'text' => $request->text,
             'url' => $request->url,
             'icon' => $image,
-            'status' => $request->status,
+            // 'status' => $request->status,
         ]);
 
         return redirect()->route('headerContentOne')->with(['message' => 'Header Content Updated Successfully']);

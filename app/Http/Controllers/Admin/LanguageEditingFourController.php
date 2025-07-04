@@ -26,10 +26,10 @@ class LanguageEditingFourController extends Controller
             ->whereNotNull('description') // Ensure 'description' is not null
             ->select(['id', 'title', 'description', 'image', 'colour']) // Select required columns
             ->get();
-    
+
         return view('admin.CommonSections.LanguageEditingFour.Commitment.index', compact('LanguageEditingFours'));
     }
-    
+
 
     public function create()
     {
@@ -39,15 +39,15 @@ class LanguageEditingFourController extends Controller
     public function store(Request $request)
     {
       $image = null;
-        
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('admin/assets/images'), $filename);
             $main_image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $LanguageEditingFour = LanguageEditingFour::Create([
 
             'main_title' => $request->main_title,
@@ -62,25 +62,29 @@ $LanguageEditingFour = LanguageEditingFour::Create([
 
     public function edit($id)
     {
-        
+
         $LanguageEditingFour= LanguageEditingFour::find($id);
-        
+
 
         return view('admin.CommonSections.LanguageEditingFour.edit', compact('LanguageEditingFour'));
     }
 
     public function commitmentedit($id)
     {
-        
+
         $LanguageEditingFour= LanguageEditingFour::find($id);
-        
+
 
         return view('admin.CommonSections.LanguageEditingFour.Commitment.edit', compact('LanguageEditingFour'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'main_title' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
         $LanguageEditingFour = LanguageEditingFour::findOrFail($id);
 
      // Update image if a new one is uploaded
@@ -88,14 +92,14 @@ $LanguageEditingFour = LanguageEditingFour::Create([
         // Generate a unique filename
         $file = $request->file('main_image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $LanguageEditingFour->main_image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $LanguageEditingFour->main_title = $request->main_title;
         // $LanguageEditing->title = $request->title;
@@ -103,14 +107,18 @@ $LanguageEditingFour = LanguageEditingFour::Create([
         // $LanguageEditingFour->main_image = $request->main_image;
         // $LanguageEditing->colour =  $request->colour;
         $LanguageEditingFour->save();
-    
+
         return redirect()->route('LanguageEditingFour')->with('message', 'Commitment Section Updated Successfully');
-    
+
     }
 
     public function commitmentupdate(Request $request, $id)
     {
-        
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string|max:90000',
+    ]);
+
         $LanguageEditingFour = LanguageEditingFour::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -118,7 +126,7 @@ $LanguageEditingFour = LanguageEditingFour::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
@@ -131,9 +139,9 @@ $LanguageEditingFour = LanguageEditingFour::Create([
         $LanguageEditingFour->description = $request->description;
         // $LanguageEditing->colour =  $request->colour;
         $LanguageEditingFour->save();
-    
+
         return redirect()->route('commitment')->with('message', 'Commitment Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

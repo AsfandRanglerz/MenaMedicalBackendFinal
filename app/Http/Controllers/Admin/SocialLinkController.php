@@ -30,7 +30,7 @@ class SocialLinkController extends Controller
             'icon' => 'nullable|string|max:255', // Image file, specific formats, max 2MB
             'url' => 'nullable|url',
         ]);
-        
+
         $status = '0';
 
         $icon = null;
@@ -64,13 +64,18 @@ class SocialLinkController extends Controller
     public function update(Request $request, $id)
     {
         // return $request;
-        // Validate the incoming request data
-        $request->validate([
-            'text' => 'nullable',
-            'url' => 'nullable|url',
-            'icon' => 'nullable|string|max:255', // Image file, specific formats, max 2MB
-            'status' => 'required|boolean',
-        ]);
+       if($id == 3) {
+                 $request->validate([
+                    'text' => 'required',
+                ]);
+
+            } else {
+                $request->validate([
+                    'text' => 'required',
+                    'url' => 'required|url',
+                    'icon' => 'required|string|max:255',
+                ]);
+            }
 
 
         // Find the existing header content by ID
@@ -96,7 +101,7 @@ class SocialLinkController extends Controller
             'url' => $request->url,
             'icon'=> $request->icon,
             'class'=> $request->class,
-            'status' => $request->status,
+            // 'status' => $request->status,
         ]);
 
         return redirect()->route('socialLink')->with(['message' => 'Social Link Updated Successfully']);

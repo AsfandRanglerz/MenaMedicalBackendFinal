@@ -24,7 +24,7 @@
                                             <th>Icon</th>
                                             <th>Url</th>
                                             <th>Class</th>
-                                            <th>Status</th>
+                                            {{-- <th>Status</th> --}}
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
@@ -56,11 +56,11 @@
                                                     <span class="text-muted">No Class</span>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <div class="badge {{ $socialLink->status == 0 ? 'badge-success' : 'badge-danger' }} badge-shadow">
                                                         {{ $socialLink->status == 0 ? 'Activated' : 'Deactivated' }}
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex gap-4">
                                                         <a href="{{ route('socialLinkEdit', $socialLink->id) }}"

@@ -53,8 +53,8 @@ class ProfileController extends Controller
         // Validate the incoming request data
         $request->validate([
             'text' => 'required|string|max:255',
-            'url' => 'nullable|url',
-            'status' => 'required|boolean',
+            'url' => 'required|url',
+            // 'status' => 'required|boolean',
         ]);
 
         // Find the existing header content by ID
@@ -64,7 +64,7 @@ class ProfileController extends Controller
         $profile->update([
             'text' => $request->text,
             'url' => $request->url,
-            'status' => $request->status,
+            // 'status' => $request->status,
         ]);
 
         return redirect()->route('profile')->with(['message' => 'Profile Updated Successfully']);

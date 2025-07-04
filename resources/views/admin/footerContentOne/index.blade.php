@@ -22,7 +22,7 @@
                                             <th>Sr.</th>
                                             <th>Heading</th>
                                             <th>Content</th>
-                                            <th>Status</th>
+                                            {{-- <th>Status</th> --}}
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
@@ -33,11 +33,11 @@
                                                 <td>{{ $footerContent->heading }}</td>
                                                 <td>{{ $footerContent->content }}</td>
 
-                                                <td>
+                                                {{-- <td>
                                                     <div class="badge {{ $footerContent->status == 0 ? 'badge-success' : 'badge-danger' }} badge-shadow">
                                                         {{ $footerContent->status == 0 ? 'Activated' : 'Deactivated' }}
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex gap-4">
                                                         <a href="{{ route('footerContentOneEdit', $footerContent->id) }}"

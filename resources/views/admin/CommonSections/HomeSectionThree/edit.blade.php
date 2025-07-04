@@ -14,11 +14,11 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <h4 class="text-center my-4">Edit Partners Images</h4>
+                                <h4 class="text-center my-4">Edit Partners Image</h4>
                                 <div class="row mx-0 px-4">
-                                    
 
-                                    
+
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Image</label>
@@ -30,15 +30,15 @@
                                             <!-- Display Existing Image -->
                                             @if($HomeSection->image)
                                                 <div class="mb-2">
-                                                    <img src="{{ asset($HomeSection->image) }}" 
-                                                         alt="image" 
+                                                    <img src="{{ asset($HomeSection->image) }}"
+                                                         alt="image"
                                                          style="width: 150px; height: auto; margin-top:15px; margin-bottom:10px; border: 1px solid #ddd;">
                                                 </div>
                                             @endif
-                                    
+
                                     </div>
                                     </div>
-                                   
+
                                 </div>
 
                                 <div class="card-footer text-center">

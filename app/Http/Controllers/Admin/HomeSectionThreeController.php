@@ -16,7 +16,7 @@ class HomeSectionThreeController extends Controller
         ->whereNull('description')
         ->select(['id', 'image']) // Select only id and image
         ->get();
-    
+
 
         return view('admin.CommonSections.HomeSectionThree.index', compact('HomeSections'));
     }
@@ -28,9 +28,12 @@ class HomeSectionThreeController extends Controller
 
     public function store(Request $request)
     {
-      
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+        ]);
+
         $image = null;
-        
+
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -38,8 +41,8 @@ class HomeSectionThreeController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $HomeSectionOne = HomeSectionThree::Create([
 
             'title' => $request->title,
@@ -51,16 +54,16 @@ $HomeSectionOne = HomeSectionThree::Create([
 
     public function edit($id)
     {
-        
+
         $HomeSection= HomeSectionThree::find($id);
-        
+
 
         return view('admin.CommonSections.HomeSectionThree.edit', compact('HomeSection'));
     }
 
     public function update(Request $request, $id)
     {
-        
+
         $HomeSection = HomeSectionThree::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -68,21 +71,21 @@ $HomeSectionOne = HomeSectionThree::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $HomeSection->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $HomeSection->title = $request->title;
         $HomeSection->description = $request->description;
         $HomeSection->save();
-    
+
         return redirect()->route('HomeSectionThree')->with('message', 'Partner Image Updated Successfully');
-    
+
     }
 
     public function destroy($id)

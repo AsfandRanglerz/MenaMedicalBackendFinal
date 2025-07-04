@@ -21,9 +21,9 @@ class HomeSectionSixController extends Controller
 
     public function store(Request $request)
     {
-      
-    
-   
+
+
+
 $HomeSectionSix = HomeSectionSix::Create([
 
             'title' => $request->title,
@@ -34,27 +34,31 @@ $HomeSectionSix = HomeSectionSix::Create([
 
     public function edit($id)
     {
-        
+
         $HomeSection= HomeSectionSix::find($id);
-        
+
 
         return view('admin.CommonSections.HomeSectionSix.edit', compact('HomeSection'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+        ]);
+
         $HomeSection = HomeSectionSix::findOrFail($id);
 
-    
-    
+
+
         // Update other fields
         $HomeSection->title = $request->title;
         $HomeSection->description = $request->description;
         $HomeSection->save();
-    
+
         return redirect()->route('HomeSectionSix')->with('message', 'Partner Text Updated Successfully');
-    
+
     }
 
     public function destroy($id)

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HomeSectionTwoController extends Controller
 {
 
-    
+
     public function index()
     {
         $HomeSections = HomeSectionTwo::orderBy('id', 'DESC')
@@ -26,7 +26,7 @@ class HomeSectionTwoController extends Controller
     public function services()
     {
         $HomeSections = HomeSectionTwo::orderBy('id', 'ASC')
-       
+
         ->whereNotNull('link')
         ->whereNotNull('link_text')
         ->select(['id','title','description','image','link','link_text'])
@@ -49,8 +49,8 @@ class HomeSectionTwoController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $HomeSectionTwo = HomeSectionTwo::Create([
 
             'main_title' => $request->main_title,
@@ -66,29 +66,33 @@ $HomeSectionTwo = HomeSectionTwo::Create([
 
     public function edit($id)
     {
-        
+
         $HomeSection= HomeSectionTwo::find($id);
-        
+
 
         return view('admin.HomeSectionTwo.edit', compact('HomeSection'));
     }
 
     public function servicesedit($id)
     {
-        
+
+
         $HomeSection= HomeSectionTwo::find($id);
-        
+
 
         return view('admin.HomeSectionTwo.Services.edit', compact('HomeSection'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'main_title' => 'required|string|max:255',
+        ]);
+
         $HomeSection = HomeSectionTwo::findOrFail($id);
 
-    
-    
+
+
         // Update other fields
         $HomeSection->main_title = $request->main_title;
         // $HomeSection->title = $request->title;
@@ -96,14 +100,20 @@ $HomeSectionTwo = HomeSectionTwo::Create([
         // $HomeSection->link = $request->link;
         // $HomeSection->link_text = $request->linktext;
         $HomeSection->save();
-    
+
         return redirect()->route('HomeSectionTwo')->with('message', 'Our Services Updated Successfully');
-    
+
     }
 
     public function servicesupdate(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'link' => 'required|url',
+            'linktext' => 'required|string|max:255',
+        ]);
+
         $HomeSection = HomeSectionTwo::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -111,14 +121,14 @@ $HomeSectionTwo = HomeSectionTwo::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $HomeSection->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         // $HomeSection->main_title = $request->main_title;
         $HomeSection->title = $request->title;
@@ -126,9 +136,9 @@ $HomeSectionTwo = HomeSectionTwo::Create([
         $HomeSection->link = $request->link;
         $HomeSection->link_text = $request->linktext;
         $HomeSection->save();
-    
+
         return redirect()->route('Services')->with('message', 'Our Services Updated Successfully');
-    
+
     }
 
     public function destroy($id)

@@ -54,7 +54,7 @@ class FooterContentController extends Controller
         $request->validate([
             'heading' => 'required|string|max:255',
             'content' => 'required|string',
-            'status' => 'required|boolean',
+            // 'status' => 'required|boolean',
         ]);
 
         // Find the existing header content by ID
@@ -64,7 +64,7 @@ class FooterContentController extends Controller
         $footerContentOne->update([
             'heading' => $request->heading,
             'content' => $request->content,
-            'status' => $request->status,
+            // 'status' => $request->status,
         ]);
 
         return redirect()->route('footerContentOne')->with(['message' => 'Footer Content Updated Successfully']);

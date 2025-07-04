@@ -22,7 +22,7 @@
                                             <th>Sr.</th>
                                             <th>Text Content</th>
                                             <th>Url</th>
-                                            <th>Status</th>
+                                            {{-- <th>Status</th> --}}
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>

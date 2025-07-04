@@ -21,7 +21,7 @@ class HomeSectionOneController extends Controller
 
     public function store(Request $request)
     {
-      
+
 
 
 
@@ -31,8 +31,8 @@ class HomeSectionOneController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $HomeSectionOne = HomeSectionOne::Create([
 
             'title' => $request->title,
@@ -45,16 +45,21 @@ $HomeSectionOne = HomeSectionOne::Create([
 
     public function edit($id)
     {
-        
+
         $HomeSection= HomeSectionOne::find($id);
-        
+
 
         return view('admin.HomeSectionOne.edit', compact('HomeSection'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:90000',
+            'image_description' => 'required|string|max:255',
+        ]);
+
         $HomeSection = HomeSectionOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -62,22 +67,22 @@ $HomeSectionOne = HomeSectionOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $HomeSection->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $HomeSection->title = $request->title;
         $HomeSection->description = $request->description;
         $HomeSection->image_description = $request->image_description;
         $HomeSection->save();
-    
+
         return redirect()->route('HomeSectionOne')->with('message', 'Introduction Updated Successfully');
-    
+
     }
 
     public function destroy($id)

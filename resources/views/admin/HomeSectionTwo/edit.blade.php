@@ -20,7 +20,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Main Title</label>
+                                            <label>Main Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Main Title" name="main_title"
                                             id="main_title" value="{{ old('main_title', $HomeSection->main_title) }}" class="form-control">
                                         @error('main_title')
@@ -28,7 +28,7 @@
                                         @enderror
                                         </div>
                                     </div>
-                                    
+
                                     {{-- <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
@@ -40,7 +40,7 @@
                                         @enderror
                                         </div>
                                     </div> --}}
-                        
+
                                     {{-- <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Link</label>
@@ -73,13 +73,13 @@
                                             <!-- Display Existing Image -->
                                             @if($HomeSection->image)
                                                 <div class="mb-2">
-                                                    <img src="{{ asset($HomeSection->image) }}" 
-                                                         alt="image" 
+                                                    <img src="{{ asset($HomeSection->image) }}"
+                                                         alt="image"
                                                          style="width: 90px; height: auto; margin-top:15px; margin-bottom:10px; border: 2px solid #ddd;">
                                                 </div>
                                             @endif
-                                    
-                                            
+
+
                                     </div>
                                     </div>
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
@@ -93,9 +93,9 @@
                                     </div>
                                 </div> --}}
 
-                                
 
-                                
+
+
                             </div>
                             <div class="card-footer text-center">
                                 <button type="submit" class="btn btn-success">Update</button>
