@@ -39,18 +39,18 @@
                                             <!-- Display Existing Image -->
                                             @if($ScientificEditing->image)
                                                 <div class="mb-2">
-                                                    <img src="{{ asset($ScientificEditing->image) }}" 
-                                                         alt="image" 
+                                                    <img src="{{ asset($ScientificEditing->image) }}"
+                                                         alt="image"
                                                          style="width: 80px; height: auto; margin-top:15px; margin-bottom:10px; border: 1px solid #ddd;">
                                                 </div>
                                             @endif
-                                    
+
                                     </div>
                                     </div>
-                                    
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $ScientificEditing->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>

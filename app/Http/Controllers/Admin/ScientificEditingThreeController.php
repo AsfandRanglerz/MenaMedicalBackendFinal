@@ -43,8 +43,8 @@ class ScientificEditingThreeController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $ScientificEditingThree = ScientificEditingThree::Create([
 
             'title' => $request->title,
@@ -56,41 +56,47 @@ $ScientificEditingThree = ScientificEditingThree::Create([
 
     public function edit($id)
     {
-        
+
         $ScientificEditing= ScientificEditingThree::find($id);
-        
+
 
         return view('admin.ScientificEditingThree.edit', compact('ScientificEditing'));
     }
 
     public function featuresedit($id)
     {
-        
+
         $ScientificEditing= ScientificEditingThree::find($id);
-        
+
 
         return view('admin.ScientificEditingThree.FeaturesAndBenefits.edit', compact('ScientificEditing'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+        ]);
+
         $ScientificEditing = ScientificEditingThree::findOrFail($id);
 
-    
-    
+
+
         // Update other fields
         $ScientificEditing->title = $request->title;
         // $ScientificEditing->description = $request->description;
         $ScientificEditing->save();
-    
+
         return redirect()->route('ScientificEditingThree')->with('message', 'Features and Benefits Section Updated Successfully');
-    
+
     }
 
     public function featuresupdate(Request $request, $id)
     {
-        
+        $request->validate([
+            'description' => 'required',
+        ]);
+
         $ScientificEditing = ScientificEditingThree::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -98,21 +104,21 @@ $ScientificEditingThree = ScientificEditingThree::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $ScientificEditing->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         // $ScientificEditing->title = $request->title;
         $ScientificEditing->description = $request->description;
         $ScientificEditing->save();
-    
+
         return redirect()->route('Features')->with('message', 'Features and Benefits Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

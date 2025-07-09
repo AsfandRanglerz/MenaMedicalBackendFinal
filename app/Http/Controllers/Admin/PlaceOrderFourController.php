@@ -41,7 +41,7 @@ class PlaceOrderFourController extends Controller
 
     public function store(Request $request)
     {
-      
+
         $image = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -49,7 +49,7 @@ class PlaceOrderFourController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-   
+
         $PlaceOrderFour = PlaceOrderFour::Create([
             'main_title' => $request->main_title,
             'title' => $request->title,
@@ -63,28 +63,31 @@ class PlaceOrderFourController extends Controller
 
     public function edit($id)
     {
-        
+
         $PlaceOrderFour= PlaceOrderFour::find($id);
-        
+
 
         return view('admin.PlaceOrderFour.edit', compact('PlaceOrderFour'));
     }
 
     public function servicesedit($id)
     {
-        
+
         $PlaceOrderFour= PlaceOrderFour::find($id);
-        
+
 
         return view('admin.PlaceOrderFour.Services.edit', compact('PlaceOrderFour'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'main_title' => 'required',
+        ]);
+
         $PlaceOrderFour = PlaceOrderFour::findOrFail($id);
 
-       
+
         // Update other fields
         $PlaceOrderFour->main_title = $request->main_title;
         // $PlaceOrderFour->title = $request->title;
@@ -94,18 +97,24 @@ class PlaceOrderFourController extends Controller
         // $PlaceOrderFour->colour =  $request->colour;
 
         $PlaceOrderFour->save();
-    
+
         return redirect()->route('PlaceOrderFour')->with('message', 'Service Section Updated Successfully');
-    
+
     }
 
     public function servicesupdate(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'link' => 'required',
+            'link_text' => 'required',
+        ]);
+
         $PlaceOrderFour = PlaceOrderFour::findOrFail($id);
 
-       
-   
+
+
         // Update other fields
         // $PlaceOrderFour->main_title = $request->main_title;
         $PlaceOrderFour->title = $request->title;
@@ -115,9 +124,9 @@ class PlaceOrderFourController extends Controller
         // $PlaceOrderFour->colour =  $request->colour;
 
         $PlaceOrderFour->save();
-    
+
         return redirect()->route('OrderServices')->with('message', 'Service Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

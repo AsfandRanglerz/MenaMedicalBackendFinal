@@ -21,41 +21,44 @@ class ManuscriptFormattingThreeController extends Controller
 
     public function store(Request $request)
     {
-      
-    
-   
+
+
+
 $ManuscriptFormattingThree = ManuscriptFormattingThree::Create([
 
             'description' => $request->description,
-           
+
         ]);
         return redirect()->route('ManuscriptFormattingThree')->with(['message' => 'Manuscript Review Section Created Successfully']);
     }
 
     public function edit($id)
     {
-        
+
         $ManuscriptFormattingThree= ManuscriptFormattingThree::find($id);
-        
+
 
         return view('admin.PublicationSupport.ManuscriptFormattingThree.edit', compact('ManuscriptFormattingThree'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'description' => 'required',
+        ]);
+
     $ManuscriptFormattingThree = ManuscriptFormattingThree::findOrFail($id);
 
-   
-    
+
+
         // Update other fields
-       
+
         $ManuscriptFormattingThree->description = $request->description;
-        
+
         $ManuscriptFormattingThree->save();
-    
+
         return redirect()->route('ManuscriptFormattingThree')->with('message', 'Manuscript Review Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

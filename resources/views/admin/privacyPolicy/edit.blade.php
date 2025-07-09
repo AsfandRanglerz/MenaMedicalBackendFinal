@@ -7,7 +7,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-body">
-                <form action="{{route('privacy.update')}}" method="POST">
+                <form action="{{ route('privacy.update') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
@@ -20,10 +20,14 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                 <input type="text" value="{{$privacy->id}}" name="decId" hidden>
+                                                    <input type="text" value="{{ $privacy->id }}" name="decId" hidden>
                                                     <label for="description">Description</label>
                                                     <textarea name="description" id="description" class="description"></textarea>
-                                                    <div class="invalid-feedback"></div>
+                                                    <div class="invalid-feedback d-block">
+                                                        @error('description')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -43,6 +47,9 @@
                                         .catch(error => {
                                             console.error(error);
                                         });
+                                        document.querySelector('form').addEventListener('submit', function (e) {
+                                            geteditor.updateSourceElement();
+                                        });
                                 </script>
                             </div>
                         </div>
@@ -56,8 +63,6 @@
 @section('js')
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'description');
+        CKEDITOR.replace('description');
     </script>
 @endsection
-
-

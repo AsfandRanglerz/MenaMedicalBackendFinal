@@ -37,7 +37,7 @@ class FAQController extends Controller
     }
 
     public function faqIndex()
-    { 
+    {
         $faqs = Faq::all();
         $navBars = NavBar::select('id', 'text')->get();
         $service = 'Language Editing';
@@ -52,8 +52,11 @@ class FAQController extends Controller
     public function faqStore(Request $request)
     {
 
+        $request->validate([
+            'questions' => 'required|string',
+            'answers' => 'required|string',
+            ]);
             $Faq = Faq::Create([
-
             // 'navBar_id' => $request->navBar_id,
             'navbar_name' => $request->navbar_name,
             'questions' => $request->questions,
@@ -88,6 +91,10 @@ class FAQController extends Controller
 
     public function updatefaq(Request $request, $id)
     {
+        $request->validate([
+            'questions' => 'required|string',
+            'answers' => 'required|string',
+            ]);
         $faq = Faq::find($id);
         $faq->navBar_id = $request->navBar_id;
         $faq->questions = $request->questions;

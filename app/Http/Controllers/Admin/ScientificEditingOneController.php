@@ -21,15 +21,15 @@ class ScientificEditingOneController extends Controller
 
     public function store(Request $request)
     {
-      
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $ScientificEditingOne = ScientificEditingOne::Create([
 
             'title' => $request->title,
@@ -41,16 +41,20 @@ $ScientificEditingOne = ScientificEditingOne::Create([
 
     public function edit($id)
     {
-        
+
         $ScientificEditing= ScientificEditingOne::find($id);
-        
+
 
         return view('admin.ScientificEditingOne.edit', compact('ScientificEditing'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
         $ScientificEditing = ScientificEditingOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -58,21 +62,21 @@ $ScientificEditingOne = ScientificEditingOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $ScientificEditing->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $ScientificEditing->title = $request->title;
         $ScientificEditing->description = $request->description;
         $ScientificEditing->save();
-    
+
         return redirect()->route('ScientificEditingOne')->with('message', 'Introduction Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

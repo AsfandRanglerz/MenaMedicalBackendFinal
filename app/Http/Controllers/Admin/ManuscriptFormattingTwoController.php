@@ -37,7 +37,7 @@ class ManuscriptFormattingTwoController extends Controller
 
     public function store(Request $request)
     {
-      
+
         $image = null;
 
 
@@ -47,11 +47,11 @@ class ManuscriptFormattingTwoController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $ManuscriptFormattingTwo = ManuscriptFormattingTwo::Create([
-            
-            'main_title' => $request->main_title,        
+
+            'main_title' => $request->main_title,
             'title' => $request->title,
             'description' => $request->description,
             'image' =>$image,
@@ -61,25 +61,28 @@ $ManuscriptFormattingTwo = ManuscriptFormattingTwo::Create([
 
     public function edit($id)
     {
-        
+
         $ManuscriptFormattingTwo= ManuscriptFormattingTwo::find($id);
-        
+
 
         return view('admin.PublicationSupport.ManuscriptFormattingTwo.edit', compact('ManuscriptFormattingTwo'));
     }
 
     public function featuresedit($id)
     {
-        
+
         $ManuscriptFormattingTwo= ManuscriptFormattingTwo::find($id);
-        
+
 
         return view('admin.PublicationSupport.ManuscriptFormattingTwo.FeaturesAndBenefits.edit', compact('ManuscriptFormattingTwo'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'main_title' => 'required',
+        ]);
+
         $ManuscriptFormattingTwo = ManuscriptFormattingTwo::findOrFail($id);
 
     // // Update image if a new one is uploaded
@@ -87,27 +90,31 @@ $ManuscriptFormattingTwo = ManuscriptFormattingTwo::Create([
     //     // Generate a unique filename
     //     $file = $request->file('image');
     //     $filename = time() . '_' . $file->getClientOriginalName();
-        
+
     //     // Move the file to the target directory
     //     $file->move(public_path('admin/assets/images'), $filename);
 
     //     // Update the image path relative to 'public'
     //     $ManuscriptFormattingTwo->image = 'public/admin/assets/images/' . $filename;
     // }
-    
+
         // Update other fields
         $ManuscriptFormattingTwo->main_title = $request->main_title;
         // $ManuscriptFormattingTwo->title = $request->title;
         // $ManuscriptFormattingTwo->description = $request->description;
         $ManuscriptFormattingTwo->save();
-    
+
         return redirect()->route('ManuscriptFormattingTwo')->with('message', 'Features and Benefits Updated Successfully');
-    
+
     }
 
     public function featuresupdate(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
         $ManuscriptFormattingTwo = ManuscriptFormattingTwo::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -115,22 +122,22 @@ $ManuscriptFormattingTwo = ManuscriptFormattingTwo::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $ManuscriptFormattingTwo->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         // $ManuscriptFormattingTwo->main_title = $request->main_title;
         $ManuscriptFormattingTwo->title = $request->title;
         $ManuscriptFormattingTwo->description = $request->description;
         $ManuscriptFormattingTwo->save();
-    
+
         return redirect()->route('ManuscriptFeatures')->with('message', 'Features and Benefits Updated Successfully');
-    
+
     }
 
     public function destroy($id)

@@ -79,6 +79,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="index_title" class="form-control">
+                                                <div class="text-danger" id="index_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -89,6 +90,7 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="index_og_title"
                                                     class="form-control">
+                                                <div class="text-danger" id="index_og_title_error"></div>
                                                 @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
@@ -100,6 +102,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="index_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="index_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -109,6 +112,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="index_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="index_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -120,6 +124,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="index_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="index_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -151,6 +156,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="home_title" class="form-control">
+                                                <div class="text-danger" id="home_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -161,6 +167,7 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="home_og_title"
                                                     class="form-control">
+                                                    <div class="text-danger" id="home_og_title_error"></div>
                                                 @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
@@ -172,6 +179,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="home_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="home_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -181,6 +189,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="home_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="home_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -192,6 +201,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="home_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="home_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -223,6 +233,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="language_title" class="form-control">
+                                                <div class="text-danger" id="language_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -233,6 +244,7 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="language_og_title"
                                                     class="form-control">
+                                                    <div class="text-danger" id="language_og_title_error"></div>
                                                 @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
@@ -244,6 +256,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="language_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="language_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -253,6 +266,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="language_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="language_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -264,6 +278,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="language_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="language_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -293,6 +308,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="scientific_title" class="form-control">
+                                                <div class="text-danger" id="scientific_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -303,6 +319,7 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="scientific_og_title"
                                                     class="form-control">
+                                                    <div class="text-danger" id="scientific_og_title_error"></div>
                                                 @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
@@ -314,6 +331,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="scientific_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="scientific_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -323,6 +341,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="scientific_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="scientific_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -334,6 +353,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="scientific_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="scientific_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -363,6 +383,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="publication_title" class="form-control">
+                                                <div class="text-danger" id="publication_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -373,7 +394,8 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="publication_og_title"
                                                     class="form-control">
-                                                @error('og_title')
+                                                <div class="text-danger" id="publication_og_title_error"></div>
+                                                    @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
                                                     </div>
@@ -384,6 +406,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="publication_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="publication_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -393,6 +416,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="publication_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="publication_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -404,6 +428,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="publication_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="publication_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -433,6 +458,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="manuscript_title" class="form-control">
+                                               <div class="text-danger" id="manuscript_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -443,6 +469,7 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="manuscript_og_title"
                                                     class="form-control">
+                                                    <div class="text-danger" id="manuscript_og_title_error"></div>
                                                 @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
@@ -454,6 +481,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="manuscript_description" class="form-control" rows="3"></textarea>
+                                               <div class="text-danger" id="manuscript_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -463,6 +491,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="manuscript_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="manuscript_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -474,6 +503,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="manuscript_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="manuscript_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -503,6 +533,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="posters_title" class="form-control">
+                                                <div class="text-danger" id="posters_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -513,7 +544,8 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="posters_og_title"
                                                     class="form-control">
-                                                @error('og_title')
+                                                <div class="text-danger" id="posters_og_title_error"></div>
+                                                    @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
                                                     </div>
@@ -524,6 +556,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="posters_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="posters_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -533,6 +566,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="posters_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="posters_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -544,6 +578,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="posters_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="posters_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -574,6 +609,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="thesis_title" class="form-control">
+                                                <div class="text-danger" id="thesis_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -584,7 +620,8 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="thesis_og_title"
                                                     class="form-control">
-                                                @error('og_title')
+                                                <div class="text-danger" id="thesis_og_title_error"></div>
+                                                    @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
                                                     </div>
@@ -595,6 +632,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="thesis_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="thesis_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -604,6 +642,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="thesis_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="thesis_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -615,6 +654,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="thesis_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="thesis_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -645,6 +685,7 @@
                                            <div class="form-group col-md-6 col-12">
                                                <label>Title</label>
                                                <input type="text" name="title" id="assignment_title" class="form-control">
+                                               <div class="text-danger" id="assignment_title_error"></div>
                                                @error('name')
                                                    <div class="text-danger">
                                                        Please fill in the Name
@@ -655,7 +696,8 @@
                                                <label>OG-Title</label>
                                                <input type="text" name="og_title" id="assignment_og_title"
                                                    class="form-control">
-                                               @error('og_title')
+                                               <div class="text-danger" id="assignment_og_title_error"></div>
+                                                   @error('og_title')
                                                    <div class="text-danger">
                                                        Please fill in the OG Title
                                                    </div>
@@ -666,6 +708,7 @@
                                            <div class="form-group col-md-6 col-12">
                                                <label>Description</label>
                                                <textarea name="description" id="assignment_description" class="form-control" rows="3"></textarea>
+                                               <div class="text-danger" id="assignment_description_error"></div>
                                                @error('description')
                                                    <div class="text-danger">
                                                        Please fill in the description
@@ -675,6 +718,7 @@
                                            <div class="form-group col-md-6 col-12">
                                                <label>OG-Description</label>
                                                <textarea name="og_description" id="assignment_og_description" class="form-control" rows="3"></textarea>
+                                               <div class="text-danger" id="assignment_og_description_error"></div>
                                                @error('og_description')
                                                    <div class="text-danger">
                                                        Please fill in the OG description
@@ -686,6 +730,7 @@
                                            <div class="form-group col-md-12 col-12">
                                                <label>Keywords</label>
                                                <textarea name="keywords" id="assignment_keywords" class="form-control" rows="2"></textarea>
+                                               <div class="text-danger" id="assignment_keywords_error"></div>
                                                @error('keywords')
                                                    <div class="text-danger">
                                                        Please fill in the Keywords
@@ -716,6 +761,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Title</label>
                                                 <input type="text" name="title" id="analysis_title" class="form-control">
+                                               <div class="text-danger" id="analysis_title_error"></div>
                                                 @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the Name
@@ -726,7 +772,8 @@
                                                 <label>OG-Title</label>
                                                 <input type="text" name="og_title" id="analysis_og_title"
                                                     class="form-control">
-                                                @error('og_title')
+                                               <div class="text-danger" id="analysis_og_title_error"></div>
+                                                    @error('og_title')
                                                     <div class="text-danger">
                                                         Please fill in the OG Title
                                                     </div>
@@ -737,6 +784,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="analysis_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="analysis_description_error"></div>
                                                 @error('description')
                                                     <div class="text-danger">
                                                         Please fill in the description
@@ -746,6 +794,7 @@
                                             <div class="form-group col-md-6 col-12">
                                                 <label>OG-Description</label>
                                                 <textarea name="og_description" id="analysis_og_description" class="form-control" rows="3"></textarea>
+                                                <div class="text-danger" id="analysis_og_description_error"></div>
                                                 @error('og_description')
                                                     <div class="text-danger">
                                                         Please fill in the OG description
@@ -757,6 +806,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label>Keywords</label>
                                                 <textarea name="keywords" id="analysis_keywords" class="form-control" rows="2"></textarea>
+                                                <div class="text-danger" id="analysis_keywords_error"></div>
                                                 @error('keywords')
                                                     <div class="text-danger">
                                                         Please fill in the Keywords
@@ -813,6 +863,34 @@
             });
         }
         $('.submit-index-changes').on('click', function() {
+            // Clear previous errors
+            $('#index_title_error').text('');
+            $('#index_og_title_error').text('');
+            $('#index_description_error').text('');
+            $('#index_og_description_error').text('');
+            $('#index_keywords_error').text('');
+            var hasError = false;
+            if (!$('#index_title').val().trim()) {
+                $('#index_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#index_og_title').val().trim()) {
+                $('#index_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#index_description').val().trim()) {
+                $('#index_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#index_og_description').val().trim()) {
+                $('#index_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#index_keywords').val().trim()) {
+                $('#index_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.index_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -826,7 +904,6 @@
             formData.forEach((value, key) => {
                 jsonObject[key] = value;
             });
-
             console.log(JSON.stringify(jsonObject));
             // return;
             $.ajax({
@@ -845,16 +922,23 @@
                 error: function(xhr) {
                     if (xhr.status === 422) { // Laravel validation error
                         var errors = xhr.responseJSON.errors;
-                        $.each(errors, function(field, messages) {
-                            toastr.error(messages[0]);
-                        });
+                        // Show errors under fields, not in toastr
+                        if(errors.title) $('#index_title_error').text(errors.title[0]);
+                        if(errors.og_title) $('#index_og_title_error').text(errors.og_title[0]);
+                        if(errors.description) $('#index_description_error').text(errors.description[0]);
+                        if(errors.og_description) $('#index_og_description_error').text(errors.og_description[0]);
+                        if(errors.keywords) $('#index_keywords_error').text(errors.keywords[0]);
                     } else {
                         console.error('Error Adding Driver:', xhr);
                         toastr.error('Something went wrong. Please try again.');
                     }
                 }
             });
-
+        });
+        // Optionally, clear error on input
+        $('#index_title, #index_og_title, #index_description, #index_og_description, #index_keywords').on('input', function() {
+            var id = $(this).attr('id');
+            $('#' + id + '_error').text('');
         });
         function homeSectionGet() {
             var section = $('.home_section').val(); // Get the value of the section
@@ -881,6 +965,34 @@
             });
         }
         $('.submit-home-changes').on('click', function() {
+             // Clear previous errors
+            $('#home_title_error').text('');
+            $('#home_og_title_error').text('');
+            $('#home_description_error').text('');
+            $('#home_og_description_error').text('');
+            $('#home_keywords_error').text('');
+            var hasError = false;
+            if (!$('#home_title').val().trim()) {
+                $('#home_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#home_og_title').val().trim()) {
+                $('#home_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#home_description').val().trim()) {
+                $('#home_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#home_og_description').val().trim()) {
+                $('#home_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#home_keywords').val().trim()) {
+                $('#home_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.home_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -949,6 +1061,34 @@
             });
         }
         $('.submit-language-changes').on('click', function() {
+             // Clear previous errors
+            $('#language_title_error').text('');
+            $('#language_og_title_error').text('');
+            $('#language_description_error').text('');
+            $('#language_og_description_error').text('');
+            $('#language_keywords_error').text('');
+            var hasError = false;
+            if (!$('#language_title').val().trim()) {
+                $('#language_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#language_og_title').val().trim()) {
+                $('#language_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#language_description').val().trim()) {
+                $('#language_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#language_og_description').val().trim()) {
+                $('#language_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#language_keywords').val().trim()) {
+                $('#language_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.languageEditing_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1017,6 +1157,34 @@
             });
         }
         $('.submit-scientific-changes').on('click', function() {
+             // Clear previous errors
+            $('#scientific_title_error').text('');
+            $('#scientific_og_title_error').text('');
+            $('#scientific_description_error').text('');
+            $('#scientific_og_description_error').text('');
+            $('#scientific_keywords_error').text('');
+            var hasError = false;
+            if (!$('#scientific_title').val().trim()) {
+                $('#scientific_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#scientific_og_title').val().trim()) {
+                $('#scientific_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#scientific_description').val().trim()) {
+                $('#scientific_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#scientific_og_description').val().trim()) {
+                $('#scientific_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#scientific_keywords').val().trim()) {
+                $('#scientific_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.scientificEditing_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1087,6 +1255,34 @@
             });
         }
         $('.submit-publication-changes').on('click', function() {
+             // Clear previous errors
+            $('#publication_title_error').text('');
+            $('#publication_og_title_error').text('');
+            $('#publication_description_error').text('');
+            $('#publication_og_description_error').text('');
+            $('#publication_keywords_error').text('');
+            var hasError = false;
+            if (!$('#publication_title').val().trim()) {
+                $('#publication_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#publication_og_title').val().trim()) {
+                $('#publication_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#publication_description').val().trim()) {
+                $('#publication_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#publication_og_description').val().trim()) {
+                $('#publication_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#publication_keywords').val().trim()) {
+                $('#publication_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.publication_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1156,6 +1352,34 @@
             });
         }
         $('.submit-manuscript-changes').on('click', function() {
+             // Clear previous errors
+            $('#manuscript_title_error').text('');
+            $('#manuscript_og_title_error').text('');
+            $('#manuscript_description_error').text('');
+            $('#manuscript_og_description_error').text('');
+            $('#manuscript_keywords_error').text('');
+            var hasError = false;
+            if (!$('#manuscript_title').val().trim()) {
+                $('#manuscript_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#manuscript_og_title').val().trim()) {
+                $('#manuscript_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#manuscript_description').val().trim()) {
+                $('#manuscript_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#manuscript_og_description').val().trim()) {
+                $('#manuscript_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#manuscript_keywords').val().trim()) {
+                $('#manuscript_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.manuscript_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1226,6 +1450,34 @@
             });
         }
         $('.submit-posters-changes').on('click', function() {
+             // Clear previous errors
+            $('#posters_title_error').text('');
+            $('#posters_og_title_error').text('');
+            $('#posters_description_error').text('');
+            $('#posters_og_description_error').text('');
+            $('#posters_keywords_error').text('');
+            var hasError = false;
+            if (!$('#posters_title').val().trim()) {
+                $('#posters_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#posters_og_title').val().trim()) {
+                $('#posters_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#posters_description').val().trim()) {
+                $('#posters_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#posters_og_description').val().trim()) {
+                $('#posters_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#posters_keywords').val().trim()) {
+                $('#posters_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.posters_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1294,6 +1546,34 @@
             });
         }
         $('.submit-thesis-changes').on('click', function() {
+             // Clear previous errors
+            $('#thesis_title_error').text('');
+            $('#thesis_og_title_error').text('');
+            $('#thesis_description_error').text('');
+            $('#thesis_og_description_error').text('');
+            $('#thesis_keywords_error').text('');
+            var hasError = false;
+            if (!$('#thesis_title').val().trim()) {
+                $('#thesis_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#thesis_og_title').val().trim()) {
+                $('#thesis_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#thesis_description').val().trim()) {
+                $('#thesis_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#thesis_og_description').val().trim()) {
+                $('#thesis_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#thesis_keywords').val().trim()) {
+                $('#thesis_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.thesis_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1363,6 +1643,34 @@
             });
         }
         $('.submit-assignment-changes').on('click', function() {
+             // Clear previous errors
+            $('#assignment_title_error').text('');
+            $('#assignment_og_title_error').text('');
+            $('#assignment_description_error').text('');
+            $('#assignment_og_description_error').text('');
+            $('#assignment_keywords_error').text('');
+            var hasError = false;
+            if (!$('#assignment_title').val().trim()) {
+                $('#assignment_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#assignment_og_title').val().trim()) {
+                $('#assignment_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#assignment_description').val().trim()) {
+                $('#assignment_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#assignment_og_description').val().trim()) {
+                $('#assignment_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#assignment_keywords').val().trim()) {
+                $('#assignment_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.assignment_section').val();
             var formData = new FormData();
             formData.append('section', section);
@@ -1432,6 +1740,34 @@
             });
         }
         $('.submit-analysis-changes').on('click', function() {
+             // Clear previous errors
+            $('#analysis_title_error').text('');
+            $('#analysis_og_title_error').text('');
+            $('#analysis_description_error').text('');
+            $('#analysis_og_description_error').text('');
+            $('#analysis_keywords_error').text('');
+            var hasError = false;
+            if (!$('#analysis_title').val().trim()) {
+                $('#analysis_title_error').text('Title is required.');
+                hasError = true;
+            }
+            if (!$('#analysis_og_title').val().trim()) {
+                $('#analysis_og_title_error').text('OG-Title is required.');
+                hasError = true;
+            }
+            if (!$('#analysis_description').val().trim()) {
+                $('#analysis_description_error').text('Description is required.');
+                hasError = true;
+            }
+            if (!$('#analysis_og_description').val().trim()) {
+                $('#analysis_og_description_error').text('OG-Description is required.');
+                hasError = true;
+            }
+            if (!$('#analysis_keywords').val().trim()) {
+                $('#analysis_keywords_error').text('Keywords are required.');
+                hasError = true;
+            }
+            if (hasError) return;
             var section = $('.dataAnalysis_section').val();
             var formData = new FormData();
             formData.append('section', section);

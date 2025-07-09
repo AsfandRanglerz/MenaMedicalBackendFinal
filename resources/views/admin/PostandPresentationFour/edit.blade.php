@@ -16,10 +16,10 @@
                             <div class="card">
                                 <h4 class="text-center my-4">Edit Review and Editing Process</h4>
                                 <div class="row mx-0 px-4">
-                               
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter description" name="description" id="description" class="form-control">{{ old('description', $PostandPresentationFour->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>

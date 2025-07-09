@@ -38,6 +38,9 @@
                                     <div class="form-group">
                                         <label>Answer <span class="text-danger">*</span></label>
                                         <textarea name="answers" cols="30" rows="10" id="answers" class="form-control description edit-description">{{ $faq->answers }}</textarea>
+                                    <div class="invalid-feedback d-block">
+                                        @error('answers') {{ $message }} @enderror
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -55,6 +58,9 @@
                                     .catch(error => {
                                         console.error(error);
                                     });
+                                        document.querySelector('form').addEventListener('submit', function (e) {
+                                            geteditor.updateSourceElement();
+                                        });
                             </script>
 
                             <!-- Submit Button -->

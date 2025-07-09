@@ -19,7 +19,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Title</label>
+                                            <label>Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Title" name="title"
                                             id="title" value="{{ old('title', $ScientificEditing->title) }}" class="form-control">
                                         @error('title')
@@ -39,17 +39,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    
+
                                         <!-- Display Existing Image -->
                                         @if($ScientificEditing->image)
                                             <div class="ms-3">
-                                                <img src="{{ asset($ScientificEditing->image) }}" 
-                                                     alt="image" 
+                                                <img src="{{ asset($ScientificEditing->image) }}"
+                                                     alt="image"
                                                      style="width: 80px; height: 80px; margin-left:20px; border: 1px solid #ddd;">
                                             </div>
                                         @endif
                                     </div>
-                                    
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Description</label>
@@ -61,7 +61,7 @@
                                     </div>
                                 </div> --}}
 
-                              
+
                             </div>
                             <div class="card-footer text-center">
                                 <button type="submit" class="btn btn-success">Update</button>

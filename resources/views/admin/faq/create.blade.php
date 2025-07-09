@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <h4 class="text-center my-4">Add Faq</h4>
+                                <h4 class="text-center my-4">Add FAQ</h4>
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="navBar">Select NavBar Section<span class="text-danger">*</span></label>
@@ -25,7 +25,7 @@
                                         <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
-        
+
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
                                         <label>Question<span class="text-danger">*</span></label>
@@ -33,13 +33,15 @@
                                         <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
                                         <label>Answer <span class="text-danger">*</span></label>
                                         <textarea name="answers" cols="50" rows="5" id="answers" class="form-control edit-description"></textarea>
                                     </div>
-                                    <div class="invalid-feedback"></div>
+                                    <div class="invalid-feedback d-block">
+                                        @error('answers') {{ $message }} @enderror
+                                    </div>
                                 </div>
                              <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
@@ -52,6 +54,9 @@
                                         })
                                         .catch(error => {
                                             console.error(error);
+                                        });
+                                        document.querySelector('form').addEventListener('submit', function (e) {
+                                            geteditor.updateSourceElement();
                                         });
                                 </script>
 

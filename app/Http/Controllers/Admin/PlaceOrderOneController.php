@@ -21,9 +21,9 @@ class PlaceOrderOneController extends Controller
 
     public function store(Request $request)
     {
-      
-    
-   
+
+
+
 $PlaceOrderOne = PlaceOrderOne::Create([
 
             'title' => $request->title,
@@ -34,25 +34,29 @@ $PlaceOrderOne = PlaceOrderOne::Create([
 
     public function edit($id)
     {
-        
+
         $PlaceOrderOne= PlaceOrderOne::find($id);
-        
+
 
         return view('admin.PlaceOrderOne.edit', compact('PlaceOrderOne'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
         $PlaceOrderOne = PlaceOrderOne::findOrFail($id);
-   
+
         // Update other fields
         $PlaceOrderOne->title = $request->title;
         $PlaceOrderOne->description = $request->description;
         $PlaceOrderOne->save();
-    
+
         return redirect()->route('PlaceOrderOne')->with('message', 'Introduction Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

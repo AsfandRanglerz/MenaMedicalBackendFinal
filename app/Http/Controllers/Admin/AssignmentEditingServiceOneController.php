@@ -35,8 +35,8 @@ class AssignmentEditingServiceOneController extends Controller
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $AssignmentEditingServiceOne = AssignmentEditingServiceOne::Create([
 
             'title' => $request->title,
@@ -52,25 +52,29 @@ $AssignmentEditingServiceOne = AssignmentEditingServiceOne::Create([
 
     public function edit($id)
     {
-        
+
         $AssignmentEditingServiceOne= AssignmentEditingServiceOne::find($id);
-        
+
 
         return view('admin.ThesisSupport.AssignmentEditingServiceOne.edit', compact('AssignmentEditingServiceOne'));
     }
 
     public function servicetwoedit($id)
     {
-        
+
         $AssignmentEditingServiceOne= AssignmentEditingServiceOne::find($id);
-        
+
 
         return view('admin.ThesisSupport.AssignmentEditingTwo.edit', compact('AssignmentEditingServiceOne'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
         $AssignmentEditingServiceOne = AssignmentEditingServiceOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -78,14 +82,14 @@ $AssignmentEditingServiceOne = AssignmentEditingServiceOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $AssignmentEditingServiceOne->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $AssignmentEditingServiceOne->title = $request->title;
         $AssignmentEditingServiceOne->description = $request->description;
@@ -94,14 +98,20 @@ $AssignmentEditingServiceOne = AssignmentEditingServiceOne::Create([
         // $AssignmentEditingServiceOne->service_title = $request->service_title;
         // $AssignmentEditingServiceOne->service = $request->service;
         $AssignmentEditingServiceOne->save();
-    
+
         return redirect()->route('AssignmentEditingServiceOne')->with('message', 'Introduction Section Updated Successfully');
-    
+
     }
 
     public function servicetwoupdate(Request $request, $id)
     {
-        
+        $request->validate([
+            'feature_title' => 'required',
+            'feature' => 'required',
+            'service_title' => 'required',
+            'service' => 'required',
+        ]);
+
         $AssignmentEditingServiceOne = AssignmentEditingServiceOne::findOrFail($id);
 
     // // Update image if a new one is uploaded
@@ -109,14 +119,14 @@ $AssignmentEditingServiceOne = AssignmentEditingServiceOne::Create([
     //     // Generate a unique filename
     //     $file = $request->file('image');
     //     $filename = time() . '_' . $file->getClientOriginalName();
-        
+
     //     // Move the file to the target directory
     //     $file->move(public_path('admin/assets/images'), $filename);
 
     //     // Update the image path relative to 'public'
     //     $AssignmentEditingServiceOne->image = 'public/admin/assets/images/' . $filename;
     // }
-    
+
         // Update other fields
         // $AssignmentEditingServiceOne->title = $request->title;
         // $AssignmentEditingServiceOne->description = $request->description;
@@ -125,9 +135,9 @@ $AssignmentEditingServiceOne = AssignmentEditingServiceOne::Create([
         $AssignmentEditingServiceOne->service_title = $request->service_title;
         $AssignmentEditingServiceOne->service = $request->service;
         $AssignmentEditingServiceOne->save();
-    
+
         return redirect()->route('AssignmentEditingServiceTwo')->with('message', 'Key Features Section Updated Successfully');
-    
+
     }
 
 

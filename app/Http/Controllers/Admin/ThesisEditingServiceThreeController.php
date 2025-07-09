@@ -21,47 +21,53 @@ class ThesisEditingServiceThreeController extends Controller
 
     public function store(Request $request)
     {
-      
-    
-   
+
+
+
 $ThesisEditingServiceThree = ThesisEditingServiceThree::Create([
 
-           
+
             'feature_title' => $request->feature_title,
             'feature' => $request->feature,
             'service_title' => $request->service_title,
             'service' => $request->service,
-            
+
         ]);
         return redirect()->route('ThesisEditingServiceThree')->with(['message' => 'Features of Premium Section Created Successfully']);
     }
 
     public function edit($id)
     {
-        
+
         $ThesisEditingServiceThree= ThesisEditingServiceThree::find($id);
-        
+
 
         return view('admin.ThesisSupport.ThesisEditingServiceThree.edit', compact('ThesisEditingServiceThree'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'feature_title' => 'required',
+            'feature' => 'required',
+            'service_title' => 'required',
+            'service' => 'required',
+        ]);
+
         $ThesisEditingServiceThree = ThesisEditingServiceThree::findOrFail($id);
 
-   
-    
+
+
         // Update other fields
-       
+
         $ThesisEditingServiceThree->feature_title = $request->feature_title;
         $ThesisEditingServiceThree->feature = $request->feature;
         $ThesisEditingServiceThree->service_title = $request->service_title;
         $ThesisEditingServiceThree->service = $request->service;
         $ThesisEditingServiceThree->save();
-    
+
         return redirect()->route('ThesisEditingServiceThree')->with('message', 'Features of Premium Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

@@ -21,15 +21,15 @@ class ThesisEditingServiceOneController extends Controller
 
     public function store(Request $request)
     {
-      
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $ThesisEditingServiceOne = ThesisEditingServiceOne::Create([
 
             'title' => $request->title,
@@ -42,16 +42,21 @@ $ThesisEditingServiceOne = ThesisEditingServiceOne::Create([
 
     public function edit($id)
     {
-        
+
         $ThesisEditingServiceOne= ThesisEditingServiceOne::find($id);
-        
+
 
         return view('admin.ThesisSupport.ThesisEditingServiceOne.edit', compact('ThesisEditingServiceOne'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'link_text' => 'required',
+        ]);
+
         $ThesisEditingServiceOne = ThesisEditingServiceOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -59,22 +64,22 @@ $ThesisEditingServiceOne = ThesisEditingServiceOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $ThesisEditingServiceOne->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $ThesisEditingServiceOne->title = $request->title;
         $ThesisEditingServiceOne->description = $request->description;
         $ThesisEditingServiceOne->link_text = $request->link_text;
         $ThesisEditingServiceOne->save();
-    
+
         return redirect()->route('ThesisEditingServiceOne')->with('message', 'Introduction Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

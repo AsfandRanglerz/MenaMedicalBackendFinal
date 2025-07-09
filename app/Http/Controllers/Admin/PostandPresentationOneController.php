@@ -21,15 +21,15 @@ class PostandPresentationOneController extends Controller
 
     public function store(Request $request)
     {
-      
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $PostandPresentationOne = PostandPresentationOne::Create([
 
             'title' => $request->title,
@@ -41,16 +41,20 @@ $PostandPresentationOne = PostandPresentationOne::Create([
 
     public function edit($id)
     {
-        
+
         $PostandPresentationOne= PostandPresentationOne::find($id);
-        
+
 
         return view('admin.PostandPresentationOne.edit', compact('PostandPresentationOne'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
         $PostandPresentationOne = PostandPresentationOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -58,21 +62,21 @@ $PostandPresentationOne = PostandPresentationOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $PostandPresentationOne->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $PostandPresentationOne->title = $request->title;
         $PostandPresentationOne->description = $request->description;
         $PostandPresentationOne->save();
-    
+
         return redirect()->route('PostandPresentationOne')->with('message', 'Intoduction Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

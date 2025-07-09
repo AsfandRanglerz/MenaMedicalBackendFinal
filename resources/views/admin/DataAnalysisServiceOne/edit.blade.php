@@ -19,7 +19,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Title</label>
+                                            <label>Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Title" name="title"
                                             id="title" value="{{ old('title', $DataAnalysisServiceOne->title) }}" class="form-control">
                                         @error('title')
@@ -39,20 +39,20 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    
+
                                         <!-- Display Existing Image -->
                                         @if($DataAnalysisServiceOne->image)
                                             <div class="ms-3">
-                                                <img src="{{ asset($DataAnalysisServiceOne->image) }}" 
-                                                     alt="image" 
+                                                <img src="{{ asset($DataAnalysisServiceOne->image) }}"
+                                                     alt="image"
                                                      style="width: 80px; height: 70px; margin-left:20px; border: 1px solid #ddd;">
                                             </div>
                                         @endif
                                     </div>
-                                    
+
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Link Text</label>
+                                            <label>Link Text <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Link Text" name="link_text" id="dlink_text" class="form-control">{{ old('link_text', $DataAnalysisServiceOne->link_text) }}</textarea>
                                             @error('link_text')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -62,7 +62,7 @@
 
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $DataAnalysisServiceOne->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>

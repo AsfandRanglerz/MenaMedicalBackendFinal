@@ -45,6 +45,10 @@ $PostandPresentationThree = PostandPresentationThree::Create([
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
 
         $PostandPresentationThree = PostandPresentationThree::findOrFail($id);
 

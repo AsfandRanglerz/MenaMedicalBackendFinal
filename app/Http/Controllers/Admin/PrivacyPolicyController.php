@@ -67,6 +67,7 @@ class PrivacyPolicyController extends Controller
     public function edit($id)
     {
         try {
+
             $privacy = PrivacyPolicy::find($id);
             return view('admin.privacyPolicy.edit',compact("privacy"));
             return response()->json([
@@ -84,6 +85,9 @@ class PrivacyPolicyController extends Controller
         try {
             $data = PrivacyPolicy::find($request->decId);
             if ($data) {
+                $request->validate([
+                'description' => 'required|string',
+                ]);
                 $data->description = $request->description;
                 $data->update();
                 return redirect()->route('privacy.index')->with('success','Data Updated Successfully');

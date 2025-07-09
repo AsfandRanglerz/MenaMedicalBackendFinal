@@ -58,6 +58,9 @@ class TermsAndConditionController extends Controller
     public function update(Request $request)
     {
         try {
+            $request->validate([
+            'description' => 'required|string',
+            ]);
             $data = TermCondition::find($request->decId);
             if ($data) {
                 $data->description = $request->description;

@@ -21,47 +21,53 @@ class DataAnalysisServiceThreeController extends Controller
 
     public function store(Request $request)
     {
-      
-    
-   
+
+
+
 $DataAnalysisServiceThree = DataAnalysisServiceThree::Create([
 
-           
+
             'feature_title' => $request->feature_title,
             'feature' => $request->feature,
             'service_title' => $request->service_title,
             'service' => $request->service,
-            
+
         ]);
         return redirect()->route('DataAnalysisServiceThree')->with(['message' => 'Features of Premium Section Created Successfully']);
     }
 
     public function edit($id)
     {
-        
+
         $DataAnalysisServiceThree= DataAnalysisServiceThree::find($id);
-        
+
 
         return view('admin.DataAnalysisServiceThree.edit', compact('DataAnalysisServiceThree'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'feature_title' => 'required',
+            'feature' => 'required',
+            'service_title' => 'required',
+            'service' => 'required',
+        ]);
+
         $DataAnalysisServiceThree = DataAnalysisServiceThree::findOrFail($id);
 
-   
-    
+
+
         // Update other fields
-       
+
         $DataAnalysisServiceThree->feature_title = $request->feature_title;
         $DataAnalysisServiceThree->feature = $request->feature;
         $DataAnalysisServiceThree->service_title = $request->service_title;
         $DataAnalysisServiceThree->service = $request->service;
         $DataAnalysisServiceThree->save();
-    
+
         return redirect()->route('DataAnalysisServiceThree')->with('message', 'Features of Premium Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

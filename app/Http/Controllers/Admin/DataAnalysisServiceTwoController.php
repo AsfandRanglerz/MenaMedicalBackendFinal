@@ -21,43 +21,47 @@ class DataAnalysisServiceTwoController extends Controller
 
     public function store(Request $request)
     {
-      
-    
-   
+
+
+
 $DataAnalysisServiceTwo = DataAnalysisServiceTwo::Create([
 
-           
+
             'feature_title' => $request->feature_title,
             'feature' => $request->feature,
-            
+
         ]);
         return redirect()->route('DataAnalysisServiceTwo')->with(['message' => 'Features of Advanced Section Created Successfully']);
     }
 
     public function edit($id)
     {
-        
+
         $DataAnalysisServiceTwo= DataAnalysisServiceTwo::find($id);
-        
+
 
         return view('admin.DataAnalysisServiceTwo.edit', compact('DataAnalysisServiceTwo'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'feature_title' => 'required',
+            'feature' => 'required',
+        ]);
+
         $DataAnalysisServiceTwo = DataAnalysisServiceTwo::findOrFail($id);
 
-   
-    
+
+
         // Update other fields
-       
+
         $DataAnalysisServiceTwo->feature_title = $request->feature_title;
         $DataAnalysisServiceTwo->feature = $request->feature;
         $DataAnalysisServiceTwo->save();
-    
+
         return redirect()->route('DataAnalysisServiceTwo')->with('message', 'Features of Advanced Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

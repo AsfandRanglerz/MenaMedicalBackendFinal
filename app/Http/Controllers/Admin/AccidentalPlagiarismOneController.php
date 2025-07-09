@@ -21,15 +21,15 @@ class AccidentalPlagiarismOneController extends Controller
 
     public function store(Request $request)
     {
-      
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $AccidentalPlagiarismOne = AccidentalPlagiarismOne::Create([
 
             'title' => $request->title,
@@ -41,16 +41,20 @@ $AccidentalPlagiarismOne = AccidentalPlagiarismOne::Create([
 
     public function edit($id)
     {
-        
+
         $AccidentalPlagiarism= AccidentalPlagiarismOne::find($id);
-        
+
 
         return view('admin.PublicationSupport.AccidentalPlagiarismOne.edit', compact('AccidentalPlagiarism'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
         $AccidentalPlagiarism = AccidentalPlagiarismOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -58,21 +62,21 @@ $AccidentalPlagiarismOne = AccidentalPlagiarismOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $AccidentalPlagiarism->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $AccidentalPlagiarism->title = $request->title;
         $AccidentalPlagiarism->description = $request->description;
         $AccidentalPlagiarism->save();
-    
+
         return redirect()->route('AccidentalPlagiarismOne')->with('message', 'Introduction Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

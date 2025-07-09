@@ -22,7 +22,9 @@
                                                  <input type="text" value="{{$term->id}}" name="decId" hidden>
                                                     <label for="description">Description</label>
                                                     <textarea name="description" id="description" class="description"></textarea>
-                                                    <div class="invalid-feedback"></div>
+                                                           <div class="invalid-feedback d-block">
+                                                            @error('answers') {{ $message }} @enderror
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,6 +43,9 @@
                                         })
                                         .catch(error => {
                                             console.error(error);
+                                        });
+                                        document.querySelector('form').addEventListener('submit', function (e) {
+                                            geteditor.updateSourceElement();
                                         });
                                 </script>
                             </div>

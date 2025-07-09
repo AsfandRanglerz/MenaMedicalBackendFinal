@@ -21,13 +21,13 @@ class PostandPresentationFourController extends Controller
 
     public function store(Request $request)
     {
-      
-        
-    
-   
+
+
+
+
 $PostandPresentationFour = PostandPresentationFour::Create([
 
-            
+
             'description' => $request->description,
         ]);
         return redirect()->route('PostandPresentationFour')->with(['message' => 'Review and Editing Section Created Successfully']);
@@ -35,27 +35,30 @@ $PostandPresentationFour = PostandPresentationFour::Create([
 
     public function edit($id)
     {
-        
+
         $PostandPresentationFour= PostandPresentationFour::find($id);
-        
+
 
         return view('admin.PostandPresentationFour.edit', compact('PostandPresentationFour'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'description' => 'required',
+        ]);
+
         $PostandPresentationFour = PostandPresentationFour::findOrFail($id);
 
-   
-    
+
+
         // Update other fields
-        
+
         $PostandPresentationFour->description = $request->description;
         $PostandPresentationFour->save();
-    
+
         return redirect()->route('PostandPresentationFour')->with('message', 'Review and Editing Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

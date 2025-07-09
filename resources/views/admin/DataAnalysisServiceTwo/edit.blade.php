@@ -16,12 +16,12 @@
                             <div class="card">
                                 <h4 class="text-center my-4">Edit Key Features of Advanced</h4>
                                 <div class="row mx-0 px-4">
-                                    
+
 
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Feature Title</label>
+                                            <label>Feature Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Feature Title" name="feature_title"
                                             id="feature_title" value="{{ old('feature_title', $DataAnalysisServiceTwo->feature_title) }}" class="form-control">
                                         @error('feature_title')
@@ -30,13 +30,13 @@
                                         </div>
                                     </div>
 
-                                    
 
-                                    
+
+
 
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Feature</label>
+                                            <label>Feature <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Feature" name="feature" id="feature" class="form-control">{{ old('feature', $DataAnalysisServiceTwo->feature) }}</textarea>
                                             @error('feature')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
 
-                                  
+
                                 </div>
                                 <div class="card-footer text-center">
                                     <button type="submit" class="btn btn-success">Update</button>

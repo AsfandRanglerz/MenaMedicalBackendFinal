@@ -31,7 +31,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Title</label>
+                                            <label>Title <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="Enter Title" name="title"
                                             id="title" value="{{ old('title', $PlaceOrderFour->title) }}" class="form-control">
                                         @error('title')
@@ -42,7 +42,7 @@
 
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Link</label>
+                                            <label>Link <span class="text-danger">*</span></label>
                                             <input type="link" placeholder="Enter Link" name="link"
                                             id="link" value="{{ old('link', $PlaceOrderFour->link) }}" class="form-control">
                                         @error('link')
@@ -53,7 +53,7 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Text Content</label>
-                                            <label>Link-Text</label>
+                                             <label>Link-Text <span class="text-danger">*</span></label>
                                             <input type="link_text" placeholder="Enter Link-Text" name="link_text"
                                             id="link_text" value="{{ old('link_text', $PlaceOrderFour->link_text) }}" class="form-control">
                                         @error('link_text')
@@ -61,7 +61,7 @@
                                         @enderror
                                         </div>
                                     </div>
-                                   
+
                                     {{-- <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
                                             <label>Background Colour</label>
@@ -80,14 +80,14 @@
 
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>Description</label>
+                                            <label>Description <span class="text-danger">*</span></label>
                                             <textarea placeholder="Enter Description" name="description" id="description" class="form-control">{{ old('description', $PlaceOrderFour->description) }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="card-footer text-center">

@@ -21,15 +21,15 @@ class DataAnalysisServiceOneController extends Controller
 
     public function store(Request $request)
     {
-      
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('admin/assets/images'), $filename);
             $image = 'public/admin/assets/images/' . $filename;
         }
-    
-   
+
+
 $DataAnalysisServiceOne = DataAnalysisServiceOne::Create([
 
             'title' => $request->title,
@@ -42,16 +42,21 @@ $DataAnalysisServiceOne = DataAnalysisServiceOne::Create([
 
     public function edit($id)
     {
-        
+
         $DataAnalysisServiceOne= DataAnalysisServiceOne::find($id);
-        
+
 
         return view('admin.DataAnalysisServiceOne.edit', compact('DataAnalysisServiceOne'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'link_text' => 'required',
+        ]);
+
         $DataAnalysisServiceOne = DataAnalysisServiceOne::findOrFail($id);
 
     // Update image if a new one is uploaded
@@ -59,22 +64,22 @@ $DataAnalysisServiceOne = DataAnalysisServiceOne::Create([
         // Generate a unique filename
         $file = $request->file('image');
         $filename = time() . '_' . $file->getClientOriginalName();
-        
+
         // Move the file to the target directory
         $file->move(public_path('admin/assets/images'), $filename);
 
         // Update the image path relative to 'public'
         $DataAnalysisServiceOne->image = 'public/admin/assets/images/' . $filename;
     }
-    
+
         // Update other fields
         $DataAnalysisServiceOne->title = $request->title;
         $DataAnalysisServiceOne->description = $request->description;
         $DataAnalysisServiceOne->link_text = $request->link_text;
         $DataAnalysisServiceOne->save();
-    
+
         return redirect()->route('DataAnalysisServiceOne')->with('message', 'Introduction Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

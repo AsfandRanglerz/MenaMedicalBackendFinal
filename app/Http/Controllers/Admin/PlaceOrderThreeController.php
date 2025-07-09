@@ -21,8 +21,8 @@ class PlaceOrderThreeController extends Controller
 
     public function store(Request $request)
     {
-    
-   
+
+
     $PlaceOrderThree = PlaceOrderThree::Create([
 
             'description' => $request->description,
@@ -32,26 +32,29 @@ class PlaceOrderThreeController extends Controller
 
     public function edit($id)
     {
-        
+
         $PlaceOrderThree= PlaceOrderThree::find($id);
-        
+
 
         return view('admin.PlaceOrderThree.edit', compact('PlaceOrderThree'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'description' => 'required',
+        ]);
+
         $PlaceOrderThree = PlaceOrderThree::findOrFail($id);
 
-    
-    
-        
+
+
+
         $PlaceOrderThree->description = $request->description;
         $PlaceOrderThree->save();
-    
+
         return redirect()->route('PlaceOrderThree')->with('message', 'Payment and Delivery Section Updated Successfully');
-    
+
     }
 
     public function destroy($id)

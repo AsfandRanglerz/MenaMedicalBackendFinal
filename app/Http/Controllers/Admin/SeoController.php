@@ -15,11 +15,14 @@ class SeoController extends Controller
 
     public function update(Request $request)
     {
-        // $request->validate([
-        //     'section' => 'required|string', // Ensure section is provided
-        //     'title' => 'required|string',   // Example validation for title
-        //     'description' => 'required|string', // Example validation for description
-        // ]);
+        $request->validate([
+            'section' => 'required|string',
+            'title' => 'required|string',
+            'og_title' => 'required|string',
+            'description' => 'required|string',
+            'og_description' => 'required|string',
+            'keywords' => 'required|string',
+        ]);
         // return $request;
         $section = $request->section;
         $data = [
@@ -43,22 +46,22 @@ class SeoController extends Controller
     public function getHomeSeo(Request $request)
     {
         $section = $request->section;
-    
+
         if (!$section) {
             return response()->json(['message' => 'Section parameter is missing.'], 400);
         }
-    
+
         $data = SEO::where('section', $section)->first();
-    
+
         if (!$data) {
             return response()->json(['message' => 'No SEO data found for the given section.'], 200);
         }
-    
+
         return response()->json($data);
     }
-    
+
     public function getlanguageEditingSeo(Request $request) {}
-    
+
     public function getdataAnalysisSeo(Request $request) {}
     public function getthesisSupportSeo(Request $request) {}
     public function getposterPresentationSeo(Request $request) {}
