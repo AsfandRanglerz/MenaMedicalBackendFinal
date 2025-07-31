@@ -12,7 +12,7 @@ use App\Models\HomeSectionSix;
 use App\Models\FooterContentOne;
 use App\Models\HomeSectionThree;
 use App\Models\SEO;
-
+ 
 class HomeController extends Controller
 {
     public function index() {

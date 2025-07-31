@@ -49,28 +49,67 @@ class HeaderContentTwoController extends Controller
         return view('admin.headerContentTwo.edit', compact('headerContent'));
     }
 
+    // public function update(Request $request, $id)
+    // {
+    //     // return $request;
+    //     // Validate the incoming request data
+    //     $request->validate([
+    //         'text' => 'required|string|max:255',
+    //         'url' => 'required|url',
+    //         // 'status' => 'required|boolean',
+    //     ]);
+
+    //     // Find the existing header content by ID
+    //     $headerContentTwo = HeaderContentTwo::find($id);
+
+    //     // Update the category
+    //     $headerContentTwo->update([
+    //         'text' => $request->text,
+    //         'url' => $request->url,
+    //         'status' => $request->status,
+    //     ]);
+
+    //     return redirect()->route('headerContentTwo')->with(['message' => 'Header Content Updated Successfully']);
+    // }
+
     public function update(Request $request, $id)
     {
-        // return $request;
-        // Validate the incoming request data
-        $request->validate([
-            'text' => 'required|string|max:255',
-            'url' => 'required|url',
-            // 'status' => 'required|boolean',
-        ]);
+        $rules = [
+            // Enhanced text validation
+            'text' => [
+                'required',
+                'string',
+            ],
+            // 'status' => 'required|boolean', // Uncomment if needed
+        ];
 
-        // Find the existing header content by ID
-        $headerContentTwo = HeaderContentTwo::find($id);
+        // Conditionally add URL rule
+        if ($id != 7) {
+            $rules['url'] = 'required|url';
+        }
 
-        // Update the category
-        $headerContentTwo->update([
+        // Validate input
+        $request->validate($rules);
+
+        // Find and update record
+        $headerContentTwo = HeaderContentTwo::findOrFail($id);
+
+        $updateData = [
             'text' => $request->text,
-            'url' => $request->url,
             'status' => $request->status,
-        ]);
+            'url' => $request->url,
+        ];
 
-        return redirect()->route('headerContentTwo')->with(['message' => 'Header Content Updated Successfully']);
+        // if ($id != 7) {
+        //     $updateData['url'] = $request->url;
+        // }
+
+        $headerContentTwo->update($updateData);
+
+        return redirect()->route('headerContentTwo')
+            ->with(['message' => 'Header Content Updated Successfully']);
     }
+
 
     public function destroy($id)
     {

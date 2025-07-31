@@ -18,18 +18,18 @@
     <div class="position-relative banner">
         <img src="{{ asset('public/assets/images/journalsHome.jpg') }}" class="w-100" />
         <!-- Top-right buttons -->
-        <div class="top-right-buttons">
+        {{-- <div class="top-right-buttons">
             <a href="https://menamedicalresearch.com/journals/index.php/index/user/register" class="btn theme-btn" target="_blank">
                 Register
             </a>
             <a href="https://menamedicalresearch.com/journals/index.php/index/login" class="btn theme-btn" target="_blank">
                 Login
             </a>
-        </div>
+        </div> --}}
 
         <div class="content">
             <h1 class="heading">OPEN-ACCESS, PEER REVIEWED JOURNALS</h1>
-            <p class="mb-0">Making Publication Possible – <span class="orange-text">AT AFFORDABLE PRICES</span></p>
+            <p class="mb-0 mt-3">Making Publication Possible – <span class="orange-text">AT AFFORDABLE PRICES</span></p>
         </div>
     </div>
     <div class="container-fluid">

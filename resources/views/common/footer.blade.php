@@ -1,5 +1,5 @@
 <footer>
-    <p class="p-3 mb-0 text-center main-desc">MENA MEDICAL RESEARCH – Supporting Biosciences Research from the MENA Region</p>
+    <p class="p-3 mb-0 text-center main-desc">MENA MEDICAL RESEARCH – Supporting Biosciences Research and Publication in the MENA Region</p>
     <div class="py-4 container-fluid center-content">
         <div class="container-fluid">
             <div class="container-fluid">

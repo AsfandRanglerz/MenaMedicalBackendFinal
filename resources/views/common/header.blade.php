@@ -13,7 +13,7 @@
                                   ->whereNotNull('url')
                                   ->get();
                                 $editingService = App\Models\HeaderContentOne::where('icon',null)
-                                ->where('url',null)
+                                // ->where('url',null)
                                 ->first();
                             @endphp
                             @foreach($data as $content)
@@ -26,10 +26,15 @@
                         @php
                             use Illuminate\Support\Str;
                         @endphp
-
-                        <h3 class="mt-sm-1 mt-0 mb-0 heading">
-                            {{ Str::contains(request()->url(), 'journal') ? 'JOURNALS' : $editingService->text }}
-                        </h3>
+                        @if (!(request()->url() == url('/') || request()->url() == url('/journal')))
+                            <h3 class="mt-sm-1 mt-0 mb-0 heading">
+                                Editing Services
+                            </h3>
+                        @else
+                            <h3 class="mt-sm-1 mt-0 mb-0 heading">
+                                {{ Str::contains(request()->url(), 'journal') ? 'JOURNALS' : $editingService->text }}
+                            </h3>
+                        @endif
                     </div>
                 <button class="d-lg-none d-block navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +51,7 @@
                     @php
                         $headerTwo = App\Models\HeaderContentTwo::where('status',0)->whereNotNull('text')
                         ->whereNotNull('url')
+                        ->where('id','!=',7)
                         ->get();
                     @endphp
                     @foreach($headerTwo as $content)
@@ -60,7 +66,8 @@
                     <a href="#">Profiles</a> --}}
                 </div>
                 @php
-                    $text = App\Models\HeaderContentTwo::where('status',0)->whereNull('url')->first();
+                    // $text = App\Models\HeaderContentTwo::where('status',0)->whereNull('url')->first();
+                    $text = App\Models\HeaderContentTwo::find(7);
                 @endphp
                 <p class="text-lg-end text-center mb-0">{{$text->text}}</p>
             </div>

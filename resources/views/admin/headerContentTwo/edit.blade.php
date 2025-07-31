@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                         <div class="form-group mb-2">
-                                            <label>URL <span class="text-danger">*</span></label>
+                                            <label>URL @if(!($headerContent->id == 7))<span class="text-danger">*</span>@endif</label>
                                             <input type="url" name="url"
                                                 value="{{ old('url', $headerContent->url) }}" class="form-control">
                                             @error('url')
