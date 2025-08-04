@@ -28,7 +28,7 @@
                         @endphp
                         @if (!(request()->url() == url('/') || request()->url() == url('/journal')))
                             <h3 class="mt-sm-1 mt-0 mb-0 heading">
-                                Editing Services
+                                EDITING SERVICES
                             </h3>
                         @else
                             <h3 class="mt-sm-1 mt-0 mb-0 heading">

@@ -11,7 +11,10 @@
         display: none;
     }
     .heading2{
-        font-size: 2.5rem;
+        font-size: 2.7rem;
+    }
+    .heading1{
+        font-size: 3.5rem;
     }
 </style>
 
@@ -19,7 +22,7 @@
     <div class="position-relative banner">
         <img src="{{ asset('public/assets/images/banner-img.png') }}" class="w-100" />
         <div class="content">
-            <h1 class="heading">WE MAKE</h1>
+            <h1 class="heading1 text-light">WE MAKE</h1>
             <h2 class="text-light heading2">PUBLISHING EASY!</h2>
             {{-- <p class="mb-0">Bioscience Journals, Publishing Support, Academic and Scientific Editing for Researchers and Students in MENA Region – <span class="orange-text">AT AFFORDABLE PRICES</span></p> --}}
             <p class="mb-0 text-light">Academic Editing, Bioscience Journals, Research News, and Networking Opportunities for Bioscience Researchers and Students in MENA Region</p>
