@@ -51,7 +51,16 @@
                             <input type="button" id="submit-quotationn"
                                 class="d-flex align-items-center gap-2 text-white btn-small-text font-500 px-3 py-3 border-0 upload-btn theme-btn-green"
                                 value="SUBMIT" />
+
                         </form>
+                        <!-- Mailing Address Section -->
+                        <div class="mt-4">
+                            <h6 class="fw-bold">Mailing Address</h6>
+                            <p class="mb-0">Helixor Scientific Limited</p>
+                            <p class="mb-0">Flat 5, 4/F, Won Hing Building,</p>
+                            <p class="mb-0">74-78 Stanley Street, Central,</p>
+                            <p class="mb-0">Hong Kong</p>
+                        </div>
                     </div>
                 </div>
                 <div class="my-4">
@@ -139,7 +148,7 @@
                                 }
                                 if (res.errors.contact_message) {
                                     $('#messageError').text(res.errors.contact_message[0])
-                                    .show();
+                                        .show();
                                 }
                             }
                         } else {

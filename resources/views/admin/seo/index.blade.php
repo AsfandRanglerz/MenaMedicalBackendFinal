@@ -98,7 +98,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row"> 
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Description</label>
                                                 <textarea name="description" id="index_description" class="form-control" rows="3"></textarea>

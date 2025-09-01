@@ -17,11 +17,11 @@ class SeoController extends Controller
     {
         $request->validate([
             'section' => 'required|string',
-            'title' => 'required|string',
-            'og_title' => 'required|string',
-            'description' => 'required|string',
-            'og_description' => 'required|string',
-            'keywords' => 'required|string',
+            // 'title' => 'required|string',
+            // 'og_title' => 'required|string',
+            // 'description' => 'required|string',
+            // 'og_description' => 'required|string',
+            // 'keywords' => 'required|string',
         ]);
         // return $request;
         $section = $request->section;
