@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\Admin;
 use App\Models\SocialLink;
 use App\Mail\ContactUsMail;
 use Illuminate\Http\Request;
@@ -113,7 +114,9 @@ class PrivacyPolicyTermConditionController extends Controller
 
 
         // Send mail (you can keep this after validations)
-        $to = 'usman0725.ranglerz@gmail.com';
+        // $to = 'usman0725.ranglerz@gmail.com';
+        // $to = Admin::first()->email;
+        $to = 'info@menamedicalresearch.com';
         $data = [
             'name' => $request->contact_name,
             'email' => $request->contact_email,
@@ -127,3 +130,4 @@ class PrivacyPolicyTermConditionController extends Controller
         ]);
     }
 }
+ 

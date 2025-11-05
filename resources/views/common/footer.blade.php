@@ -86,12 +86,20 @@
         <div class="mt-sm-0 mt-2 col-sm-4">
             <div class="d-flex justify-content-sm-start justify-content-center social-media">
                 @foreach($SocialLinks as $SocialLink)
-                    @if(!empty($SocialLink->icon && $SocialLink->url && $SocialLink->class))
+                    @if(!empty($SocialLink->icon && $SocialLink->url && $SocialLink->class) &&  $SocialLink->class=="linkedin")
                         <a href="{{ $SocialLink->url }}" class="{{ $SocialLink->class}}" target="_blank">
                             <span class="{{ $SocialLink->icon }}"></span>
                         </a>
                     @endif
                 @endforeach
+                <div>
+                    <a href="#" aria-label="Chat on WhatsApp" style="width: unset;height: unset;margin-left: 8px; text-decoration:none;">
+                        <img src="https://profiles.menamedicalresearch.com/public/assets/img/whatsapp-icon.png"
+                                alt="WhatsApp" style="width: 1.563rem;height: 1.563rem">
+                            <span style="color: #3d3d3d!important;margin:0 6px">WHATSAPP</span>
+                            <span style="color: #3d3d3d!important">+852 47332977</span>
+                        </a>
+                </div>
             </div>
         </div>
     </div>

@@ -54,8 +54,8 @@
 
                         </form>
                         <!-- Mailing Address Section -->
-                        <div class="mt-4">
-                            <h6 class="fw-bold">Mailing Address</h6>
+                        <div class="mt-5">
+
                             <p class="mb-0">Helixor Scientific Limited</p>
                             <p class="mb-0">Flat 5, 4/F, Won Hing Building,</p>
                             <p class="mb-0">74-78 Stanley Street, Central,</p>
