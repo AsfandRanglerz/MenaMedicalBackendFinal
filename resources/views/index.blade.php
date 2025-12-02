@@ -74,8 +74,7 @@
                                 <div>
                                     <img src="{{ asset('public/assets/images/journal-svgrepo-com.png') }}"
                                         class="my-lg-4 my-3" />
-                                    <p>Bioscience Journals for undergraduate and postgraduate students with <b>discounted
-                                            publication charges</b> for MENA region</p>
+                                    <p>Journals for early career researchers, undergraduate, and postgraduate students at <b>affordable publication charges</b></p>
                                 </div>
                                 <a href="https://menamedicalresearch.com/journal/" target="_blank">Find Out More</a>
                             </div>
@@ -216,9 +215,8 @@
                                 <h6 class="mb-1"><a href="https://menamedicalresearch.com/journal/" target="_blank"
                                         style="text-decoration: none; color: inherit;">MENA Journal of Bioscience
                                         Research</a></h6>
-                                <p class="mb-0 small">Publishes scientific output of bioscience graduate and undergraduate
-                                    students from MENA region
-                                    <span class="orange-text">at discounted publishing charges</span>
+                                <p class="mb-0 small">Publishes scientific output of early career researchers, undergraduate, and postgraduate students
+                                    <span class="orange-text">at affordable publication charges</span>
                                 </p>
                             </div>
                         </div>
@@ -228,8 +226,8 @@
                                 <h6 class="mb-1"><a href="https://menamedicalresearch.com/journal/" target="_blank"
                                         style="text-decoration: none; color: inherit;">MENA Journal of Case Reports</a>
                                 </h6>
-                                <p class="mb-0 small">Publishes case reports from MENA region at <span
-                                        class="orange-text">affordable publication charges</span></p>
+                                <p class="mb-0 small">Publishes case reports, case series, and case reviews <span
+                                        class="orange-text">at affordable publication charges</span></p>
                             </div>
                         </div>
                     </div>

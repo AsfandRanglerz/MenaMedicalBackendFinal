@@ -60,10 +60,7 @@
                                     <div>
                                         <div class="py-2 px-2">
                                             <p class="m-0 line-height paragraph">
-                                                MENA Journal of Bioscience Research publishes scientific output of bioscience
-                                                graduate and undergraduate students from the MENA region at highly
-                                                discounted publishing charges to support research output from early
-                                                researchers.
+                                                MENA Journal of Bioscience Research  publishes scientific output of early career Bioscience researchers, graduate, and undergraduate students at affordable publication charges to support their research.
                                             </p>
                                             <div class="anchor">
                                                 <a href="https://menamedicalresearch.com/journals/index.php/mjbr"
@@ -91,9 +88,7 @@
                                     <div>
                                         <div class="py-2 px-2">
                                             <p class="m-0 line-height paragraph">
-                                                MENA Journal of Case Reports publishes case reports from MENA region at
-                                                affordable publication charges to expand clinical knowledge output from
-                                                clinicians and researchers.
+                                               MENA Journal of Case Reports publishes case reports, case series, and case reviews at affordable publication charges to expand clinical knowledge output from clinicians and researchers.
                                             </p>
                                             <div class="anchor">
                                                 <a href="https://menamedicalresearch.com/journals/index.php/mjcr"
