@@ -51,9 +51,9 @@
                     @php
                         $headerTwo = App\Models\HeaderContentTwo::where('status',0)->whereNotNull('text')
                         ->whereNotNull('url')
-                        ->where('id','!=',7)
+                        ->where('id','!=',8)
                         ->get();
-                    @endphp
+                    @endphp  
                     @foreach($headerTwo as $content)
                     <a href="{{ asset($content->url) }}"
                         @if(Str::contains($content->url, 'journal')) target="_blank" @endif>
@@ -67,7 +67,7 @@
                 </div>
                 @php
                     // $text = App\Models\HeaderContentTwo::where('status',0)->whereNull('url')->first();
-                    $text = App\Models\HeaderContentTwo::find(7);
+                    $text = App\Models\HeaderContentTwo::find(8);
                 @endphp
                 <p class="text-lg-end text-center mb-0">{{$text->text}}</p>
             </div>
@@ -78,16 +78,32 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="justify-content-between w-100 navbar-nav mb-0">
-                        <li class="nav-item">
+                        @php
+                            $headerTwo = App\Models\HeaderContentTwo::where('status',0)->whereNotNull('text')
+                            ->whereNotNull('url')
+                            ->where('id','!=',8)
+                            ->get();
+                        @endphp
+                        @if (url()->current() == url('/'))
+                        @foreach($headerTwo as $content)
+                        <li class="nav-item home-visible {{ $loop->last ? 'last-home-visible' : '' }}">
+                            <a class="nav-link" href="{{ asset($content->url) }}"
+                                @if(Str::contains($content->url, 'journal')) target="_blank" @endif>
+                                {{ $content->text }}
+                            </a>
+                        </li>
+                        @endforeach                            
+                        @else
+                        <li class="nav-item home-hidden">
                             <a class="nav-link {{ Request::is('scientific-editing') ? 'active' : '' }}" aria-current="page" href="{{ url('scientific-editing') }}">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item home-hidden">
                             <a class="nav-link {{ Request::is('language-editing*') ? 'active' : '' }}" href="{{ url('language-editing') }}">Language Editing</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item home-hidden">
                             <a class="nav-link {{ Request::is('scientific-editing-service*') ? 'active' : '' }}" href="{{ url('scientific-editing-service') }}">Scientific Editing</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown home-hidden">
                             <a class="nav-link dropdown-toggle {{ Request::is('accidental-plagiarism*') ||  Request::is('manuscript-formatting-service*') ? 'active' : '' }}" id="PublicationDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Publication Support
@@ -98,10 +114,10 @@
                                 <li><a class="dropdown-item {{ Request::is('manuscript-formatting-service*') ? 'active' : '' }}" href="{{ url('manuscript-formatting-service') }}">Manuscript Formatting Service</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item home-hidden">
                             <a class="nav-link {{ Request::is('poster-creation-service*') ? 'active' : '' }}" href="{{ url('poster-creation-service') }}">Posters & Presentations</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown home-hidden">
                             <a class="nav-link dropdown-toggle {{ Request::is('thesis-editing-service*') ||  Request::is('assignment-editing-service*') ? 'active' : '' }}" id="thesisDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Thesis Support
@@ -112,12 +128,13 @@
                                 <li><a class="dropdown-item {{ Request::is('thesis-editing-service*') ? 'active' : '' }}" href="{{ url('thesis-editing-service') }}">Thesis Editing Service</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item home-hidden">
                             <a class="nav-link {{ Request::is('data-analysis*') ? 'active' : '' }}" href="{{ url('data-analysis') }}">Data Analysis</a>
                         </li>
-                        <li class="nav-item text-sm-start text-center">
+                        <li class="nav-item text-sm-start text-center home-hidden">
                             <a href="{{ url('place-order') }}" class="btn theme-btn">Place Order</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>

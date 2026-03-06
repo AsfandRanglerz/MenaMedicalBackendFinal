@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Models\Journal;
 use App\Models\Profile;
 use App\Models\Service;
+use App\Models\Training;
 use App\Models\NewPricing;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
@@ -42,6 +43,7 @@ class AccidentalPlagiarismController extends Controller
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
@@ -55,12 +57,13 @@ class AccidentalPlagiarismController extends Controller
         ->first();
         $seo_data = SEO::where('section','Accidental Plagiarism')->first();
         // return $packagePrices;
-        return view('accidental_plagiarism',compact('HomeSectionFours','seo_data','discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'AccidentalPlagiarisms', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('accidental_plagiarism',compact('trainings','HomeSectionFours','seo_data','discountedPrice','regularPrice','HomeSectionThrees', 'LanguageEditingFours', 'AccidentalPlagiarisms', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function accidentalPlagiarismForm(){
         $newPrices = NewPricing::where('service_name','Accidental Plagirisam')->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
@@ -73,7 +76,7 @@ class AccidentalPlagiarismController extends Controller
         $discountedPrice = ServicsPricing::where('service_name','Accidental Plagirisam')
         ->where('price_category','Discounted')
         ->first();
-        return view('similarty_review_report',compact('newPrices','discountedPrice','regularPrice','additionalServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
+        return view('similarty_review_report',compact('trainings','newPrices','discountedPrice','regularPrice','additionalServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
     }
     public function accidentalPlagiarismFormPrices(Request $request){
         $data = ServicsPricing::where('service_name',$request->service_name)

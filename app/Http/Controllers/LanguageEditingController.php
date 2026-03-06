@@ -2,34 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
-use App\Models\SEO;
-use App\Models\News;
-use App\Models\Journal;
-use App\Models\Profile;
-use App\Models\Service;
-use App\Models\NewPricing;
-use App\Models\SocialLink;
-use Illuminate\Http\Request;
-use App\Models\QuotationFile;
-use App\Models\HomeSectionSix;
-use App\Models\ServicsPricing;
-use App\Models\HomeSectionFour;
 use App\Mail\QuotationInfoAdmin;
-use App\Models\AdditionalPrices;
-use App\Models\FooterContentOne;
-use App\Models\HomeSectionThree;
-use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use App\Models\LanguageEditingOne;
-use App\Models\LanguageEditingTwo;
-use Illuminate\Support\Facades\DB;
+use App\Models\AdditionalPrices;
+use App\Models\Faq;
+use App\Models\FooterContentOne;
+use App\Models\HomeSectionFour;
+use App\Models\HomeSectionSix;
+use App\Models\HomeSectionThree;
+use App\Models\Journal;
 use App\Models\LanguageEditingFour;
+use App\Models\LanguageEditingOne;
 use App\Models\LanguageEditingThree;
+use App\Models\LanguageEditingTwo;
+use App\Models\NewPricing;
+use App\Models\News;
+use App\Models\Profile;
+use App\Models\QuotationAdditionalService;
+use App\Models\QuotationFile;
+use App\Models\QuotationPersonalInfo;
+use App\Models\QuotationRequest;
+use App\Models\SEO;
+use App\Models\Service;
+use App\Models\ServicsPricing;
+use App\Models\SocialLink;
+use App\Models\Training;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use App\Models\QuotationPersonalInfo;
-use App\Models\QuotationAdditionalService;
 
 class LanguageEditingController extends Controller
 {
@@ -45,6 +46,7 @@ class LanguageEditingController extends Controller
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
@@ -53,7 +55,7 @@ class LanguageEditingController extends Controller
         $seo_data = SEO::where('section','Language Editing')->first();
 
         $additionalsServices = AdditionalPrices::where('services','Language Editing')->get();
-        return view('language_editing',compact('HomeSectionFours','seo_data','additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('language_editing',compact('trainings','HomeSectionFours','seo_data','additionalsServices','HomeSectionThrees', 'LanguageEditings', 'LanguageEditingTwos', 'LanguageEditingThrees', 'LanguageEditingFours', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
     public function advanceEditingService(){
@@ -64,6 +66,7 @@ class LanguageEditingController extends Controller
         $newPrices = NewPricing::where('service_name','Language Editing')
         ->where('package_name',$package)->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
@@ -71,7 +74,7 @@ class LanguageEditingController extends Controller
         $Profiles = Profile::orderBy('id', 'ASC')->get();
         $additionalsServices = AdditionalPrices::where('services','Language Editing')->get();
         // return $package;
-        return view('advanced_editing_service',compact('newPrices','package','additionalsServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
+        return view('advanced_editing_service',compact('trainings','newPrices','package','additionalsServices','FooterContentOnes','Services','Journals','News','Profiles','SocialLinks'));
     }
     public function languageEditingServiceFormPrices(Request $request){
         $data = ServicsPricing::where('service_name',$request->service_name)

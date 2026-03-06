@@ -55,6 +55,7 @@ use App\Http\Controllers\Admin\ManuscriptFormattingThreeController;
 use App\Http\Controllers\Admin\ThesisEditingServiceThreeController;
 use App\Http\Controllers\Admin\AssignmentEditingServiceOneController;
 use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\TrainingContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +142,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/serviceEdit/{id}', [ServiceController::class, 'edit'])->name('serviceEdit');
     Route::post('/serviceUpdate/{id}', [ServiceController::class, 'update'])->name('serviceUpdate');
     Route::delete('/serviceDestroy/{id}', [ServiceController::class, 'destroy'])->name('serviceDestroy');
+
+       //Footer training
+    Route::get('/training', [TrainingContentController::class, 'index'])->name('training');
+    Route::get('/trainingCreate', [TrainingContentController::class, 'create'])->name('trainingCreate');
+    Route::post('/trainingStore', [TrainingContentController::class, 'store'])->name('trainingStore');
+    Route::get('/trainingEdit/{id}', [TrainingContentController::class, 'edit'])->name('trainingEdit');
+    Route::post('/trainingUpdate/{id}', [TrainingContentController::class, 'update'])->name('trainingUpdate');
+    Route::delete('/trainingDestroy/{id}', [TrainingContentController::class, 'destroy'])->name('trainingDestroy');
 
     //Footer Journal
     Route::get('/journal', [JournalController::class, 'index'])->name('journal');

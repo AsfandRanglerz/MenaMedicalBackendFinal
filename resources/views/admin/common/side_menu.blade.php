@@ -141,6 +141,15 @@
                         </a>
                     </li>
 
+                      {{-- Trainings --}}
+                    <li class="{{ request()->is('admin/training*') ? 'active' : '' }}">
+                        <a href="{{ route('training') }}"
+                            class="nav-link {{ request()->is('admin/training*') ? 'text-white' : '' }}">
+                            <span data-feather="clipboard"></span>
+                            <span>Training</span>
+                        </a>
+                    </li>
+
                     {{-- Journal --}}
                     <li class="{{ request()->is('admin/journal*') ? 'active' : '' }}">
                         <a href="{{ route('journal') }}"

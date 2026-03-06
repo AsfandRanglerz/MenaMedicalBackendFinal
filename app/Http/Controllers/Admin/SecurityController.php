@@ -22,7 +22,7 @@ class SecurityController extends Controller
 
         $data=PrivacyPolicy::first();
         PrivacyPolicy::find($data->id)->update($request->all());
-        return view('/admin/Privacy-policy')->with(['message' => 'Privacy Policy Updated Successfully']);
+        return view('admin.privacyPolicy.index')->with(['message' => 'Privacy Policy Updated Successfully']);
     }
     public function TermCondition(){
         $data=TermCondition::first();

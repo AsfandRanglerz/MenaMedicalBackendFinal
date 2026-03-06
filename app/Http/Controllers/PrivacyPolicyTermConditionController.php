@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
+use App\Mail\ContactUsMail;
+use App\Models\Admin;
+use App\Models\DataAnalysisServiceOne;
+use App\Models\DataAnalysisServiceThree;
+use App\Models\DataAnalysisServiceTwo;
+use App\Models\FooterContentOne;
+use App\Models\HomeSectionSix;
+use App\Models\HomeSectionThree;
 use App\Models\Journal;
+use App\Models\LanguageEditingFour;
+use App\Models\News;
+use App\Models\PrivacyPolicy;
 use App\Models\Profile;
 use App\Models\Service;
-use App\Models\Admin;
 use App\Models\SocialLink;
-use App\Mail\ContactUsMail;
-use Illuminate\Http\Request;
-use App\Models\PrivacyPolicy;
 use App\Models\TermCondition;
-use App\Models\HomeSectionSix;
-use App\Models\FooterContentOne;
-use App\Models\HomeSectionThree;
-use App\Models\LanguageEditingFour;
+use App\Models\Training;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use App\Models\DataAnalysisServiceOne;
-use App\Models\DataAnalysisServiceTwo;
-use App\Models\DataAnalysisServiceThree;
 
 
 class PrivacyPolicyTermConditionController extends Controller
@@ -39,11 +40,12 @@ class PrivacyPolicyTermConditionController extends Controller
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
         $data = PrivacyPolicy::first();
-        return view('pricacyPolicy.privacy_policy', compact('data', 'SocialLinks', 'Profiles', 'News', 'FooterContentOnes', 'Services', 'Journals'));
+        return view('pricacyPolicy.privacy_policy', compact('trainings','data', 'SocialLinks', 'Profiles', 'News', 'FooterContentOnes', 'Services', 'Journals'));
     }
     public function termsPage()
     {
@@ -58,12 +60,13 @@ class PrivacyPolicyTermConditionController extends Controller
 
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
         $data = TermCondition::first();
-        return view('pricacyPolicy.terms_and_conditions', compact('data', 'SocialLinks', 'Profiles', 'News', 'FooterContentOnes', 'Services', 'Journals'));
+        return view('pricacyPolicy.terms_and_conditions', compact('trainings','data', 'SocialLinks', 'Profiles', 'News', 'FooterContentOnes', 'Services', 'Journals'));
     }
     public function contctPage()
     {
@@ -78,12 +81,13 @@ class PrivacyPolicyTermConditionController extends Controller
 
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
         $data = TermCondition::first();
-        return view('pricacyPolicy.contct-us', compact('SocialLinks', 'Profiles', 'News', 'FooterContentOnes', 'Services', 'Journals'));
+        return view('pricacyPolicy.contct-us', compact('trainings','SocialLinks', 'Profiles', 'News', 'FooterContentOnes', 'Services', 'Journals'));
     }
 
     public function contactPost(Request $request)
@@ -130,4 +134,3 @@ class PrivacyPolicyTermConditionController extends Controller
         ]);
     }
 }
- 

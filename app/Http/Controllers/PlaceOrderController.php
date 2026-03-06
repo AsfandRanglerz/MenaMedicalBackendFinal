@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdditionalPrices;
-use App\Models\News;
+use App\Models\FooterContentOne;
 use App\Models\Journal;
+use App\Models\NewPricing;
+use App\Models\News;
+use App\Models\PlaceOrderFour;
+use App\Models\PlaceOrderOne;
+use App\Models\PlaceOrderThree;
+use App\Models\PlaceOrderTwo;
 use App\Models\Profile;
 use App\Models\Service;
-use App\Models\NewPricing;
 use App\Models\SocialLink;
+use App\Models\Training;
 use Illuminate\Http\Request;
-use App\Models\PlaceOrderOne;
-use App\Models\PlaceOrderTwo;
-use App\Models\PlaceOrderFour;
-use App\Models\PlaceOrderThree;
-use App\Models\FooterContentOne;
 
 class PlaceOrderController extends Controller
 {
@@ -29,10 +30,11 @@ class PlaceOrderController extends Controller
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
-        return view('place_order',compact('PlaceOrderOnes','PlaceOrderTwos','PlaceOrderThrees','PlaceOrderFours','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
+        return view('place_order',compact('trainings','PlaceOrderOnes','PlaceOrderTwos','PlaceOrderThrees','PlaceOrderFours','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles'));
     }
 
 
@@ -52,6 +54,7 @@ class PlaceOrderController extends Controller
         $title = $request->title;
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
@@ -68,7 +71,8 @@ class PlaceOrderController extends Controller
             'service',
             'package',
             'form_head',
-            'additionalsServices'
+            'additionalsServices',
+            'trainings'
         ));
 
     }

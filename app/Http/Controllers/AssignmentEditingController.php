@@ -2,29 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
-use App\Models\SEO;
-use App\Models\News;
-use App\Models\Journal;
-use App\Models\Profile;
-use App\Models\Service;
-use App\Models\NewPricing;
-use App\Models\SocialLink;
-use Illuminate\Http\Request;
-use App\Models\QuotationFile;
-use App\Models\HomeSectionSix;
-use App\Models\ServicsPricing;
-use App\Models\HomeSectionFour;
-use App\Models\FooterContentOne;
-use App\Models\HomeSectionThree;
-use App\Models\QuotationRequest;
+use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 use App\Mail\SubmitQuotaionEmail;
+use App\Models\AssignmentEditingServiceOne;
+use App\Models\Faq;
+use App\Models\FooterContentOne;
+use App\Models\HomeSectionFour;
+use App\Models\HomeSectionSix;
+use App\Models\HomeSectionThree;
+use App\Models\Journal;
 use App\Models\LanguageEditingFour;
+use App\Models\NewPricing;
+use App\Models\News;
+use App\Models\Profile;
+use App\Models\QuotationFile;
+use App\Models\QuotationPersonalInfo;
+use App\Models\QuotationRequest;
+use App\Models\SEO;
+use App\Models\Service;
+use App\Models\ServicsPricing;
+use App\Models\SocialLink;
+use App\Models\Training;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use App\Models\QuotationPersonalInfo;
-use App\Models\AssignmentEditingServiceOne;
-use App\Mail\QuotationInfoAdmin;use Illuminate\Support\Facades\DB;
 
 class AssignmentEditingController extends Controller
 {
@@ -40,13 +41,14 @@ class AssignmentEditingController extends Controller
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
         $seo_data = SEO::where('section','Assignemnt Editing Service')->first();
 
         $Faqs = Faq::orderBy('position', 'ASC')->where('navBar_name','Assignment Editing Service')->get();
-        return view('assignment_editing_service',compact('HomeSectionFours','seo_data','HomeSectionThrees', 'LanguageEditingFours', 'AssignmentEditingServiceOnes', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
+        return view('assignment_editing_service',compact('trainings','HomeSectionFours','seo_data','HomeSectionThrees', 'LanguageEditingFours', 'AssignmentEditingServiceOnes', 'HomeSectionSixs','SocialLinks','FooterContentOnes','Services','Journals','News','Profiles','Faqs'));
     }
 
 
@@ -55,12 +57,13 @@ class AssignmentEditingController extends Controller
     {
         $newPrices = NewPricing::where('service_name','Assignment Editing Service')->orderBy('position', 'asc')->get();
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
-        return view('assignment_editing_service_form', compact('newPrices','FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
+        return view('assignment_editing_service_form', compact('trainings','newPrices','FooterContentOnes', 'Services', 'Journals', 'News', 'Profiles', 'SocialLinks'));
     }
 
     public function assignmentEditingServiceFormPrices(Request $request)

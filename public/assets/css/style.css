@@ -210,6 +210,10 @@ textarea {
     color: var(--theme-beta);
 }
 
+.green-text {
+    color: var(--theme-omega);
+}
+
 .primary-heading {
     color: var(--theme-alpha);
 }
@@ -466,8 +470,8 @@ header .module-links a:nth-child(3) {
     border-color: var(--theme-omega);
 }
 
-header .module-links a:nth-child(4) {
-    border-color: #ec6f65;
+header .module-links a:nth-child(5) {
+    border-color: var(--theme-danger);
     padding-right: 0;
 }
 
@@ -683,20 +687,24 @@ footer .linkedin:hover span {
     font-weight: 600;
 }
 
-.modules-section .editing-content .inner a {
+.modules-section .training-content .inner a {
     color: var(--theme-alpha);
 }
 
-.modules-section .journals-content .inner a {
+.modules-section .editing-content .inner a {
     color: var(--theme-beta);
 }
 
-.modules-section .research-content .inner a {
+.modules-section .journals-content .inner a {
     color: var(--theme-omega);
 }
 
-.modules-section .news-content .inner a {
+.modules-section .research-content .inner a {
     color: var(--theme-danger);
+}
+
+.modules-section .news-content .inner a {
+    color: var(--theme-alpha);
 }
 
 .modules-section .content .title {
@@ -704,20 +712,24 @@ footer .linkedin:hover span {
     padding: 12px 0;
 }
 
-.modules-section .editing-content .title {
+.modules-section .training-content .title {
     background-color: var(--theme-alpha);
 }
 
-.modules-section .journals-content .title {
+.modules-section .editing-content .title {
     background-color: var(--theme-beta);
 }
 
-.modules-section .research-content .title {
+.modules-section .journals-content .title {
     background-color: var(--theme-omega);
 }
 
-.modules-section .news-content .title {
+.modules-section .research-content .title {
     background-color: var(--theme-danger);
+}
+
+.modules-section .news-content .title {
+    background-color: var(--theme-alpha);
 }
 
 .modules-section .content img {
@@ -740,20 +752,31 @@ footer .linkedin:hover span {
     height: 1.25rem;
 }
 
-.editing-section .heading {
+.Training-section .heading {
     color: var(--theme-alpha);
 }
 
-.journals-section .heading {
+.editing-section .heading {
     color: var(--theme-beta);
 }
 
-.research-section .heading {
+.journals-section .heading {
     color: var(--theme-omega);
 }
 
-.news-section .heading {
+.research-section .heading {
     color: var(--theme-danger);
+}
+
+.news-section .heading {
+    color: var(--theme-alpha);
+}
+
+.training-section .heading + p {
+    background-color: var(--theme-alpha);
+    color: #fff;
+    font-weight: 600;
+    padding: 1.875rem 2.5rem;
 }
 
 .editing-section .heading + p {
@@ -1246,6 +1269,18 @@ footer .linkedin:hover span {
     display: none;
 }
 
+.services-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    gap: 1rem; /* spacing between cards */
+    width: 100%; /* full container width */
+}
+
+.services-wrapper > div {
+    width: 100%; /* ensures each card takes full grid cell width */
+    box-sizing: border-box; /* includes padding/border in width */
+}
+
 @media (min-width: 1920px) {
     html {
         font-size: 24px;
@@ -1285,8 +1320,7 @@ footer .linkedin:hover span {
         border-bottom: 0.063rem solid var(--theme-text-omega);
     }
 
-    header .navbar .navbar-nav .nav-item:nth-last-child(1),
-    header .navbar .navbar-nav .nav-item:nth-last-child(2) {
+    header .navbar .navbar-nav .nav-item:nth-last-child(1) {
         border-bottom: none;
     }
 
@@ -1324,6 +1358,10 @@ footer .linkedin:hover span {
 
     .journal-section {
         width: 100%;
+    }
+
+    .services-wrapper {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -1388,6 +1426,10 @@ footer .linkedin:hover span {
     .content-center-portion a {
         text-align: center;
     }
+
+    .services-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (min-width: 576px) {
@@ -1401,8 +1443,16 @@ footer .linkedin:hover span {
         font-size: 12px;
     }
 
+    header .navbar {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
     header .module-links a {
-        padding-right: 1rem;
+        padding-right: 0.3rem;
+        border-left: 0.1rem solid;
+        padding-left: 0.4rem;
+        font-size: 1.1rem;
     }
 
     .banner .content {
@@ -1431,5 +1481,9 @@ footer .linkedin:hover span {
 
     .table-d-l {
         display: none;
+    }
+
+    .services-wrapper {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

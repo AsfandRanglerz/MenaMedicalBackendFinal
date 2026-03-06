@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
-use App\Models\SEO;
-use App\Models\News;
-use App\Models\Journal;
-use App\Models\Profile;
-use App\Models\Service;
-use App\Models\NewPricing;
-use App\Models\SocialLink;
-use Illuminate\Http\Request;
-use App\Models\QuotationFile;
-use App\Models\HomeSectionSix;
-use App\Models\ServicsPricing;
-use App\Models\HomeSectionFour;
 use App\Mail\QuotationInfoAdmin;
-use App\Models\FooterContentOne;
-use App\Models\HomeSectionThree;
-use App\Models\QuotationRequest;
 use App\Mail\SubmitQuotaionEmail;
-use Illuminate\Support\Facades\DB;
+use App\Models\DataAnalysisServiceOne;
+use App\Models\DataAnalysisServiceThree;
+use App\Models\DataAnalysisServiceTwo;
+use App\Models\Faq;
+use App\Models\FooterContentOne;
+use App\Models\HomeSectionFour;
+use App\Models\HomeSectionSix;
+use App\Models\HomeSectionThree;
+use App\Models\Journal;
 use App\Models\LanguageEditingFour;
+use App\Models\NewPricing;
+use App\Models\News;
+use App\Models\Profile;
+use App\Models\QuotationFile;
+use App\Models\QuotationPersonalInfo;
+use App\Models\QuotationRequest;
+use App\Models\SEO;
+use App\Models\Service;
+use App\Models\ServicsPricing;
+use App\Models\SocialLink;
+use App\Models\Training;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use App\Models\QuotationPersonalInfo;
-use App\Models\DataAnalysisServiceOne;
-use App\Models\DataAnalysisServiceTwo;
-use App\Models\DataAnalysisServiceThree;
 
 class DataAnalysisController extends Controller
 {
@@ -46,6 +47,7 @@ class DataAnalysisController extends Controller
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
         $News = News::orderBy('id', 'ASC')->get();
         $Profiles = Profile::orderBy('id', 'ASC')->get();
@@ -88,13 +90,15 @@ class DataAnalysisController extends Controller
             'News',
             'Profiles',
             'Faqs',
-            'HomeSectionFours'
+            'HomeSectionFours',
+            'trainings'
         ));
     }
 
     public function dataAnalysisServiceForm($package)
     {
         $SocialLinks = SocialLink::orderBy('id', 'ASC')->get();
+        $trainings = Training::orderBy('id', 'ASC')->get();
         $Services = Service::orderBy('id', 'ASC')->get();
         $FooterContentOnes = FooterContentOne::orderBy('id', 'ASC')->get();
         $Journals = Journal::orderBy('id', 'ASC')->get();
@@ -137,7 +141,8 @@ class DataAnalysisController extends Controller
                 'Journals',
                 'News',
                 'Profiles',
-                'SocialLinks'
+                'SocialLinks',
+                'trainings'
             )
         );
     }

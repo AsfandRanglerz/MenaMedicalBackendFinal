@@ -1,3 +1,13 @@
+<style>
+.footer-container .social-media .whatsapp a:hover {
+    background-color: inherit !important; /* Keep original background */
+    color: inherit !important;            /* Keep text color unchanged */
+    transform: none !important;           /* Prevent scale/animation if any */
+    box-shadow: none !important;          /* Prevent shadow changes */
+    cursor: default !important;           /* Optional: make it non-pointer */
+}
+
+</style>
 <footer>
     <p class="p-3 mb-0 text-center main-desc">MENA MEDICAL RESEARCH – Supporting Biosciences Research and Publication in the MENA Region</p>
     <div class="py-4 container-fluid center-content">
@@ -25,7 +35,16 @@
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-md-3">
-
+                                <div class="list-holder">
+                                    <h6 class="heading">Training <span class="fa fa-angle-down pull-right d-md-none down-arrow"></span></h6>
+                                    @foreach($trainings as $training)
+                                    <ul class="mb-0 list">
+                                        <li><a href="{{ $training->url }}">{{ $training->text }}</a></li>
+                                    </ul>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="list-holder">
                                     <h6 class="heading">Services <span class="fa fa-angle-down pull-right d-md-none down-arrow"></span></h6>
                                     @foreach($Services as $Service)
@@ -34,7 +53,6 @@
                                     </ul>
                                     @endforeach
                                 </div>
-
                             </div>
                             <div class="col-md-3">
                                 <div class="list-holder">
@@ -56,7 +74,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 mt-md-3">
                                 <div class="list-holder prof-holder">
                                     <h6 class="heading">Profiles <span class="fa fa-angle-down pull-right d-md-none down-arrow"></span></h6>
                                     @foreach($Profiles as $Profile)
@@ -92,7 +110,7 @@
                         </a>
                     @endif
                 @endforeach
-                <div>
+                <div class="whatsapp">
                     <a href="#" aria-label="Chat on WhatsApp" style="width: unset;height: unset;margin-left: 8px; text-decoration:none;">
                         <img src="https://profiles.menamedicalresearch.com/public/assets/img/whatsapp-icon.png"
                                 alt="WhatsApp" style="width: 1.563rem;height: 1.563rem">

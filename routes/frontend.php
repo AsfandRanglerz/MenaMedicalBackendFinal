@@ -25,6 +25,7 @@ use App\Http\Controllers\ScientificEditingServiceController;
 use App\Http\Controllers\PrivacyPolicyTermConditionController;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/training', [HomeController::class, 'tranings']);
 Route::get('/accidental-plagiarism', [AccidentalPlagiarismController::class, 'accidentalPlagiarism']);
 Route::get('/language-editing', [LanguageEditingController::class, 'languageEditing']);
 Route::get('/manuscript-formatting-service', [ManuscriptFormattingController::class, 'manuscriptFormattingService']);
