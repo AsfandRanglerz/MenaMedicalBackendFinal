@@ -7,10 +7,16 @@
 @section('keywords', $seo_data['keywords'])
 
 <style>
-    @media (min-width: 992px) {
-        header .navbar {
-            display: none;
-        }
+    .carousel-indicators button {
+        width: 15px !important;
+        height: 15px !important;
+        border-radius: 50% !important;
+        background-color: #fff !important;
+        border: none !important;
+    }
+
+    .carousel-indicators .active {
+        background-color: var(--theme-beta) !important;
     }
 
     header .navbar .navbar-nav .nav-item.last-home-visible {
@@ -24,10 +30,16 @@
     .heading1 {
         font-size: 3.5rem;
     }
+
+    @media (min-width: 992px) {
+        header .navbar {
+            display: none;
+        }
+    }
 </style>
 
 @section('content')
-    <div class="position-relative banner">
+    <!-- <div class="position-relative banner">
         <img src="{{ asset('public/assets/images/banner-img.png') }}" class="w-100" />
         <div class="content">
             <h1 class="heading1 text-light">WE MAKE</h1>
@@ -36,7 +48,55 @@
             <p class="mb-0 text-light">Academic Editing, Bioscience Journals, Research News, and Networking Opportunities for
                 Bioscience Researchers and Students in MENA Region</p>
         </div>
+    </div> -->
+    <div id="bannerCarousel" class="carousel slide position-relative banner" data-bs-ride="carousel">    
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <img src="{{ asset('public/assets/images/banner-img.png') }}" class="w-100" />
+                <div class="content">
+                    <h1 class="heading1 text-light">WE MAKE</h1>
+                    <h2 class="text-light heading2">PUBLISHING EASY!</h2>
+                    <p class="mb-0 text-light">
+                        Academic Editing, Bioscience Journals, Research News, and Networking Opportunities
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="{{ asset('public/assets/images/banner-img2.png') }}" class="w-100" />
+                <div class="content">
+                    <h1 class="heading1 text-light">BOOST YOUR</h1>
+                    <h2 class="text-light heading2">RESEARCH IMPACT</h2>
+                    <p class="mb-0 text-light">
+                        Get expert editing and publishing support for your academic success
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <img src="{{ asset('public/assets/images/banner-img3.png') }}" class="w-100" />
+                <div class="content">
+                    <h1 class="heading1 text-light">CONNECT WITH</h1>
+                    <h2 class="text-light heading2">GLOBAL NETWORK</h2>
+                    <p class="mb-0 text-light">
+                        Join a growing community of bioscience researchers and students
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="container-fluid">
@@ -60,7 +120,7 @@
                                     <img src="{{ asset('public/assets/images/training-services.webp') }}" class="my-lg-4 my-3" />
                                     <p>Training courses, multidisciplinary scientific webinars, and conferences <b>for next generation research leaders</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/scientific-editing">Find Out More</a>
+                                <a href="{{ url('training') }}" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -73,7 +133,7 @@
                                     <p>High-quality language, academic editing, scientific writing, and research promotion
                                         services <b>for students and researchers</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/scientific-editing">Find Out More</a>
+                                <a href="{{ url('scientific-editing') }}">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -86,7 +146,7 @@
                                         class="my-lg-4 my-3" />
                                     <p>Journals for early career researchers, undergraduate, and postgraduate students at <b>affordable publication charges</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/journal/" target="_blank">Find Out More</a>
+                                <a href="{{ url('journal') }}" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -100,7 +160,7 @@
                                     <p>Profiles for Bioscience researchers and students to <b>network and find
                                             researchers</b> with similar interests in MENA region</p>
                                 </div>
-                                <a href="https://profiles.menamedicalresearch.com/">Find Out More</a>
+                                <a href="https://profiles.menamedicalresearch.com/" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -113,7 +173,7 @@
                                     <p>Research news from regional academic institutes and high impact <b>research published
                                             globally from MENA region</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/news/">Find Out More</a>
+                                <a href="{{ url('news') }}" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +186,7 @@
                                     <p>High-quality language, academic editing, scientific writing, and research promotion
                                         services <b>for students and researchers</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/scientific-editing">Find Out More</a>
+                                <a href="{{ url('scientific-editing') }}">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +199,7 @@
                                         class="my-lg-4 my-3" />
                                     <p>Journals for early career researchers, undergraduate, and postgraduate students at <b>affordable publication charges</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/journal/" target="_blank">Find Out More</a>
+                                <a href="{{ url('journal') }}" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -153,7 +213,7 @@
                                     <p>Profiles for Bioscience researchers and students to <b>network and find
                                             researchers</b> with similar interests in MENA region</p>
                                 </div>
-                                <a href="https://profiles.menamedicalresearch.com/">Find Out More</a>
+                                <a href="https://profiles.menamedicalresearch.com/" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -166,7 +226,7 @@
                                     <p>Research news from regional academic institutes and high impact <b>research published
                                             globally from MENA region</b></p>
                                 </div>
-                                <a href="https://menamedicalresearch.com/news/">Find Out More</a>
+                                <a href="{{ url('news') }}" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div> --}}
@@ -187,7 +247,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/language-editing"
+                                <h6 class="mb-1"><a href="{{ url('training') }}" target="_blank"
                                         style="text-decoration: none; color: inherit">Publish a Research Paper in 3 Months</a></h6>
                                 <p class="mb-0 small">A training and mentoring program that culminates in successful submission of your research in an international peer-reviewed journal in 3 Months</p>
                             </div>
@@ -195,7 +255,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/language-editing"
+                                <h6 class="mb-1"><a href="{{ url('training') }}" target="_blank"
                                         style="text-decoration: none; color: inherit">FREE Multidisciplinary Webinars</a></h6>
                                 <p class="mb-0 small">Stay updated on latest advancements through our FREE Multidisciplinary scientific webinars with leading researchers in the MENA region</p>
                             </div>
@@ -203,7 +263,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/scientific-editing-service"
+                                <h6 class="mb-1"><a href="{{ url('training') }}" target="_blank"
                                         style="text-decoration: none; color: inherit">MENA Medical Research Conference</a></h6>
                                 <p class="mb-0 small">A multi-themed conference that will bring together leading researchers from the MENA region to highlight and share their high-impact research with a global audience</p>
                             </div>
@@ -227,7 +287,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/language-editing"
+                                <h6 class="mb-1"><a href="{{ url('language-editing') }}"
                                         style="text-decoration: none; color: inherit">Word-class English Language Editing</a></h6>
                                 <p class="mb-0 small">For accuracy of language, grammar, spellings, syntax, sentence
                                     structure, and clarity</p>
@@ -236,7 +296,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/scientific-editing-service"
+                                <h6 class="mb-1"><a href="{{ url('scientific-editing-service') }}"
                                         style="text-decoration: none; color: inherit">Scientific Editing by Experienced Researchers</a></h6>
                                 <p class="mb-0 small">In-depth scientific feedback to help meet the highest standards of
                                     academic publishing</p>
@@ -245,7 +305,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/manuscript-formatting-service"
+                                <h6 class="mb-1"><a href="{{ url('manuscript-formatting-service') }}"
                                         style="text-decoration: none; color: inherit">Manuscript Formatting</a></h6>
                                 <p class="mb-0 small">To meet the formatting guidelines of any target journal - APA, MLA,
                                     ACS, and AMA</p>
@@ -254,7 +314,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/accidental-plagiarism"
+                                <h6 class="mb-1"><a href="{{ url('accidental-plagiarism') }}"
                                         style="text-decoration: none; color: inherit">Similarity Check for Accidental Plagiarism</a></h6>
                                 <p class="mb-0 small">Identification of passages in scientific writing that could get
                                     flagged for plagiarism</p>
@@ -263,7 +323,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/assignment-editing-service"
+                                <h6 class="mb-1"><a href="{{ url('assignment-editing-service') }}"
                                         style="text-decoration: none; color: inherit">Thesis and Research Assignment Support</a></h6>
                                 <p class="mb-0 small">Improving Bachelors /Masters thesis or research assignments through
                                     language editing, formatting, and scientific review</p>
@@ -272,7 +332,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/data-analysis"
+                                <h6 class="mb-1"><a href="{{ url('data-analysis') }}"
                                         style="text-decoration: none; color: inherit">Data and Statistical Analysis</a></h6>
                                 <p class="mb-0 small">Statistical modeling and statistical analysis to validate and improve
                                     your research findings</p>
@@ -281,7 +341,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/poster-creation-service"
+                                <h6 class="mb-1"><a href="{{ url('poster-creation-service') }}"
                                         style="text-decoration: none; color: inherit">Eye-catching Conference Posters</a></h6>
                                 <p class="mb-0 small">Developing eye-catching posters to showcase your research at any
                                     scientific meeting</p>
@@ -290,7 +350,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/orange-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/poster-creation-service"
+                                <h6 class="mb-1"><a href="{{ url('poster-creation-service') }}"
                                         style="text-decoration: none; color: inherit">High Impact Presentations</a></h6>
                                 <p class="mb-0 small">Interactive and engaging presentation of your work for conferences,
                                     conventions, etc.</p>
@@ -306,14 +366,14 @@
             <div class="py-md-5 py-4 container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="col-xl-6 heading"><a href="https://menamedicalresearch.com/journal/" target="_blank"
+                        <h3 class="col-xl-6 heading"><a href="{{ url('journal') }}" target="_blank"
                                 style="text-decoration: none; color: inherit;">BIOSCIENCE JOURNALS</a></h3>
                     </div>
                     <div class="col-lg-8">
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/green-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/journal/" target="_blank"
+                                <h6 class="mb-1"><a href="{{ url('journal') }}" target="_blank"
                                         style="text-decoration: none; color: inherit;">MENA Journal of Bioscience
                                         Research</a></h6>
                                 <p class="mb-0 small">Publishes scientific output of early career researchers, undergraduate, and postgraduate students
@@ -324,7 +384,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/green-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://menamedicalresearch.com/journal/" target="_blank"
+                                <h6 class="mb-1"><a href="{{ url('journal') }}" target="_blank"
                                         style="text-decoration: none; color: inherit;">MENA Journal of Case Reports</a>
                                 </h6>
                                 <p class="mb-0 small">Publishes case reports, case series, and case reviews <span
@@ -341,14 +401,14 @@
             <div class="py-md-5 py-4 container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="col-xl-6 heading"><a href="https://profiles.menamedicalresearch.com/"
+                        <h3 class="col-xl-6 heading"><a href="https://profiles.menamedicalresearch.com/" target="_blank"
                                 style="text-decoration: none; color: inherit;">RESEARCHER PROFILES</a></h3>
                     </div>
                     <div class="col-lg-8">
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/red-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://profiles.menamedicalresearch.com/"
+                                <h6 class="mb-1"><a href="https://profiles.menamedicalresearch.com/" target="_blank"
                                         style="text-decoration: none; color: inherit;">Create Your Research Profile on MENA
                                         Medical Research Platform</a></h6>
                                 <p class="mb-0 small">Create Your Research Profile and be discovered by researchers with
@@ -358,7 +418,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/red-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="https://profiles.menamedicalresearch.com/"
+                                <h6 class="mb-1"><a href="https://profiles.menamedicalresearch.com/" target="_blank"
                                         style="text-decoration: none; color: inherit;">Find Researchers with Similar
                                         Interests and Create Your Network</a></h6>
                                 <p class="mb-0 small">Find researchers in MENA and learn about their research interests and
@@ -375,7 +435,7 @@
             <div class="py-md-5 py-4 container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="col-xl-6 heading"><a href="https://menamedicalresearch.com/news/"
+                        <h3 class="col-xl-6 heading"><a href="{{ url('news') }}" target="_blank"
                                 style="text-decoration: none; color: inherit;">RESEARCH NEWS</a></h3>
                     </div>
                     <div class="col-lg-8">
@@ -383,7 +443,7 @@
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
                                 <h6 class="mb-1">
-                                    <a href="https://menamedicalresearch.com/news/"
+                                    <a href="{{ url('news') }}" target="_blank"
                                         style="text-decoration: none; color: inherit;">
                                         News from Research Institutes and Academic Hospitals in MENA Region
                                     </a>
@@ -396,7 +456,7 @@
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
                                 <h6 class="mb-1">
-                                    <a href="https://menamedicalresearch.com/news/"
+                                    <a href="{{ url('news') }}" target="_blank"
                                         style="text-decoration: none; color: inherit;">
                                         Find High Impact Research Published Globally from the MENA Region
                                     </a>
@@ -408,7 +468,7 @@
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
                                 <h6 class="mb-1">
-                                    <a href="https://menamedicalresearch.com/news/"
+                                    <a href="{{ url('news') }}" target="_blank"
                                         style="text-decoration: none; color: inherit;">
                                         Submit News / Press Release to Spread News from your Institute
                                     </a>
