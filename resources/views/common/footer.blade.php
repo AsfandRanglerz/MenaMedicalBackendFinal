@@ -7,6 +7,12 @@
     cursor: default !important;           /* Optional: make it non-pointer */
 }
 
+@media (min-width: 768px) {
+    .training-col {
+        order: 5;
+        margin-top: 1rem;
+    }
+}
 </style>
 <footer>
     <p class="p-3 mb-0 text-center main-desc">MENA MEDICAL RESEARCH – Supporting Biosciences Research and Publication in the MENA Region</p>
@@ -34,7 +40,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 training-col">
                                 <div class="list-holder">
                                     <h6 class="heading">Training <span class="fa fa-angle-down pull-right d-md-none down-arrow"></span></h6>
                                     @foreach($trainings as $training)
@@ -74,7 +80,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-3 mt-md-3">
+                            <div class="col-md-3">
                                 <div class="list-holder prof-holder">
                                     <h6 class="heading">Profiles <span class="fa fa-angle-down pull-right d-md-none down-arrow"></span></h6>
                                     @foreach($Profiles as $Profile)
@@ -115,7 +121,7 @@
                         <img src="https://profiles.menamedicalresearch.com/public/assets/img/whatsapp-icon.png"
                                 alt="WhatsApp" style="width: 1.563rem;height: 1.563rem">
                             <span style="color: #3d3d3d!important;margin:0 6px">WHATSAPP</span>
-                            <span style="color: #3d3d3d!important">+852 47332977</span>
+                            <span style="color: #3d3d3d!important">+852 64652073</span>
                         </a>
                 </div>
             </div>

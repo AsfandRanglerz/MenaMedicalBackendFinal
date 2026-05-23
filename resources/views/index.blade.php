@@ -55,6 +55,8 @@
             <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="4"></button>
         </div>
 
         <!-- Slides -->
@@ -65,32 +67,56 @@
                 <div class="content">
                     <h1 class="heading1 text-light">WE MAKE</h1>
                     <h2 class="text-light heading2">PUBLISHING EASY!</h2>
-                    <p class="mb-0 text-light">
-                        Academic Editing, Bioscience Journals, Research News, and Networking Opportunities
+                    <p class="mt-3 mb-0 text-light">
+                        Research Training, Scientific Editing, Statistical Analysis, Bioscience Journals, Webinars, Research News, and Networking Opportunities
                     </p>
                 </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="carousel-item">
-                <img src="{{ asset('public/assets/images/banner-img2.png') }}" class="w-100" />
+                <img src="{{ asset('public/assets/images/journal.webp') }}" class="w-100" />
                 <div class="content">
-                    <h1 class="heading1 text-light">BOOST YOUR</h1>
-                    <h2 class="text-light heading2">RESEARCH IMPACT</h2>
-                    <p class="mb-0 text-light">
-                        Get expert editing and publishing support for your academic success
+                    <h2 class="text-light heading2">OPEN-ACCESS, PEER</h2>
+                    <h2 class="text-light heading2">REVIEWED JOURNALS</h2>
+                    <p class="mt-3 mb-0 text-light">
+                        Making Publicaion Possible - <span class="orange-text">AT AFFORDABLE PRICES</span>
                     </p>
                 </div>
             </div>
 
             <!-- Slide 3 -->
             <div class="carousel-item">
-                <img src="{{ asset('public/assets/images/banner-img3.png') }}" class="w-100" />
+                <img src="{{ asset('public/assets/images/training.webp') }}" class="w-100" />
                 <div class="content">
-                    <h1 class="heading1 text-light">CONNECT WITH</h1>
-                    <h2 class="text-light heading2">GLOBAL NETWORK</h2>
-                    <p class="mb-0 text-light">
-                        Join a growing community of bioscience researchers and students
+                    <h2 class="text-light heading2">PUBLISH A RESEARCH</h2>
+                    <h2 class="text-light heading2">PAPER IN 3 MONTHS</h2>
+                    <p class="mt-3 mb-0 text-light">
+                        <span class="orange-text">Join a Three-Month training course</span> and work with expert mentors to write and submit a research paper within 3 Months
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+                <img src="{{ asset('public/assets/images/profile.webp') }}" class="w-100" />
+                <div class="content">
+                    <h2 class="text-light heading2">FIND RESEARCHERS,</h2>
+                    <h2 class="text-light heading2">CONNECT, COLLABORATE</h2>
+                    <p class="mt-3 mb-0 text-light">
+                        <span class="orange-text">Create Your Profile</span> on MENA Medical Research and discover networking opportunities
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 5 -->
+            <div class="carousel-item">
+                <img src="{{ asset('public/assets/images/webinar.webp') }}" class="w-100" />
+                <div class="content">
+                    <h2 class="text-light heading2">FREE, HIGH-IMPACT</h2>
+                    <h2 class="text-light heading2">MULTIDISCIPLINARY WEBINARS</h2>
+                    <p class="mt-3 mb-0 text-light">
+                        <span class="orange-text">Enhance Your Knowledge</span> through Bioscience and Medical Research webinars by leading research leaders
                     </p>
                 </div>
             </div>
@@ -120,7 +146,8 @@
                                     <img src="{{ asset('public/assets/images/training-services.webp') }}" class="my-lg-4 my-3" />
                                     <p>Training courses, multidisciplinary scientific webinars, and conferences <b>for next generation research leaders</b></p>
                                 </div>
-                                <a href="{{ url('training') }}" target="_blank">Find Out More</a>
+                                {{-- <a href="{{ url('trainings') }}" target="_blank">Find Out More</a> --}}
+                                <a href="https://training.menamedicalresearch.com/" target="_blank">Find Out More</a>
                             </div>
                         </div>
                     </div>
@@ -247,7 +274,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="{{ url('training') }}" target="_blank"
+                                <h6 class="mb-1"><a href="https://training.menamedicalresearch.com/" target="_blank"
                                         style="text-decoration: none; color: inherit">Publish a Research Paper in 3 Months</a></h6>
                                 <p class="mb-0 small">A training and mentoring program that culminates in successful submission of your research in an international peer-reviewed journal in 3 Months</p>
                             </div>
@@ -255,7 +282,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="{{ url('training') }}" target="_blank"
+                                <h6 class="mb-1"><a href="https://training.menamedicalresearch.com/" target="_blank"
                                         style="text-decoration: none; color: inherit">FREE Multidisciplinary Webinars</a></h6>
                                 <p class="mb-0 small">Stay updated on latest advancements through our FREE Multidisciplinary scientific webinars with leading researchers in the MENA region</p>
                             </div>
@@ -263,7 +290,7 @@
                         <div class="d-flex list-points">
                             <img src="{{ asset('public/assets/images/blue-arrow.png') }}" class="arrow-img" />
                             <div class="ms-2">
-                                <h6 class="mb-1"><a href="{{ url('training') }}" target="_blank"
+                                <h6 class="mb-1"><a href="https://training.menamedicalresearch.com/" target="_blank"
                                         style="text-decoration: none; color: inherit">MENA Medical Research Conference</a></h6>
                                 <p class="mb-0 small">A multi-themed conference that will bring together leading researchers from the MENA region to highlight and share their high-impact research with a global audience</p>
                             </div>
