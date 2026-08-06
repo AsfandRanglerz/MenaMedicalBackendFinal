@@ -65,10 +65,11 @@
             <div class="carousel-item active">
                 <img src="{{ asset('public/assets/images/banner-img.png') }}" class="w-100" />
                 <div class="content">
-                    <h1 class="heading1 text-light">WE MAKE</h1>
-                    <h2 class="text-light heading2">PUBLISHING EASY!</h2>
+                    <h1 class="heading1 text-light">INTEGRATED</h1>
+                    <h2 class="text-light heading2">RESEARCH ECOSYSTEM</h2>
                     <p class="mt-3 mb-0 text-light">
-                        Research Training, Scientific Editing, Statistical Analysis, Bioscience Journals, Webinars, Research News, and Networking Opportunities
+                        Research Training, Scientific Editing, Statistical Analysis, Bioscience Journals, Webinars,
+                        Research News, Researcher Profiles, and Networking Opportunities
                     </p>
                 </div>
             </div>
@@ -130,7 +131,13 @@
                     research. We understand the Academic English Language and Publication challenges faced by Bioscience
                     researchers and students in the MENA region and offer affordable language editing and publication services
                     to help them overcome these challenges.</p> --}}
-                <p class="mb-0">MENA Medical Research makes it easy to publish Bioscience and Medical research in the MENA region by providing training, academic editing services, bioscience and medical journals, regional research news, and research networking opportunities for professionals and students. We understand the challenges faced by Bioscience researchers and students in the MENA region and offer customized solutions to meet their needs.</p>
+                <!-- <p class="mb-0">MENA Medical Research makes it easy to publish Bioscience and Medical research in the MENA region by providing training, academic editing services, bioscience and medical journals, regional research news, and research networking opportunities for professionals and students. We understand the challenges faced by Bioscience researchers and students in the MENA region and offer customized solutions to meet their needs.</p> -->
+                 <p>
+                    MENA Medical Research empowers the MENA scientific community by providing research training, knowledge development webinars, comprehensive scientific editing and data analysis services, bioscience
+                    and medical journals, regional research news, researcher profiles, and networking opportunities for professionals and students. Our mission is to elevate and expand the MENA region&#39;s bioscience and
+                    medical research output on a global scale. We understand the challenges faced by bioscience and medical researchers and students in the MENA region and have developed an integrated research
+                    ecosystem to support their needs.
+                 </p>
             </div>
         </div>
     </div>
